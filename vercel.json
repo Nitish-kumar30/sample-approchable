@@ -1,9 +1,9 @@
 {
   "version": 2,
-  "name": "approachable-landing",
   "builds": [{ "src": "index.html", "use": "@vercel/static" }],
   "routes": [
-    { "src": "/assets/(.*)", "dest": "/assets/$1" },
+    { "src": "/static/(.*)", "dest": "/public/static/$1" },
     { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
+
