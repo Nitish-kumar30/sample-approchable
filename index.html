@@ -12,12 +12,16 @@
     .glass { background: rgba(255,255,255,0.06); backdrop-filter: blur(6px); }
     .container-max { max-width: 1100px; }
   </style>
+  <link rel="apple-touch-icon" sizes="180x180" href="public/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="public/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="public/favicon-16x16.png">
+<link rel="manifest" href="public/site.webmanifest">
 </head>
 <body class="bg-gray-900 text-gray-100 leading-relaxed antialiased">
   <header class="py-6">
     <div class="mx-auto container-max px-6 flex items-center justify-between">
       <a href="#" class="flex items-center space-x-3">
-        <div class="w-10 h-10 gradient rounded-lg flex items-center justify-center font-bold">A</div>
+        <img src="public/logo.png" alt="Approachable" class="rounded-lg" style="width: 60px; height: 60px;">
         <div>
           <div class="text-lg font-bold">Approachable</div>
           <div class="text-xs text-gray-400">making AI approachable</div>
@@ -170,6 +174,16 @@
           <div class="font-semibold">How does the AI assistant help?</div>
           <div class="text-sm text-gray-400">The assistant sends reminders (WhatsApp/email), summarizes weekly sessions, creates quick quizzes and flashcards, and nudges members to submit exercises.</div>
         </div>
+      </div>
+    </section>
+
+    <section class="mx-auto container-max px-6 py-12 text-center">
+      <h2 class="text-3xl font-bold">Ready to get started?</h2>
+      <p class="mt-3 text-gray-400">Join the waitlist and be the first to know when the next cohort opens.</p>
+      <div class="mt-6">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScKsweqhNvfnHdRpB-8AEK_riK9FI45ziPfSYk8yHXFpaWp-g/viewform" target="_blank" class="inline-block px-8 py-3 bg-indigo-600 rounded-lg font-semibold hover:bg-indigo-700">
+          Open waitlist form
+        </a>
       </div>
     </section>
   </main>
