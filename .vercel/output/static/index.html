@@ -21,6 +21,11 @@
     .glass { background: rgba(255,255,255,0.06); backdrop-filter: blur(6px); }
     .container-max { max-width: 1100px; }
   </style>
+  <script>
+    // Configuration variables
+    const seatsRemaining = 16;
+    
+  </script>
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -96,13 +101,13 @@
           <div class="flex items-center justify-between">
             <div>
               <div class="text-sm text-gray-400">Next cohort starting</div>
-              <div class="mt-2 text-white font-semibold">AI Fundamentals — NEW DATE TO BE ANNOUNCED SOON</div>
+              <div class="mt-2 text-white font-semibold">AI Fundamentals — Feb 19, 2026, 7:30 PM IST</div>
             </div>
             <div class="bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full">
-              12 seats left
+              <span id="seatsLeftBadge"></span> seats left
             </div>
           </div>
-          <div class="mt-4 text-gray-300">Seats: 12 • Format: Weekly async videos + 90‑min live meetup
+          <div class="mt-4 text-gray-300">Seats: 20 • Format: Weekly async videos + 90‑min live meetup
             <ul class="mt-3 list-disc list-inside text-gray-400 text-sm space-y-1">
               <li>Prompt engineering essentials</li>
               <li>No‑code workflow automation with n8n</li>
@@ -217,7 +222,7 @@
           Join the cohort
         </a>
       </div>
-      <p class="mt-4 text-xs text-gray-400">Only 12 seats remaining • No experience needed</p>
+      <p class="mt-4 text-xs text-gray-400">Only <span id="seatsLeftBadge"></span> seats remaining • No experience needed</p>
     </section>
 
     <section id="features" class="mx-auto container-max px-6 py-10">
@@ -318,5 +323,10 @@
     </div>
   </footer>
 
+  <script>
+    // Populate seat numbers from variables
+    document.getElementById('seatsLeftBadge').textContent = seatsRemaining;
+    
+  </script>
 </body>
 </html>
