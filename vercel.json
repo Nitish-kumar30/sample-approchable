@@ -6,7 +6,7 @@
     { "src": "api/**/*.js", "use": "@vercel/node" }
   ],
   "env": {
-    "COURSE_LIKES_KV_REST_API_URL": "@upstash_redis_rest_url",
-    "COURSE_LIKES_KV_REST_API_TOKEN": "@upstash_redis_rest_token"
+    "COURSE_LIKES_KV_REST_API_URL": "@COURSE_LIKES_KV_REST_API_URL",
+    "COURSE_LIKES_KV_REST_API_TOKEN": "@COURSE_LIKES_KV_REST_API_TOKEN"
   }
 }
