@@ -228,10 +228,39 @@
     //   }
     ];
 
+    // Toggle like via API with localStorage fallback
+    async function toggleCourseLike(courseId, currentLiked) {
+      try {
+        const action = currentLiked ? 'unlike' : 'like';
+        const response = await fetch('/api/likes', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ courseId, action })
+        });
+        
+        if (!response.ok) throw new Error('API call failed');
+        const data = await response.json();
+        
+        // Update localStorage as backup
+        const likes = JSON.parse(localStorage.getItem('courseLikes')) || {};
+        likes[courseId] = data.userLiked ? 1 : 0;
+        localStorage.setItem('courseLikes', JSON.stringify(likes));
+        
+        return data;
+      } catch (error) {
+        console.warn('API error, falling back to localStorage:', error);
+        // Fallback to localStorage only
+        const likes = JSON.parse(localStorage.getItem('courseLikes')) || {};
+        likes[courseId] = likes[courseId] ? 0 : 1;
+        localStorage.setItem('courseLikes', JSON.stringify(likes));
+        return { userLiked: likes[courseId] === 1 };
+      }
+    }
+
     // Load courses and render them
     function loadCourses() {
       try {
-        // Load likes from localStorage
+        // Load likes from localStorage as initial state
         const likes = JSON.parse(localStorage.getItem('courseLikes')) || {};
         
         // Render courses
@@ -241,18 +270,30 @@
         //renderTopCourses(coursesData, likes);
         
         // Save handler for like button clicks with event delegation
-        document.getElementById('coursesContainer').addEventListener('click', function(e) {
+        document.getElementById('coursesContainer').addEventListener('click', async function(e) {
           if (e.target.closest('.like-btn')) {
             e.preventDefault();
             e.stopPropagation();
             const btn = e.target.closest('.like-btn');
             const courseId = parseInt(btn.dataset.courseId);
-            likes[courseId] = likes[courseId] ? 0 : 1;
-            localStorage.setItem('courseLikes', JSON.stringify(likes));
+            const currentLiked = likes[courseId] === 1;
             
-            // Toggle button state
+            // Toggle button state optimistically
             btn.classList.toggle('liked');
-            btn.textContent = likes[courseId] ? '❤️' : '🤍';
+            btn.textContent = currentLiked ? '🤍' : '❤️';
+            
+            // Call API to persist
+            const result = await toggleCourseLike(courseId, currentLiked);
+            
+            // Update local state
+            likes[courseId] = result.userLiked ? 1 : 0;
+            
+            // Correct button state if API returned different result
+            const shouldBeLiked = result.userLiked;
+            if (btn.classList.contains('liked') !== shouldBeLiked) {
+              btn.classList.toggle('liked');
+              btn.textContent = shouldBeLiked ? '❤️' : '🤍';
+            }
             
             // Update top courses
             //renderTopCourses(coursesData, likes);
