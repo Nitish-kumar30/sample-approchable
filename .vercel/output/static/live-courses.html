@@ -127,7 +127,8 @@
         "description": "Power your daily workflows with Claude Code. Build and ship AI apps confidently with Agentic coding assistant - Claude Code.",
         "tags": ["Claude Code", "Vibe Coding", "Agentic AI Coding Assistant"],
         "duration": 120,
-        "status": "paid"
+        "status": "paid",
+        "image": "/img/claude-code-course.png"
       },
       
       {
@@ -136,7 +137,8 @@
         "description": "Deep dive into creating no-code AI agents that can automate complex workflows. Build agents that think, plan, and take action across multiple tools and APIs.",
         "tags": ["AI Agents", "Automation", "No-Code"],
         "duration": 120,
-        "status": "free"
+        "status": "free",
+        "image": "/img/claude-code-course.png"
       },
        {
         "id": 3,
@@ -144,7 +146,8 @@
         "description": "Deep dive into creating code AI agents that can automate complex workflows. Build agents that think, plan, and take action across multiple tools and APIs.",
         "tags": ["AI Agents", "Automation", "Code"],
         "duration": 120,
-        "status": "paid"
+        "status": "paid",
+        "image": "/img/claude-code-course.png"
       },
       {
         "id": 4,
@@ -152,7 +155,8 @@
         "description": "Explore cutting-edge AI-assisted coding tools such as Lovable, GitHub Copilot, and Claude Code. Learn when and how to use each tool for maximum productivity.",
         "tags": ["Vibe Coding", "Development", "Tools"],
         "duration": 90,
-        "status": "free"
+        "status": "free",
+        "image": "/img/claude-code-course.png"
       },
        {
         "id": 5,
@@ -160,7 +164,8 @@
         "description": "Explore powerful open-source language models from Meta, Mistral, and Deepseek. Learn how to run, fine-tune, and deploy these models locally or in the cloud for maximum control and privacy.",
         "tags": ["Open Source LLMs", "Mistral", "Llama", "Self-Hosted"],
         "duration": 120,
-        "status": "paid"
+        "status": "paid",
+        "image": "/img/claude-code-course.png"
       }
       ,
        {
@@ -169,7 +174,8 @@
         "description": "Master Retrieval-Augmented Generation (RAG) to enhance LLM capabilities. Learn semantic search, vector databases, embeddings, and how to ground LLMs with your own data for accurate, context-aware responses.",
         "tags": ["RAG", "Semantic Search", "Vector Embeddings", "Knowledge Retrieval"],
         "duration": 120,
-        "status": "paid"
+        "status": "paid",
+        "image": "/img/claude-code-course.png"
       }
       
     //   {
@@ -263,7 +269,7 @@
       
       container.innerHTML = courses.map(course => {
         const isLiked = likes[course.id];
-        const placeholderImg = `https://via.placeholder.com/400x250?text=${encodeURIComponent(course.title)}`;
+        const placeholderImg = course.image;
         const courseSlug = generateSlug(course.title);
         const courseLink = `/courses/${courseSlug}.html`;
         
