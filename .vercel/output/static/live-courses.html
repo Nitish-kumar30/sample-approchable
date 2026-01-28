@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Live Courses — Approachable | Deep-dive AI Learning</title>
+  <meta name="description" content="Explore our collection of live, deep-dive AI courses. Learn prompt engineering, AI agents, vibe coding, and more. 90-120 minute courses, free for now." />
+  <meta name="keywords" content="AI courses, live courses, prompt engineering, AI agents, vibe coding, deep-dive learning, LLMs" />
+  
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://approachable.dev/live-courses.html" />
+  <meta property="og:title" content="Live Courses — Approachable | Deep-dive AI Learning" />
+  <meta property="og:description" content="Deep-dive AI courses covering AI agents, prompt engineering, vibe coding, open-source LLMs, RAG, and more." />
+  <meta property="og:image" content="https://approachable.dev/og-courses-image.png" />
+  
+  <meta property="twitter:card" content="summary_large_image" />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    /* Small helpers */
+    .gradient { background: linear-gradient(90deg,#7c3aed,#06b6d4); }
+    .glass { background: rgba(255,255,255,0.06); backdrop-filter: blur(6px); }
+    .container-max { max-width: 1100px; }
+    .like-btn {
+      transition: all 0.2s ease;
+    }
+    .like-btn.liked {
+      color: #ff6b6b;
+    }
+    .course-card {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .course-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+    }
+  </style>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XG391DQQCV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XG391DQQCV');
+  </script>
+</head>
+<body class="bg-gray-900 text-gray-100 leading-relaxed antialiased">
+
+  <header class="py-6">
+    <div class="mx-auto container-max px-6 flex items-center justify-between">
+      <a href="/" class="flex items-center space-x-3">
+        <img src="/logo.png" alt="Approachable" class="rounded-lg" style="width: 60px; height: 60px;">
+        <div>
+          <div class="text-lg font-bold">Approachable</div>
+          <div class="text-xs text-gray-400">making learning AI approachable for <i>everyone</i></div>
+        </div>
+      </a>
+      <nav class="hidden md:flex items-center space-x-6 text-gray-300">
+        <a href="/" class="hover:text-white">Home</a>
+        <a href="/live-courses.html" class="hover:text-white font-semibold text-indigo-400">🔥 Live Courses</a>
+        <a href="https://forms.gle/dArAPFpBEqy2512J9" target="_blank" class="px-4 py-2 bg-indigo-600 rounded text-white font-medium shadow">Get early access</a>
+      </nav>
+      <div class="md:hidden text-gray-300">☰</div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="mx-auto container-max px-6 py-12">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">Live Deep-Dive Courses</h1>
+        <p class="mt-4 text-lg text-gray-300">Explore our collection of focused, 90-120 minute courses on AI, automation, and modern tools. Pick what interests you most.</p>
+        <p class="mt-2 text-sm text-green-400 font-semibold">✨ Free for early users</p>
+      </div>
+    </section>
+
+    <!-- Courses Grid -->
+    <section class="mx-auto container-max px-6 pb-12">
+      <div id="coursesContainer" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <!-- Courses will be loaded here by JavaScript -->
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="mx-auto container-max px-6 py-12 text-center bg-gradient-to-r from-indigo-600/10 to-cyan-600/10 rounded-lg border border-indigo-500/20">
+      <h2 class="text-2xl font-bold">Ready to dive deep?</h2>
+      <p class="mt-3 text-gray-300">Pick a course and level up your AI skills. Classes start weekly.</p>
+      <div class="mt-6">
+        <a href="https://forms.gle/dArAPFpBEqy2512J9" target="_blank" class="inline-block px-8 py-3 bg-indigo-600 rounded-lg font-semibold hover:bg-indigo-700">
+          Join a Course
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/5 mt-12 py-8">
+    <div class="mx-auto container-max px-6 flex flex-col md:flex-row items-center justify-between">
+      <div class="text-sm text-gray-400">© 2026 Approachable • making AI approachable</div>
+      <div class="mt-4 md:mt-0 space-x-4">
+        <a href="#" class="text-gray-400 text-sm">Privacy</a>
+        <a href="#" class="text-gray-400 text-sm">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Helper function to generate URL-friendly slugs
+    function generateSlug(title) {
+      return title
+        .toLowerCase()
+        .trim()
+        .replace(/[^\w\s-]/g, '')
+        .replace(/\s+/g, '-')
+        .replace(/-+/g, '-')
+        .replace(/^-+|-+$/g, '');
+    }
+
+    // Inline courses data
+    const coursesData = [
+
+      {
+        "id": 1,
+        "title": "Claude Code Deep Dive",
+        "description": "Power your daily workflows with Claude Code. Build and ship AI apps confidently with Agentic coding assistant - Claude Code.",
+        "tags": ["Claude Code", "Vibe Coding", "Agentic AI Coding Assistant"],
+        "duration": 120,
+        "status": "paid"
+      },
+      
+      {
+        "id": 2,
+        "title": "Building AI Agents with n8n",
+        "description": "Deep dive into creating no-code AI agents that can automate complex workflows. Build agents that think, plan, and take action across multiple tools and APIs.",
+        "tags": ["AI Agents", "Automation", "No-Code"],
+        "duration": 120,
+        "status": "free"
+      },
+       {
+        "id": 3,
+        "title": "Building AI Agents with Open AI Agents SDK",
+        "description": "Deep dive into creating code AI agents that can automate complex workflows. Build agents that think, plan, and take action across multiple tools and APIs.",
+        "tags": ["AI Agents", "Automation", "Code"],
+        "duration": 120,
+        "status": "paid"
+      },
+      {
+        "id": 4,
+        "title": "Vibe Coding with AI Tools",
+        "description": "Explore cutting-edge AI-assisted coding tools such as Lovable, GitHub Copilot, and Claude Code. Learn when and how to use each tool for maximum productivity.",
+        "tags": ["Vibe Coding", "Development", "Tools"],
+        "duration": 90,
+        "status": "free"
+      },
+       {
+        "id": 5,
+        "title": "Open Source LLMs Deep Dive",
+        "description": "Explore powerful open-source language models from Meta, Mistral, and Deepseek. Learn how to run, fine-tune, and deploy these models locally or in the cloud for maximum control and privacy.",
+        "tags": ["Open Source LLMs", "Mistral", "Llama", "Self-Hosted"],
+        "duration": 120,
+        "status": "paid"
+      }
+      ,
+       {
+        "id": 6,
+        "title": "Semantic Search with LLMs - RAG",
+        "description": "Master Retrieval-Augmented Generation (RAG) to enhance LLM capabilities. Learn semantic search, vector databases, embeddings, and how to ground LLMs with your own data for accurate, context-aware responses.",
+        "tags": ["RAG", "Semantic Search", "Vector Embeddings", "Knowledge Retrieval"],
+        "duration": 120,
+        "status": "paid"
+      }
+      
+    //   {
+    //     "id": 5,
+    //     "title": "AI for Content Creators",
+    //     "description": "Transform your creative workflow with AI. Generate scripts, graphics, videos, and written content at scale while maintaining your unique voice and brand.",
+    //     "tags": ["Content Creation", "Marketing", "Beginners"],
+    //     "duration": 90,
+    //     "status": "free"
+    //   },
+    //   {
+    //     "id": 6,
+    //     "title": "Data Analysis with AI",
+    //     "description": "Use AI to extract insights from data without coding. Build dashboards, create visualizations, and ask natural language questions to uncover patterns and trends.",
+    //     "tags": ["Data Analysis", "Business", "No-Code"],
+    //     "duration": 105,
+    //     "status": "free"
+    //   },
+    //   {
+    //     "id": 7,
+    //     "title": "AI for Business Automation",
+    //     "description": "Streamline operations using AI-powered automation. Learn to identify bottlenecks and build workflows that save time, reduce errors, and scale your business.",
+    //     "tags": ["Business", "Automation", "Workflow"],
+    //     "duration": 110,
+    //     "status": "free"
+    //   },
+    //   {
+    //     "id": 8,
+    //     "title": "Computer Vision Essentials",
+    //     "description": "Get started with image recognition, object detection, and visual analysis using accessible AI tools. No deep learning expertise required.",
+    //     "tags": ["Computer Vision", "Advanced", "AI"],
+    //     "duration": 100,
+    //     "status": "free"
+    //   },
+    //   {
+    //     "id": 9,
+    //     "title": "Voice & Audio AI Applications",
+    //     "description": "Learn to build with voice: transcription, text-to-speech, voice assistants, and audio analysis. Discover tools like ElevenLabs, Whisper, and more.",
+    //     "tags": ["Voice AI", "Audio", "Applications"],
+    //     "duration": 85,
+    //     "status": "free"
+    //   },
+    //   {
+    //     "id": 10,
+    //     "title": "AI for Founders & Startups",
+    //     "description": "Leverage AI to build, launch, and scale your startup. From MVP development to customer service automation, learn strategies that give you competitive advantage.",
+    //     "tags": ["Startups", "Business", "Strategy"],
+    //     "duration": 120,
+    //     "status": "free"
+    //   }
+    ];
+
+    // Load courses and render them
+    function loadCourses() {
+      try {
+        // Load likes from localStorage
+        const likes = JSON.parse(localStorage.getItem('courseLikes')) || {};
+        
+        // Render courses
+        renderCourses(coursesData, likes);
+        
+        // Render top courses
+        //renderTopCourses(coursesData, likes);
+        
+        // Save handler for like button clicks with event delegation
+        document.getElementById('coursesContainer').addEventListener('click', function(e) {
+          if (e.target.closest('.like-btn')) {
+            e.preventDefault();
+            e.stopPropagation();
+            const btn = e.target.closest('.like-btn');
+            const courseId = parseInt(btn.dataset.courseId);
+            likes[courseId] = likes[courseId] ? 0 : 1;
+            localStorage.setItem('courseLikes', JSON.stringify(likes));
+            
+            // Toggle button state
+            btn.classList.toggle('liked');
+            btn.textContent = likes[courseId] ? '❤️' : '🤍';
+            
+            // Update top courses
+            //renderTopCourses(coursesData, likes);
+          }
+        });
+      } catch (error) {
+        console.error('Error loading courses:', error);
+        document.getElementById('coursesContainer').innerHTML = `<p class="text-gray-400">Error loading courses: ${error.message}</p>`;
+      }
+    }
+
+    function renderCourses(courses, likes) {
+      const container = document.getElementById('coursesContainer');
+      
+      container.innerHTML = courses.map(course => {
+        const isLiked = likes[course.id];
+        const placeholderImg = `https://via.placeholder.com/400x250?text=${encodeURIComponent(course.title)}`;
+        const courseSlug = generateSlug(course.title);
+        const courseLink = `/courses/${courseSlug}.html`;
+        
+        return `
+          <a href="${courseLink}" class="course-card glass p-5 rounded-lg border border-white/5 overflow-hidden hover:border-indigo-500/30 block no-underline">
+            <!-- Course Thumbnail -->
+            <div class="mb-4 rounded-lg overflow-hidden bg-gray-800 h-40">
+              <img src="${placeholderImg}" alt="${course.title}" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22250%22%3E%3Crect fill=%22%23374151%22 width=%22400%22 height=%22250%22/%3E%3C/svg%3E'">
+            </div>
+
+            <!-- Duration Badge -->
+            <div class="text-xs font-semibold text-cyan-400 mb-2">⏱️ ${course.duration} mins</div>
+
+            <!-- Title -->
+            <h3 class="text-lg font-semibold mb-2 text-white">${course.title}</h3>
+
+            <!-- Description -->
+            <p class="text-sm text-gray-300 mb-4 line-clamp-2">${course.description}</p>
+
+            <!-- Tags -->
+            <div class="mb-4 flex flex-wrap gap-2">
+              ${course.tags.map(tag => `<span class="text-xs bg-indigo-900/50 text-indigo-300 px-2 py-1 rounded">${tag}</span>`).join('')}
+            </div>
+
+            <!-- Like Button & Status -->
+            <div class="flex items-center justify-between pt-4 border-t border-white/10">
+              <div class="text-xs text-green-400 font-medium">✨ ${course.status}</div>
+              <button class="like-btn ${isLiked ? 'liked' : ''}" data-course-id="${course.id}" title="Mark as interested" onclick="event.preventDefault(); event.stopPropagation();">
+                ${isLiked ? '❤️' : '🤍'}
+              </button>
+            </div>
+          </a>
+        `;
+      }).join('');
+    }
+
+    // function renderTopCourses(courses, likes) {
+    //   const container = document.getElementById('topCoursesContainer');
+      
+    //   // Sort by likes
+    //   const topCourses = courses
+    //     .filter(course => likes[course.id])
+    //     .sort((a, b) => (likes[b.id] || 0) - (likes[a.id] || 0))
+    //     .slice(0, 3);
+      
+    //   if (topCourses.length === 0) {
+    //     container.innerHTML = '<div class="text-gray-400 col-span-3 text-center py-6">No courses liked yet. Like a course to see it here!</div>';
+    //     return;
+    //   }
+      
+    //   container.innerHTML = topCourses.map(course => `
+    //     <div class="p-4 bg-gray-800/50 rounded border border-indigo-500/30">
+    //       <div class="text-sm font-semibold text-indigo-400">${course.title}</div>
+    //       <div class="text-xs text-gray-400 mt-2">❤️ You're interested!</div>
+    //     </div>
+    //   `).join('');
+    // }
+
+    // Load courses when page loads
+    document.addEventListener('DOMContentLoaded', loadCourses);
+  </script>
+
+</body>
+</html>
