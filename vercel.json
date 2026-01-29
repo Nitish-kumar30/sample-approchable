@@ -2,11 +2,6 @@
   "version": 2,
   "name": "approachable-landing",
   "builds": [
-    { "src": "index.html", "use": "@vercel/static" },
-    { "src": "api/**/*.js", "use": "@vercel/node" }
-  ],
-  "env": {
-    "COURSE_LIKES_KV_REST_API_URL": "@COURSE_LIKES_KV_REST_API_URL",
-    "COURSE_LIKES_KV_REST_API_TOKEN": "@COURSE_LIKES_KV_REST_API_TOKEN"
-  }
+    { "src": "index.html", "use": "@vercel/static" }
+  ]
 }
