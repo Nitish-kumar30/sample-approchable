@@ -690,19 +690,32 @@
     </div>
   </footer>
 
-  <!-- Analytics Tracking Functions -->
+  <!-- Analytics Tracking Functions - FUNNEL OPTIMIZED -->
   <script>
-    // Track CTA clicks (Reserve Seat buttons)
+    // FUNNEL STEP 1: Page View (automatic)
+    // GA4 automatically tracks page_view when page loads
+    
+    // FUNNEL STEP 2: CTA Engagement - Track when user clicks any "Reserve Seat" button
     function trackCTA(label, location) {
+      // Main funnel event - standardized name for funnel analysis
+      gtag('event', 'begin_checkout', {
+        'event_category': 'Funnel',
+        'event_label': 'CTA Clicked',
+        'button_location': location,
+        'button_text': label
+      });
+      
+      // Additional detailed tracking
       gtag('event', 'cta_click', {
         'event_category': 'CTA',
         'event_label': label,
         'location': location
       });
-      console.log('CTA Click Tracked:', label, 'at', location);
+      
+      console.log('✅ FUNNEL STEP 2: CTA Click Tracked -', label, 'at', location);
     }
     
-    // Track navigation clicks
+    // Track navigation clicks (not part of main funnel)
     function trackNavigation(label, location) {
       gtag('event', 'navigation_click', {
         'event_category': 'Navigation',
@@ -712,14 +725,36 @@
       console.log('Navigation Tracked:', label, 'at', location);
     }
     
-    // Track external links (Google Form)
+    // FUNNEL STEP 3: Form Started - Track when user clicks to open Google Form
     function trackExternalLink(destination, location) {
+      // Main funnel event - form initiation
+      gtag('event', 'generate_lead', {
+        'event_category': 'Funnel',
+        'event_label': 'Form Started',
+        'form_destination': destination,
+        'click_location': location
+      });
+      
+      // Additional detailed tracking
       gtag('event', 'external_link_click', {
         'event_category': 'External Link',
         'event_label': destination,
         'location': location
       });
-      console.log('External Link Tracked:', destination, 'from', location);
+      
+      console.log('✅ FUNNEL STEP 3: Form Link Clicked -', destination, 'from', location);
+    }
+    
+    // Optional: Track when user returns from form (if they come back to thank you page)
+    // You'll need to set up a thank you page redirect for this
+    function trackFormSubmission() {
+      gtag('event', 'conversion', {
+        'send_to': 'G-XG391DQQCV',
+        'event_category': 'Funnel',
+        'event_label': 'Form Submitted',
+        'value': 299 // or 9.99 for international
+      });
+      console.log('✅ FUNNEL STEP 4: Form Submitted (Conversion!)');
     }
     
     // Track video plays (Vimeo)
