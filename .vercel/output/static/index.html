@@ -31,34 +31,33 @@
     const seatsRemaining = 4;
   </script>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XG391DQQCV"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XG391DQQCV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XG391DQQCV');
+  </script>
 
-  gtag('config', 'G-XG391DQQCV');
-</script>
-
-<script type="text/javascript">
+  <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "vbfff98f4y");
-</script>
+  </script>
 </head>
 <body class="bg-gray-900 text-gray-100 leading-relaxed antialiased">
 
   <!-- IMPROVED: Sticky Urgency Banner -->
   <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 text-center text-sm font-semibold sticky top-0 z-50 shadow-lg">
     🔥 Feb 19 cohort starting • Only <span id="topSeatsLeft">4</span> seats left • Free course (Rs 299/$9.99 commitment fee) • 
-    <a href="#signup" class="underline hover:text-yellow-300 ml-2">Reserve your seat now →</a>
+    <a href="#signup" class="underline hover:text-yellow-300 ml-2" onclick="trackCTA('Reserve Seat', 'Sticky Banner')">Reserve your seat now →</a>
   </div>
 
   <header class="py-6">
     <div class="mx-auto container-max px-6 flex items-center justify-between">
-      <a href="#" class="flex items-center space-x-3">
+      <a href="#" class="flex items-center space-x-3" onclick="trackNavigation('Logo Click', 'Header')">
         <img src="/logo.png" alt="Approachable" class="rounded-lg" style="width: 60px; height: 60px;">
         <div>
           <div class="text-lg font-bold">Approachable</div>
@@ -66,12 +65,12 @@
         </div>
       </a>
       <nav class="hidden md:flex items-center space-x-6 text-gray-300">
-        <a href="#outcomes" class="hover:text-white">What You'll Build</a>
-        <a href="#how" class="hover:text-white">How It Works</a>
-        <a href="#mentor" class="hover:text-white">Your Mentor</a>
-        <a href="#faq" class="hover:text-white">FAQ</a>
+        <a href="#outcomes" class="hover:text-white" onclick="trackNavigation('What You Will Build', 'Header Nav')">What You'll Build</a>
+        <a href="#how" class="hover:text-white" onclick="trackNavigation('How It Works', 'Header Nav')">How It Works</a>
+        <a href="#mentor" class="hover:text-white" onclick="trackNavigation('Your Mentor', 'Header Nav')">Your Mentor</a>
+        <a href="#faq" class="hover:text-white" onclick="trackNavigation('FAQ', 'Header Nav')">FAQ</a>
         <!-- IMPROVED CTA: More action-oriented -->
-        <a href="#signup" class="px-5 py-2.5 bg-indigo-600 rounded-lg text-white font-semibold shadow-lg hover:bg-indigo-700 hover:shadow-xl transition-all">
+        <a href="#signup" class="px-5 py-2.5 bg-indigo-600 rounded-lg text-white font-semibold shadow-lg hover:bg-indigo-700 hover:shadow-xl transition-all" onclick="trackCTA('Start Learning Feb 19', 'Header')">
           Start Learning Feb 19 →
         </a>
       </nav>
@@ -102,13 +101,13 @@
 
         <!-- IMPROVED CTAs: Primary and Secondary with better copy -->
         <div class="mt-6 flex flex-wrap gap-3">
-          <a href="#signup" class="inline-flex items-center px-8 py-4 bg-indigo-600 rounded-lg font-bold text-lg hover:bg-indigo-700 shadow-xl hover:shadow-2xl transition-all">
+          <a href="#signup" class="inline-flex items-center px-8 py-4 bg-indigo-600 rounded-lg font-bold text-lg hover:bg-indigo-700 shadow-xl hover:shadow-2xl transition-all" onclick="trackCTA('Reserve My Seat Now', 'Hero Primary')">
             Reserve My Seat Now
             <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
             </svg>
           </a>
-          <a href="#outcomes" class="inline-flex items-center px-8 py-4 border-2 border-gray-600 rounded-lg font-semibold hover:border-indigo-500 hover:bg-gray-800 transition-all">
+          <a href="#outcomes" class="inline-flex items-center px-8 py-4 border-2 border-gray-600 rounded-lg font-semibold hover:border-indigo-500 hover:bg-gray-800 transition-all" onclick="trackNavigation('See What You Will Build', 'Hero Secondary')">
             See What You'll Build
           </a>
         </div>
@@ -171,7 +170,7 @@
 
           <div class="mt-6">
             <!-- IMPROVED CTA: More specific and urgent -->
-            <a href="#signup" class="block text-center px-6 py-3.5 bg-indigo-600 rounded-lg font-bold hover:bg-indigo-700 shadow-lg transition-all">
+            <a href="#signup" class="block text-center px-6 py-3.5 bg-indigo-600 rounded-lg font-bold hover:bg-indigo-700 shadow-lg transition-all" onclick="trackCTA('Reserve Your Seat for Rs 299/$9.99', 'Hero Cohort Box')">
               Reserve Your Seat for Rs 299/$9.99 →
             </a>
           </div>
@@ -241,7 +240,7 @@
           <span class="px-4 py-2 bg-indigo-900/40 border border-indigo-500/30 rounded-full text-sm">AI Agents</span>
           <span class="px-4 py-2 bg-indigo-900/40 border border-indigo-500/30 rounded-full text-sm">Agentic Coding Assistants</span>
           <span class="px-4 py-2 bg-indigo-900/40 border border-indigo-500/30 rounded-full text-sm">n8n Workflows</span>
-          <span class="px-4 py-2 bg-indigo-900/40 border border-indigo-500/30 rounded-full text-sm">Vibe Coding and Tools (Lovable Et al.)<span>
+          <span class="px-4 py-2 bg-indigo-900/40 border border-indigo-500/30 rounded-full text-sm">Vibe Coding and Tools (Lovable Et al.)</span>
         </div>
         
         <!-- Deep Dive Courses Teaser -->
@@ -253,7 +252,7 @@
               <span class="px-3 py-1 bg-gray-800/50 rounded-full">Mastering Claude Code</span>
               <span class="px-3 py-1 bg-gray-800/50 rounded-full">AI Agents deep dive</span>
               <span class="px-3 py-1 bg-gray-800/50 rounded-full">Open Source LLMs</span>
-			  <span class="px-3 py-1 bg-gray-800/50 rounded-full">More launching soon...</span>
+              <span class="px-3 py-1 bg-gray-800/50 rounded-full">More launching soon...</span>
             </div>
           </div>
         </div>
@@ -261,7 +260,7 @@
 
       <!-- Strong CTA -->
       <div class="mt-10 text-center">
-        <a href="#signup" class="inline-flex items-center px-8 py-4 bg-indigo-600 rounded-lg font-bold text-lg hover:bg-indigo-700 shadow-xl hover:shadow-2xl transition-all">
+        <a href="#signup" class="inline-flex items-center px-8 py-4 bg-indigo-600 rounded-lg font-bold text-lg hover:bg-indigo-700 shadow-xl hover:shadow-2xl transition-all" onclick="trackCTA('Start Building These Projects', 'Outcomes Section')">
           Start Building These Projects
           <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
@@ -274,7 +273,10 @@
     <!-- Video Demo Section -->
     <section id="how" class="mx-auto container-max px-6 py-10">
       <h2 class="text-2xl font-bold mb-6">See it in action</h2>
-      <div style="padding:56.25% 0 0 0;position:relative;border-radius:8px;overflow:hidden;"><iframe src="https://player.vimeo.com/video/1160969611?badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="AI Fundamentals Cohort - Ranbeer Makin"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+      <div style="padding:56.25% 0 0 0;position:relative;border-radius:8px;overflow:hidden;">
+        <iframe src="https://player.vimeo.com/video/1160969611?badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="AI Fundamentals Cohort - Ranbeer Makin" id="vimeoPlayer"></iframe>
+      </div>
+      <script src="https://player.vimeo.com/api/player.js"></script>
     </section>
 
     <!-- NEW: MENTOR BIO SECTION -->
@@ -507,7 +509,7 @@
       </div>
 
       <div class="mt-8">
-        <a href="#signup" class="inline-flex items-center px-10 py-4 bg-indigo-600 rounded-lg font-bold text-lg hover:bg-indigo-700 shadow-2xl hover:shadow-3xl transition-all">
+        <a href="#signup" class="inline-flex items-center px-10 py-4 bg-indigo-600 rounded-lg font-bold text-lg hover:bg-indigo-700 shadow-2xl hover:shadow-3xl transition-all" onclick="trackCTA('Reserve Your Seat for Rs 299/$9.99', 'Mid-Page Urgency')">
           Reserve Your Seat for Rs 299/$9.99
           <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
@@ -592,7 +594,7 @@
 
           <!-- CTA Button -->
           <div class="text-center">
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLScKsweqhNvfnHdRpB-8AEK_riK9FI45ziPfSYk8yHXFpaWp-g/viewform" target="_blank" class="inline-flex items-center px-10 py-5 bg-indigo-600 rounded-lg font-bold text-xl hover:bg-indigo-700 shadow-2xl hover:shadow-3xl transition-all">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScKsweqhNvfnHdRpB-8AEK_riK9FI45ziPfSYk8yHXFpaWp-g/viewform" target="_blank" class="inline-flex items-center px-10 py-5 bg-indigo-600 rounded-lg font-bold text-xl hover:bg-indigo-700 shadow-2xl hover:shadow-3xl transition-all" onclick="trackExternalLink('Google Form', 'Signup Form')">
               Reserve My Seat Now →
             </a>
             <p class="mt-4 text-sm text-gray-400">
@@ -688,8 +690,169 @@
     </div>
   </footer>
 
+  <!-- Analytics Tracking Functions -->
   <script>
-    // Populate all seat counters
+    // Track CTA clicks (Reserve Seat buttons)
+    function trackCTA(label, location) {
+      gtag('event', 'cta_click', {
+        'event_category': 'CTA',
+        'event_label': label,
+        'location': location
+      });
+      console.log('CTA Click Tracked:', label, 'at', location);
+    }
+    
+    // Track navigation clicks
+    function trackNavigation(label, location) {
+      gtag('event', 'navigation_click', {
+        'event_category': 'Navigation',
+        'event_label': label,
+        'location': location
+      });
+      console.log('Navigation Tracked:', label, 'at', location);
+    }
+    
+    // Track external links (Google Form)
+    function trackExternalLink(destination, location) {
+      gtag('event', 'external_link_click', {
+        'event_category': 'External Link',
+        'event_label': destination,
+        'location': location
+      });
+      console.log('External Link Tracked:', destination, 'from', location);
+    }
+    
+    // Track video plays (Vimeo)
+    // This requires Vimeo Player API - implementing basic version
+    window.addEventListener('load', function() {
+      if (typeof Vimeo !== 'undefined') {
+        var iframe = document.querySelector('#vimeoPlayer');
+        if (iframe) {
+          var player = new Vimeo.Player(iframe);
+          
+          // Track video play
+          player.on('play', function() {
+            gtag('event', 'video_play', {
+              'event_category': 'Video',
+              'event_label': 'AI Fundamentals Demo',
+              'location': 'How It Works Section'
+            });
+            console.log('Video Play Tracked');
+          });
+          
+          // Track video completion
+          player.on('ended', function() {
+            gtag('event', 'video_complete', {
+              'event_category': 'Video',
+              'event_label': 'AI Fundamentals Demo',
+              'location': 'How It Works Section'
+            });
+            console.log('Video Complete Tracked');
+          });
+          
+          // Track 25%, 50%, 75% milestones
+          var milestones = {25: false, 50: false, 75: false};
+          player.on('timeupdate', function(data) {
+            var percent = Math.round((data.percent * 100));
+            
+            if (percent >= 25 && !milestones[25]) {
+              milestones[25] = true;
+              gtag('event', 'video_progress', {
+                'event_category': 'Video',
+                'event_label': 'AI Fundamentals Demo - 25%',
+                'value': 25
+              });
+            }
+            if (percent >= 50 && !milestones[50]) {
+              milestones[50] = true;
+              gtag('event', 'video_progress', {
+                'event_category': 'Video',
+                'event_label': 'AI Fundamentals Demo - 50%',
+                'value': 50
+              });
+            }
+            if (percent >= 75 && !milestones[75]) {
+              milestones[75] = true;
+              gtag('event', 'video_progress', {
+                'event_category': 'Video',
+                'event_label': 'AI Fundamentals Demo - 75%',
+                'value': 75
+              });
+            }
+          });
+        }
+      }
+    });
+    
+    // Track scroll depth to key sections
+    var sectionTracked = {
+      outcomes: false,
+      mentor: false,
+      signup: false
+    };
+    
+    function trackScrollDepth() {
+      // Track when user scrolls to key sections
+      var outcomesSection = document.querySelector('#outcomes');
+      var mentorSection = document.querySelector('#mentor');
+      var signupSection = document.querySelector('#signup');
+      
+      var scrollPosition = window.scrollY + window.innerHeight;
+      
+      if (outcomesSection && !sectionTracked.outcomes) {
+        if (scrollPosition >= outcomesSection.offsetTop + 100) {
+          sectionTracked.outcomes = true;
+          gtag('event', 'scroll_to_section', {
+            'event_category': 'Engagement',
+            'event_label': 'Outcomes Section Viewed'
+          });
+        }
+      }
+      
+      if (mentorSection && !sectionTracked.mentor) {
+        if (scrollPosition >= mentorSection.offsetTop + 100) {
+          sectionTracked.mentor = true;
+          gtag('event', 'scroll_to_section', {
+            'event_category': 'Engagement',
+            'event_label': 'Mentor Section Viewed'
+          });
+        }
+      }
+      
+      if (signupSection && !sectionTracked.signup) {
+        if (scrollPosition >= signupSection.offsetTop + 100) {
+          sectionTracked.signup = true;
+          gtag('event', 'scroll_to_section', {
+            'event_category': 'Engagement',
+            'event_label': 'Signup Section Viewed'
+          });
+        }
+      }
+    }
+    
+    // Throttle scroll events
+    var scrollTimeout;
+    window.addEventListener('scroll', function() {
+      if (scrollTimeout) {
+        clearTimeout(scrollTimeout);
+      }
+      scrollTimeout = setTimeout(trackScrollDepth, 150);
+    });
+    
+    // Track page load time
+    window.addEventListener('load', function() {
+      var loadTime = window.performance.timing.domContentLoadedEventEnd - window.performance.timing.navigationStart;
+      gtag('event', 'page_load_time', {
+        'event_category': 'Performance',
+        'value': loadTime,
+        'event_label': 'Page Load Complete'
+      });
+      console.log('Page Load Time:', loadTime + 'ms');
+    });
+  </script>
+
+  <!-- Populate seat counters -->
+  <script>
     document.getElementById('topSeatsLeft').textContent = seatsRemaining;
     document.getElementById('seatsLeftBadge').textContent = seatsRemaining;
     document.getElementById('seatsLeftOutcomes').textContent = seatsRemaining;
