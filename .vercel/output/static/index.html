@@ -28,7 +28,97 @@
     }
   </style>
   <script>
-    const seatsRemaining = 4;
+    const seatsRemaining = 1;
+    let bannerState = 'active'; // 'active' or 'soldout'
+    let originalSignupContent = null; // Store original signup content
+    
+    function toggleBannerState() {
+      bannerState = bannerState === 'active' ? 'soldout' : 'active';
+      updateBanner();
+    }
+    
+    function updateBanner() {
+      const banner = document.getElementById('topBanner');
+      const signupSection = document.getElementById('signupContent');
+      
+      if (bannerState === 'soldout') {
+        banner.innerHTML = `
+          <span class="font-bold">🛑 Feb 19 Cohort Closed</span> • Next cohort starts soon • 
+          <a href="#signup" class="underline hover:text-yellow-300 ml-2" onclick="trackCTA('Join Waitlist', 'Sticky Banner')">Join the waitlist →</a>
+        `;
+        banner.className = 'bg-gradient-to-r from-red-600 to-red-700 text-white py-3 text-center text-sm font-semibold sticky top-0 z-50 shadow-lg';
+        
+        // Update signup section for waitlist
+        if (signupSection) {
+          signupSection.innerHTML = `
+            <div class="text-center mb-8">
+              <h2 class="text-3xl font-bold">Cohort Closed</h2>
+              <p class="text-gray-300 mt-3">Join the waitlist to be notified when the next cohort opens</p>
+            </div>
+
+            <div class="max-w-2xl mx-auto">
+              <div class="bg-gray-800/50 rounded-lg p-6 mb-6">
+                <h3 class="font-semibold mb-4 text-center">What happens when you join the waitlist:</h3>
+                <div class="space-y-3 text-sm">
+                  <div class="flex items-start gap-3">
+                    <div class="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <span class="text-xs font-bold">1</span>
+                    </div>
+                    <div>
+                      <div class="font-semibold">Get early notification</div>
+                      <div class="text-gray-400">We'll email you as soon as registration opens</div>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-3">
+                    <div class="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <span class="text-xs font-bold">2</span>
+                    </div>
+                    <div>
+                      <div class="font-semibold">Secure your spot faster</div>
+                      <div class="text-gray-400">Waitlist members get priority for the next cohort</div>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-3">
+                    <div class="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <span class="text-xs font-bold">3</span>
+                    </div>
+                    <div>
+                      <div class="font-semibold">Learn while you wait</div>
+                      <div class="text-gray-400">We'll share resources and updates from current learners</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="text-center">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScKsweqhNvfnHdRpB-8AEK_riK9FI45ziPfSYk8yHXFpaWp-g/viewform" target="_blank" class="inline-flex items-center px-10 py-5 bg-red-600 rounded-lg font-bold text-xl hover:bg-red-700 shadow-2xl hover:shadow-3xl transition-all" onclick="trackExternalLink('Google Form', 'Waitlist Form')">
+                  Join the Waitlist →
+                </a>
+                <p class="mt-4 text-sm text-gray-400">
+                  <span class="inline-flex items-center gap-2">
+                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.95-.69l1.07-3.292z"></path>
+                    </svg>
+                    Next cohort starts soon. 
+                  </span>
+                </p>
+              </div>
+            </div>
+          `;
+        }
+      } else {
+        banner.innerHTML = `
+          🔥 Feb 19 cohort starting • Only <span id="topSeatsLeft">4</span> seats left • Free course (Rs 299/$9.99 commitment fee) • 
+          <a href="#signup" class="underline hover:text-yellow-300 ml-2" onclick="trackCTA('Reserve Seat', 'Sticky Banner')">Reserve your seat now →</a>
+        `;
+        banner.className = 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 text-center text-sm font-semibold sticky top-0 z-50 shadow-lg';
+        
+        // Restore original signup section
+        if (signupSection && originalSignupContent) {
+          signupSection.innerHTML = originalSignupContent;
+        }
+      }
+    }
   </script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XG391DQQCV"></script>
@@ -50,7 +140,7 @@
 <body class="bg-gray-900 text-gray-100 leading-relaxed antialiased">
 
   <!-- IMPROVED: Sticky Urgency Banner -->
-  <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 text-center text-sm font-semibold sticky top-0 z-50 shadow-lg">
+  <div id="topBanner" class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 text-center text-sm font-semibold sticky top-0 z-50 shadow-lg">
     🔥 Feb 19 cohort starting • Only <span id="topSeatsLeft">4</span> seats left • Free course (Rs 299/$9.99 commitment fee) • 
     <a href="#signup" class="underline hover:text-yellow-300 ml-2" onclick="trackCTA('Reserve Seat', 'Sticky Banner')">Reserve your seat now →</a>
   </div>
@@ -552,81 +642,83 @@
     <!-- IMPROVED: SIGNUP SECTION with embedded form feel -->
     <section id="signup" class="mx-auto container-max px-6 py-12">
       <div class="bg-gradient-to-br from-indigo-900/30 to-purple-900/30 rounded-xl p-8 md:p-10 border-2 border-indigo-500/40">
-        <div class="text-center mb-8">
-          <h2 class="text-3xl font-bold">Secure Your Seat in the Feb 19 Cohort</h2>
-          <p class="text-gray-300 mt-3">Join 200+ students who've launched AI projects with us</p>
-        </div>
+        <div id="signupContent">
+          <div class="text-center mb-8">
+            <h2 class="text-3xl font-bold">Secure Your Seat in the Feb 19 Cohort</h2>
+            <p class="text-gray-300 mt-3">Join 200+ students who've launched AI projects with us</p>
+          </div>
 
-        <div class="max-w-2xl mx-auto">
-          <!-- Quick Benefits Before CTA -->
-          <div class="bg-gray-800/50 rounded-lg p-6 mb-6">
-            <h3 class="font-semibold mb-4 text-center">Here's what happens next:</h3>
-            <div class="space-y-3 text-sm">
-              <div class="flex items-start gap-3">
-                <div class="w-6 h-6 bg-indigo-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <span class="text-xs font-bold">1</span>
+          <div class="max-w-2xl mx-auto">
+            <!-- Quick Benefits Before CTA -->
+            <div class="bg-gray-800/50 rounded-lg p-6 mb-6">
+              <h3 class="font-semibold mb-4 text-center">Here's what happens next:</h3>
+              <div class="space-y-3 text-sm">
+                <div class="flex items-start gap-3">
+                  <div class="w-6 h-6 bg-indigo-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <span class="text-xs font-bold">1</span>
+                  </div>
+                  <div>
+                    <div class="font-semibold">Fill out the quick form</div>
+                    <div class="text-gray-400">Tell us about yourself and your goals (2 minutes)</div>
+                  </div>
                 </div>
-                <div>
-                  <div class="font-semibold">Fill out the quick form</div>
-                  <div class="text-gray-400">Tell us about yourself and your goals (2 minutes)</div>
+                <div class="flex items-start gap-3">
+                  <div class="w-6 h-6 bg-indigo-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <span class="text-xs font-bold">2</span>
+                  </div>
+                  <div>
+                    <div class="font-semibold">We'll reach out within 24-48 hours</div>
+                    <div class="text-gray-400">Onboarding + payment link for Rs 299/$9.99 commitment fee</div>
+                  </div>
                 </div>
-              </div>
-              <div class="flex items-start gap-3">
-                <div class="w-6 h-6 bg-indigo-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <span class="text-xs font-bold">2</span>
-                </div>
-                <div>
-                  <div class="font-semibold">We'll reach out within 24-48 hours</div>
-                  <div class="text-gray-400">Onboarding + payment link for Rs 299/$9.99 commitment fee</div>
-                </div>
-              </div>
-              <div class="flex items-start gap-3">
-                <div class="w-6 h-6 bg-indigo-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <span class="text-xs font-bold">3</span>
-                </div>
-                <div>
-                  <div class="font-semibold">Start learning Feb 19</div>
-                  <div class="text-gray-400">Get access to cohort workspace + week 1 materials</div>
+                <div class="flex items-start gap-3">
+                  <div class="w-6 h-6 bg-indigo-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <span class="text-xs font-bold">3</span>
+                  </div>
+                  <div>
+                    <div class="font-semibold">Start learning Feb 19</div>
+                    <div class="text-gray-400">Get access to cohort workspace + week 1 materials</div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <!-- CTA Button -->
-          <div class="text-center">
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLScKsweqhNvfnHdRpB-8AEK_riK9FI45ziPfSYk8yHXFpaWp-g/viewform" target="_blank" class="inline-flex items-center px-10 py-5 bg-indigo-600 rounded-lg font-bold text-xl hover:bg-indigo-700 shadow-2xl hover:shadow-3xl transition-all" onclick="trackExternalLink('Google Form', 'Signup Form')">
-              Reserve My Seat Now →
-            </a>
-            <p class="mt-4 text-sm text-gray-400">
-              <span class="inline-flex items-center gap-2">
-                <svg class="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                </svg>
-                Only <span class="font-bold" id="seatsLeftSignup">4</span> seats remaining
-              </span>
-            </p>
-          </div>
+            <!-- CTA Button -->
+            <div class="text-center">
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLScKsweqhNvfnHdRpB-8AEK_riK9FI45ziPfSYk8yHXFpaWp-g/viewform" target="_blank" class="inline-flex items-center px-10 py-5 bg-indigo-600 rounded-lg font-bold text-xl hover:bg-indigo-700 shadow-2xl hover:shadow-3xl transition-all" onclick="trackExternalLink('Google Form', 'Signup Form')">
+                Reserve My Seat Now →
+              </a>
+              <p class="mt-4 text-sm text-gray-400">
+                <span class="inline-flex items-center gap-2">
+                  <svg class="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  Only <span class="font-bold" id="seatsLeftSignup">4</span> seats remaining
+                </span>
+              </p>
+            </div>
 
-          <!-- Trust Signals -->
-          <div class="mt-8 pt-6 border-t border-gray-700 text-center">
-            <div class="flex flex-wrap justify-center gap-6 text-sm text-gray-400">
-              <div class="flex items-center gap-2">
-                <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
-                </svg>
-                <span>Your data is private & secure</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-                <span>100% Free course content</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path>
-                </svg>
-                <span>No question is too small to ask</span>
+            <!-- Trust Signals -->
+            <div class="mt-8 pt-6 border-t border-gray-700 text-center">
+              <div class="flex flex-wrap justify-center gap-6 text-sm text-gray-400">
+                <div class="flex items-center gap-2">
+                  <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                  </svg>
+                  <span>Your data is private & secure</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  <span>100% Free course content</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path>
+                  </svg>
+                  <span>No question is too small to ask</span>
+                </div>
               </div>
             </div>
           </div>
@@ -886,8 +978,14 @@
     });
   </script>
 
-  <!-- Populate seat counters -->
+    // Populate seat counters and initialize banner
   <script>
+    // Store original signup content before any changes
+    originalSignupContent = document.getElementById('signupContent').innerHTML;
+    
+    // Initialize banner based on bannerState
+    updateBanner();
+    
     document.getElementById('topSeatsLeft').textContent = seatsRemaining;
     document.getElementById('seatsLeftBadge').textContent = seatsRemaining;
     document.getElementById('seatsLeftOutcomes').textContent = seatsRemaining;
