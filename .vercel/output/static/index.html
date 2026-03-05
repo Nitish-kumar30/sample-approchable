@@ -108,7 +108,7 @@
         }
       } else {
         banner.innerHTML = `
-          🔥 Feb 19 cohort starting • Only <span id="topSeatsLeft">4</span> seats left • Free course (Rs 299/$9.99 commitment fee) • 
+          🔥 Feb 19 cohort starting • Only <span id="topSeatsLeft">4</span> seats left • Free course (Rs 499/$19.99 commitment fee) • 
           <a href="#signup" class="underline hover:text-yellow-300 ml-2" onclick="trackCTA('Reserve Seat', 'Sticky Banner')">Reserve your seat now →</a>
         `;
         banner.className = 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 text-center text-sm font-semibold sticky top-0 z-50 shadow-lg';
@@ -141,7 +141,7 @@
 
   <!-- IMPROVED: Sticky Urgency Banner -->
   <div id="topBanner" class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 text-center text-sm font-semibold sticky top-0 z-50 shadow-lg">
-    🔥 Feb 19 cohort starting • Only <span id="topSeatsLeft">4</span> seats left • Free course (Rs 299/$9.99 commitment fee) • 
+    🔥 Feb 19 cohort starting • Only <span id="topSeatsLeft">4</span> seats left • Free course (Rs 499/$19.99 commitment fee) • 
     <a href="#signup" class="underline hover:text-yellow-300 ml-2" onclick="trackCTA('Reserve Seat', 'Sticky Banner')">Reserve your seat now →</a>
   </div>
 
@@ -260,8 +260,8 @@
 
           <div class="mt-6">
             <!-- IMPROVED CTA: More specific and urgent -->
-            <a href="#signup" class="block text-center px-6 py-3.5 bg-indigo-600 rounded-lg font-bold hover:bg-indigo-700 shadow-lg transition-all" onclick="trackCTA('Reserve Your Seat for Rs 299/$9.99', 'Hero Cohort Box')">
-              Reserve Your Seat for Rs 299/$9.99 →
+            <a href="#signup" class="block text-center px-6 py-3.5 bg-indigo-600 rounded-lg font-bold hover:bg-indigo-700 shadow-lg transition-all" onclick="trackCTA('Reserve Your Seat for Rs 499/$19.99', 'Hero Cohort Box')">
+              Reserve Your Seat for Rs 499/$19.99 →
             </a>
           </div>
         </div>
@@ -299,41 +299,20 @@
       <!-- LinkedIn Reviews Section -->
       <div>
         <h3 class="text-center text-2xl font-bold mb-10">What Alumni Are Saying on LinkedIn</h3>
-        <div class="grid gap-6 md:grid-cols-3">
+        <div class="grid gap-6 md:grid-cols-3 items-start">
           <!-- Review Card 1 -->
-          <div class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer">
-            <img src="/img/linkedin-review-1.png" alt="LinkedIn Review 1" class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300" />
-            <!-- Placeholder if image not yet uploaded -->
-            <div class="absolute inset-0 bg-gray-800/80 backdrop-blur-sm flex items-center justify-center border-2 border-dashed border-gray-600 rounded-xl hidden group-hover:flex">
-              <div class="text-center text-gray-400">
-                <div class="text-sm font-semibold">linkedin-review-1.jpg</div>
-                <div class="text-xs mt-1">Waiting for upload</div>
-              </div>
-            </div>
+          <div class="rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-700">
+            <img src="/img/linkedin-review-1.png" alt="LinkedIn Review 1" class="w-full h-auto block" />
           </div>
 
           <!-- Review Card 2 -->
-          <div class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer">
-            <img src="/img/linkedin-review-2.png" alt="LinkedIn Review 2" class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300" />
-            <!-- Placeholder if image not yet uploaded -->
-            <div class="absolute inset-0 bg-gray-800/80 backdrop-blur-sm flex items-center justify-center border-2 border-dashed border-gray-600 rounded-xl hidden group-hover:flex">
-              <div class="text-center text-gray-400">
-                <div class="text-sm font-semibold">linkedin-review-2.jpg</div>
-                <div class="text-xs mt-1">Waiting for upload</div>
-              </div>
-            </div>
+          <div class="rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-700">
+            <img src="/img/linkedin-review-2.png" alt="LinkedIn Review 2" class="w-full h-auto block" />
           </div>
 
           <!-- Review Card 3 -->
-          <div class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer">
-            <img src="/img/linkedin-review-3.png" alt="LinkedIn Review 3" class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300" />
-            <!-- Placeholder if image not yet uploaded -->
-            <div class="absolute inset-0 bg-gray-800/80 backdrop-blur-sm flex items-center justify-center border-2 border-dashed border-gray-600 rounded-xl hidden group-hover:flex">
-              <div class="text-center text-gray-400">
-                <div class="text-sm font-semibold">linkedin-review-3.jpg</div>
-                <div class="text-xs mt-1">Waiting for upload</div>
-              </div>
-            </div>
+          <div class="rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-700">
+            <img src="/img/linkedin-review-3.png" alt="LinkedIn Review 3" class="w-full h-auto block" />
           </div>
         </div>
       </div>
@@ -646,7 +625,7 @@
           <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
           </svg>
-          <span>Rs 299/$9.99 commitment fee</span>
+          <span>Rs 399/$19.99 commitment fee</span>
         </div>
         <div class="flex items-center gap-2">
           <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
@@ -663,8 +642,8 @@
       </div>
 
       <div class="mt-8">
-        <a href="#signup" class="inline-flex items-center px-10 py-4 bg-indigo-600 rounded-lg font-bold text-lg hover:bg-indigo-700 shadow-2xl hover:shadow-3xl transition-all" onclick="trackCTA('Reserve Your Seat for Rs 299/$9.99', 'Mid-Page Urgency')">
-          Reserve Your Seat for Rs 299/$9.99
+        <a href="#signup" class="inline-flex items-center px-10 py-4 bg-indigo-600 rounded-lg font-bold text-lg hover:bg-indigo-700 shadow-2xl hover:shadow-3xl transition-all" onclick="trackCTA('Reserve Your Seat for Rs 299/$19.99', 'Mid-Page Urgency')">
+          Reserve Your Seat for Rs 399/$19.99
           <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
           </svg>
@@ -732,7 +711,7 @@
                   </div>
                   <div>
                     <div class="font-semibold">We'll reach out within 24-48 hours</div>
-                    <div class="text-gray-400">Onboarding + payment link for Rs 299/$9.99 commitment fee</div>
+                    <div class="text-gray-400">Onboarding + payment link for Rs 399/$19.99 commitment fee</div>
                   </div>
                 </div>
                 <div class="flex items-start gap-3">
