@@ -29,7 +29,7 @@
   </style>
   <script>
     const seatsRemaining = 0;
-    let bannerState = 'soldout'; // 'active' or 'soldout'
+    let bannerState = 'active'; // 'active' or 'soldout'
     let originalSignupContent = null; // Store original signup content
     
     function toggleBannerState() {
@@ -108,7 +108,7 @@
         }
       } else {
         banner.innerHTML = `
-          🔥 Feb 19 cohort starting • Only <span id="topSeatsLeft">4</span> seats left • Free course (Rs 499/$19.99 commitment fee) • 
+          🔥 Mar 19 cohort starting • Only <span id="topSeatsLeft">4</span> seats left • Free course (Rs 399/$19.99 commitment fee) • 
           <a href="#signup" class="underline hover:text-yellow-300 ml-2" onclick="trackCTA('Reserve Seat', 'Sticky Banner')">Reserve your seat now →</a>
         `;
         banner.className = 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 text-center text-sm font-semibold sticky top-0 z-50 shadow-lg';
@@ -141,7 +141,7 @@
 
   <!-- IMPROVED: Sticky Urgency Banner -->
   <div id="topBanner" class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 text-center text-sm font-semibold sticky top-0 z-50 shadow-lg">
-    🔥 Feb 19 cohort starting • Only <span id="topSeatsLeft">4</span> seats left • Free course (Rs 499/$19.99 commitment fee) • 
+    🔥 Feb 19 cohort starting • Only <span id="topSeatsLeft">4</span> seats left • Free course (Rs 399/$19.99 commitment fee) • 
     <a href="#signup" class="underline hover:text-yellow-300 ml-2" onclick="trackCTA('Reserve Seat', 'Sticky Banner')">Reserve your seat now →</a>
   </div>
 
@@ -182,7 +182,7 @@
             <div class="flex-1">
               <div class="text-2xl font-bold text-green-400">FREE 6-Week Study Group</div>
               <div class="text-sm text-gray-300 mt-2 space-y-1">
-                <div>✓ Rs 299 commitment fee (India) | $9.99 (International)</div>
+                <div>✓ Rs 399 commitment fee (India) | $19.99 (International)</div>
                 <div class="text-xs text-gray-400">Small non-refundable fee to ensure serious learners and avoid wasted seats</div>
               </div>
             </div>
@@ -260,8 +260,8 @@
 
           <div class="mt-6">
             <!-- IMPROVED CTA: More specific and urgent -->
-            <a href="#signup" class="block text-center px-6 py-3.5 bg-indigo-600 rounded-lg font-bold hover:bg-indigo-700 shadow-lg transition-all" onclick="trackCTA('Reserve Your Seat for Rs 499/$19.99', 'Hero Cohort Box')">
-              Reserve Your Seat for Rs 499/$19.99 →
+            <a href="#signup" class="block text-center px-6 py-3.5 bg-indigo-600 rounded-lg font-bold hover:bg-indigo-700 shadow-lg transition-all" onclick="trackCTA('Reserve Your Seat for Rs 399/$19.99', 'Hero Cohort Box')">
+              Reserve Your Seat for Rs 399/$19.99 →
             </a>
           </div>
         </div>
@@ -642,7 +642,7 @@
       </div>
 
       <div class="mt-8">
-        <a href="#signup" class="inline-flex items-center px-10 py-4 bg-indigo-600 rounded-lg font-bold text-lg hover:bg-indigo-700 shadow-2xl hover:shadow-3xl transition-all" onclick="trackCTA('Reserve Your Seat for Rs 299/$19.99', 'Mid-Page Urgency')">
+        <a href="#signup" class="inline-flex items-center px-10 py-4 bg-indigo-600 rounded-lg font-bold text-lg hover:bg-indigo-700 shadow-2xl hover:shadow-3xl transition-all" onclick="trackCTA('Reserve Your Seat for Rs 399/$19.99', 'Mid-Page Urgency')">
           Reserve Your Seat for Rs 399/$19.99
           <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
