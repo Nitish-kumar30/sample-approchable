@@ -26,6 +26,66 @@
       0%, 100% { border-color: rgba(139, 92, 246, 0.5); }
       50% { border-color: rgba(139, 92, 246, 1); }
     }
+    /* Modal/Lightbox Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal.active {
+      display: flex;
+    }
+    .modal-content {
+      position: relative;
+      max-width: 90vw;
+      max-height: 90vh;
+      background: transparent;
+    }
+    .modal-image {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+    .modal-close {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      color: white;
+      font-size: 28px;
+      padding: 0;
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      background-color: transparent;
+      font-family: Arial, sans-serif;
+      line-height: 1;
+    }
+    .modal-close:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.6);
+    }
+    .review-card-clickable {
+      cursor: pointer;
+    }
+    .review-card-clickable:hover img {
+      opacity: 0.9;
+    }
   </style>
   <script>
     const seatsRemaining = 4;
@@ -299,20 +359,21 @@
       <!-- LinkedIn Reviews Section -->
       <div>
         <h3 class="text-center text-2xl font-bold mb-10">What Alumni Are Saying on LinkedIn</h3>
+        <p class="text-center text-sm text-gray-400 mb-6">Click any image to expand</p>
         <div class="grid gap-6 md:grid-cols-3 items-start">
           <!-- Review Card 1 -->
-          <div class="rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-700">
-            <img src="/img/linkedin-review-1.png" alt="LinkedIn Review 1" class="w-full h-auto block" />
+          <div class="review-card-clickable rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-700" onclick="openModal('/img/linkedin-review-1.png')">
+            <img src="/img/linkedin-review-1.png" alt="LinkedIn Review 1" class="w-full h-auto block transition-opacity duration-300" />
           </div>
 
           <!-- Review Card 2 -->
-          <div class="rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-700">
-            <img src="/img/linkedin-review-2.png" alt="LinkedIn Review 2" class="w-full h-auto block" />
+          <div class="review-card-clickable rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-700" onclick="openModal('/img/linkedin-review-2.png')">
+            <img src="/img/linkedin-review-2.png" alt="LinkedIn Review 2" class="w-full h-auto block transition-opacity duration-300" />
           </div>
 
           <!-- Review Card 3 -->
-          <div class="rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-700">
-            <img src="/img/linkedin-review-3.png" alt="LinkedIn Review 3" class="w-full h-auto block" />
+          <div class="review-card-clickable rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-700" onclick="openModal('/img/linkedin-review-3.png')">
+            <img src="/img/linkedin-review-3.png" alt="LinkedIn Review 3" class="w-full h-auto block transition-opacity duration-300" />
           </div>
         </div>
       </div>
@@ -791,6 +852,14 @@
       </div>
     </section>
 
+    <!-- Image Modal/Lightbox -->
+    <div id="imageModal" class="modal" onclick="closeModal(event)">
+      <div class="modal-content" onclick="event.stopPropagation()">
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+        <img id="modalImage" src="" alt="" class="modal-image" />
+      </div>
+    </div>
+
     <!-- FAQ -->
     <section id="faq" class="mx-auto container-max px-6 py-10">
       <h2 class="text-2xl font-bold">FAQ</h2>
@@ -824,6 +893,32 @@
       </div>
     </div>
   </footer>
+
+  <!-- Modal/Lightbox Functions -->
+  <script>
+    function openModal(imageSrc) {
+      const modal = document.getElementById('imageModal');
+      const modalImage = document.getElementById('modalImage');
+      modalImage.src = imageSrc;
+      modal.classList.add('active');
+      // Prevent body scroll when modal is open
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeModal(event) {
+      const modal = document.getElementById('imageModal');
+      modal.classList.remove('active');
+      // Re-enable body scroll
+      document.body.style.overflow = 'auto';
+    }
+    
+    // Close modal when pressing Escape key
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        closeModal();
+      }
+    });
+  </script>
 
   <!-- Analytics Tracking Functions - FUNNEL OPTIMIZED -->
   <script>
