@@ -88,8 +88,8 @@
     }
   </style>
   <script>
-    const seatsRemaining = 4;
-    let bannerState = 'active'; // 'active' or 'soldout'
+    const seatsRemaining = 0;
+    let bannerState = 'soldout'; // 'active' or 'soldout'
     let originalSignupContent = null; // Store original signup content
     
     function toggleBannerState() {
@@ -103,7 +103,7 @@
       
       if (bannerState === 'soldout') {
         banner.innerHTML = `
-          <span class="font-bold">🛑 Apr 23 Cohort Closed</span> • Next cohort starts soon • 
+          <span class="font-bold">🛑 Mar 19 Cohort Closed</span> • Next cohort starts soon • 
           <a href="#signup" class="underline hover:text-yellow-300 ml-2" onclick="trackCTA('Join Waitlist', 'Sticky Banner')">Join the waitlist →</a>
         `;
         banner.className = 'bg-gradient-to-r from-red-600 to-red-700 text-white py-3 text-center text-sm font-semibold sticky top-0 z-50 shadow-lg';
