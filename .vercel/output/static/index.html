@@ -88,8 +88,8 @@
     }
   </style>
   <script>
-    const seatsRemaining = 0;
-    let bannerState = 'soldout'; // 'active' or 'soldout'
+    const seatsRemaining = 4;
+    let bannerState = 'active'; // 'active' or 'soldout'
     let originalSignupContent = null; // Store original signup content
     
     function toggleBannerState() {
@@ -103,7 +103,7 @@
       
       if (bannerState === 'soldout') {
         banner.innerHTML = `
-          <span class="font-bold">🛑 Mar 19 Cohort Closed</span> • Next cohort starts soon • 
+          <span class="font-bold">🛑 Apr 23 Cohort Closed</span> • Next cohort starts soon • 
           <a href="#signup" class="underline hover:text-yellow-300 ml-2" onclick="trackCTA('Join Waitlist', 'Sticky Banner')">Join the waitlist →</a>
         `;
         banner.className = 'bg-gradient-to-r from-red-600 to-red-700 text-white py-3 text-center text-sm font-semibold sticky top-0 z-50 shadow-lg';
@@ -168,7 +168,7 @@
         }
       } else {
         banner.innerHTML = `
-          🔥 Mar 19 cohort starting • Only <span id="topSeatsLeft">4</span> seats left • Free course (Rs 499/$49.99 commitment fee) • 
+          🔥 Apr 23 cohort starting • Only <span id="topSeatsLeft">4</span> seats left • Rs 1990 (India) / $69 (International) • 
           <a href="#signup" class="underline hover:text-yellow-300 ml-2" onclick="trackCTA('Reserve Seat', 'Sticky Banner')">Reserve your seat now →</a>
         `;
         banner.className = 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 text-center text-sm font-semibold sticky top-0 z-50 shadow-lg';
@@ -201,7 +201,7 @@
 
   <!-- IMPROVED: Sticky Urgency Banner -->
   <div id="topBanner" class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 text-center text-sm font-semibold sticky top-0 z-50 shadow-lg">
-    🔥 Mar 19 cohort starting • Only <span id="topSeatsLeft">4</span> seats left • Free course (Rs 499/$49.99 commitment fee) • 
+    🔥 Apr 23 cohort starting • Only <span id="topSeatsLeft">4</span> seats left • Rs 1990 (India) / $69 (International) • 
     <a href="#signup" class="underline hover:text-yellow-300 ml-2" onclick="trackCTA('Reserve Seat', 'Sticky Banner')">Reserve your seat now →</a>
   </div>
 
@@ -220,8 +220,8 @@
         <a href="#mentor" class="hover:text-white" onclick="trackNavigation('Your Mentor', 'Header Nav')">Your Mentor</a>
         <a href="#faq" class="hover:text-white" onclick="trackNavigation('FAQ', 'Header Nav')">FAQ</a>
         <!-- IMPROVED CTA: More action-oriented -->
-        <a href="#signup" class="px-5 py-2.5 bg-indigo-600 rounded-lg text-white font-semibold shadow-lg hover:bg-indigo-700 hover:shadow-xl transition-all" onclick="trackCTA('Start Learning Mar 19', 'Header')">
-          Start Learning Mar 19 →
+        <a href="#signup" class="px-5 py-2.5 bg-indigo-600 rounded-lg text-white font-semibold shadow-lg hover:bg-indigo-700 hover:shadow-xl transition-all" onclick="trackCTA('Start Learning Apr 23', 'Header')">
+          Start Learning Apr 23 →
         </a>
       </nav>
       <div class="md:hidden text-gray-300">☰</div>
@@ -240,10 +240,10 @@
           <div class="flex items-start gap-3">
             <div class="text-3xl">🎓</div>
             <div class="flex-1">
-              <div class="text-2xl font-bold text-green-400">FREE 6-Week Study Group</div>
+              <div class="text-2xl font-bold text-green-400">6-Week Study Group</div>
               <div class="text-sm text-gray-300 mt-2 space-y-1">
-                <div>✓ Rs 499 commitment fee (India) | $49.99 (International)</div>
-                <div class="text-xs text-gray-400">Small non-refundable fee to ensure serious learners and avoid wasted seats</div>
+                <div>✓ Rs 1990 | $69 (International)</div>
+                <div class="text-xs text-gray-400">Affordable & accessible to everyone who wants to learn AI fundamentals</div>
               </div>
             </div>
           </div>
@@ -284,7 +284,7 @@
           <div class="flex items-center justify-between">
             <div>
               <div class="text-sm text-gray-400">Next cohort starting</div>
-              <div class="mt-2 text-white font-semibold text-lg">AI Fundamentals — Mar 19, 2026</div>
+              <div class="mt-2 text-white font-semibold text-lg">AI Fundamentals — Apr 23, 2026</div>
               <div class="text-sm text-indigo-300">7:30 PM IST/10 AM US Eastern time</div>
             </div>
             <div class="bg-red-600 text-white text-xs font-bold px-4 py-2 rounded-full animate-pulse">
@@ -305,7 +305,7 @@
               </li>
               <li class="flex items-start gap-2">
                 <span class="text-green-400 font-bold">✓</span>
-                <span>Build AI agents from scratch and no-code workflow automation using n8n</span>
+                <span>Build AI apps and AI agents from scratch, and build AI agents using n8n</span>
               </li>
               <li class="flex items-start gap-2">
                 <span class="text-green-400 font-bold">✓</span>
@@ -313,15 +313,15 @@
               </li>
               <li class="flex items-start gap-2">
                 <span class="text-green-400 font-bold">✓</span>
-                <span>Two Capstone projects you can showcase</span>
+                <span>Build two Capstone projects you can showcase</span>
               </li>
             </ul>
           </div>
 
           <div class="mt-6">
             <!-- IMPROVED CTA: More specific and urgent -->
-            <a href="#signup" class="block text-center px-6 py-3.5 bg-indigo-600 rounded-lg font-bold hover:bg-indigo-700 shadow-lg transition-all" onclick="trackCTA('Reserve Your Seat for Rs 499/$49.99', 'Hero Cohort Box')">
-              Reserve Your Seat for Rs 499/$49.99 →
+            <a href="#signup" class="block text-center px-6 py-3.5 bg-indigo-600 rounded-lg font-bold hover:bg-indigo-700 shadow-lg transition-all" onclick="trackCTA('Reserve Your Seat', 'Hero Cohort Box')">
+              Reserve Your Seat Now →
             </a>
           </div>
         </div>
@@ -330,7 +330,7 @@
           <svg class="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
           </svg>
-          <span>Study group approach • FREE course (small commitment fee ensures serious learners)</span>
+          <span>Study group approach • Affordable learning</span>
         </div>
       </div>
     </section>
@@ -460,7 +460,7 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
           </svg>
         </a>
-        <p class="mt-4 text-sm text-gray-400">Only <span id="seatsLeftOutcomes">4</span> seats remaining • Starts Mar 19</p>
+        <p class="mt-4 text-sm text-gray-400">Only <span id="seatsLeftOutcomes">4</span> seats remaining • Starts Apr 23</p>
       </div>
     </section>
 
@@ -627,38 +627,42 @@
         <div class="p-5 bg-gray-800 rounded-lg border-l-4 border-indigo-500">
           <div class="font-semibold text-cyan-300">Week 1: Introduction</div>
           <ul class="mt-2 text-sm text-gray-400 space-y-1 list-disc list-inside">
-            <li>Everyday AI tools</li>
-            <li>Hands-on live tools demo (ChatGPT, Gemini, Perplexity, Sora2, Gamma, etc.)</li>
+            <li>Cohort Overview</li>
+            <li>AI Overview & How LLM works</li>
+            <li>Hidden treasures and techniques in ChatGPT, Claude (you probably did not know about)</li>
           </ul>
         </div>
         <div class="p-5 bg-gray-800 rounded-lg border-l-4 border-cyan-500">
-          <div class="font-semibold text-cyan-300">Week 2: Prompt Engineering</div>
+          <div class="font-semibold text-cyan-300">Week 2: Build AI Apps</div>
           <ul class="mt-2 text-sm text-gray-400 space-y-1 list-disc list-inside">
-            <li>Basic and advanced techniques</li>
+            <li>Basic and advanced prompt engineering techniques</li>
             <li>5-star prompts for text, code, visuals & data insights</li>
-            <li>Hands-on live prompt exercises</li>
+            <li>Context management essentials</li>
+            <li>Hands-on live building AI Applications and AI chatbot</li>
+            <li>Best practices, Evals, Traces</li>
           </ul>
         </div>
         <div class="p-5 bg-gray-800 rounded-lg border-l-4 border-indigo-500">
           <div class="font-semibold text-cyan-300">Week 3: AI Agents</div>
           <ul class="mt-2 text-sm text-gray-400 space-y-1 list-disc list-inside">
             <li>LLM vs AI Agent vs Agentic AI</li>
-            <li>Build AI agents on n8n</li>
-            <li>Hands-on live agent building</li>
+            <li>Master AI Agents concepts</li>
+            <li>Build AI Agents using no-code platform n8n</li>
+            <li>Hands-on live AI Agent building</li>
           </ul>
         </div>
         <div class="p-5 bg-gray-800 rounded-lg border-l-4 border-cyan-500">
-          <div class="font-semibold text-cyan-300">Week 4: Vibe Coding Tools</div>
+          <div class="font-semibold text-cyan-300">Week 4: Vibe Coding/Agentic Coding Tools</div>
           <ul class="mt-2 text-sm text-gray-400 space-y-1 list-disc list-inside">
             <li>Next-gen software engineering tools</li>
             <li>Lovable, Supabase, Base44 & Claude Code, Github Copilot & others</li>
-            <li>Prompting best practices & when to use them</li>
+            <li>Prompting best practices & when to use Vibe Coding Tools</li>
           </ul>
         </div>
         <div class="p-5 bg-gray-800 rounded-lg border-l-4 border-indigo-500">
           <div class="font-semibold text-cyan-300">Week 5-6: Capstone Projects</div>
           <ul class="mt-2 text-sm text-gray-400 space-y-1 list-disc list-inside">
-            <li>Build your own project</li>
+            <li>Showcase your Capstone projects</li>
             <li>Focused doubt clearing sessions</li>
             <li>Study group closure & celebration</li>
           </ul>
@@ -672,7 +676,7 @@
         ⏰ Only <span id="seatsLeftMid">4</span> seats remaining
       </div>
       <h2 class="text-3xl font-bold">Ready to Start Building AI Projects?</h2>
-      <p class="mt-3 text-gray-300 text-lg">Join the Mar 19 cohort and launch your first AI prototype in 6 weeks.</p>
+      <p class="mt-3 text-gray-300 text-lg">Join the Apr 23rd cohort and launch your first AI prototype in 6 weeks.</p>
       
       <!-- Value Props Quick List -->
       <div class="mt-6 flex flex-wrap justify-center gap-4 text-sm">
@@ -680,13 +684,13 @@
           <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
           </svg>
-          <span>Free course</span>
+          <span>India: Rs 1990 </span>
         </div>
         <div class="flex items-center gap-2">
           <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
           </svg>
-          <span>Rs 499/$49.99 commitment fee</span>
+          <span>International: $69</span>
         </div>
         <div class="flex items-center gap-2">
           <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
@@ -703,15 +707,15 @@
       </div>
 
       <div class="mt-8">
-        <a href="#signup" class="inline-flex items-center px-10 py-4 bg-indigo-600 rounded-lg font-bold text-lg hover:bg-indigo-700 shadow-2xl hover:shadow-3xl transition-all" onclick="trackCTA('Reserve Your Seat for Rs 499/$49.99', 'Mid-Page Urgency')">
-          Reserve Your Seat for Rs 499/$49.99
+        <a href="#signup" class="inline-flex items-center px-10 py-4 bg-indigo-600 rounded-lg font-bold text-lg hover:bg-indigo-700 shadow-2xl hover:shadow-3xl transition-all" onclick="trackCTA('Reserve Your Seat', 'Mid-Page Urgency')">
+          Reserve Your Seat Now →
           <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
           </svg>
         </a>
       </div>
       
-      <p class="mt-4 text-xs text-gray-400">Starts Mar 19, 2026 • 7:30 PM IST/10 AM US Eastern time• 6 weeks</p>
+      <p class="mt-4 text-xs text-gray-400">Starts Apr 23, 2026 • 7:30 PM IST/10 AM US Eastern time• 6 weeks</p>
     </section>
 
     <!-- Features -->
@@ -737,10 +741,9 @@
       </div>
     </section>
 
-    <!-- Pricing -->
     <section id="pricing" class="mx-auto container-max px-6 py-10">
-      <h2 class="text-2xl font-bold">Free to attend. Small commitment fee required.</h2>
-      <p class="text-gray-400 mt-2">In previous free cohorts, many registered but didn't show up. To ensure a serious, engaged learning experience for everyone, we now require a small non-refundable commitment fee of Rs 499 (India) or $49.99 (International) to reserve your seat.</p>
+      <h2 class="text-2xl font-bold">Affordable Access to AI Learning</h2>
+      <p class="text-gray-400 mt-2">In previous free cohorts, many registered but didn't show up. To ensure a serious, engaged learning experience for everyone, we now require an affordable commitment fee. India: Rs 1990. International: $69.</p>
     </section>
 
     <!-- IMPROVED: SIGNUP SECTION with embedded form feel -->
@@ -748,7 +751,7 @@
       <div class="bg-gradient-to-br from-indigo-900/30 to-purple-900/30 rounded-xl p-8 md:p-10 border-2 border-indigo-500/40">
         <div id="signupContent">
           <div class="text-center mb-8">
-            <h2 class="text-3xl font-bold">Secure Your Seat in the Mar 19 Cohort</h2>
+            <h2 class="text-3xl font-bold">Secure Your Seat in the Apr 23 Cohort</h2>
             <p class="text-gray-300 mt-3">Join 200+ students who've launched AI projects with us</p>
           </div>
 
@@ -772,7 +775,7 @@
                   </div>
                   <div>
                     <div class="font-semibold">We'll reach out within 24-48 hours</div>
-                    <div class="text-gray-400">Onboarding + payment link for Rs 499/$49.99 commitment fee</div>
+                    <div class="text-gray-400">Onboarding + payment link. India: Rs 1990, International: $69</div>
                   </div>
                 </div>
                 <div class="flex items-start gap-3">
@@ -780,7 +783,7 @@
                     <span class="text-xs font-bold">3</span>
                   </div>
                   <div>
-                    <div class="font-semibold">Start learning Mar 19</div>
+                    <div class="font-semibold">Start learning Apr 23</div>
                     <div class="text-gray-400">Get access to cohort workspace + week 1 materials</div>
                   </div>
                 </div>
