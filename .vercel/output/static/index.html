@@ -193,7 +193,7 @@
     <a href="#signup" class="underline hover:text-yellow-300 ml-2" onclick="trackCTA('Reserve Seat', 'Sticky Banner')">Reserve your seat now →</a>
   </div>
 
-  <header class="py-6">
+  <header class="py-3">
     <div class="mx-auto container-max px-6 flex items-center justify-between">
       <a href="#" class="flex items-center space-x-3" onclick="trackNavigation('Logo Click', 'Header')">
         <img src="/logo.png" alt="Approachable" class="rounded-lg" style="width: 60px; height: 60px;">
@@ -216,125 +216,83 @@
   </header>
 
   <main>
-    <!-- HERO SECTION -->
-    <section class="mx-auto container-max px-6 py-6 grid gap-8 md:grid-cols-2 items-center">
-      <div>
-        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">From AI Curious to AI Capable in 6 weeks</h1>
-        <p class="mt-4 text-lg text-gray-300">Learn by building in small study groups — weekly videos, live 90-minute sessions, hands-on exercises, and real capstone projects.</p>
+    <section class="mx-auto container-max px-6 pt-4 pb-10 grid gap-8 md:grid-cols-2 items-start">
+  <div>
+    <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">From AI Curious to AI Capable in 6 weeks</h1>
+<p class="mt-4 text-lg text-gray-300">Learn by building in small study groups — weekly videos, live 90-minute sessions, hands-on exercises, and real capstone projects.</p>
+    <!-- Simple price line -->
+    <div class="mt-6 flex items-center gap-3 flex-wrap text-sm">
+      <span class="px-3 py-1.5 bg-indigo-900/50 border border-indigo-500/40 rounded-full text-gray-300">🎓 4 live sessions + capstone build</span>
+      <span class="px-3 py-1.5 bg-gray-800 border border-gray-700 rounded-full text-gray-300">🇮🇳 ₹3,999 incl. GST</span>
+      <span class="px-3 py-1.5 bg-gray-800 border border-gray-700 rounded-full text-gray-300">🌍 $149</span>
+    </div>
 
-        <!-- UPDATED: Pricing block — clear, confident, value-anchored -->
-        <div class="mt-6 p-5 pricing-highlight rounded-xl">
-          <div class="flex items-start gap-4">
-            <div class="text-3xl">🎓</div>
-            <div class="flex-1">
-              <div class="text-xl font-bold text-white mb-3">6-Week Live Cohort · Limited to 20 Seats</div>
-              
-              <div class="grid grid-cols-2 gap-3">
-                <!-- India Pricing -->
-                <div class="bg-gray-800/60 rounded-lg p-3">
-                  <div class="text-xs text-gray-400 mb-1">🇮🇳 India</div>
-                  <div class="price-tag text-indigo-300">₹3,999</div>
-                  <div class="text-xs text-gray-400 mt-1">one-time · non-refundable</div>
-                </div>
-                <!-- International Pricing -->
-                <div class="bg-gray-800/60 rounded-lg p-3">
-                  <div class="text-xs text-gray-400 mb-1">🌍 International</div>
-                  <div class="price-tag text-indigo-300">$149</div>
-                  <div class="text-xs text-gray-400 mt-1">one-time · non-refundable</div>
-                </div>
-              </div>
+    <!-- CTAs -->
+    <div class="mt-8 flex flex-wrap gap-3">
+      <a href="#signup" class="inline-flex items-center px-8 py-4 bg-indigo-600 rounded-lg font-bold text-lg hover:bg-indigo-700 shadow-xl hover:shadow-2xl transition-all" onclick="trackCTA('Reserve My Seat Now', 'Hero Primary')">
+        Reserve My Seat Now
+        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+        </svg>
+      </a>
+      <a href="#outcomes" class="inline-flex items-center px-8 py-4 border-2 border-gray-600 rounded-lg font-semibold hover:border-indigo-500 hover:bg-gray-800 transition-all" onclick="trackNavigation('See What You Will Build', 'Hero Secondary')">
+        See What You'll Build
+      </a>
+    </div>
 
-              <!-- Value anchoring -->
-              <div class="mt-3 value-bar rounded p-3 text-xs text-gray-300">
-                <span class="text-green-400 font-semibold">Compare:</span> Similar live AI cohorts on Maven charge $400–$800. Corporate AI training runs ₹50,000+. This is intentionally affordable — our way of giving back.
-              </div>
-            </div>
-          </div>
+    <!-- Social proof row -->
+    <div class="mt-8 flex items-center gap-3 text-sm text-gray-400">
+      <div class="flex -space-x-2">
+        <div class="w-8 h-8 rounded-full bg-indigo-500 border-2 border-gray-900 flex items-center justify-center text-xs">AK</div>
+        <div class="w-8 h-8 rounded-full bg-purple-500 border-2 border-gray-900 flex items-center justify-center text-xs">JM</div>
+        <div class="w-8 h-8 rounded-full bg-cyan-500 border-2 border-gray-900 flex items-center justify-center text-xs">SP</div>
+      </div>
+      <span><strong>250+ students</strong> have launched AI projects with us</span>
+    </div>
+  </div>
+
+  <!-- Cohort Info Box -->
+  <div class="glass p-6 rounded-lg shadow-lg border-2 border-indigo-500/30 pulse-border">
+    <div class="bg-gray-800 p-2 rounded-lg">
+      <div class="flex items-center justify-between">
+        <div>
+          <div class="text-sm text-gray-400">Next cohort starting</div>
+          <div class="mt-2 text-white font-semibold text-lg">AI Fundamentals — Apr 23, 2026</div>
+          <div class="text-sm text-indigo-300">7:30 PM IST / 10 AM US Eastern time</div>
         </div>
-
-        <!-- CTAs -->
-        <div class="mt-6 flex flex-wrap gap-3">
-          <a href="#signup" class="inline-flex items-center px-8 py-4 bg-indigo-600 rounded-lg font-bold text-lg hover:bg-indigo-700 shadow-xl hover:shadow-2xl transition-all" onclick="trackCTA('Reserve My Seat Now', 'Hero Primary')">
-            Reserve My Seat Now
-            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-            </svg>
-          </a>
-          <a href="#outcomes" class="inline-flex items-center px-8 py-4 border-2 border-gray-600 rounded-lg font-semibold hover:border-indigo-500 hover:bg-gray-800 transition-all" onclick="trackNavigation('See What You Will Build', 'Hero Secondary')">
-            See What You'll Build
-          </a>
-        </div>
-
-        <div class="mt-6 flex items-center gap-3 text-sm text-gray-400">
-          <div class="flex -space-x-2">
-            <div class="w-8 h-8 rounded-full bg-indigo-500 border-2 border-gray-900 flex items-center justify-center text-xs">AK</div>
-            <div class="w-8 h-8 rounded-full bg-purple-500 border-2 border-gray-900 flex items-center justify-center text-xs">JM</div>
-            <div class="w-8 h-8 rounded-full bg-cyan-500 border-2 border-gray-900 flex items-center justify-center text-xs">SP</div>
-          </div>
-          <span><strong>200+ students</strong> have launched AI projects with us</span>
-        </div>
-
-        <div class="mt-6 grid grid-cols-3 gap-3 text-sm text-gray-400"> 
-          <div class="bg-gray-800 p-3 rounded">4–6 week cohorts</div>
-          <div class="bg-gray-800 p-3 rounded">Weekly 90-min live sessions</div>
-          <div class="bg-gray-800 p-3 rounded">Build 3+ real projects</div>
+        <div class="bg-red-600 text-white text-xs font-bold px-4 py-2 rounded-full animate-pulse">
+          <span id="seatsLeftBadge">4</span> seats left
         </div>
       </div>
-
-      <!-- Cohort Info Box -->
-      <div class="glass p-6 rounded-lg shadow-lg border-2 border-indigo-500/30 pulse-border">
-        <div class="bg-gray-800 p-5 rounded-lg">
-          <div class="flex items-center justify-between">
-            <div>
-              <div class="text-sm text-gray-400">Next cohort starting</div>
-              <div class="mt-2 text-white font-semibold text-lg">AI Fundamentals — Apr 23, 2026</div>
-              <div class="text-sm text-indigo-300">7:30 PM IST / 10 AM US Eastern time</div>
-            </div>
-            <div class="bg-red-600 text-white text-xs font-bold px-4 py-2 rounded-full animate-pulse">
-              <span id="seatsLeftBadge">4</span> seats left
-            </div>
-          </div>
-          
-          <div class="mt-5 text-gray-300">
-            <div class="text-sm font-semibold mb-2">What's Included:</div>
-            <ul class="text-sm text-gray-400 space-y-2">
-              <li class="flex items-start gap-2"><span class="text-green-400 font-bold">✓</span><span>How LLM works and thinks</span></li>
-              <li class="flex items-start gap-2"><span class="text-green-400 font-bold">✓</span><span>Master Prompt engineering and context management essentials</span></li>
-              <li class="flex items-start gap-2"><span class="text-green-400 font-bold">✓</span><span>Build AI apps and AI agents from scratch using n8n</span></li>
-              <li class="flex items-start gap-2"><span class="text-green-400 font-bold">✓</span><span>Learn Vibe Coding and Agentic Coding tools</span></li>
-              <li class="flex items-start gap-2"><span class="text-green-400 font-bold">✓</span><span>Build two Capstone projects you can showcase</span></li>
-              <li class="flex items-start gap-2"><span class="text-green-400 font-bold">✓</span><span>Access to Approachable learning platform — quizzes, progress tracking, leaderboard</span></li>
-            </ul>
-          </div>
-
-          <!-- UPDATED: Pricing inside cohort box -->
-          <div class="mt-4 grid grid-cols-2 gap-2 text-center">
-            <div class="bg-indigo-900/40 border border-indigo-500/30 rounded-lg py-2 px-3">
-              <div class="text-xs text-gray-400">🇮🇳 India</div>
-              <div class="text-lg font-bold text-indigo-300">₹3,999</div>
-            </div>
-            <div class="bg-indigo-900/40 border border-indigo-500/30 rounded-lg py-2 px-3">
-              <div class="text-xs text-gray-400">🌍 International</div>
-              <div class="text-lg font-bold text-indigo-300">$149</div>
-            </div>
-          </div>
-
-          <div class="mt-4">
-            <a href="#signup" class="block text-center px-6 py-3.5 bg-indigo-600 rounded-lg font-bold hover:bg-indigo-700 shadow-lg transition-all" onclick="trackCTA('Reserve Your Seat', 'Hero Cohort Box')">
-              Reserve Your Seat Now →
-            </a>
-          </div>
-        </div>
-
-        <div class="mt-4 text-xs text-gray-400 flex items-center gap-2">
-          <svg class="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-          </svg>
-          <span>Small cohort · Serious learners only · Non-refundable commitment</span>
-        </div>
+      
+      <div class="mt-5 text-gray-300">
+        <div class="text-sm font-semibold mb-2">What's Included:</div>
+        <ul class="text-sm text-gray-400 space-y-2">
+          <li class="flex items-start gap-2"><span class="text-green-400 font-bold">✓</span><span>How LLM works and thinks</span></li>
+          <li class="flex items-start gap-2"><span class="text-green-400 font-bold">✓</span><span>Prompt engineering and context management</span></li>
+          <li class="flex items-start gap-2"><span class="text-green-400 font-bold">✓</span><span>Build AI apps and agents from scratch using n8n</span></li>
+          <li class="flex items-start gap-2"><span class="text-green-400 font-bold">✓</span><span>Vibe Coding and Agentic Coding tools</span></li>
+          <li class="flex items-start gap-2"><span class="text-green-400 font-bold">✓</span><span>2 capstone projects you can showcase</span></li>
+          <li class="flex items-start gap-2"><span class="text-green-400 font-bold">✓</span><span>Approachable platform — quizzes, leaderboard, progress tracking</span></li>
+        </ul>
       </div>
-    </section>
 
+      <div class="mt-6">
+        <a href="#signup" class="block text-center px-6 py-3.5 bg-indigo-600 rounded-lg font-bold hover:bg-indigo-700 shadow-lg transition-all" onclick="trackCTA('Reserve Your Seat', 'Hero Cohort Box')">
+          Reserve Your Seat Now →
+        </a>
+        <p class="mt-3 text-center text-xs text-gray-500">Limited to 20 seats · ₹3,999 incl. GST · $149 international</p>
+      </div>
+    </div>
+
+    <div class="mt-4 text-xs text-gray-400 flex items-center gap-2">
+      <svg class="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+      </svg>
+      <span>Our Mar 19 cohort filled all 20 seats. Apr 23 has <span id="topSeatsLeftHero">4</span> remaining.</span>
+    </div>
+  </div>
+</section>
     <!-- SOCIAL PROOF SECTION -->
     <section class="mx-auto container-max px-6 py-12">
       <div class="mb-12">
