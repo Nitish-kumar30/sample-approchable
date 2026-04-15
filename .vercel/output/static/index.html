@@ -213,7 +213,7 @@
       <nav class="hidden md:flex items-center space-x-6 text-gray-300">
         <!-- Navigation menu removed: What You'll Build, How It Works, Your Mentor, FAQ -->
       </nav>
-      <div class="md:hidden text-gray-300">☰</div>
+      <div class="md:hidden text-gray-300"></div>
     </div>
   </header>
 
@@ -222,7 +222,7 @@
     <section class="mx-auto container-max px-6 pt-4 pb-10 grid gap-8 md:grid-cols-2 items-start">
       <div>
         <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">From AI Curious to AI Capable in 6 weeks</h1>
-        <p class="mt-4 text-lg text-gray-300">Learn by building in small study groups — weekly videos, live 90-minute sessions, hands-on exercises, and real capstone projects.</p>
+        <p class="mt-4 text-lg text-gray-300">Stop watching AI tutorials that go nowhere. Build real AI tools in 6 weeks — with a mentor and a small group that keeps you accountable.</p>
 
         <div class="mt-6 flex items-center gap-3 flex-wrap text-sm">
           <span class="px-3 py-1.5 bg-indigo-900/50 border border-indigo-500/40 rounded-full text-gray-300">🎓 4 live sessions + capstone build</span>
@@ -230,17 +230,12 @@
           <span class="px-3 py-1.5 bg-gray-800 border border-gray-700 rounded-full text-gray-300">🌍 <span data-cohort-price-intl></span></span> -->
         </div>
 
-        <!-- HIDDEN: Hero CTA buttons
-        <div class="mt-8 flex flex-wrap gap-3">
+        <div class="mt-8">
           <a href="#signup" class="inline-flex items-center px-8 py-4 bg-indigo-600 rounded-lg font-bold text-lg hover:bg-indigo-700 shadow-xl hover:shadow-2xl transition-all" onclick="trackCTA('Reserve My Seat Now','Hero Primary')">
             Reserve My Seat Now
             <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
           </a>
-          <a href="#outcomes" class="inline-flex items-center px-8 py-4 border-2 border-gray-600 rounded-lg font-semibold hover:border-indigo-500 hover:bg-gray-800 transition-all" onclick="trackNavigation('See What You Will Build','Hero Secondary')">
-            See What You'll Build
-          </a>
         </div>
-        -->
 
         <div class="mt-8 flex items-center gap-3 text-sm text-gray-400">
           <div class="flex -space-x-2">
@@ -315,7 +310,18 @@
       <div class="h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent mb-12"></div>
 
       <div>
-        <h3 class="text-center text-2xl font-bold mb-10">What Alumni Are Saying on LinkedIn</h3>
+        <h3 class="text-center text-2xl font-bold mb-8">What Alumni Are Saying on LinkedIn</h3>
+        <div class="grid gap-4 md:grid-cols-3 mb-8">
+          <div class="bg-gray-800/50 p-4 rounded-lg border-l-4 border-indigo-500">
+            <p class="text-sm text-gray-300 italic">"Built my first AI agent in week 3 — something I thought would take me months."</p>
+          </div>
+          <div class="bg-gray-800/50 p-4 rounded-lg border-l-4 border-cyan-500">
+            <p class="text-sm text-gray-300 italic">"The study group format kept me accountable. I actually finished the course."</p>
+          </div>
+          <div class="bg-gray-800/50 p-4 rounded-lg border-l-4 border-purple-500">
+            <p class="text-sm text-gray-300 italic">"Ranbeer makes complex AI concepts feel simple and immediately actionable."</p>
+          </div>
+        </div>
         <p class="text-center text-sm text-gray-400 mb-6">Click any image to expand</p>
         <div class="grid gap-6 md:grid-cols-3 items-start">
           <div class="review-card-clickable rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-700" onclick="openModal('/img/linkedin-review-1.png')">
@@ -487,40 +493,65 @@
       </div>
     </section>
 
-    <!-- WHY US -->
-    <section class="mx-auto container-max px-6 py-12 bg-gradient-to-r from-indigo-900/20 to-cyan-900/20 rounded-lg border border-white/5">
-      <h2 class="text-2xl font-bold mb-8">Why join this study group?</h2>
-      <div class="grid gap-8 md:grid-cols-3">
-        <div>
-          <div class="text-lg font-semibold text-indigo-400">Learn together, not alone</div>
-          <p class="mt-2 text-gray-300 text-sm">This isn't a pre-recorded course you abandon by week 2. It's a live study group — you show up, ask basic questions freely, and learn alongside people at the same stage as you.</p>
+    <!-- HOW IT WORKS -->
+    <section id="how2" class="mx-auto container-max px-6 py-16">
+      <h2 class="text-3xl font-bold mb-2">How It Works</h2>
+      <p class="text-gray-400 mb-10">From sign-up to shipping real projects — here's what to expect.</p>
+
+      <div class="grid gap-6 md:grid-cols-3 mb-12">
+        <div class="p-6 bg-gray-800 rounded-xl border-t-4 border-indigo-500">
+          <div class="text-3xl font-extrabold text-indigo-400 mb-2">1</div>
+          <div class="font-semibold text-white mb-2">Join a small cohort</div>
+          <p class="text-gray-400 text-sm">Reserve your seat and get instant access to free courses on the platform. We keep cohorts to 20 seats so everyone gets real attention.</p>
         </div>
-        <div>
-          <div class="text-lg font-semibold text-indigo-400">Priced to be accessible, not cheap</div>
-          <p class="mt-2 text-gray-300 text-sm">Similar live AI cohorts charge $400–$800. Corporate AI training starts at ₹50,000. We charge a fraction of that intentionally — so the right people can join, not just the ones with big budgets.</p>
+        <div class="p-6 bg-gray-800 rounded-xl border-t-4 border-cyan-500">
+          <div class="text-3xl font-extrabold text-cyan-400 mb-2">2</div>
+          <div class="font-semibold text-white mb-2">Learn together, not alone</div>
+          <p class="text-gray-400 text-sm">4 live 90-minute sessions with your cohort. No pre-recorded stuff you'll abandon. Ask basic questions freely — everyone's at the same stage.</p>
         </div>
-        <div>
-          <div class="text-lg font-semibold text-indigo-400">Build real projects weekly</div>
-          <p class="mt-2 text-gray-300 text-sm">From simple automations to no-code agents, you'll ship tangible projects each week. Learn by doing, get feedback, and celebrate wins together.</p>
+        <div class="p-6 bg-gray-800 rounded-xl border-t-4 border-purple-500">
+          <div class="text-3xl font-extrabold text-purple-400 mb-2">3</div>
+          <div class="font-semibold text-white mb-2">Ship something real</div>
+          <p class="text-gray-400 text-sm">Build 2 capstone projects in a 2–3 week sprint. Demo day at the end — celebrate your work with the group.</p>
         </div>
       </div>
-    </section>
 
-    <!-- HOW IT WORKS -->
-    <section id="how2" class="mx-auto container-max px-6 py-10">
-      <h2 class="text-2xl font-bold">How it works</h2>
-      <div class="mt-6 grid gap-6 md:grid-cols-3">
-        <div class="p-5 bg-gray-800 rounded-lg">
-          <div class="font-semibold">1. Join a cohort</div>
-          <p class="mt-2 text-gray-400 text-sm">Reserve your seat and join a small group — we keep cohorts intentionally small so everyone gets attention.</p>
+      <div class="grid gap-6 md:grid-cols-2">
+        <div class="p-6 bg-gray-800/60 rounded-xl flex gap-4 items-start">
+          <div class="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center flex-shrink-0">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h16a2 2 0 012 2v10a2 2 0 01-2 2h-2"></path></svg>
+          </div>
+          <div>
+            <div class="font-semibold mb-1">Approachable Learning Platform</div>
+            <p class="text-gray-400 text-sm">Quizzes, leaderboard, progress tracking, and an interactive prompt guide — all included. Start exploring the moment you register.</p>
+          </div>
         </div>
-        <div class="p-5 bg-gray-800 rounded-lg">
-          <div class="font-semibold">2. Weekly micro-lessons</div>
-          <p class="mt-2 text-gray-400 text-sm">Short videos and reading delivered weekly. The AI assistant summarizes sessions, reminds you, and keeps you accountable.</p>
+        <div class="p-6 bg-gray-800/60 rounded-xl flex gap-4 items-start">
+          <div class="w-10 h-10 bg-cyan-700 rounded-lg flex items-center justify-center flex-shrink-0">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+          </div>
+          <div>
+            <div class="font-semibold mb-1">Build real projects weekly</div>
+            <p class="text-gray-400 text-sm">From simple automations to no-code AI agents — you'll ship something tangible every week and get feedback from the group.</p>
+          </div>
         </div>
-        <div class="p-5 bg-gray-800 rounded-lg">
-          <div class="font-semibold">3. Meet, build & demo</div>
-          <p class="mt-2 text-gray-400 text-sm">4 live sessions of 90 minutes each, then 2–3 weeks to build your capstone projects, ending with a final demo and review session.</p>
+        <div class="p-6 bg-gray-800/60 rounded-xl flex gap-4 items-start">
+          <div class="w-10 h-10 bg-purple-700 rounded-lg flex items-center justify-center flex-shrink-0">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          </div>
+          <div>
+            <div class="font-semibold mb-1">Priced to be accessible</div>
+            <p class="text-gray-400 text-sm">Similar live AI cohorts charge $400–$800. Corporate AI training starts at ₹50,000. We charge a fraction — so the right people can join, not just those with big budgets.</p>
+          </div>
+        </div>
+        <div class="p-6 bg-gray-800/60 rounded-xl flex gap-4 items-start">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background-color:#0891b2;">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
+          </div>
+          <div>
+            <div class="font-semibold mb-1">AI study assistant (coming soon)</div>
+            <p class="text-gray-400 text-sm">Weekly reminders, session summaries, quizzes and flashcards to keep you on track between live sessions.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -618,6 +649,7 @@
       </div>
     </section>
 
+   
     <!-- PRICING -->
     <section id="pricing" class="mx-auto container-max px-6 py-16">
       <div class="text-center mb-10">
@@ -630,7 +662,8 @@
           <div class="text-2xl mb-2">🇮🇳</div>
           <div class="text-sm text-gray-400 mb-3 font-semibold uppercase tracking-wide">India</div>
           <div class="text-5xl font-extrabold text-white mb-1" data-cohort-price-india></div>
-          <div class="text-xs text-gray-500 mb-6">one-time · non-refundable · inclusive of GST</div>
+          <div class="text-xs text-gray-400 mb-1">vs <s class="text-gray-600">₹50,000+</s> corporate AI training</div>
+          <div class="text-xs text-gray-500 mb-6">one-time · commitment-based pricing</div>
           <ul class="text-sm text-gray-300 space-y-2 text-left mb-6">
             <li class="flex gap-2"><span class="text-green-400">✓</span> 4 live sessions (90 mins each)</li>
             <li class="flex gap-2"><span class="text-green-400">✓</span> Access to Approachable platform</li>
@@ -648,7 +681,8 @@
           <div class="text-2xl mb-2">🌍</div>
           <div class="text-sm text-gray-400 mb-3 font-semibold uppercase tracking-wide">International</div>
           <div class="text-5xl font-extrabold text-white mb-1" data-cohort-price-intl></div>
-          <div class="text-xs text-gray-500 mb-6">one-time · non-refundable commitment</div>
+          <div class="text-xs text-gray-400 mb-1">vs <s class="text-gray-600">$400–$800</s> on Maven &amp; similar</div>
+          <div class="text-xs text-gray-500 mb-6">one-time · commitment-based pricing</div>
           <ul class="text-sm text-gray-300 space-y-2 text-left mb-6">
             <li class="flex gap-2"><span class="text-green-400">✓</span> 4 live sessions (90 mins each)</li>
             <li class="flex gap-2"><span class="text-green-400">✓</span> Access to Approachable platform</li>
@@ -666,62 +700,6 @@
         <div class="font-semibold text-white mb-2">💡 Why a commitment fee?</div>
         <p>When cohorts were free, no-show rates hit 40%+. That wastes everyone's time — including yours. The fee ensures every seat is taken by someone serious. It's not about revenue. It's about protecting the quality of the cohort for everyone in it.</p>
       </div> -->
-    </section>
-
-    <!-- MID CTA -->
-    <section class="mx-auto container-max px-6 py-12 text-center bg-gradient-to-r from-indigo-600/20 to-cyan-600/20 rounded-xl border-2 border-indigo-500/40">
-      <h2 class="text-3xl font-bold">Ready to Start Building AI Projects?</h2>
-      <p class="mt-3 text-gray-300 text-lg">Join the <span data-cohort-date-short></span> cohort and launch your first AI prototype.</p>
-      <div class="mt-6 flex flex-wrap justify-center gap-2 text-sm">
-        <!-- <div class="flex items-center gap-2">
-          <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-          <span>India: <span data-cohort-price-india></span></span>
-        </div>
-        <div class="flex items-center gap-2">
-          <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-          <span>International: <span data-cohort-price-intl></span></span>
-        </div> -->
-        <div class="flex items-center gap-2">
-          <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-          <span>Build 3+ real projects</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-          <span>No code & Code based solutions</span>
-        </div>
-      </div>
-      <!-- HIDDEN: Mid-page urgency button
-      <div class="mt-8">
-        <a href="#signup" class="inline-flex items-center px-10 py-4 bg-indigo-600 rounded-lg font-bold text-lg hover:bg-indigo-700 shadow-2xl transition-all" onclick="trackCTA('Reserve Your Seat','Mid-Page Urgency')">
-          Reserve Your Seat Now →
-          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
-        </a>
-      </div>
-      -->
-      <p class="mt-4 text-xs text-gray-400">Starts <span data-cohort-date></span> • <span data-cohort-time></span></p>
-    </section>
-
-    <!-- FEATURES -->
-    <section id="features" class="mx-auto container-max px-6 py-10">
-      <h2 class="text-2xl font-bold">Features</h2>
-      <div class="mt-6 grid gap-6 md:grid-cols-2">
-        <div class="p-6 bg-gray-800 rounded-lg">
-          <h3 class="font-semibold">Live interactive sessions</h3>
-          <p class="mt-2 text-gray-400 text-sm">4 focused 90-minute mentor-led sessions — recap, unblock, and build together.</p>
-        </div>
-        <div class="p-6 bg-gray-800 rounded-lg">
-          <h3 class="font-semibold">Project‑first learning</h3>
-          <p class="mt-2 text-gray-400 text-sm">Every cohort emphasizes practical, small projects you can finish — from simple automations to no‑code agents.</p>
-        </div>
-        <div class="p-6 bg-gray-800 rounded-lg">
-          <h3 class="font-semibold">Approachable Learning Platform</h3>
-          <p class="mt-2 text-gray-400 text-sm">Access your personal learning dashboard — quizzes, progress tracking, leaderboard, interactive prompting guide, and sample prompts. Included with your cohort.</p>
-        </div>
-        <div class="p-6 bg-gray-800 rounded-lg">
-          <h3 class="font-semibold">AI study assistant (coming soon)</h3>
-          <p class="mt-2 text-gray-400 text-sm">Get weekly reminders, meeting summaries, nudges to stay on track, and simple flashcards to reinforce learning.</p>
-        </div>
-      </div>
     </section>
 
     <!-- SIGNUP -->
@@ -742,11 +720,11 @@
                 </div>
                 <div class="flex items-start gap-3">
                   <div class="w-6 h-6 bg-indigo-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"><span class="text-xs font-bold">2</span></div>
-                  <div><div class="font-semibold">We'll reach out within 12 hours</div><div class="text-gray-400">Onboarding details + payment link </div></div>
+                  <div><div class="font-semibold">Get instant platform access</div><div class="text-gray-400">Start exploring free courses on the Approachable platform right away while your seat is confirmed</div></div>
                 </div>
                 <div class="flex items-start gap-3">
                   <div class="w-6 h-6 bg-indigo-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"><span class="text-xs font-bold">3</span></div>
-                  <div><div class="font-semibold">Start learning <span data-cohort-date-short></span></div><div class="text-gray-400">Get access to cohort workspace + Approachable platform + week 1 materials</div></div>
+                  <div><div class="font-semibold">Start learning <span data-cohort-date-short></span></div><div class="text-gray-400">Get access to cohort workspace + full platform + week 1 materials</div></div>
                 </div>
               </div>
             </div>
@@ -773,28 +751,6 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- TESTIMONIALS -->
-    <section id="testimonials" class="mx-auto container-max px-6 py-10">
-      <h2 class="text-2xl font-bold">What early users say</h2>
-      <div class="mt-6 grid gap-6 md:grid-cols-3">
-        <div class="p-5 bg-gray-800 rounded">
-          <div class="font-semibold">"Practical and friendly"</div>
-          <div class="text-sm text-gray-400 mt-2">"We actually built something usable in week 3 — the weekly meetups keep us honest."</div>
-          <div class="mt-3 text-xs text-gray-500">— Anjali, Product Manager (India)</div>
-        </div>
-        <div class="p-5 bg-gray-800 rounded">
-          <div class="font-semibold">"Helped me ship fast"</div>
-          <div class="text-sm text-gray-400 mt-2">"The cohort pushed me to finish a demo I could show investors."</div>
-          <div class="mt-3 text-xs text-gray-500">— James, Founder (UK)</div>
-        </div>
-        <div class="p-5 bg-gray-800 rounded">
-          <div class="font-semibold">"Perfect for non-tech teams"</div>
-          <div class="text-sm text-gray-400 mt-2">"Clear lessons and practical prompts — our marketing team loved it."</div>
-          <div class="mt-3 text-xs text-gray-500">— Jordan, Head of Marketing (US)</div>
         </div>
       </div>
     </section>
@@ -853,6 +809,19 @@
     </div>
   </footer>
 
+  <!-- FLOATING CTA BAR -->
+  <div id="floatingCta" class="fixed bottom-0 left-0 right-0 z-50 bg-gradient-to-r from-indigo-700 to-purple-700 text-white py-3 px-6 shadow-2xl transform translate-y-full transition-transform duration-500 ease-out">
+    <div class="mx-auto container-max flex items-center justify-between gap-4">
+      <div class="text-sm font-semibold hidden sm:block">🔥 Only <span data-seats-left></span> seats left for the <span data-cohort-date-short></span> cohort</div>
+      <div class="flex items-center gap-3 ml-auto">
+        <a href="#signup" class="inline-flex items-center px-6 py-2 bg-white text-indigo-700 rounded-lg font-bold text-sm hover:bg-gray-100 transition-all" onclick="trackCTA('Reserve Seat','Floating CTA')">
+          Reserve My Seat →
+        </a>
+        <button onclick="document.getElementById('floatingCta').style.display='none'" class="text-white/60 hover:text-white text-xl leading-none">&times;</button>
+      </div>
+    </div>
+  </div>
+
   <script>
     function openModal(imageSrc) {
       const modal = document.getElementById('imageModal');
@@ -906,6 +875,18 @@
     // Boot
     originalSignupContent = document.getElementById('signupContent').innerHTML;
     initPage();
+
+    // Floating CTA — show after 60% scroll depth
+    var floatingCtaShown = false;
+    window.addEventListener('scroll', function() {
+      if (floatingCtaShown) return;
+      var scrollPct = (window.scrollY + window.innerHeight) / document.body.scrollHeight;
+      if (scrollPct >= 0.6) {
+        floatingCtaShown = true;
+        var bar = document.getElementById('floatingCta');
+        if (bar) bar.style.transform = 'translateY(0)';
+      }
+    });
   </script>
 </body>
 </html>
