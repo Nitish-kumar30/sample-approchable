@@ -102,7 +102,7 @@
         banner.innerHTML = `
           🔥 Our ${COHORT.prevCohortDate} cohort filled all ${COHORT.seatsTotal} seats &nbsp;•&nbsp;
           Early registrations open for ${COHORT.dateShort} &nbsp;•&nbsp; from ${COHORT.pricePerSessionIndia}&nbsp;/&nbsp;${COHORT.pricePerSessionIntl} per session
-          &nbsp;<a href="#signup" style="background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.5);color:white;padding:2px 12px;border-radius:999px;font-weight:700;text-decoration:none;white-space:nowrap;" onclick="trackCTA('Banner CTA','Top Banner')">Reserve Seat →</a>
+          &nbsp;<a href="#pricing" style="background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.5);color:white;padding:2px 12px;border-radius:999px;font-weight:700;text-decoration:none;white-space:nowrap;" onclick="trackCTA('Banner CTA','Top Banner')">Reserve Seat →</a>
         `;
         banner.className = 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 text-center text-sm font-semibold sticky top-0 z-50 shadow-lg';
         setEarlyBadge();
@@ -112,7 +112,7 @@
         banner.innerHTML = `
           🔥 Our ${COHORT.prevCohortDate} cohort filled all ${COHORT.seatsTotal} seats &nbsp;•&nbsp;
           ${COHORT.dateShort} has only <strong>${COHORT.seatsLeft}</strong> seats left &nbsp;•&nbsp; from ${COHORT.pricePerSessionIndia}&nbsp;/&nbsp;${COHORT.pricePerSessionIntl} per session
-          &nbsp;<a href="#signup" style="background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.5);color:white;padding:2px 12px;border-radius:999px;font-weight:700;text-decoration:none;white-space:nowrap;" onclick="trackCTA('Banner CTA','Top Banner')">Reserve Seat →</a>
+          &nbsp;<a href="#pricing" style="background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.5);color:white;padding:2px 12px;border-radius:999px;font-weight:700;text-decoration:none;white-space:nowrap;" onclick="trackCTA('Banner CTA','Top Banner')">Reserve Seat →</a>
         `;
         banner.className = 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 text-center text-sm font-semibold sticky top-0 z-50 shadow-lg';
         setSeatsLeft();
@@ -701,7 +701,7 @@
             </div>
             <div class="text-xs text-gray-400 mt-1">Ask questions, show progress, and get hands-on mentor support</div>
           </div>
-          <a href="#signup" class="block w-full py-3 bg-indigo-600 hover:bg-indigo-700 rounded-lg font-bold transition-all" onclick="trackCTA('Reserve India','Pricing Section')">Reserve Your Seat →</a>
+          <a data-cohort-form href="#" target="_blank" class="block w-full py-3 bg-indigo-600 hover:bg-indigo-700 rounded-lg font-bold transition-all" onclick="trackCTA('Reserve India','Pricing Section')">Reserve Your Seat →</a>
           <div class="mt-3 text-xs text-gray-500">Compare: Corporate AI training starts at ₹50,000+</div>
         </div>
         <!-- International -->
@@ -729,7 +729,7 @@
             </div>
             <div class="text-xs text-gray-400 mt-1">Ask questions, show progress and get hands-on mentor support</div>
           </div>
-          <a href="#signup" style="background-color:#0891b2;display:block;width:100%;padding:0.75rem;border-radius:0.5rem;font-weight:700;text-align:center;transition:all 0.2s;" onmouseover="this.style.backgroundColor='#0e7490'" onmouseout="this.style.backgroundColor='#0891b2'" onclick="trackCTA('Reserve International','Pricing Section')">Reserve Your Seat →</a>
+          <a data-cohort-form href="#" target="_blank" style="background-color:#0891b2;display:block;width:100%;padding:0.75rem;border-radius:0.5rem;font-weight:700;text-align:center;transition:all 0.2s;" onmouseover="this.style.backgroundColor='#0e7490'" onmouseout="this.style.backgroundColor='#0891b2'" onclick="trackCTA('Reserve International','Pricing Section')">Reserve Your Seat →</a>
           <div class="mt-3 text-xs text-gray-500">Compare: Similar Maven cohorts charge $400–$800</div>
         </div>
       </div>
