@@ -101,7 +101,8 @@
       } else if (COHORT.state === 'early') {
         banner.innerHTML = `
           🔥 Our ${COHORT.prevCohortDate} cohort filled all ${COHORT.seatsTotal} seats &nbsp;•&nbsp;
-          Early registrations open for ${COHORT.dateShort}
+          Early registrations open for ${COHORT.dateShort} &nbsp;•&nbsp; from ${COHORT.pricePerSessionIndia}&nbsp;/&nbsp;${COHORT.pricePerSessionIntl} per session
+          &nbsp;<a href="#signup" style="background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.5);color:white;padding:2px 12px;border-radius:999px;font-weight:700;text-decoration:none;white-space:nowrap;" onclick="trackCTA('Banner CTA','Top Banner')">Reserve Seat →</a>
         `;
         banner.className = 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 text-center text-sm font-semibold sticky top-0 z-50 shadow-lg';
         setEarlyBadge();
@@ -110,7 +111,8 @@
         // active
         banner.innerHTML = `
           🔥 Our ${COHORT.prevCohortDate} cohort filled all ${COHORT.seatsTotal} seats &nbsp;•&nbsp;
-          ${COHORT.dateShort} has only <strong>${COHORT.seatsLeft}</strong> seats left
+          ${COHORT.dateShort} has only <strong>${COHORT.seatsLeft}</strong> seats left &nbsp;•&nbsp; from ${COHORT.pricePerSessionIndia}&nbsp;/&nbsp;${COHORT.pricePerSessionIntl} per session
+          &nbsp;<a href="#signup" style="background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.5);color:white;padding:2px 12px;border-radius:999px;font-weight:700;text-decoration:none;white-space:nowrap;" onclick="trackCTA('Banner CTA','Top Banner')">Reserve Seat →</a>
         `;
         banner.className = 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 text-center text-sm font-semibold sticky top-0 z-50 shadow-lg';
         setSeatsLeft();
