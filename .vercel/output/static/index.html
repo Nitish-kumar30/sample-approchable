@@ -3,197 +3,666 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Approachable — Become AI capable in 6 weeks | Best AI beginners course</title>
-  <meta name="description" content="Small-group, cohort-based AI learning for beginners and non-technical people. Join weekly study groups with guided lessons, hands-on exercises, and an AI study assistant that keeps you accountable." />
-  <meta name="keywords" content="AI learning, cohort-based, mentorship, AI courses, beginner-friendly AI, study groups" />
+  <title>Claude AI Cohort — Approachable | Master the Claude Ecosystem in 6 Weeks</title>
+  <meta name="description" content="A small-group, mentor-led cohort on the full Claude ecosystem — Claude Chat, Claude Code, Claude Cowork, and the API. 20 seats. Live sessions. Real projects." />
+  <meta name="keywords" content="Claude AI, Claude Code, AI cohort, Claude ecosystem, AI learning, mentor-led, Anthropic, approachable" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://approachable.dev/" />
-  <meta property="og:title" content="Approachable — Making learning AI approachable for everyone" />
-  <meta property="og:description" content="Small-group, cohort-based AI learning for beginners. Join study groups with mentors, hands-on exercises, and accountability." />
+  <meta property="og:title" content="Claude AI Cohort — Master the Claude Ecosystem in 6 Weeks" />
+  <meta property="og:description" content="Small-group, mentor-led cohort on Claude Chat, Claude Code, Cowork, and the API. 20 seats max." />
   <meta property="og:image" content="https://approachable.dev/og-image.png" />
   <meta property="twitter:card" content="summary_large_image" />
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
-    .gradient { background: linear-gradient(90deg,#7c3aed,#06b6d4); }
-    .glass { background: rgba(255,255,255,0.06); backdrop-filter: blur(6px); }
-    .container-max { max-width: 1100px; }
-    .pulse-border { animation: pulse-border 2s ease-in-out infinite; }
-    @keyframes pulse-border {
-      0%, 100% { border-color: rgba(139, 92, 246, 0.5); }
-      50% { border-color: rgba(139, 92, 246, 1); }
+    :root {
+      --bg: #FFFFFF;
+      --bg-warm: #FAF9F7;
+      --bg-section: #F5F3F0;
+      --bg-accent-light: #FEF3EE;
+      --text-primary: #1C1917;
+      --text-secondary: #57534E;
+      --text-muted: #A8A29E;
+      --border: #E7E5E4;
+      --border-warm: #D6CFC9;
+      --accent: #D97757;
+      --accent-hover: #C4673F;
+      --accent-light: #FEF3EE;
+      --dark: #1C1917;
     }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    .container-max { max-width: 1080px; margin: 0 auto; }
+
+    /* Banner */
+    #topBanner {
+      background: var(--dark);
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 500;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      letter-spacing: 0.01em;
+    }
+    #topBanner a {
+      background: var(--accent);
+      color: white;
+      padding: 3px 14px;
+      border-radius: 999px;
+      font-weight: 700;
+      text-decoration: none;
+      margin-left: 8px;
+      font-size: 12px;
+    }
+    #topBanner a:hover { background: var(--accent-hover); }
+
+    /* Header */
+    header {
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+      position: sticky;
+      top: 36px;
+      z-index: 90;
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 24px;
+    }
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-primary);
+    }
+    .logo-wrap img { width: 36px; height: 36px; border-radius: 8px; }
+    .logo-name { font-weight: 700; font-size: 16px; }
+    .logo-sub { font-size: 11px; color: var(--text-muted); }
+    .header-cta {
+      background: var(--accent);
+      color: white;
+      padding: 9px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+    .header-cta:hover { background: var(--accent-hover); }
+
+    /* Hero */
+    .hero {
+      padding: 64px 24px 48px;
+      max-width: 780px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--accent-light);
+      color: var(--accent);
+      border: 1px solid #F8CDB8;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 14px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero p {
+      font-size: 17px;
+      color: var(--text-secondary);
+      max-width: 560px;
+      margin: 0 auto 32px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 15px;
+      text-decoration: none;
+      transition: background 0.15s, transform 0.1s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
+    .btn-secondary {
+      background: var(--bg-warm);
+      color: var(--text-primary);
+      border: 1px solid var(--border);
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+      transition: background 0.15s;
+      display: inline-block;
+    }
+    .btn-secondary:hover { background: var(--bg-section); }
+
+    /* Cohort box */
+    .cohort-box {
+      background: var(--bg-warm);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 32px;
+      max-width: 680px;
+      margin: 0 auto 16px;
+    }
+    .cohort-box-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .cohort-meta { display: flex; flex-direction: column; gap: 6px; }
+    .cohort-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+    .cohort-meta-item strong { color: var(--text-primary); font-weight: 600; }
+    .cohort-badge {
+      background: #FEE2E2;
+      color: #B91C1C;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 999px;
+      animation: pulse-soft 2s ease-in-out infinite;
+      white-space: nowrap;
+    }
+    @keyframes pulse-soft {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+
+    /* Social proof strip */
+    .proof-strip {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-warm);
+      padding: 16px 24px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .proof-strip strong { color: var(--text-secondary); }
+
+    /* Company logos */
+    .logos-section { padding: 40px 24px; text-align: center; }
+    .logos-label { font-size: 12px; color: var(--text-muted); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 20px; }
+    .logos-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px 20px;
+    }
+    .logo-pill {
+      background: var(--bg-warm);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 16px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    /* Section */
+    section { padding: 64px 24px; }
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(24px, 3.5vw, 36px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 16px;
+      color: var(--text-secondary);
+      max-width: 560px;
+    }
+
+    /* Curriculum */
+    .curriculum-wrap { max-width: 780px; margin: 0 auto; }
+    .curriculum-block {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .curriculum-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 20px 24px;
+      background: var(--bg-warm);
+      border-bottom: 1px solid var(--border);
+    }
+    .curriculum-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: white;
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .curriculum-session-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
+    .curriculum-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    .curriculum-body { padding: 20px 24px; }
+    .curriculum-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .curriculum-tag {
+      background: var(--bg-warm);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 12px;
+      padding: 4px 10px;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+    .curriculum-tag.highlight {
+      background: var(--accent-light);
+      border-color: #F8CDB8;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* What you'll be able to do */
+    .outcomes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .outcome-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+    }
+    .outcome-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--accent-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      font-size: 18px;
+    }
+    .outcome-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+    .outcome-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+
+    /* Mentor */
+    .mentor-card {
+      background: var(--bg-warm);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px;
+      max-width: 780px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    @media (max-width: 640px) {
+      .mentor-card { grid-template-columns: 1fr; padding: 28px; gap: 24px; }
+    }
+    .mentor-photo {
+      width: 160px;
+      height: 200px;
+      border-radius: 12px;
+      object-fit: cover;
+      object-position: top;
+      border: 2px solid var(--border);
+    }
+    .mentor-name { font-size: 22px; font-weight: 800; margin-bottom: 4px; }
+    .mentor-role { font-size: 14px; color: var(--accent); font-weight: 600; margin-bottom: 16px; }
+    .mentor-quote {
+      background: var(--bg);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 10px 10px 0;
+      padding: 14px 18px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      font-style: italic;
+      margin: 16px 0;
+    }
+    .mentor-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 20px;
+    }
+    @media (max-width: 480px) { .mentor-stats { grid-template-columns: repeat(2, 1fr); } }
+    .mentor-stat {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px;
+      text-align: center;
+    }
+    .mentor-stat .val { font-size: 20px; font-weight: 800; color: var(--accent); }
+    .mentor-stat .lbl { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+
+    /* Testimonials */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 40px;
+    }
+    .testimonial-card {
+      background: var(--bg-warm);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .testimonial-stars { color: #F59E0B; font-size: 14px; margin-bottom: 10px; }
+    .testimonial-text { font-size: 14px; color: var(--text-secondary); font-style: italic; line-height: 1.6; margin-bottom: 12px; }
+    .testimonial-author { font-size: 12px; color: var(--text-muted); font-weight: 600; }
+
+    /* Pricing */
+    .pricing-card {
+      background: var(--bg);
+      border: 2px solid var(--accent);
+      border-radius: 16px;
+      padding: 36px;
+      max-width: 560px;
+      margin: 40px auto 0;
+    }
+    .pricing-head { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; }
+    .price-block {}
+    .price-main { font-size: 42px; font-weight: 800; color: var(--text-primary); line-height: 1; }
+    .price-sub { font-size: 14px; color: var(--text-muted); margin-top: 4px; }
+    .price-tagline {
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 600;
+      background: var(--accent-light);
+      border: 1px solid #F8CDB8;
+      border-radius: 6px;
+      padding: 6px 12px;
+      align-self: flex-start;
+    }
+    .pricing-includes { margin-bottom: 28px; }
+    .pricing-includes li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      padding: 7px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .pricing-includes li:last-child { border-bottom: none; }
+    .pricing-includes .check { color: var(--accent); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .pricing-cta {
+      display: block;
+      width: 100%;
+      background: var(--accent);
+      color: white;
+      text-align: center;
+      padding: 15px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 16px;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+    .pricing-cta:hover { background: var(--accent-hover); }
+    .pricing-note { font-size: 12px; color: var(--text-muted); text-align: center; margin-top: 12px; }
+
+    /* Sign-up section */
+    .signup-section { background: var(--bg-warm); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .signup-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 32px 0; }
+    .signup-step { display: flex; gap: 14px; align-items: flex-start; }
+    .step-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: white;
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .step-title { font-size: 14px; font-weight: 600; margin-bottom: 3px; }
+    .step-desc { font-size: 13px; color: var(--text-muted); }
+
+    /* How it works */
+    .how-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; margin-top: 40px; }
+    .how-card { text-align: center; padding: 24px; }
+    .how-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--bg-accent-light);
+      border: 1px solid #F8CDB8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      font-size: 20px;
+    }
+    .how-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+    .how-card p { font-size: 13px; color: var(--text-secondary); }
+
+    /* FAQ */
+    .faq-list { max-width: 680px; margin: 40px auto 0; }
+    .faq-item { border-bottom: 1px solid var(--border); padding: 20px 0; }
+    .faq-q { font-size: 15px; font-weight: 600; margin-bottom: 8px; }
+    .faq-a { font-size: 14px; color: var(--text-secondary); }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: #A8A29E;
+      padding: 28px 24px;
+    }
+    .footer-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    footer a { color: #78716C; font-size: 13px; text-decoration: none; }
+    footer a:hover { color: white; }
+
+    /* Floating CTA */
+    #floatingCta {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 80;
+      background: var(--dark);
+      border-top: 1px solid #292524;
+      padding: 12px 24px;
+      transform: translateY(100%);
+      transition: transform 0.4s ease;
+    }
+    .floating-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .floating-text { font-size: 13px; color: #E7E5E4; font-weight: 500; }
+    .floating-actions { display: flex; align-items: center; gap: 10px; }
+    .floating-cta-btn {
+      background: var(--accent);
+      color: white;
+      padding: 9px 20px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .floating-cta-btn:hover { background: var(--accent-hover); }
+    .floating-close { color: #78716C; background: none; border: none; font-size: 20px; cursor: pointer; line-height: 1; padding: 4px; }
+    .floating-close:hover { color: white; }
+
+    /* Divider */
+    .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+    /* Modal */
     .modal {
       display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.9); z-index: 1000; align-items: center;
+      background: rgba(0,0,0,0.85); z-index: 1000; align-items: center;
       justify-content: center; padding: 20px;
     }
     .modal.active { display: flex; }
-    .modal-content { position: relative; max-width: 90vw; max-height: 90vh; background: transparent; }
+    .modal-content { position: relative; max-width: 90vw; max-height: 90vh; }
     .modal-image { width: 100%; height: 100%; object-fit: contain; border-radius: 8px; }
     .modal-close {
-      position: absolute; top: -40px; right: 0; background: rgba(255,255,255,0.1);
-      border: 2px solid rgba(255,255,255,0.3); color: white; font-size: 28px; padding: 0;
-      cursor: pointer; width: 40px; height: 40px; border-radius: 50%; display: flex;
-      align-items: center; justify-content: center; transition: all 0.2s ease;
-      background-color: transparent; font-family: Arial, sans-serif; line-height: 1;
+      position: absolute; top: -40px; right: 0;
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3);
+      color: white; font-size: 24px; width: 36px; height: 36px;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
     }
-    .modal-close:hover { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.6); }
-    .review-card-clickable { cursor: pointer; }
-    .review-card-clickable:hover img { opacity: 0.9; }
-    .pricing-highlight {
-      background: linear-gradient(135deg, rgba(99,102,241,0.15) 0%, rgba(139,92,246,0.15) 100%);
-      border: 2px solid rgba(99,102,241,0.5);
-    }
-    .price-tag { font-size: 2.5rem; font-weight: 800; line-height: 1; }
-    .value-bar {
-      background: linear-gradient(90deg, rgba(16,185,129,0.2), rgba(16,185,129,0.05));
-      border-left: 3px solid #10b981;
+
+    @media (max-width: 640px) {
+      .hero { padding: 40px 20px 32px; }
+      section { padding: 44px 20px; }
+      .cohort-box { padding: 20px; }
+      .pricing-card { padding: 24px; }
     }
   </style>
 
   <script>
     // ============================================================
-    // COHORT CONFIG — only edit this block between cohorts
+    // COHORT CONFIG
     // ============================================================
     const COHORT = {
-      // 'active'   = cohort open for registration
-      // 'early'    = cohort announced, no confirmed students yet
-      // 'soldout'  = cohort full, show waitlist
-      state: 'active',
-
-      date: 'Apr 23, 2026',
-      dateShort: 'Apr 23',
-      time: '7:30 PM IST / 10 AM US Eastern time',
+      state: 'active', // 'active' | 'early' | 'soldout'
+      date: 'Jul 23, 2026',
+      dateShort: 'Jul 23',
+      day: 'Thursday',
+      time: '7:30 PM IST / 10 AM US Eastern',
       seatsTotal: 20,
-      seatsLeft: 5,          // set to actual number when state = 'active'
-      prevCohortDate: 'Mar 19',
+      seatsLeft: 20,
+      prevCohortDate: 'Apr 23',
       studentsTotal: '250+',
-
-      priceIndia: '₹1,999',
+      priceIndia: '₹3,999',
       priceIntl: '$149',
-
       capstonePriceIndia: '₹1,000',
       capstonePriceIntl: '$49',
-
-      priceTaglineIndia: "That's just ₹500 per live session with your mentor",
+      priceTaglineIndia: "That's just ₹999 per live session with your mentor",
       priceTaglineIntl: "That's just $37 per live session with your mentor",
-
-      pricePerSessionIndia: '₹500',
-      pricePerSessionIntl: '$37',
-
+      pricePerSessionIndia: '₹999',
+      pricePerSessionIntl: '$49',
       formUrl: 'https://learn.approachable.dev/registration',
     };
     // ============================================================
 
-    let originalSignupContent = null;
-
     function initPage() {
-      // Banner
       const banner = document.getElementById('topBanner');
-
       if (COHORT.state === 'soldout') {
-        banner.innerHTML = `
-          <span class="font-bold">🛑 ${COHORT.dateShort} Cohort Closed</span> • Next cohort coming soon
-        `;
-        banner.className = 'bg-gradient-to-r from-red-600 to-red-700 text-white py-3 text-center text-sm font-semibold sticky top-0 z-50 shadow-lg';
-        showWaitlistSignup();
-
+        banner.innerHTML = `🛑 ${COHORT.dateShort} Cohort is full &nbsp;•&nbsp; Join the waitlist for the next batch <a href="#signup">Join Waitlist</a>`;
       } else if (COHORT.state === 'early') {
-        banner.innerHTML = `
-          🔥 Our ${COHORT.prevCohortDate} cohort filled all ${COHORT.seatsTotal} seats &nbsp;•&nbsp;
-          Early registrations open for ${COHORT.dateShort} &nbsp;•&nbsp; from ${COHORT.pricePerSessionIndia}&nbsp;/&nbsp;${COHORT.pricePerSessionIntl} per session
-          &nbsp;<a href="#pricing" style="background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.5);color:white;padding:2px 12px;border-radius:999px;font-weight:700;text-decoration:none;white-space:nowrap;" onclick="trackCTA('Banner CTA','Top Banner')">Reserve Seat →</a>
-        `;
-        banner.className = 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 text-center text-sm font-semibold sticky top-0 z-50 shadow-lg';
-        setEarlyBadge();
-
+        banner.innerHTML = `${COHORT.prevCohortDate} cohort filled all ${COHORT.seatsTotal} seats &nbsp;•&nbsp; Early seats open for ${COHORT.dateShort} cohort <a href="#pricing" onclick="trackCTA('Banner','Top')">Reserve Seat →</a>`;
       } else {
-        // active
-        banner.innerHTML = `
-          🔥 Our ${COHORT.prevCohortDate} cohort filled all ${COHORT.seatsTotal} seats &nbsp;•&nbsp;
-          ${COHORT.dateShort} has only <strong>${COHORT.seatsLeft}</strong> seats left &nbsp;•&nbsp; from ${COHORT.pricePerSessionIndia}&nbsp;/&nbsp;${COHORT.pricePerSessionIntl} per session
-          &nbsp;<a href="#pricing" style="background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.5);color:white;padding:2px 12px;border-radius:999px;font-weight:700;text-decoration:none;white-space:nowrap;" onclick="trackCTA('Banner CTA','Top Banner')">Reserve Seat →</a>
-        `;
-        banner.className = 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 text-center text-sm font-semibold sticky top-0 z-50 shadow-lg';
-        setSeatsLeft();
+        banner.innerHTML = `🔥 Cohort 6 starts ${COHORT.dateShort} &nbsp;•&nbsp; Only <strong>${COHORT.seatsLeft}</strong> of ${COHORT.seatsTotal} seats available <a href="#pricing" onclick="trackCTA('Banner','Top')">Reserve Seat →</a>`;
       }
 
-      // Populate date/time everywhere
       document.querySelectorAll('[data-cohort-date]').forEach(el => el.textContent = COHORT.date);
       document.querySelectorAll('[data-cohort-date-short]').forEach(el => el.textContent = COHORT.dateShort);
       document.querySelectorAll('[data-cohort-time]').forEach(el => el.textContent = COHORT.time);
       document.querySelectorAll('[data-cohort-price-india]').forEach(el => el.textContent = COHORT.priceIndia);
       document.querySelectorAll('[data-cohort-price-intl]').forEach(el => el.textContent = COHORT.priceIntl);
-      document.querySelectorAll('[data-cohort-capstone-price-india]').forEach(el => el.textContent = COHORT.capstonePriceIndia);
-      document.querySelectorAll('[data-cohort-capstone-price-intl]').forEach(el => el.textContent = COHORT.capstonePriceIntl);
       document.querySelectorAll('[data-cohort-price-tagline-india]').forEach(el => el.textContent = COHORT.priceTaglineIndia);
       document.querySelectorAll('[data-cohort-price-tagline-intl]').forEach(el => el.textContent = COHORT.priceTaglineIntl);
       document.querySelectorAll('[data-cohort-price-per-session-india]').forEach(el => el.textContent = COHORT.pricePerSessionIndia);
       document.querySelectorAll('[data-cohort-price-per-session-intl]').forEach(el => el.textContent = COHORT.pricePerSessionIntl);
       document.querySelectorAll('[data-cohort-students]').forEach(el => el.textContent = COHORT.studentsTotal);
       document.querySelectorAll('[data-cohort-form]').forEach(el => el.href = COHORT.formUrl);
-
-      // Header CTA
-      const headerCta = document.getElementById('headerCta');
-      if (headerCta) headerCta.textContent = `Start Learning ${COHORT.dateShort} →`;
-    }
-
-    function setSeatsLeft() {
-      const badge = document.getElementById('seatsBadge');
-      if (badge) {
-        badge.innerHTML = `<span>${COHORT.seatsLeft}</span> seats left`;
-        badge.className = 'bg-red-600 text-white text-xs font-bold px-4 py-2 rounded-full animate-pulse';
-      }
       document.querySelectorAll('[data-seats-left]').forEach(el => el.textContent = COHORT.seatsLeft);
-      // bottom of cohort box
-      const proofLine = document.getElementById('cohortProofLine');
-      if (proofLine) proofLine.textContent = `Our ${COHORT.prevCohortDate} cohort filled all ${COHORT.seatsTotal} seats. ${COHORT.dateShort} has ${COHORT.seatsLeft} remaining.`;
-    }
 
-    function setEarlyBadge() {
       const badge = document.getElementById('seatsBadge');
-      if (badge) {
-        badge.innerHTML = `Early Registration`;
-        badge.className = 'bg-green-600 text-white text-xs font-bold px-4 py-2 rounded-full';
-      }
-      // Replace all "X seats remaining" lines with early registration copy
-      document.querySelectorAll('[data-seats-label]').forEach(el => {
-        el.textContent = 'Early registrations open · Limited to 20 seats';
-      });
-      const proofLine = document.getElementById('cohortProofLine');
-      if (proofLine) proofLine.textContent = `Our ${COHORT.prevCohortDate} cohort filled all ${COHORT.seatsTotal} seats. Be among the first to register for ${COHORT.dateShort}.`;
+      if (badge) badge.textContent = `${COHORT.seatsLeft} seats left`;
     }
 
-    function showWaitlistSignup() {
-      const signupSection = document.getElementById('signupContent');
-      if (!signupSection) return;
-      signupSection.innerHTML = `
-        <div class="text-center mb-8">
-          <h2 class="text-3xl font-bold">Cohort Closed</h2>
-          <p class="text-gray-300 mt-3">Join the waitlist to be notified when the next cohort opens</p>
-        </div>
-        <div class="max-w-2xl mx-auto">
-          <div class="bg-gray-800/50 rounded-lg p-6 mb-6">
-            <div class="space-y-3 text-sm">
-              <div class="flex items-start gap-3">
-                <div class="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"><span class="text-xs font-bold">1</span></div>
-                <div><div class="font-semibold">Get early notification</div><div class="text-gray-400">We'll reach out as soon as the next cohort opens</div></div>
-              </div>
-              <div class="flex items-start gap-3">
-                <div class="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"><span class="text-xs font-bold">2</span></div>
-                <div><div class="font-semibold">Priority access</div><div class="text-gray-400">Waitlist members get first pick of seats</div></div>
-              </div>
-              <div class="flex items-start gap-3">
-                <div class="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"><span class="text-xs font-bold">3</span></div>
-                <div><div class="font-semibold">Learn while you wait</div><div class="text-gray-400">Access our free short courses on the platform</div></div>
-              </div>
-            </div>
-          </div>
-          <div class="text-center">
-            <a href="${COHORT.formUrl}" target="_blank" class="inline-flex items-center px-10 py-5 bg-red-600 rounded-lg font-bold text-xl hover:bg-red-700 shadow-2xl transition-all">Join the Waitlist →</a>
-          </div>
-        </div>
-      `;
+    function trackCTA(label, loc) {
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'cta_click', { event_category: 'CTA', event_label: label, location: loc });
+        gtag('event', 'begin_checkout', { event_category: 'Funnel', button_location: loc });
+      }
     }
   </script>
 
@@ -213,717 +682,529 @@
     })(window, document, "clarity", "script", "vbfff98f4y");
   </script>
 </head>
-<body class="bg-gray-900 text-gray-100 leading-relaxed antialiased">
+<body>
 
-  <!-- Sticky Banner -->
-  <div id="topBanner" class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 text-center text-sm font-semibold sticky top-0 z-50 shadow-lg"></div>
+  <!-- BANNER -->
+  <div id="topBanner"></div>
 
-  <header class="py-3">
-    <div class="mx-auto container-max px-6 flex items-center justify-between">
-      <a href="#" class="flex items-center space-x-3" onclick="trackNavigation('Logo Click','Header')">
-        <img src="/logo.png" alt="Approachable" class="rounded-lg" style="width:60px;height:60px;">
+  <!-- HEADER -->
+  <header>
+    <div class="container-max header-inner" style="padding:14px 24px;">
+      <a href="#" class="logo-wrap">
+        <img src="/logo.png" alt="Approachable" />
         <div>
-          <div class="text-lg font-bold">Approachable</div>
-          <div class="text-xs text-gray-400">making learning AI approachable for <i>everyone</i></div>
+          <div class="logo-name">Approachable</div>
+          <div class="logo-sub">making AI approachable for everyone</div>
         </div>
       </a>
-      <nav class="hidden md:flex items-center space-x-6 text-gray-300">
-        <!-- Navigation menu removed: What You'll Build, How It Works, Your Mentor, FAQ -->
-      </nav>
-      <div class="md:hidden text-gray-300"></div>
+      <a href="#pricing" class="header-cta" onclick="trackCTA('Header CTA','Header')">
+        Reserve Seat →
+      </a>
     </div>
   </header>
 
   <main>
+
     <!-- HERO -->
-    <section class="mx-auto container-max px-6 pt-4 pb-10 grid gap-8 md:grid-cols-2 items-start">
-      <div>
-        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">From AI Curious to AI Capable in 6 weeks</h1>
-        <p class="mt-4 text-lg text-gray-300">Stop watching AI tutorials that go nowhere. Build real AI tools in 6 weeks — with a mentor and a small group that keeps you accountable.</p>
-
-        <div class="mt-6 flex items-center gap-3 flex-wrap text-sm">
-          <span class="px-3 py-1.5 bg-indigo-900/50 border border-indigo-500/40 rounded-full text-gray-300">🎓 4 live sessions + capstone build</span>
-          <!-- <span class="px-3 py-1.5 bg-gray-800 border border-gray-700 rounded-full text-gray-300">🇮🇳 <span data-cohort-price-india></span> incl. GST</span>
-          <span class="px-3 py-1.5 bg-gray-800 border border-gray-700 rounded-full text-gray-300">🌍 <span data-cohort-price-intl></span></span> -->
-        </div>
-
-        <div class="mt-8">
-          <a href="#pricing" class="inline-flex items-center px-8 py-4 bg-indigo-600 rounded-lg font-bold text-lg hover:bg-indigo-700 shadow-xl hover:shadow-2xl transition-all" onclick="trackCTA('Reserve My Seat Now','Hero Primary')">
-            Reserve My Seat Now
-            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
-          </a>
-        </div>
-
-        <div class="mt-8 flex items-center gap-3 text-sm text-gray-400">
-          <div class="flex -space-x-2">
-            <div class="w-8 h-8 rounded-full bg-indigo-500 border-2 border-gray-900 flex items-center justify-center text-xs">AK</div>
-            <div class="w-8 h-8 rounded-full bg-purple-500 border-2 border-gray-900 flex items-center justify-center text-xs">JM</div>
-            <div class="w-8 h-8 rounded-full bg-cyan-500 border-2 border-gray-900 flex items-center justify-center text-xs">SP</div>
-          </div>
-          <span><strong data-cohort-students></strong> students have launched AI projects with us</span>
+    <section style="padding:64px 24px 0; border-bottom:1px solid var(--border);">
+      <div class="hero" style="padding:0 0 48px;">
+        <div class="hero-label">Cohort 6 · <span data-cohort-date-short></span> · 20 seats max</div>
+        <h1>Master the <span>Claude Ecosystem</span><br>in 6 Weeks</h1>
+        <p>A small, mentor-led study group covering Claude Chat, Claude Code, Claude Cowork, and the Claude API — from first principles to live projects.</p>
+        <div class="hero-actions">
+          <a href="#pricing" class="btn-primary" onclick="trackCTA('Hero Primary','Hero')">Reserve My Seat →</a>
+          <a href="#curriculum" class="btn-secondary">See the Curriculum</a>
         </div>
       </div>
 
-      <!-- Cohort Info Box -->
-      <div class="glass p-6 rounded-lg shadow-lg border-2 border-indigo-500/30 pulse-border">
-        <div class="bg-gray-800 p-1 rounded-lg">
-          <div class="flex items-center justify-between">
-            <div>
-              <div class="text-sm text-gray-400">Next cohort starting</div>
-              <div class="mt-2 text-white font-semibold text-lg">AI Fundamentals — Apri 23-May 14 2026</div>
-              <div class="text-sm text-indigo-300" data-cohort-time></div>
-            </div>
-            <div id="seatsBadge" class="text-white text-xs font-bold px-4 py-2 rounded-full"></div>
+      <!-- Cohort details box -->
+      <div class="cohort-box">
+        <div class="cohort-box-row">
+          <div class="cohort-meta">
+            <div class="cohort-meta-item">📅 <strong>Starts <span data-cohort-date></span></strong> &nbsp;·&nbsp; <span data-cohort-time></span></div>
+            <div class="cohort-meta-item">👥 <strong>Max 20 seats</strong> &nbsp;·&nbsp; Small group, discussion-driven</div>
+            <div class="cohort-meta-item">⏱ <strong>4 live sessions (each week)</strong> &nbsp;·&nbsp; 90 min each + capstone build</div>
+            <div class="cohort-meta-item">💰 <strong>India: <span data-cohort-price-india></span></strong> &nbsp;·&nbsp; <strong>International: <span data-cohort-price-intl></span></strong></div>
           </div>
-
-          <div class="mt-5 text-gray-300">
-            <div class="text-sm font-semibold mb-2">What's Included:</div>
-            <ul class="text-sm text-gray-400 space-y-2">
-              <li class="flex items-start gap-2"><span class="text-green-400 font-bold">✓</span><span>How LLM works and thinks</span></li>
-              <li class="flex items-start gap-2"><span class="text-green-400 font-bold">✓</span><span>Prompt engineering and context management</span></li>
-              <li class="flex items-start gap-2"><span class="text-green-400 font-bold">✓</span><span>Build AI apps and agents from scratch using n8n</span></li>
-              <li class="flex items-start gap-2"><span class="text-green-400 font-bold">✓</span><span>Vibe Coding and Agentic Coding tools</span></li>
-              <li class="flex items-start gap-2"><span class="text-green-400 font-bold">✓</span><span>2 Capstone projects you can showcase</span></li>
-              <li class="flex items-start gap-2"><span class="text-green-400 font-bold">✓</span><span>Approachable platform — quizzes, leaderboard, progress tracking</span></li>
-              <li class="flex items-start gap-2"><span class="text-green-400 font-bold">✓</span><span>Hands-on support throughout your entire cohort journey</span></li>
-            </ul>
+          <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end;">
+            <span id="seatsBadge" class="cohort-badge">20 seats left</span>
+            <a href="#pricing" class="btn-primary" style="font-size:14px;padding:11px 20px;" onclick="trackCTA('Cohort Box CTA','Cohort Box')">Reserve Seat</a>
           </div>
-
-          <!-- HIDDEN: Hero cohort box button
-          <div class="mt-6">
-            <a href="#signup" class="block text-center px-6 py-3.5 bg-indigo-600 rounded-lg font-bold hover:bg-indigo-700 shadow-lg transition-all" onclick="trackCTA('Reserve Your Seat','Hero Cohort Box')">
-              Reserve Your Seat Now →
-            </a>
-            
-          </div>
-          -->
-          <!-- <p class="mt-3 text-center text-xs text-gray-500">Limited to 20 seats · <span data-cohort-price-india></span> incl. GST · <span data-cohort-price-intl></span> international</p> -->
-        </div>
-
-        <div class="mt-4 text-xs text-gray-400 flex items-center gap-2">
-          <svg class="w-4 h-4 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-          <span id="cohortProofLine"></span>
         </div>
       </div>
+      <div style="max-width:680px;margin:0 auto;padding:0 0 48px;"></div>
     </section>
 
-    <!-- SOCIAL PROOF -->
-    <section class="mx-auto container-max px-6 py-12">
-      <div class="mb-12">
-        <h3 class="text-center text-sm font-semibold text-gray-400 mb-6">EMPLOYEES FROM THESE COMPANIES HAVE ALREADY JOINED OUR SESSIONS</h3>
-        <div class="flex flex-wrap justify-center gap-3">
-          <span class="px-4 py-2 bg-gray-800 border border-gray-700 rounded-full text-sm font-medium text-gray-300 hover:border-indigo-500 transition-colors">Adobe</span>
-          <span class="px-4 py-2 bg-gray-800 border border-gray-700 rounded-full text-sm font-medium text-gray-300 hover:border-indigo-500 transition-colors">GAP Inc</span>
-          <span class="px-4 py-2 bg-gray-800 border border-gray-700 rounded-full text-sm font-medium text-gray-300 hover:border-indigo-500 transition-colors">TeamViewer</span>
-          <span class="px-4 py-2 bg-gray-800 border border-gray-700 rounded-full text-sm font-medium text-gray-300 hover:border-indigo-500 transition-colors">Nordstrom</span>
-          <span class="px-4 py-2 bg-gray-800 border border-gray-700 rounded-full text-sm font-medium text-gray-300 hover:border-indigo-500 transition-colors">MAQ Software</span>
-          <span class="px-4 py-2 bg-gray-800 border border-gray-700 rounded-full text-sm font-medium text-gray-300 hover:border-indigo-500 transition-colors">Microsoft</span>
-          <span class="px-4 py-2 bg-gray-800 border border-gray-700 rounded-full text-sm font-medium text-gray-300 hover:border-indigo-500 transition-colors">Upwork</span>
-          <span class="px-4 py-2 bg-gray-800 border border-gray-700 rounded-full text-sm font-medium text-gray-300 hover:border-indigo-500 transition-colors">Deloitte</span>
-          <span class="px-4 py-2 bg-gray-800 border border-gray-700 rounded-full text-sm font-medium text-gray-300 hover:border-indigo-500 transition-colors">&amp; many more</span>
-        </div>
-      </div>
+    <!-- PROOF STRIP -->
+    <div class="proof-strip">
+      <strong><span data-cohort-students></span> alumni</strong> from Adobe, Microsoft, GAP Inc, Deloitte, Nordstrom, Upwork, TeamViewer & more
+    </div>
 
-      <div class="h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent mb-12"></div>
-
-      <div>
-        <h3 class="text-center text-2xl font-bold mb-8">What Alumni Are Saying on LinkedIn</h3>
-        <div class="grid gap-4 md:grid-cols-3 mb-8">
-          <div class="bg-gray-800/50 p-4 rounded-lg border-l-4 border-indigo-500">
-            <p class="text-sm text-gray-300 italic">"Built my first AI agent in week 3 — something I thought would take me months."</p>
-          </div>
-          <div class="bg-gray-800/50 p-4 rounded-lg border-l-4 border-cyan-500">
-            <p class="text-sm text-gray-300 italic">"The study group format kept me accountable. I actually finished the course."</p>
-          </div>
-          <div class="bg-gray-800/50 p-4 rounded-lg border-l-4 border-purple-500">
-            <p class="text-sm text-gray-300 italic">"Ranbeer makes complex AI concepts feel simple and immediately actionable."</p>
-          </div>
-        </div>
-        <p class="text-center text-sm text-gray-400 mb-6">Click any image to expand</p>
-        <div class="grid gap-6 md:grid-cols-3 items-start">
-          <div class="review-card-clickable rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-700" onclick="openModal('/img/linkedin-review-1.png')">
-            <img src="/img/linkedin-review-1.png" alt="LinkedIn Review 1" class="w-full h-auto block" />
-          </div>
-          <div class="review-card-clickable rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-700" onclick="openModal('/img/linkedin-review-2.png')">
-            <img src="/img/linkedin-review-2.png" alt="LinkedIn Review 2" class="w-full h-auto block" />
-          </div>
-          <div class="review-card-clickable rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-700" onclick="openModal('/img/linkedin-review-3.png')">
-            <img src="/img/linkedin-review-3.png" alt="LinkedIn Review 3" class="w-full h-auto block" />
-          </div>
-          <div class="review-card-clickable rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-700" onclick="openModal('/img/linkedin-review-4.png')">
-            <img src="/img/linkedin-review-4.png" alt="LinkedIn Review 4" class="w-full h-auto block" />
-          </div>
-          <div class="review-card-clickable rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-700" onclick="openModal('/img/linkedin-review-5.png')">
-            <img src="/img/linkedin-review-5.png" alt="LinkedIn Review 5" class="w-full h-auto block" />
-          </div>
-          <div class="review-card-clickable rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-700" onclick="openModal('/img/linkedin-review-6.png')">
-            <img src="/img/linkedin-review-6.png" alt="LinkedIn Review 6" class="w-full h-auto block" />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- OUTCOMES -->
-    <section id="outcomes" class="mx-auto container-max px-6 py-16 bg-gradient-to-br from-purple-900/20 via-indigo-900/20 to-cyan-900/20 rounded-xl border border-indigo-500/30 my-12">
-      <div class="text-center mb-10">
-        <h2 class="text-3xl md:text-4xl font-bold">After the Program, You'll Be Able To:</h2>
-        <p class="mt-3 text-gray-300 text-lg">Real projects you can show off, not just theory</p>
-      </div>
-
-      <div class="grid gap-6 md:grid-cols-3">
-        <div class="bg-gray-800/50 p-6 rounded-xl border border-indigo-500/20 hover:border-indigo-500/50 transition-all">
-          <div class="w-12 h-12 bg-indigo-600 rounded-lg flex items-center justify-center mb-4">
-            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
-          </div>
-          <h3 class="text-xl font-bold text-white mb-3">Build Custom AI Applications</h3>
-          <p class="text-gray-300 text-sm mb-4">Create intelligent chatbots for customer service, data summarization, data extraction tasks, and more — no coding required.</p>
-          <div class="text-xs text-indigo-300 font-semibold">✓ Project: Your own business AI assistant</div>
-        </div>
-
-        <div class="bg-gray-800/50 p-6 rounded-xl border border-cyan-500/20 hover:border-cyan-500/50 transition-all">
-          <div class="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style="background-color:#0891b2;">
-            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-          </div>
-          <h3 class="text-xl font-bold text-white mb-3">Automate Repetitive Tasks with AI Agents</h3>
-          <p class="text-gray-300 text-sm mb-4">Build Agentic AI workflows that save 5-10 hours per week: customer support, report generation, ticket routing, classification, and more.</p>
-          <div class="text-xs text-cyan-300 font-semibold">✓ Project: 3+ working automations on n8n</div>
-        </div>
-
-        <div class="bg-gray-800/50 p-6 rounded-xl border border-purple-500/20 hover:border-purple-500/50 transition-all">
-          <div class="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center mb-4">
-            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
-          </div>
-          <h3 class="text-xl font-bold text-white mb-3">Ship AI Prototypes Fast</h3>
-          <p class="text-gray-300 text-sm mb-4">Use vibe coding tools to turn ideas into working demos in days, not months. Perfect for validating startup ideas or pitching to investors.</p>
-          <div class="text-xs text-purple-300 font-semibold">✓ Capstone: Demo-ready AI prototype</div>
-        </div>
-      </div>
-
-      <div class="mt-10 pt-8 border-t border-gray-700">
-        <div class="text-center mb-6"><h3 class="text-lg font-semibold text-gray-300">AI Fundamentals You'll Learn:</h3></div>
-        <div class="flex flex-wrap justify-center gap-3">
-          <span class="px-4 py-2 bg-indigo-900/40 border border-indigo-500/30 rounded-full text-sm">Prompt Engineering</span>
-          <span class="px-4 py-2 bg-indigo-900/40 border border-indigo-500/30 rounded-full text-sm">AI Agents</span>
-          <span class="px-4 py-2 bg-indigo-900/40 border border-indigo-500/30 rounded-full text-sm">Agentic Coding Assistants</span>
-          <span class="px-4 py-2 bg-indigo-900/40 border border-indigo-500/30 rounded-full text-sm">n8n Workflows</span>
-          <span class="px-4 py-2 bg-indigo-900/40 border border-indigo-500/30 rounded-full text-sm">Vibe Coding and Tools (Lovable Et al.)</span>
-        </div>
-
-        <!-- <div class="mt-8 bg-gradient-to-r from-indigo-900/30 to-purple-900/30 rounded-lg p-6 border border-indigo-500/20">
-          <div class="text-center">
-            <div class="text-sm font-semibold text-indigo-300 mb-2">🚀 Want to Go Deeper?</div>
-            <p class="text-sm text-gray-300 mb-3">After mastering the fundamentals, subscribe to our live deep-dive courses on advanced topics as they launch.</p>
-            <div class="flex flex-wrap justify-center gap-2 text-xs text-gray-400">
-              <span class="px-3 py-1 bg-gray-800/50 rounded-full">Mastering Claude Code</span>
-              <span class="px-3 py-1 bg-gray-800/50 rounded-full">AI Agents deep dive</span>
-              <span class="px-3 py-1 bg-gray-800/50 rounded-full">Open Source LLMs</span>
-              <span class="px-3 py-1 bg-gray-800/50 rounded-full">More launching soon...</span>
-            </div>
-          </div>
-        </div>
-      </div> -->
-
-      <!-- HIDDEN: Outcomes section button
-      <div class="mt-10 text-center">
-        <a href="#signup" class="inline-flex items-center px-8 py-4 bg-indigo-600 rounded-lg font-bold text-lg hover:bg-indigo-700 shadow-xl hover:shadow-2xl transition-all" onclick="trackCTA('Start Building These Projects','Outcomes Section')">
-          Start Building These Projects
-          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
-        </a>
-        <p class="mt-4 text-sm text-gray-400" data-seats-label>Early registrations open · Limited to 20 seats</p>
-      </div>
-      -->
-    </section>
-
-    <!-- VIDEO -->
-    <section id="how" class="mx-auto container-max px-6 py-10">
-      <h2 class="text-2xl font-bold mb-6">See it in action</h2>
-      <div style="padding:56.25% 0 0 0;position:relative;border-radius:8px;overflow:hidden;">
-        <iframe src="https://player.vimeo.com/video/1160969611?badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="AI Fundamentals Cohort - Ranbeer Makin" id="vimeoPlayer"></iframe>
-      </div>
-      <script src="https://player.vimeo.com/api/player.js"></script>
-    </section>
-
-    <!-- MENTOR -->
-    <section id="mentor" class="mx-auto container-max px-6 py-16">
-      <div class="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl p-8 md:p-10 border border-indigo-500/20">
-        <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">Meet Your Mentor</h2>
-        <div class="grid md:grid-cols-3 gap-8 items-start">
-          <div class="md:col-span-1">
-            <div class="relative">
-              <div class="w-48 h-64 mx-auto rounded-full overflow-hidden bg-gradient-to-br from-indigo-600 to-purple-600 p-1">
-                <img src="/img/Ranbeer makin aug 22.jpg" alt="Ranbeer Makin - AI Mentor" class="w-full h-full object-cover object-top rounded-full"/>
-              </div>
-              <div class="absolute -bottom-3 left-1/2 transform -translate-x-1/2 bg-indigo-600 px-4 py-1 rounded-full text-xs font-semibold whitespace-nowrap">
-                250+ Students Taught
-              </div>
-            </div>
-          </div>
-          <div class="md:col-span-2">
-            <h3 class="text-2xl font-bold mb-2">Ranbeer Makin</h3>
-            <p class="text-indigo-400 mb-2">Entrepreneur & AI Educator</p>
-            <a href="https://www.linkedin.com/in/ranbeer/" target="_blank" class="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-indigo-400 transition-colors mb-4">
-              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-              Ranbeer's LinkedIn
-            </a>
-            <div class="prose prose-invert text-gray-300 space-y-4 mb-6">
-              <p>Ranbeer is a full-time entrepreneur who's passionate about making AI accessible to everyone. Over the past 3 years, he's helped 250+ technical/non-tech professionals and teams build practical AI solutions—from early-stage startups to professionals at companies like Gap, Deloitte, and Microsoft.</p>
-              <p class="text-white font-semibold bg-indigo-900/30 p-4 rounded-lg border-l-4 border-indigo-500">"I created Approachable because I believe anyone should be able to build with AI, regardless of their background. I want everyone to learn AI fundamentals affordably. My goal is to reach 1 million students. This is my way of giving back to the community."</p>
-              <p>These aren't lectures—they're <strong>study groups</strong> where everyone learns together. No question is too basic, and we celebrate every win, no matter how small.</p>
-            </div>
-            <div class="grid grid-cols-2 gap-4 mb-6">
-              <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700"><div class="text-2xl font-bold text-indigo-400">250+</div><div class="text-sm text-gray-400">Students Mentored</div></div>
-              <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700"><div class="text-2xl font-bold text-indigo-400">1M</div><div class="text-sm text-gray-400">Student Goal</div></div>
-              <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700"><div class="text-2xl font-bold text-indigo-400">3 Years</div><div class="text-sm text-gray-400">Teaching AI</div></div>
-              <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700"><div class="text-2xl font-bold text-indigo-400">4.9/5</div><div class="text-sm text-gray-400">Average Rating</div></div>
-            </div>
-            <div class="bg-indigo-900/20 border border-indigo-500/30 rounded-lg p-5">
-              <h4 class="font-semibold text-indigo-300 mb-2">Study Group Philosophy:</h4>
-              <ul class="text-sm text-gray-300 space-y-1">
-                <li>✓ Learn together as a community, not just from a teacher</li>
-                <li>✓ No question is too basic—everyone's learning journey is valid</li>
-                <li>✓ Ship something real every week, celebrate every win</li>
-                <li>✓ Affordable learning—giving back to the community</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="mt-10 pt-8 border-t border-gray-700">
-          <h4 class="text-lg font-semibold mb-6 text-center">What Students Say About Ranbeer:</h4>
-          <div class="grid md:grid-cols-3 gap-6">
-            <div class="bg-gray-800/50 p-5 rounded-lg border border-gray-700">
-              <div class="flex text-yellow-400 text-sm mb-3">★★★★★</div>
-              <p class="text-sm text-gray-300 italic mb-3">"Ranbeer breaks down complex AI concepts into simple, actionable steps. I built my first chatbot in week 2!"</p>
-              <p class="text-xs text-gray-500">— Priya S., Marketing Manager</p>
-            </div>
-            <div class="bg-gray-800/50 p-5 rounded-lg border border-gray-700">
-              <div class="flex text-yellow-400 text-sm mb-3">★★★★★</div>
-              <p class="text-sm text-gray-300 italic mb-3">"Patient, knowledgeable, and genuinely invested in our success. Best mentor I've had."</p>
-              <p class="text-xs text-gray-500">— James K., Startup Founder</p>
-            </div>
-            <div class="bg-gray-800/50 p-5 rounded-lg border border-gray-700">
-              <div class="flex text-yellow-400 text-sm mb-3">★★★★★</div>
-              <p class="text-sm text-gray-300 italic mb-3">"He doesn't just teach tools—he teaches how to think about AI practically."</p>
-              <p class="text-xs text-gray-500">— Alex M., Product Designer</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- HOW IT WORKS -->
-    <section id="how2" class="mx-auto container-max px-6 py-16">
-      <h2 class="text-3xl font-bold mb-2">How It Works</h2>
-      <p class="text-gray-400 mb-10">From sign-up to shipping real projects — here's what to expect.</p>
-
-      <div class="grid gap-6 md:grid-cols-3 mb-12">
-        <div class="p-6 bg-gray-800 rounded-xl border-t-4 border-indigo-500">
-          <div class="text-3xl font-extrabold text-indigo-400 mb-2">1</div>
-          <div class="font-semibold text-white mb-2">Join a small cohort</div>
-          <p class="text-gray-400 text-sm">Reserve your seat and get instant access to free courses on the platform. We keep cohorts to 20 seats so everyone gets real attention.</p>
-        </div>
-        <div class="p-6 bg-gray-800 rounded-xl border-t-4 border-cyan-500">
-          <div class="text-3xl font-extrabold text-cyan-400 mb-2">2</div>
-          <div class="font-semibold text-white mb-2">Learn together, not alone</div>
-          <p class="text-gray-400 text-sm">4 live 90-minute sessions with your cohort. No pre-recorded stuff you'll abandon. Ask basic questions freely — everyone's at the same stage.</p>
-        </div>
-        <div class="p-6 bg-gray-800 rounded-xl border-t-4 border-purple-500">
-          <div class="text-3xl font-extrabold text-purple-400 mb-2">3</div>
-          <div class="font-semibold text-white mb-2">Ship something real</div>
-          <p class="text-gray-400 text-sm">Build 2 capstone projects in a 2–3 week sprint. Demo day at the end — celebrate your work with the group.</p>
-        </div>
-      </div>
-
-      <div class="grid gap-6 md:grid-cols-2">
-        <div class="p-6 bg-gray-800/60 rounded-xl flex gap-4 items-start">
-          <div class="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center flex-shrink-0">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h16a2 2 0 012 2v10a2 2 0 01-2 2h-2"></path></svg>
-          </div>
-          <div>
-            <div class="font-semibold mb-1">Approachable Learning Platform</div>
-            <p class="text-gray-400 text-sm">Quizzes, leaderboard, progress tracking, and an interactive prompt guide — all included. Start exploring the moment you register.</p>
-          </div>
-        </div>
-        <div class="p-6 bg-gray-800/60 rounded-xl flex gap-4 items-start">
-          <div class="w-10 h-10 bg-cyan-700 rounded-lg flex items-center justify-center flex-shrink-0">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-          </div>
-          <div>
-            <div class="font-semibold mb-1">Build real projects weekly</div>
-            <p class="text-gray-400 text-sm">From simple automations to no-code AI agents — you'll ship something tangible every week and get feedback from the group.</p>
-          </div>
-        </div>
-        <div class="p-6 bg-gray-800/60 rounded-xl flex gap-4 items-start">
-          <div class="w-10 h-10 bg-purple-700 rounded-lg flex items-center justify-center flex-shrink-0">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-          </div>
-          <div>
-            <div class="font-semibold mb-1">Priced to be accessible</div>
-            <p class="text-gray-400 text-sm">Similar live AI cohorts charge $400–$800. Corporate AI training starts at ₹50,000. We charge a fraction — so the right people can join, not just those with big budgets.</p>
-          </div>
-        </div>
-        <div class="p-6 bg-gray-800/60 rounded-xl flex gap-4 items-start">
-          <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background-color:#0891b2;">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
-          </div>
-          <div>
-            <div class="font-semibold mb-1">AI study assistant (coming soon)</div>
-            <p class="text-gray-400 text-sm">Weekly reminders, session summaries, quizzes and flashcards to keep you on track between live sessions.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CURRICULUM -->
-    <section class="mx-auto container-max px-6 py-10">
-      <h2 class="text-2xl font-bold">What you'll learn</h2>
-      <p class="text-gray-400 mt-2">4 weeks of structured learning, then you build something real.</p>
-      <div class="mt-6 grid gap-4 md:grid-cols-2">
-        <div class="p-5 bg-gray-800 rounded-lg border-l-4 border-indigo-500">
-          <div class="font-semibold text-cyan-300">Session 1: Introduction</div>
-          <ul class="mt-2 text-sm text-gray-400 space-y-1 list-disc list-inside">
-            <li>Cohort Overview</li>
-            <li>AI Overview & How LLM works</li>
-            <li>Hidden treasures and techniques in ChatGPT, Claude (you probably did not know about)</li>
-          </ul>
-        </div>
-        <div class="p-5 bg-gray-800 rounded-lg border-l-4 border-cyan-500">
-          <div class="font-semibold text-cyan-300">Session 2: Build AI Apps</div>
-          <ul class="mt-2 text-sm text-gray-400 space-y-1 list-disc list-inside">
-            <li>Basic and advanced prompt engineering techniques</li>
-            <li>5-star prompts for text, code, visuals & data insights</li>
-            <li>Context management essentials</li>
-            <li>Hands-on live building AI Applications and AI chatbot</li>
-            <li>Best practices, Evals, Traces</li>
-          </ul>
-        </div>
-        <div class="p-5 bg-gray-800 rounded-lg border-l-4 border-indigo-500">
-          <div class="font-semibold text-cyan-300">Session 3: AI Agents</div>
-          <ul class="mt-2 text-sm text-gray-400 space-y-1 list-disc list-inside">
-            <li>LLM vs AI Agent vs Agentic AI</li>
-            <li>Master AI Agents concepts</li>
-            <li>Build AI Agents using no-code platform n8n</li>
-            <li>Hands-on live AI Agent building</li>
-          </ul>
-        </div>
-        <div class="p-5 bg-gray-800 rounded-lg border-l-4 border-cyan-500">
-          <div class="font-semibold text-cyan-300">Session 4: Vibe Coding / Agentic Coding Tools</div>
-          <ul class="mt-2 text-sm text-gray-400 space-y-1 list-disc list-inside">
-            <li>Next-gen software engineering tools</li>
-            <li>Software coding tools for PMs and developers (non-tech and tech both)</li>
-            <li>Lovable, Supabase, & Claude Code, Github Copilot & others</li>
-            <li>Prompting best practices & when to use Vibe Coding Tools</li>
-          </ul>
-        </div>
-        <div class="p-5 bg-gray-800 rounded-lg border-l-4 border-purple-500 md:col-span-2">
-          <div class="font-semibold text-purple-300">Capstone Sprint (2–3 weeks) + Final Session</div>
-          <ul class="mt-2 text-sm text-gray-400 space-y-1 list-disc list-inside">
-            <li>Build your capstone projects</li>
-            <li>Final session: showcase projects, doubt clearing & celebration</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- BONUSES -->
-    <section class="mx-auto container-max px-6 py-16">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold">Included Bonuses</h2>
-        <p class="mt-3 text-gray-300 text-lg">Everything you need to keep learning and building after the cohort</p>
-      </div>
-
-      <div class="grid gap-6 md:grid-cols-3">
-        <div class="bg-gradient-to-br from-indigo-900/30 to-purple-900/30 p-8 rounded-xl border border-indigo-500/30 hover:border-indigo-500/60 transition-all">
-          <div class="w-12 h-12 bg-indigo-600 rounded-lg flex items-center justify-center mb-4">
-            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
-          </div>
-          <h3 class="text-xl font-bold text-white mb-3">Prompt Guide & Best Prompts</h3>
-          <p class="text-gray-300 text-sm">Access our curated library of best prompts for data analysis, marketing, creative work, and more. Keep improving your skills long after the cohort ends.</p>
-        </div>
-
-        <div class="bg-gradient-to-br from-cyan-900/30 to-blue-900/30 p-8 rounded-xl border border-cyan-500/30 hover:border-cyan-500/60 transition-all">
-          <div class="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style="background-color:#0891b2;">
-            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>
-          </div>
-          <h3 class="text-xl font-bold text-white mb-3">3000+ Agent Templates</h3>
-          <p class="text-gray-300 text-sm">Access a massive library of ready-to-use automation templates. Copy, customize, and deploy AI agents for your specific needs instantly.</p>
-        </div>
-
-        <!-- <div class="bg-gradient-to-br from-purple-900/30 to-pink-900/30 p-8 rounded-xl border border-purple-500/30 hover:border-purple-500/60 transition-all relative">
-          <div class="absolute top-4 right-4 px-2 py-0.5 bg-purple-600/80 border border-purple-400/60 rounded-full text-xs font-bold text-purple-100 uppercase tracking-wide">Add-on</div>
-          <div class="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center mb-4">
-            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-          </div>
-          <h3 class="text-xl font-bold text-white mb-1">Capstone Office Hours</h3>
-          <div class="text-sm text-purple-300 font-semibold mb-3"><span data-cohort-capstone-price-india></span> &nbsp;/&nbsp; <span data-cohort-capstone-price-intl></span></div>
-          <p class="text-gray-300 text-sm">Dedicated sessions to ask questions, show your progress, and clear doubts on your capstone project with mentor support.</p>
-        </div> -->
-
-        <div class="bg-gradient-to-br from-green-900/30 to-emerald-900/30 p-8 rounded-xl border border-green-500/30 hover:border-green-500/60 transition-all">
-          <div class="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style="background-color:#10b981;">
-            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.856-1.487M15 10a3 3 0 11-6 0 3 3 0 016 0zM4.5 20H9v-2a6 6 0 00-.75-2.906M15 13l2 1m4 5l-15 1L4 7.5"></path></svg>
-          </div>
-          <h3 class="text-xl font-bold text-white mb-3">Supporting WhatsApp Community</h3>
-          <p class="text-gray-300 text-sm">Join an active community of learners and practitioners. Get peer support, share wins, ask questions, and stay connected long after the cohort.</p>
-        </div>
-      </div>
-    </section>
-
-   
-    <!-- PRICING -->
-    <section id="pricing" class="mx-auto container-max px-6 py-16">
-      <div class="text-center mb-10">
-        <h2 class="text-3xl font-bold">Simple, Transparent Pricing</h2>
-        <p class="mt-3 text-gray-400 max-w-xl mx-auto">One price. Everything included. Optional add-ons available.</p>
-      </div>
-      <div class="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-        <!-- India -->
-        <div class="bg-gradient-to-br from-indigo-900/40 to-purple-900/40 border-2 border-indigo-500/50 rounded-2xl p-8 text-center">
-          <div class="text-2xl mb-2">🇮🇳</div>
-          <div class="text-sm text-gray-400 mb-3 font-semibold uppercase tracking-wide">India</div>
-          <div class="text-5xl font-extrabold text-white mb-0.5" data-cohort-price-per-session-india></div>
-          <div class="text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wide">per session</div>
-          <div class="text-xs font-semibold mb-2" style="color:#34d399">Total: <span data-cohort-price-india></span></div>
-          <div class="text-xs text-gray-400 mb-1">vs <s class="text-gray-600">₹50,000+</s> corporate AI training</div>
-          <div class="text-xs text-gray-500 mb-6">one-time · commitment-based pricing</div>
-          <ul class="text-sm text-gray-300 space-y-2 text-left mb-6">
-            <li class="flex gap-2"><span class="text-green-400">✓</span> 4 live sessions (90 mins each)</li>
-            <li class="flex gap-2"><span class="text-green-400">✓</span> Access to Approachable platform</li>
-            <li class="flex gap-2"><span class="text-green-400">✓</span> Quizzes, leaderboard, progress tracking</li>
-            <li class="flex gap-2"><span class="text-green-400">✓</span> 2 Capstone projects</li>
-            <li class="flex gap-2"><span class="text-green-400">✓</span> WhatsApp community access</li>
-            <li class="flex gap-2"><span class="text-green-400">✓</span> Session recordings</li>
-          </ul>
-          <div class="border border-purple-500/40 bg-purple-900/20 rounded-lg p-3 mb-5 text-left">
-            <div class="text-xs font-bold text-purple-300 uppercase tracking-wide mb-1">➕ Add-on</div>
-            <div class="flex items-center justify-between">
-              <div class="text-sm text-gray-200 font-semibold">Capstone Office Hours</div>
-              <div class="text-sm font-bold text-purple-300" data-cohort-capstone-price-india></div>
-            </div>
-            <div class="text-xs text-gray-400 mt-1">Ask questions, show progress, and get hands-on mentor support</div>
-          </div>
-          <a data-cohort-form href="#" target="_blank" class="block w-full py-3 bg-indigo-600 hover:bg-indigo-700 rounded-lg font-bold transition-all" onclick="trackCTA('Reserve India','Pricing Section')">Reserve Your Seat →</a>
-          <div class="mt-3 text-xs text-gray-500">Compare: Corporate AI training starts at ₹50,000+</div>
-        </div>
-        <!-- International -->
-        <div class="bg-gradient-to-br from-indigo-900/40 to-cyan-900/40 border-2 border-cyan-500/50 rounded-2xl p-8 text-center">
-          <div class="text-2xl mb-2">🌍</div>
-          <div class="text-sm text-gray-400 mb-3 font-semibold uppercase tracking-wide">International</div>
-          <div class="text-5xl font-extrabold text-white mb-0.5" data-cohort-price-per-session-intl></div>
-          <div class="text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wide">per session</div>
-          <div class="text-xs font-semibold mb-2" style="color:#34d399">Total: <span data-cohort-price-intl></span></div>
-          <div class="text-xs text-gray-400 mb-1">vs <s class="text-gray-600">$400–$800</s> on Maven &amp; similar</div>
-          <div class="text-xs text-gray-500 mb-6">one-time · commitment-based pricing</div>
-          <ul class="text-sm text-gray-300 space-y-2 text-left mb-6">
-            <li class="flex gap-2"><span class="text-green-400">✓</span> 4 live sessions (90 mins each)</li>
-            <li class="flex gap-2"><span class="text-green-400">✓</span> Access to Approachable platform</li>
-            <li class="flex gap-2"><span class="text-green-400">✓</span> Quizzes, leaderboard, progress tracking</li>
-            <li class="flex gap-2"><span class="text-green-400">✓</span> 2 Capstone projects</li>
-            <li class="flex gap-2"><span class="text-green-400">✓</span> WhatsApp community access</li>
-            <li class="flex gap-2"><span class="text-green-400">✓</span> Session recordings</li>
-          </ul>
-          <div class="border border-cyan-500/40 bg-cyan-900/20 rounded-lg p-3 mb-5 text-left">
-            <div class="text-xs font-bold text-cyan-300 uppercase tracking-wide mb-1">➕ Add-on</div>
-            <div class="flex items-center justify-between">
-              <div class="text-sm text-gray-200 font-semibold">Capstone Office Hours</div>
-              <div class="text-sm font-bold text-cyan-300" data-cohort-capstone-price-intl></div>
-            </div>
-            <div class="text-xs text-gray-400 mt-1">Ask questions, show progress and get hands-on mentor support</div>
-          </div>
-          <a data-cohort-form href="#" target="_blank" style="background-color:#0891b2;display:block;width:100%;padding:0.75rem;border-radius:0.5rem;font-weight:700;text-align:center;transition:all 0.2s;" onmouseover="this.style.backgroundColor='#0e7490'" onmouseout="this.style.backgroundColor='#0891b2'" onclick="trackCTA('Reserve International','Pricing Section')">Reserve Your Seat →</a>
-          <div class="mt-3 text-xs text-gray-500">Compare: Similar Maven cohorts charge $400–$800</div>
-        </div>
-      </div>
-      <!-- <div class="mt-8 max-w-2xl mx-auto bg-gray-800/40 border border-gray-700 rounded-xl p-6 text-sm text-gray-300">
-        <div class="font-semibold text-white mb-2">💡 Why a commitment fee?</div>
-        <p>When cohorts were free, no-show rates hit 40%+. That wastes everyone's time — including yours. The fee ensures every seat is taken by someone serious. It's not about revenue. It's about protecting the quality of the cohort for everyone in it.</p>
-      </div> -->
-    </section>
-
-    <!-- SIGNUP -->
-    <section id="signup" class="mx-auto container-max px-6 py-12">
-      <div class="bg-gradient-to-br from-indigo-900/30 to-purple-900/30 rounded-xl p-8 md:p-10 border-2 border-indigo-500/40">
-        <div id="signupContent">
-          <div class="text-center mb-8">
-            <h2 class="text-3xl font-bold">Secure Your Seat in the <span data-cohort-date-short></span> Cohort</h2>
-            <p class="text-gray-300 mt-3">Join <span data-cohort-students></span> students who've launched AI projects with us</p>
-          </div>
-          <div class="max-w-2xl mx-auto">
-            <div class="bg-gray-800/50 rounded-lg p-6 mb-6">
-              <h3 class="font-semibold mb-4 text-center">Here's what happens next:</h3>
-              <div class="space-y-3 text-sm">
-                <div class="flex items-start gap-3">
-                  <div class="w-6 h-6 bg-indigo-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"><span class="text-xs font-bold">1</span></div>
-                  <div><div class="font-semibold">Fill out the quick form</div><div class="text-gray-400">Tell us about yourself and your goals (2 minutes)</div></div>
-                </div>
-                <div class="flex items-start gap-3">
-                  <div class="w-6 h-6 bg-indigo-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"><span class="text-xs font-bold">2</span></div>
-                  <div><div class="font-semibold">Get instant platform access</div><div class="text-gray-400">Start exploring free courses on the Approachable platform right away while your seat is confirmed</div></div>
-                </div>
-                <div class="flex items-start gap-3">
-                  <div class="w-6 h-6 bg-indigo-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"><span class="text-xs font-bold">3</span></div>
-                  <div><div class="font-semibold">Start learning <span data-cohort-date-short></span></div><div class="text-gray-400">Get access to cohort workspace + full platform + week 1 materials</div></div>
-                </div>
-              </div>
-            </div>
-            <div class="text-center">
-              <a data-cohort-form href="#" target="_blank" class="inline-flex items-center px-10 py-5 bg-indigo-600 rounded-lg font-bold text-xl hover:bg-indigo-700 shadow-2xl transition-all" onclick="trackExternalLink('Google Form','Signup Form')">
-                Reserve My Seat Now →
-              </a>
-              <p class="mt-4 text-sm text-gray-400" data-seats-label>Early registrations open · Limited to 20 seats</p>
-            </div>
-            <div class="mt-8 pt-6 border-t border-gray-700 text-center">
-              <div class="flex flex-wrap justify-center gap-6 text-sm text-gray-400">
-                <div class="flex items-center gap-2">
-                  <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-                  <span>Your data is private & secure</span>
-                </div>
-                <div class="flex items-center gap-2">
-                  <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                  <span>Platform access included</span>
-                </div>
-                <div class="flex items-center gap-2">
-                  <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path></svg>
-                  <span>No question is too small to ask</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- IMAGE MODAL -->
-    <div id="imageModal" class="modal" onclick="closeModal(event)">
-      <div class="modal-content" onclick="event.stopPropagation()">
-        <button class="modal-close" onclick="closeModal()">&times;</button>
-        <img id="modalImage" src="" alt="" class="modal-image" />
+    <!-- COMPANIES -->
+    <div class="logos-section">
+      <div class="logos-label">Alumni from these organisations</div>
+      <div class="logos-grid">
+        <span class="logo-pill">Adobe</span>
+        <span class="logo-pill">Microsoft</span>
+        <span class="logo-pill">GAP Inc</span>
+        <span class="logo-pill">Deloitte</span>
+        <span class="logo-pill">Nordstrom</span>
+        <span class="logo-pill">Upwork</span>
+        <span class="logo-pill">TeamViewer</span>
+        <span class="logo-pill">MAQ Software</span>
+        <span class="logo-pill">Wheels Up</span>
+        <span class="logo-pill">Swire Coca-Cola</span>
+        <span class="logo-pill">WBD</span>
+        <span class="logo-pill">& many more</span>
       </div>
     </div>
 
-    <!-- FAQ -->
-    <section id="faq" class="mx-auto container-max px-6 py-10">
-      <h2 class="text-2xl font-bold">FAQ</h2>
-      <div class="mt-6 space-y-4 text-gray-300">
-        <div>
-          <div class="font-semibold">Who is this for?</div>
-          <div class="text-sm text-gray-400">Anyone who wants practical AI skills — technical people, non-tech people, product teams, designers, marketers, and founders.</div>
-        </div>
-        <div>
-          <div class="font-semibold">Do I need to code?</div>
-          <div class="text-sm text-gray-400">No. Our cohorts focus on no-code tools, vibe-coding approaches, prompt engineering, and small, practical projects you can finish in weeks.</div>
-        </div>
-        <div>
-          <div class="font-semibold">How long is the program?</div>
-          <div class="text-sm text-gray-400">4 weekly live sessions (90 mins each), followed by a 2–3 week independent capstone build period, and a final group session for project review and doubt clearing. Total: approximately 7–8 weeks from start to finish.</div>
-        </div>
-        <div>
-          <div class="font-semibold">Why is the fee non-refundable?</div>
-          <div class="text-sm text-gray-400">We keep cohorts to 20 seats max. When someone commits a seat and doesn't show up, it takes the spot from someone who would've. The commitment fee protects the group's experience.</div>
-        </div>
-        <div>
-          <div class="font-semibold">What tools will we use?</div>
-          <div class="text-sm text-gray-400">A mix of no-code platforms, AI playgrounds, and simple notebooks. Expect hands-on tutorials using approachable tools — ChatGPT, Claude, n8n, Lovable, and more.</div>
-        </div>
-        <div>
-          <div class="font-semibold">What is the Approachable learning platform?</div>
-          <div class="text-sm text-gray-400">All enrolled students get access to the Approachable learners platform — a dedicated learning hub with quizzes, progress tracking, leaderboard, an interactive prompting guide, and sample prompts to practice between sessions.</div>
-        </div>
-        <div>
-          <div class="font-semibold">How does the AI assistant help?</div>
-          <div class="text-sm text-gray-400">The assistant sends reminders (WhatsApp/email), summarizes weekly sessions, creates quick quizzes and flashcards, and nudges members to submit exercises.</div>
+    <hr class="divider" />
+
+    <!-- CURRICULUM -->
+    <section id="curriculum" style="background:var(--bg);">
+      <div class="container-max">
+        <div class="section-label">What you'll learn</div>
+        <div class="section-title">The full Claude curriculum</div>
+        <p class="section-sub">Four live sessions, each 90 minutes with hands-on activities. Then two weeks to build your capstone project.</p>
+
+        <div class="curriculum-wrap" style="margin-top:40px;">
+
+          <!-- Session 1 -->
+          <div class="curriculum-block">
+            <div class="curriculum-header">
+              <div class="curriculum-num">1</div>
+              <div>
+                <div class="curriculum-session-label">Session 1</div>
+                <div class="curriculum-title">AI Foundations + The Claude Context</div>
+              </div>
+            </div>
+            <div class="curriculum-body">
+              <div class="curriculum-tags">
+                <span class="curriculum-tag highlight">How LLMs work</span>
+                <span class="curriculum-tag highlight">Loop Engineering</span>
+                <span class="curriculum-tag">Key terms: tokens, hallucinations, MCP</span>
+                <span class="curriculum-tag">Human Capital vs Token Capital</span>
+                <span class="curriculum-tag">Where the industry is heading</span>
+                <span class="curriculum-tag">Open source model benchmarks</span>
+                <span class="curriculum-tag">Claude ecosystem overview</span>
+                <span class="curriculum-tag">Claude models explained</span>
+                <span class="curriculum-tag">How to access Claude: Chat, Code, Cowork, API</span>
+                <span class="curriculum-tag">Claude design principles</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Session 2 -->
+          <div class="curriculum-block">
+            <div class="curriculum-header">
+              <div class="curriculum-num">2</div>
+              <div>
+                <div class="curriculum-session-label">Session 2</div>
+                <div class="curriculum-title">Claude Chat & API — Deep Dive</div>
+              </div>
+            </div>
+            <div class="curriculum-body">
+              <div class="curriculum-tags">
+                <span class="curriculum-tag highlight">Prompt library & context management</span>
+                <span class="curriculum-tag highlight">Web search → Deep research workflow</span>
+                <span class="curriculum-tag">Internal knowledge vs external search</span>
+                <span class="curriculum-tag">Projects & Artifacts</span>
+                <span class="curriculum-tag">Connectors & customisation</span>
+                <span class="curriculum-tag">Calling the Claude API (intro)</span>
+                <span class="curriculum-tag">🛠 Live project: build with Claude Chat</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Session 3 -->
+          <div class="curriculum-block">
+            <div class="curriculum-header">
+              <div class="curriculum-num">3</div>
+              <div>
+                <div class="curriculum-session-label">Session 3</div>
+                <div class="curriculum-title">Claude Code — Agentic Development</div>
+              </div>
+            </div>
+            <div class="curriculum-body">
+              <div class="curriculum-tags">
+                <span class="curriculum-tag highlight">CLAUDE.md — memory and context files</span>
+                <span class="curriculum-tag highlight">Skills, MCP, Hooks, Plugins, Routines</span>
+                <span class="curriculum-tag highlight">Loop Engineering in code</span>
+                <span class="curriculum-tag">Claude Code in large projects — best practices</span>
+                <span class="curriculum-tag">Working with codebases you didn't write</span>
+                <span class="curriculum-tag">🛠 Live project: ship something with Claude Code</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Session 4 -->
+          <div class="curriculum-block">
+            <div class="curriculum-header">
+              <div class="curriculum-num">4</div>
+              <div>
+                <div class="curriculum-session-label">Session 4</div>
+                <div class="curriculum-title">Claude Cowork, Chrome & Live Artifacts</div>
+              </div>
+            </div>
+            <div class="curriculum-body">
+              <div class="curriculum-tags">
+                <span class="curriculum-tag highlight">Claude Cowork: Schedule & Dispatch</span>
+                <span class="curriculum-tag highlight">Claude in Chrome — browsing agent</span>
+                <span class="curriculum-tag highlight">Live Artifacts</span>
+                <span class="curriculum-tag">Automating multi-step knowledge work</span>
+                <span class="curriculum-tag">🛠 Live project: end-to-end Cowork workflow</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Capstone -->
+          <div class="curriculum-block" style="border:2px solid var(--accent);">
+            <div class="curriculum-header" style="background:var(--accent-light);">
+              <div class="curriculum-num" style="background:var(--text-primary);">✦</div>
+              <div>
+                <div class="curriculum-session-label">Weeks 5–6</div>
+                <div class="curriculum-title">Capstone Projects + Cohort Completion</div>
+              </div>
+            </div>
+            <div class="curriculum-body">
+              <div class="curriculum-tags">
+                <span class="curriculum-tag highlight">2 capstone projects you choose</span>
+                <span class="curriculum-tag">Focused doubt-clearing sessions</span>
+                <span class="curriculum-tag">Demo to the group</span>
+                <span class="curriculum-tag">Portfolio-ready output</span>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
+
+    <hr class="divider" />
+
+    <!-- OUTCOMES -->
+    <section id="outcomes" style="background:var(--bg-warm);">
+      <div class="container-max">
+        <div class="section-label">After 6 weeks</div>
+        <div class="section-title">What you'll be able to do</div>
+        <div class="outcomes-grid">
+          <div class="outcome-card">
+            <div class="outcome-icon">⚡</div>
+            <h3>Work with Claude end-to-end</h3>
+            <p>From a simple chat prompt to a multi-tool Claude Code project — you'll know which product to reach for and how to use it well.</p>
+          </div>
+          <div class="outcome-card">
+            <div class="outcome-icon">🛠</div>
+            <h3>Build with Claude Code</h3>
+            <p>CLAUDE.md, MCP integrations, hooks and plugins. Ship real software using agentic coding — not just assisted autocomplete.</p>
+          </div>
+          <div class="outcome-card">
+            <div class="outcome-icon">🔁</div>
+            <h3>Apply Loop Engineering</h3>
+            <p>Design AI workflows that iterate, self-correct, and compound — the pattern that separates one-shot prompts from production systems.</p>
+          </div>
+          <div class="outcome-card">
+            <div class="outcome-icon">📂</div>
+            <h3>Manage context like a senior user</h3>
+            <p>Prompt libraries, Projects, deep research, Artifacts — you'll know how to give Claude exactly the right context for any task.</p>
+          </div>
+          <div class="outcome-card">
+            <div class="outcome-icon">🤖</div>
+            <h3>Automate knowledge work</h3>
+            <p>Claude Cowork, Chrome, and Dispatch — use Claude as an active agent across your workflows, not just a question-answering tool.</p>
+          </div>
+          <div class="outcome-card">
+            <div class="outcome-icon">🚀</div>
+            <h3>Ship a real capstone project</h3>
+            <p>Two projects you pick. Demo-ready by the end. Something you can show a team, a client, or an investor.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- HOW IT WORKS -->
+    <section id="how">
+      <div class="container-max">
+        <div class="section-label">Process</div>
+        <div class="section-title">How the cohort works</div>
+        <div class="how-grid">
+          <div class="how-card">
+            <div class="how-icon">📋</div>
+            <h3>Join the cohort</h3>
+            <p>Fill out the short form. We confirm your seat and send payment details within 24–48 hours.</p>
+          </div>
+          <div class="how-card">
+            <div class="how-icon">📖</div>
+            <h3>Pre-session materials</h3>
+            <p>Short videos and reading delivered before each session. Come ready to build, not to passively watch.</p>
+          </div>
+          <div class="how-card">
+            <div class="how-icon">🎙</div>
+            <h3>90-minute live sessions</h3>
+            <p>Mentor-led, hands-on, discussion-driven. Small group means every question gets answered.</p>
+          </div>
+          <div class="how-card">
+            <div class="how-icon">🏗</div>
+            <h3>Build your capstone</h3>
+            <p>Two weeks of independent building with mentor access for doubt-clearing, then a live demo.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- MENTOR -->
+    <section id="mentor" style="background:var(--bg-warm);">
+      <div class="container-max">
+        <div class="section-label" style="text-align:center;">Your mentor</div>
+        <div class="section-title" style="text-align:center;">Meet Ranbeer</div>
+        <div class="mentor-card">
+          <div>
+            <img src="/img/Ranbeer makin aug 22.jpg" alt="Ranbeer Makin" class="mentor-photo" />
+          </div>
+          <div>
+            <div class="mentor-name">Ranbeer Makin</div>
+            <div class="mentor-role">Entrepreneur & AI Educator</div>
+            <a href="https://www.linkedin.com/in/ranbeer/" target="_blank" style="font-size:13px;color:var(--text-muted);text-decoration:none;display:inline-flex;align-items:center;gap:6px;margin-bottom:16px;">
+              <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              linkedin.com/in/ranbeer
+            </a>
+            <p style="font-size:14px;color:var(--text-secondary);line-height:1.6;margin-bottom:12px;">
+              Full-time entrepreneur, 3 years teaching AI to 250+ professionals from Gap, Deloitte, Microsoft, Upwork, and early-stage startups. Runs the cohorts as small, discussion-driven study groups — not lectures.
+            </p>
+            <div class="mentor-quote">
+              "I created Approachable because I believe anyone should be able to build with AI. My goal is 1 million students. This is my way of giving back."
+            </div>
+            <div class="mentor-stats">
+              <div class="mentor-stat"><div class="val">250+</div><div class="lbl">Students</div></div>
+              <div class="mentor-stat"><div class="val">1M</div><div class="lbl">Goal</div></div>
+              <div class="mentor-stat"><div class="val">3 yrs</div><div class="lbl">Teaching</div></div>
+              <div class="mentor-stat"><div class="val">4.9★</div><div class="lbl">Rating</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonials -->
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"We've all played around with ChatGPT, but this was about crossing the bridge from using AI to actually building with it. I walked away with a live project — BotaniScan AI."</p>
+            <div class="testimonial-author">— Niraj K., Staff TPM at WBD</div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"Ranbeer distills complex topics like AI Agent architecture and Vibe Coding into hands-on, practical lessons. If you want to move from using AI to building with AI, this is the place."</p>
+            <div class="testimonial-author">— Venkatesh A., TPM at Wheels Up, ex-Microsoft</div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"These sessions helped me connect the dots and move beyond the hype. I feel much more confident navigating the AI space and integrating these insights into my workflow."</p>
+            <div class="testimonial-author">— Jitendra P., Software Architect</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- PRICING -->
+    <section id="pricing">
+      <div class="container-max" style="max-width:680px;">
+        <div class="section-label" style="text-align:center;">Pricing</div>
+        <div class="section-title" style="text-align:center;">One cohort. One price.</div>
+        <p class="section-sub" style="text-align:center;margin:0 auto;">Small non-refundable fee keeps the group serious. Every seat is reserved only after payment.</p>
+
+        <div class="pricing-card">
+          <div class="pricing-head">
+            <div>
+              <div style="font-size:12px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px;">India</div>
+              <div class="price-main" data-cohort-price-india>₹1,999</div>
+              <div class="price-sub" data-cohort-price-tagline-india></div>
+            </div>
+            <div>
+              <div style="font-size:12px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px;">International</div>
+              <div class="price-main" data-cohort-price-intl>$149</div>
+              <div class="price-sub" data-cohort-price-tagline-intl></div>
+            </div>
+          </div>
+
+          <ul class="pricing-includes">
+            <li><span class="check">✓</span> 4 live 90-min mentor-led sessions</li>
+            <li><span class="check">✓</span> Pre-session reading & video materials</li>
+            <li><span class="check">✓</span> Access to the Approachable learning platform</li>
+            <li><span class="check">✓</span> Quizzes, progress tracking, prompting guide</li>
+            <li><span class="check">✓</span> Session recordings shared after each class</li>
+            <li><span class="check">✓</span> WhatsApp community + mentor access between sessions</li>
+            <li><span class="check">✓</span> 2 capstone project slots (demo to the group)</li>
+          </ul>
+
+          <a href="https://learn.approachable.dev/registration" target="_blank" class="pricing-cta" data-cohort-form onclick="trackCTA('Pricing CTA','Pricing')">
+            Reserve My Seat for <span data-cohort-date-short></span> →
+          </a>
+          <p class="pricing-note">Only <span data-seats-left></span> seats remaining · Starts <span data-cohort-date></span> · <span data-cohort-time></span></p>
+        </div>
+
+        <!-- Capstone upgrade note -->
+        <div style="max-width:560px;margin:16px auto 0;background:var(--bg-warm);border:1px solid var(--border);border-radius:10px;padding:16px 20px;font-size:13px;color:var(--text-secondary);">
+          <strong style="color:var(--text-primary);">Past alumni</strong> from Cohorts 1–5 get free access to the recorded AI Fundamentals course and discounted access to this cohort. Reach out on WhatsApp or email to claim.
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- SIGN-UP -->
+    <section id="signup" class="signup-section">
+      <div class="container-max" style="max-width:680px;">
+        <div id="signupContent">
+          <div class="section-label" style="text-align:center;">Register</div>
+          <div class="section-title" style="text-align:center;">Here's what happens next</div>
+
+          <div class="signup-steps">
+            <div class="signup-step">
+              <div class="step-num">1</div>
+              <div>
+                <div class="step-title">Fill out the quick form</div>
+                <div class="step-desc">Tell us about yourself and what you're trying to build. Takes 2 minutes.</div>
+              </div>
+            </div>
+            <div class="signup-step">
+              <div class="step-num">2</div>
+              <div>
+                <div class="step-title">We'll reach out in 24–48 hrs</div>
+                <div class="step-desc">Seat confirmed + payment link for <span data-cohort-price-india></span> / <span data-cohort-price-intl></span>.</div>
+              </div>
+            </div>
+            <div class="signup-step">
+              <div class="step-num">3</div>
+              <div>
+                <div class="step-title">Start learning <span data-cohort-date-short></span></div>
+                <div class="step-desc">Cohort workspace + Week 1 materials arrive before your first session.</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="text-align:center;">
+            <a href="https://learn.approachable.dev/registration" target="_blank" class="btn-primary" data-cohort-form onclick="trackCTA('Signup Section CTA','Signup')">
+              Reserve My Seat →
+            </a>
+            <p style="font-size:13px;color:var(--text-muted);margin-top:12px;">
+              Only <span data-seats-left></span> seats remaining · <span data-cohort-date></span>
+            </p>
+          </div>
+
+          <div style="display:flex;justify-content:center;gap:24px;margin-top:24px;flex-wrap:wrap;">
+            <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-muted);">
+              <span>🔒</span> Your data is private
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-muted);">
+              <span>❓</span> No question is too basic
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-muted);">
+              <span>🎓</span> 250+ alumni taught
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="container-max" style="max-width:680px;">
+        <div class="section-title">FAQ</div>
+        <div class="faq-list" style="margin-top:24px;">
+          <div class="faq-item">
+            <div class="faq-q">Who is this cohort for?</div>
+            <div class="faq-a">Anyone who uses or wants to use Claude seriously — developers, PMs, founders, consultants, and tech professionals who want to go beyond chat prompts and actually build with the Claude ecosystem.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Do I need to know how to code?</div>
+            <div class="faq-a">Helpful but not required. Claude Code sessions assume basic familiarity with files and terminals. Everything else is accessible to non-developers. We'll calibrate to the group.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">How long is the program?</div>
+            <div class="faq-a">4 live sessions (90 mins each), followed by a 2-week capstone build period and a final demo session. Roughly 6–7 weeks start to finish.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Why is the fee non-refundable?</div>
+            <div class="faq-a">We cap at 20 seats. When someone takes a seat and doesn't show, it costs another learner their spot. The commitment fee protects the group experience — it's the same reason the cohort model works.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">What's the Approachable learning platform?</div>
+            <div class="faq-a">All enrolled students get access to a dedicated hub with quizzes, a progress tracker, leaderboard, an interactive prompting guide, and sample prompts to practice between sessions.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">I was in a previous cohort — can I join this one?</div>
+            <div class="faq-a">Yes, and we'd love to have you back. Reach out directly — past alumni get a discounted rate. You'll also get free access to the recorded AI Fundamentals course.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <footer class="border-t border-white/5 mt-12 py-8">
-    <div class="mx-auto container-max px-6 flex flex-col md:flex-row items-center justify-between">
-      <div class="text-sm text-gray-400">© 2026 Approachable • making AI approachable</div>
-      <div class="mt-4 md:mt-0 space-x-4">
-        <a href="#" class="text-gray-400 text-sm">Privacy</a>
-        <a href="#" class="text-gray-400 text-sm">Terms</a>
+  <!-- IMAGE MODAL -->
+  <div id="imageModal" class="modal" onclick="closeModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <img id="modalImage" src="" alt="" class="modal-image" />
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div style="font-size:13px;">© 2026 Approachable · making AI approachable for everyone</div>
+      <div style="display:flex;gap:20px;">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="https://www.linkedin.com/in/ranbeer/" target="_blank">LinkedIn</a>
       </div>
     </div>
   </footer>
 
-  <!-- FLOATING CTA BAR -->
-  <div id="floatingCta" class="fixed bottom-0 left-0 right-0 z-50 bg-gradient-to-r from-indigo-700 to-purple-700 text-white py-3 px-6 shadow-2xl transform translate-y-full transition-transform duration-500 ease-out">
-    <div class="mx-auto container-max flex items-center justify-between gap-4">
-      <div class="text-sm font-semibold hidden sm:block">🔥 Only <span data-seats-left></span> seats left for the <span data-cohort-date-short></span> cohort</div>
-      <div class="flex items-center gap-3 ml-auto">
-        <a href="#signup" class="inline-flex items-center px-6 py-2 bg-white text-indigo-700 rounded-lg font-bold text-sm hover:bg-gray-100 transition-all" onclick="trackCTA('Reserve Seat','Floating CTA')">
-          Reserve My Seat →
-        </a>
-        <button onclick="document.getElementById('floatingCta').style.display='none'" class="text-white/60 hover:text-white text-xl leading-none">&times;</button>
+  <!-- FLOATING CTA -->
+  <div id="floatingCta">
+    <div class="floating-inner">
+      <div class="floating-text">🔥 Only <span data-seats-left></span> seats left · Cohort 6 starts <span data-cohort-date-short></span></div>
+      <div class="floating-actions">
+        <a href="#pricing" class="floating-cta-btn" onclick="trackCTA('Floating CTA','Float')">Reserve My Seat →</a>
+        <button class="floating-close" onclick="document.getElementById('floatingCta').style.display='none'">&times;</button>
       </div>
     </div>
   </div>
 
   <script>
-    function openModal(imageSrc) {
-      const modal = document.getElementById('imageModal');
-      document.getElementById('modalImage').src = imageSrc;
-      modal.classList.add('active');
+    function openModal(src) {
+      document.getElementById('modalImage').src = src;
+      document.getElementById('imageModal').classList.add('active');
       document.body.style.overflow = 'hidden';
     }
-    function closeModal(event) {
+    function closeModal(e) {
       document.getElementById('imageModal').classList.remove('active');
       document.body.style.overflow = 'auto';
     }
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-    function trackCTA(label, location) {
-      gtag('event', 'begin_checkout', { event_category: 'Funnel', button_location: location, button_text: label });
-      gtag('event', 'cta_click', { event_category: 'CTA', event_label: label, location });
-    }
-    function trackNavigation(label, location) {
-      gtag('event', 'navigation_click', { event_category: 'Navigation', event_label: label, location });
-    }
-    function trackExternalLink(destination, location) {
-      gtag('event', 'generate_lead', { event_category: 'Funnel', event_label: 'Form Started', form_destination: destination, click_location: location });
-    }
-
-    window.addEventListener('load', function() {
-      if (typeof Vimeo !== 'undefined') {
-        var player = new Vimeo.Player(document.querySelector('#vimeoPlayer'));
-        player.on('play', () => gtag('event', 'video_play', { event_category: 'Video', event_label: 'AI Fundamentals Demo' }));
-        player.on('ended', () => gtag('event', 'video_complete', { event_category: 'Video', event_label: 'AI Fundamentals Demo' }));
+    // Floating CTA on scroll
+    var floatingShown = false;
+    window.addEventListener('scroll', function () {
+      if (floatingShown) return;
+      var pct = (window.scrollY + window.innerHeight) / document.body.scrollHeight;
+      if (pct >= 0.55) {
+        floatingShown = true;
+        document.getElementById('floatingCta').style.transform = 'translateY(0)';
       }
-    });
-
-    var sectionTracked = { outcomes: false, mentor: false, signup: false };
-    var scrollTimeout;
-    window.addEventListener('scroll', function() {
-      if (scrollTimeout) clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(function() {
-        var pos = window.scrollY + window.innerHeight;
-        ['outcomes','mentor','signup'].forEach(function(id) {
-          if (!sectionTracked[id]) {
-            var el = document.getElementById(id);
-            if (el && pos >= el.offsetTop + 100) {
-              sectionTracked[id] = true;
-              gtag('event', 'scroll_to_section', { event_category: 'Engagement', event_label: id + ' Section Viewed' });
-            }
-          }
-        });
-      }, 150);
     });
 
     // Boot
-    originalSignupContent = document.getElementById('signupContent').innerHTML;
     initPage();
-
-    // Floating CTA — show after 60% scroll depth
-    var floatingCtaShown = false;
-    window.addEventListener('scroll', function() {
-      if (floatingCtaShown) return;
-      var scrollPct = (window.scrollY + window.innerHeight) / document.body.scrollHeight;
-      if (scrollPct >= 0.6) {
-        floatingCtaShown = true;
-        var bar = document.getElementById('floatingCta');
-        if (bar) bar.style.transform = 'translateY(0)';
-      }
-    });
   </script>
 </body>
 </html>
