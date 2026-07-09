@@ -440,6 +440,7 @@
     .pricing-head { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; }
     .price-block {}
     .price-main { font-size: 42px; font-weight: 800; color: var(--text-primary); line-height: 1; }
+    .price-original { font-size: 18px; font-weight: 600; color: var(--text-muted); text-decoration: line-through; margin-right: 8px; }
     .price-sub { font-size: 14px; color: var(--text-muted); margin-top: 4px; }
     .price-tagline {
       font-size: 12px;
@@ -621,6 +622,8 @@
       studentsTotal: '250+',
       priceIndia: '₹3,999',
       priceIntl: '$149',
+      originalPriceIndia: '₹7,999',
+      originalPriceIntl: '$299',
       capstonePriceIndia: '₹1,000',
       capstonePriceIntl: '$49',
       priceTaglineIndia: "That's just ₹999 per live session with your mentor",
@@ -646,6 +649,8 @@
       document.querySelectorAll('[data-cohort-time]').forEach(el => el.textContent = COHORT.time);
       document.querySelectorAll('[data-cohort-price-india]').forEach(el => el.textContent = COHORT.priceIndia);
       document.querySelectorAll('[data-cohort-price-intl]').forEach(el => el.textContent = COHORT.priceIntl);
+      document.querySelectorAll('[data-cohort-original-price-india]').forEach(el => el.textContent = COHORT.originalPriceIndia);
+      document.querySelectorAll('[data-cohort-original-price-intl]').forEach(el => el.textContent = COHORT.originalPriceIntl);
       document.querySelectorAll('[data-cohort-price-tagline-india]').forEach(el => el.textContent = COHORT.priceTaglineIndia);
       document.querySelectorAll('[data-cohort-price-tagline-intl]').forEach(el => el.textContent = COHORT.priceTaglineIntl);
       document.querySelectorAll('[data-cohort-price-per-session-india]').forEach(el => el.textContent = COHORT.pricePerSessionIndia);
@@ -725,7 +730,7 @@
             <div class="cohort-meta-item">📅 <strong>Starts <span data-cohort-date></span></strong> &nbsp;·&nbsp; <span data-cohort-time></span></div>
             <div class="cohort-meta-item">👥 <strong>Max 20 seats</strong> &nbsp;·&nbsp; Small group, discussion-driven</div>
             <div class="cohort-meta-item">⏱ <strong>4 live sessions (each week)</strong> &nbsp;·&nbsp; 90 min each + capstone build</div>
-            <div class="cohort-meta-item">💰 <strong>India: <span data-cohort-price-india></span></strong> &nbsp;·&nbsp; <strong>International: <span data-cohort-price-intl></span></strong></div>
+            <!-- <div class="cohort-meta-item">💰 <strong>India: <span data-cohort-price-india></span></strong> &nbsp;·&nbsp; <strong>International: <span data-cohort-price-intl></span></strong></div> -->
           </div>
           <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end;">
             <span id="seatsBadge" class="cohort-badge">20 seats left</span>
@@ -1036,12 +1041,12 @@
           <div class="pricing-head">
             <div>
               <div style="font-size:12px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px;">India</div>
-              <div class="price-main" data-cohort-price-india>₹1,999</div>
+              <div><span class="price-original" data-cohort-original-price-india>₹7,999</span><span class="price-main" data-cohort-price-india>₹3,999</span></div>
               <div class="price-sub" data-cohort-price-tagline-india></div>
             </div>
             <div>
               <div style="font-size:12px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px;">International</div>
-              <div class="price-main" data-cohort-price-intl>$149</div>
+              <div><span class="price-original" data-cohort-original-price-intl>$299</span><span class="price-main" data-cohort-price-intl>$149</span></div>
               <div class="price-sub" data-cohort-price-tagline-intl></div>
             </div>
           </div>
