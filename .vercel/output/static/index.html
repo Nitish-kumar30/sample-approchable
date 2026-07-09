@@ -617,19 +617,19 @@
       day: 'Thursday',
       time: '7:30 PM IST / 10 AM US Eastern',
       seatsTotal: 20,
-      seatsLeft: 20,
+      seatsLeft: 10,
       prevCohortDate: 'Apr 23',
       studentsTotal: '250+',
-      priceIndia: '₹3,999',
-      priceIntl: '$149',
-      originalPriceIndia: '₹7,999',
-      originalPriceIntl: '$299',
+      priceIndia: '₹2,999',
+      priceIntl: '$99',
+      originalPriceIndia: '₹5,999',
+      originalPriceIntl: '$199',
       capstonePriceIndia: '₹1,000',
       capstonePriceIntl: '$49',
-      priceTaglineIndia: "That's just ₹999 per live session with your mentor",
-      priceTaglineIntl: "That's just $37 per live session with your mentor",
-      pricePerSessionIndia: '₹999',
-      pricePerSessionIntl: '$49',
+      priceTaglineIndia: "That's just ₹749 per live session with your mentor",
+      priceTaglineIntl: "That's just $24.99 per live session with your mentor",
+      pricePerSessionIndia: '₹749',
+      pricePerSessionIntl: '$24.99',
       formUrl: 'https://learn.approachable.dev/registration',
     };
     // ============================================================
@@ -641,7 +641,7 @@
       } else if (COHORT.state === 'early') {
         banner.innerHTML = `${COHORT.prevCohortDate} cohort filled all ${COHORT.seatsTotal} seats &nbsp;•&nbsp; Early seats open for ${COHORT.dateShort} cohort <a href="#pricing" onclick="trackCTA('Banner','Top')">Reserve Seat →</a>`;
       } else {
-        banner.innerHTML = `🔥 Cohort 6 starts ${COHORT.dateShort} &nbsp;•&nbsp; Only <strong>${COHORT.seatsLeft}</strong> of ${COHORT.seatsTotal} seats available <a href="#pricing" onclick="trackCTA('Banner','Top')">Reserve Seat →</a>`;
+        banner.innerHTML = `🔥 Cohort 6 starts ${COHORT.dateShort} &nbsp;•&nbsp; Only ${COHORT.seatsLeft} seats left <a href="#pricing" onclick="trackCTA('Banner','Top')">Reserve Seat →</a>`;
       }
 
       document.querySelectorAll('[data-cohort-date]').forEach(el => el.textContent = COHORT.date);
@@ -718,7 +718,7 @@
         <p style="font-size:13px;color:var(--text-muted);margin:0 auto 12px;font-weight:500;">Mentor: Ranbeer Makin</p>
         <p>A small, mentor-led study group covering Claude Chat, Claude Code, Claude Cowork, and the Claude API — from first principles to live projects.</p>
         <div class="hero-actions">
-          <a href="#pricing" class="btn-primary" onclick="trackCTA('Hero Primary','Hero')">Get Claude-Capable in 6 Weeks →</a>
+          <a href="#pricing" class="btn-primary" onclick="trackCTA('Hero Primary','Hero')">Get Claude-Capable →</a>
           <a href="#curriculum" class="btn-secondary">See the Curriculum</a>
         </div>
       </div>
@@ -729,11 +729,11 @@
           <div class="cohort-meta">
             <div class="cohort-meta-item">📅 <strong>Starts <span data-cohort-date></span></strong> &nbsp;·&nbsp; <span data-cohort-time></span></div>
             <div class="cohort-meta-item">👥 <strong>Max 20 seats</strong> &nbsp;·&nbsp; Small group, discussion-driven</div>
-            <div class="cohort-meta-item">⏱ <strong>4 live sessions (each week)</strong> &nbsp;·&nbsp; 90 min each + capstone build</div>
+            <div class="cohort-meta-item">⏱ <strong>4 live sessions (each week)</strong> &nbsp;·&nbsp; 60-90 min each + capstone build</div>
             <!-- <div class="cohort-meta-item">💰 <strong>India: <span data-cohort-price-india></span></strong> &nbsp;·&nbsp; <strong>International: <span data-cohort-price-intl></span></strong></div> -->
           </div>
           <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end;">
-            <span id="seatsBadge" class="cohort-badge">20 seats left</span>
+            <span id="seatsBadge" class="cohort-badge">20 seats only</span>
           </div>
         </div>
       </div>
@@ -785,7 +785,7 @@
       <div class="container-max">
         <div class="section-label">What you'll learn</div>
         <div class="section-title">The full Claude curriculum</div>
-        <p class="section-sub">Four live sessions, each 90 minutes with hands-on activities. Then two weeks to build your capstone project.</p>
+        <p class="section-sub">Four live sessions, each 60-90 minutes with hands-on activities. Then two weeks to build your capstone project.</p>
 
         <div class="curriculum-wrap" style="margin-top:40px;">
 
@@ -1055,7 +1055,7 @@
           </div>
 
           <ul class="pricing-includes">
-            <li><span class="check">✓</span> 4 live 90-min mentor-led sessions</li>
+            <li><span class="check">✓</span> 4 live 60-90-min mentor-led sessions</li>
             <li><span class="check">✓</span> Pre-session reading & video materials</li>
             <li><span class="check">✓</span> Access to the Approachable learning platform</li>
             <li><span class="check">✓</span> Quizzes, progress tracking, prompting guide</li>
@@ -1067,13 +1067,13 @@
           <a href="https://learn.approachable.dev/registration" target="_blank" rel="noopener noreferrer" class="pricing-cta" data-cohort-form onclick="trackCTA('Pricing CTA','Pricing')">
             Claim My Seat for <span data-cohort-date-short></span> →
           </a>
-          <p class="pricing-note">Only <span data-seats-left></span> seats remaining · Starts <span data-cohort-date></span> · <span data-cohort-time></span></p>
+          <p class="pricing-note">Only <span data-seats-left></span> seats · Starts <span data-cohort-date></span> · <span data-cohort-time></span></p>
         </div>
 
-        <!-- Capstone upgrade note -->
-        <div style="max-width:560px;margin:16px auto 0;background:var(--bg-warm);border:1px solid var(--border);border-radius:10px;padding:16px 20px;font-size:13px;color:var(--text-secondary);">
-          <strong style="color:var(--text-primary);">Past alumni</strong> from Cohorts 1–5 get free access to the recorded AI Fundamentals course and discounted access to this cohort. Reach out on WhatsApp or email to claim.
-        </div>
+        <!-- <!-- Capstone upgrade note --> 
+        <!-- <div style="max-width:560px;margin:16px auto 0;background:var(--bg-warm);border:1px solid var(--border);border-radius:10px;padding:16px 20px;font-size:13px;color:var(--text-secondary);"> -->
+          <!-- <strong style="color:var(--text-primary);">Past alumni</strong> from Cohorts 1–5 get free access to the recorded AI Fundamentals course and discounted access to this cohort. Reach out on WhatsApp or email to claim. -->
+        <!-- </div> -->
       </div>
     </section>
 
@@ -1196,7 +1196,7 @@
     <div class="floating-inner">
       <div class="floating-text">🔥 Only <span data-seats-left></span> seats left · Cohort 6 starts <span data-cohort-date-short></span></div>
       <div class="floating-actions">
-        <a href="#pricing" class="floating-cta-btn" onclick="trackCTA('Floating CTA','Float')">Get One of 20 Seats →</a>
+        <a href="#pricing" class="floating-cta-btn" onclick="trackCTA('Floating CTA','Float')">Get One of <span data-seats-left></span> Seats →</a>
         <button class="floating-close" onclick="document.getElementById('floatingCta').style.display='none'">&times;</button>
       </div>
     </div>
