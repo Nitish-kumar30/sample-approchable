@@ -10,12 +10,12 @@
   <meta property="og:site_name" content="Approachable" />
   <meta property="og:title" content="AI Mastery for Working Professionals — Approachable" />
   <meta property="og:description" content="AI is changing how we work—but most professionals don't know where to begin. Move from AI Curious to AI Capable through practical, hands-on learning." />
-  <meta property="og:image" content="https://approachable.dev/img/og_img_3.png" />
+  <meta property="og:image" content="https://www.approachable.dev/og_image_3.png" />
   <meta property="og:image:alt" content="Approachable — your AI journey starts here" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="AI Mastery for Working Professionals — Approachable" />
   <meta name="twitter:description" content="AI is changing how we work—but most professionals don't know where to begin. Move from AI Curious to AI Capable through practical, hands-on learning." />
-  <meta name="twitter:image" content="https://approachable.dev/img/og_img_3.png" />
+  <meta name="twitter:image" content="https://www.approachable.dev/og_image_3.png" />
   <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 
@@ -37,6 +37,7 @@
   --shadow-md: 0 4px 6px -1px hsl(200 25% 15% / 0.08), 0 2px 4px -2px hsl(200 25% 15% / 0.05);
   --shadow-lg: 0 10px 15px -3px hsl(200 25% 15% / 0.1), 0 4px 6px -4px hsl(200 25% 15% / 0.05);
   --mobile-nav-height: 4rem;
+  --sticky-pay-height: 4.5rem;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -212,13 +213,33 @@ main { flex: 1; padding: 2rem 0 5rem; }
 .curriculum-list { list-style: none; margin: 0; padding: 0; }
 .curriculum-list > li + li { border-top: 1px solid hsl(var(--border)); }
 .curriculum-row {
-  display: flex; align-items: center; justify-content: space-between;
+  display: flex; align-items: flex-start; justify-content: space-between;
   gap: 0.75rem; padding: 0.75rem 1rem;
 }
 .curriculum-row.clickable { cursor: pointer; }
 .curriculum-row.clickable:hover { background: hsl(var(--muted) / 0.5); }
 .curriculum-row.locked { color: hsl(var(--muted-foreground)); }
-.curriculum-row-left { display: flex; align-items: center; gap: 0.75rem; min-width: 0; flex: 1; }
+.curriculum-row-left { display: flex; align-items: flex-start; gap: 0.75rem; min-width: 0; flex: 1; }
+.curriculum-row .truncate {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  line-height: 1.4;
+  font-size: 0.875rem;
+}
+.curriculum-row .row-num,
+.curriculum-row .icon-sm { margin-top: 0.125rem; }
+.curriculum-row .btn-preview { align-self: center; }
+@media (max-width: 640px) {
+  .curriculum-row.clickable {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+  .curriculum-row.clickable .btn-preview { align-self: flex-end; }
+}
 .row-num {
   width: 1.5rem; flex-shrink: 0; text-align: center;
   font-size: 0.875rem; color: hsl(var(--muted-foreground)); font-variant-numeric: tabular-nums;
@@ -286,7 +307,9 @@ main { flex: 1; padding: 2rem 0 5rem; }
 
 .footer {
   border-top: 1px solid hsl(var(--border));
-  padding: 1.5rem 0; margin-top: auto;
+  padding: 1.5rem 0;
+  padding-bottom: calc(1.5rem + var(--sticky-pay-height) + env(safe-area-inset-bottom, 0px));
+  margin-top: auto;
   text-align: center; font-size: 0.75rem; color: hsl(var(--muted-foreground));
 }
 @media (min-width: 640px) { .footer { font-size: 0.875rem; } }
@@ -1060,7 +1083,6 @@ main { flex: 1; padding: 2rem 0 5rem; }
   <footer class="footer">
     <div class="container">
       <p>© 2026 Approachable.dev. All rights reserved. For support, contact: ranbeer@gmail.com</p>
-      <p class="text-sm" style="margin-top:0.5rem">Static export generated 2026-07-28T07:07:01.041Z</p>
     </div>
   </footer>
 
