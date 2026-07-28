@@ -5,6 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AI Mastery for Working Professionals — Approachable</title>
   <meta name="description" content="AI is changing how we work—but most professionals don't know where to begin. This course is designed to help you move from **AI Curious** to **AI Capable** thro" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.approachable.dev/courses/ai-mastery-for-working-professionals.html" />
+  <meta property="og:site_name" content="Approachable" />
+  <meta property="og:title" content="AI Mastery for Working Professionals — Approachable" />
+  <meta property="og:description" content="AI is changing how we work—but most professionals don't know where to begin. Move from AI Curious to AI Capable through practical, hands-on learning." />
+  <meta property="og:image" content="https://www.approachable.dev/og_image_3.png" />
+  <meta property="og:image:alt" content="Approachable — your AI journey starts here" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AI Mastery for Working Professionals — Approachable" />
+  <meta name="twitter:description" content="AI is changing how we work—but most professionals don't know where to begin. Move from AI Curious to AI Capable through practical, hands-on learning." />
+  <meta name="twitter:image" content="https://www.approachable.dev/og_image_3.png" />
   <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 
@@ -102,7 +113,15 @@ main { flex: 1; padding: 2rem 0 5rem; }
 .content-main { display: flex; flex-direction: column; gap: 2rem; min-width: 0; }
 @media (min-width: 1024px) {
   .course-layout { grid-template-columns: 1fr 320px; align-items: start; }
-  .course-info-panel { position: sticky; top: 1.5rem; }
+  .content-main { display: contents; }
+  .content-main > :not(.course-info-panel) { grid-column: 1; }
+  .course-info-panel {
+    grid-column: 2;
+    grid-row: 1 / -1;
+    position: sticky;
+    top: 1.5rem;
+    align-self: start;
+  }
 }
 
 .course-info-panel { overflow: hidden; }
@@ -316,6 +335,39 @@ main { flex: 1; padding: 2rem 0 5rem; }
           <div class="meta"><span>Recorded</span></div>
         </div>
       </div>
+
+      <aside class="course-info-panel card-elevated">
+      <div class="panel-body">
+        <a class="btn-primary btn-block" href="https://learn.approachable.dev/courses/ai-mastery-for-working-professionals">
+          Enroll Now
+        </a>
+        <ul class="panel-details">
+          <li>
+            <svg class="icon panel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 7 13.5 15.5 8.5 10.5 2 17"/><path d="M16 7h6v6"/></svg>
+            <span class="panel-label">Skill Level</span>
+            <strong class="panel-value">Beginner &amp; Intermediate</strong>
+          </li>
+          <li>
+            <svg class="icon panel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z"/></svg>
+            <span class="panel-label">Language</span>
+            <strong class="panel-value">English</strong>
+          </li>
+          <li>
+            <svg class="icon panel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+            <span class="panel-label">Certificate</span>
+            <strong class="panel-value">Available</strong>
+          </li>
+          <li>
+            <svg class="icon panel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42Z"/><circle cx="7.5" cy="7.5" r="1" fill="currentColor" stroke="none"/></svg>
+            <span class="panel-label">Fees</span>
+            <strong class="panel-value">
+              <span class="price-inr"><s>₹1,999</s> ₹999</span>
+              <span class="price-usd"><s>$99</s> $49</span>
+            </strong>
+          </li>
+        </ul>
+      </div>
+    </aside>
 
       <hr class="separator" />
 
@@ -964,39 +1016,6 @@ main { flex: 1; padding: 2rem 0 5rem; }
         </div></div>
       </section>
     </div>
-
-    <aside class="course-info-panel card-elevated">
-      <div class="panel-body">
-        <a class="btn-primary btn-block" href="https://learn.approachable.dev/courses/ai-mastery-for-working-professionals">
-          Enroll Now
-        </a>
-        <ul class="panel-details">
-          <li>
-            <svg class="icon panel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 7 13.5 15.5 8.5 10.5 2 17"/><path d="M16 7h6v6"/></svg>
-            <span class="panel-label">Skill Level</span>
-            <strong class="panel-value">Beginner &amp; Intermediate</strong>
-          </li>
-          <li>
-            <svg class="icon panel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z"/></svg>
-            <span class="panel-label">Language</span>
-            <strong class="panel-value">English</strong>
-          </li>
-          <li>
-            <svg class="icon panel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
-            <span class="panel-label">Certificate</span>
-            <strong class="panel-value">Available</strong>
-          </li>
-          <li>
-            <svg class="icon panel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42Z"/><circle cx="7.5" cy="7.5" r="1" fill="currentColor" stroke="none"/></svg>
-            <span class="panel-label">Fees</span>
-            <strong class="panel-value">
-              <span class="price-inr"><s>₹1,999</s> ₹999</span>
-              <span class="price-usd"><s>$99</s> $49</span>
-            </strong>
-          </li>
-        </ul>
-      </div>
-    </aside>
 
     </div>
     </div>
