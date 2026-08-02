@@ -162,6 +162,8 @@ main { flex: 1; padding: 2rem 0 5rem; }
 .panel-label { flex: 1; font-size: 0.875rem; color: hsl(var(--muted-foreground)); }
 .panel-value { font-size: 0.875rem; font-weight: 600; text-align: right; }
 .panel-value .price-old, .panel-value s { text-decoration: line-through; color: hsl(var(--muted-foreground)); font-weight: 400; margin-right: 0.25rem; }
+.panel-value-stack { display: flex; flex-direction: column; align-items: flex-end; gap: 0.125rem; }
+.panel-sample-link { font-size: 0.75rem; font-weight: 500; white-space: nowrap; }
 .panel-summary { padding-top: 0.75rem; border-top: 1px solid hsl(var(--border) / 0.5); }
 .panel-summary + .panel-summary { margin-top: 0.75rem; }
 .panel-summary-title { font-size: 0.8125rem; font-weight: 600; margin: 0 0 0.5rem; color: hsl(var(--foreground)); }
@@ -411,7 +413,10 @@ main { flex: 1; padding: 2rem 0 5rem; }
           <li>
             <svg class="icon panel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
             <span class="panel-label">Certificate</span>
-            <strong class="panel-value">Available</strong>
+            <div class="panel-value-stack">
+              <strong class="panel-value">Available</strong>
+              <a href="https://learn.approachable.dev/sample-certificate" target="_blank" rel="noopener noreferrer" class="panel-sample-link">View sample certificate</a>
+            </div>
           </li>
           <li>
             <svg class="icon panel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42Z"/><circle cx="7.5" cy="7.5" r="1" fill="currentColor" stroke="none"/></svg>
@@ -539,19 +544,51 @@ main { flex: 1; padding: 2rem 0 5rem; }
             <span class="accordion-trigger-inner">
               <svg class="icon icon-sm text-primary accordion-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
               <svg class="icon icon-sm text-primary accordion-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"/></svg>
-              <span class="accordion-title">Session 1: Intro to AI &amp; Kickoff</span>
+              <span class="accordion-title">Session 1: Introduction to AI &amp; Kickoff</span>
             </span>
           </button>
           <div class="accordion-content">
             <ul class="curriculum-list">
               
-            <li class="curriculum-row clickable" data-preview-title="Course Introduction &amp; Objectives (Must watch)" data-preview-src="https://video.gumlet.io/6a55e53c2a1936a5c8df7efc/6a56f1452a1936a5c8fadff3/main.m3u8">
+            <li class="curriculum-row clickable" data-preview-title="Course Introduction" data-preview-src="https://video.gumlet.io/6a55e53c2a1936a5c8df7efc/6a6b0683731270e6e7906598/main.m3u8">
               <div class="curriculum-row-left">
                 <span class="row-num">1</span>
                 
-                <span class="truncate">Course Introduction &amp; Objectives (Must watch)</span>
+                <span class="truncate">Course Introduction</span>
               </div>
-              <button type="button" class="btn-preview" data-preview-title="Course Introduction &amp; Objectives (Must watch)" data-preview-src="https://video.gumlet.io/6a55e53c2a1936a5c8df7efc/6a56f1452a1936a5c8fadff3/main.m3u8">Preview</button>
+              <button type="button" class="btn-preview" data-preview-title="Course Introduction" data-preview-src="https://video.gumlet.io/6a55e53c2a1936a5c8df7efc/6a6b0683731270e6e7906598/main.m3u8">Preview</button>
+            </li>
+            <li class="curriculum-row locked" >
+              <div class="curriculum-row-left">
+                <span class="row-num">2</span>
+                <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span class="truncate">Course Objectives (Must watch)</span>
+              </div>
+              
+            </li>
+            <li class="curriculum-row locked" >
+              <div class="curriculum-row-left">
+                <span class="row-num">3</span>
+                <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span class="truncate">Two hot topics in AI currently</span>
+              </div>
+              
+            </li>
+            <li class="curriculum-row locked" >
+              <div class="curriculum-row-left">
+                <span class="row-num">4</span>
+                <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span class="truncate">AI layoffs</span>
+              </div>
+              
+            </li>
+            <li class="curriculum-row locked" >
+              <div class="curriculum-row-left">
+                <span class="row-num">5</span>
+                <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span class="truncate">AI native teams</span>
+              </div>
+              
             </li>
             <!-- preview removed to match live site
             <li class="curriculum-row clickable" data-preview-title="Course Structure &amp; The Learning Platform" data-preview-src="https://video.gumlet.io/6a55e53c2a1936a5c8df7efc/6a56f1452a1936a5c8fadff5/main.m3u8">
@@ -565,41 +602,9 @@ main { flex: 1; padding: 2rem 0 5rem; }
             -->
             <li class="curriculum-row locked" >
               <div class="curriculum-row-left">
-                <span class="row-num">2</span>
-                <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                <span class="truncate">Course Structure &amp; The Learning Platform</span>
-              </div>
-              
-            </li>
-            <li class="curriculum-row locked" >
-              <div class="curriculum-row-left">
-                <span class="row-num">3</span>
-                <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                <span class="truncate">AI Tools &amp; Course Roadmap</span>
-              </div>
-              
-            </li>
-            <li class="curriculum-row locked" >
-              <div class="curriculum-row-left">
-                <span class="row-num">4</span>
-                <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                <span class="truncate">History of AI &amp; Industry Evolution</span>
-              </div>
-              
-            </li>
-            <li class="curriculum-row locked" >
-              <div class="curriculum-row-left">
-                <span class="row-num">5</span>
-                <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                <span class="truncate">How LLMs Work</span>
-              </div>
-              
-            </li>
-            <li class="curriculum-row locked" >
-              <div class="curriculum-row-left">
                 <span class="row-num">6</span>
                 <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                <span class="truncate">LLM terms, ChatGPT &amp; Claude Personalization</span>
+                <span class="truncate">AI Interfaces &amp; Course Roadmap</span>
               </div>
               
             </li>
@@ -607,13 +612,69 @@ main { flex: 1; padding: 2rem 0 5rem; }
               <div class="curriculum-row-left">
                 <span class="row-num">7</span>
                 <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                <span class="truncate">Tool: Notebook LM</span>
+                <span class="truncate">History of AI &amp; Industry Evolution</span>
               </div>
               
             </li>
             <li class="curriculum-row locked" >
               <div class="curriculum-row-left">
                 <span class="row-num">8</span>
+                <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span class="truncate">Popular LLMs</span>
+              </div>
+              
+            </li>
+            <li class="curriculum-row locked" >
+              <div class="curriculum-row-left">
+                <span class="row-num">9</span>
+                <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span class="truncate">Advanced: How LLMs Work</span>
+              </div>
+              
+            </li>
+            <li class="curriculum-row locked" >
+              <div class="curriculum-row-left">
+                <span class="row-num">10</span>
+                <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span class="truncate">Everyday AI tools</span>
+              </div>
+              
+            </li>
+            <li class="curriculum-row locked" >
+              <div class="curriculum-row-left">
+                <span class="row-num">11</span>
+                <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span class="truncate">ChatGPT &amp; Claude Personalization</span>
+              </div>
+              
+            </li>
+            <li class="curriculum-row locked" >
+              <div class="curriculum-row-left">
+                <span class="row-num">12</span>
+                <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span class="truncate">Projects in ChatGPT &amp; Claude</span>
+              </div>
+              
+            </li>
+            <li class="curriculum-row locked" >
+              <div class="curriculum-row-left">
+                <span class="row-num">13</span>
+                <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span class="truncate">OpenAI Platform</span>
+              </div>
+              
+            </li>
+            <li class="curriculum-row locked" >
+              <div class="curriculum-row-left">
+                <span class="row-num">14</span>
+                <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span class="truncate">Tool: Notebook LM</span>
+              </div>
+              
+            </li>
+            <li class="curriculum-row locked" >
+              <div class="curriculum-row-left">
+                <span class="row-num">15</span>
                 <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
                 <span class="truncate">Recap &amp; Next week session plan</span>
               </div>
@@ -624,12 +685,38 @@ main { flex: 1; padding: 2rem 0 5rem; }
               <div class="curriculum-row-left">
                 <span class="row-num"></span>
                 <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                <span class="truncate">Quiz: Session 1: Quiz 1: AI Overview</span>
+                <span class="truncate">Quiz: Session 1: AI Mastery: Quiz 1: AI Overview</span>
               </div>
             </li>
               
-              
-              
+            <li class="curriculum-row locked">
+              <div class="curriculum-row-left">
+                <span class="row-num"></span>
+                <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span class="truncate">Mini-project: 1: Set up and personalize your ChatGPT</span>
+              </div>
+            </li>
+            <li class="curriculum-row locked">
+              <div class="curriculum-row-left">
+                <span class="row-num"></span>
+                <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span class="truncate">Mini-project: 2: Write one prompt for a task you do weekly</span>
+              </div>
+            </li>
+            <li class="curriculum-row locked">
+              <div class="curriculum-row-left">
+                <span class="row-num"></span>
+                <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span class="truncate">Mini-project: 3: Build a persistent work Project</span>
+              </div>
+            </li>
+            <li class="curriculum-row locked">
+              <div class="curriculum-row-left">
+                <span class="row-num"></span>
+                <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span class="truncate">Mini-project: 4: NotebookLM knowledge base for your role</span>
+              </div>
+            </li>
             </ul>
           </div>
         </div>
@@ -638,7 +725,7 @@ main { flex: 1; padding: 2rem 0 5rem; }
             <span class="accordion-trigger-inner">
               <svg class="icon icon-sm text-primary accordion-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
               <svg class="icon icon-sm text-primary accordion-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"/></svg>
-              <span class="accordion-title">Session 2: Building AI Apps (with Prompt Engineering and Context Management) </span>
+              <span class="accordion-title">Session 2: Building AI Apps with Prompt Engineering and Context Management</span>
             </span>
           </button>
           <div class="accordion-content">
@@ -668,13 +755,13 @@ main { flex: 1; padding: 2rem 0 5rem; }
               </div>
               <button type="button" class="btn-preview" data-preview-title="Prompt Template &amp; Prompting Guide" data-preview-src="https://video.gumlet.io/6a55e53c2a1936a5c8df7efc/6a571cfcc65fbac227c011a1/main.m3u8">Preview</button>
             </li>
-            <li class="curriculum-row clickable" data-preview-title="Talk It Loud Prompt Method" data-preview-src="https://video.gumlet.io/6a55e53c2a1936a5c8df7efc/6a571cfc0d6ad7ba157dc5ed/main.m3u8">
+            <li class="curriculum-row locked" >
               <div class="curriculum-row-left">
                 <span class="row-num">4</span>
-                
+                <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
                 <span class="truncate">Talk It Loud Prompt Method</span>
               </div>
-              <button type="button" class="btn-preview" data-preview-title="Talk It Loud Prompt Method" data-preview-src="https://video.gumlet.io/6a55e53c2a1936a5c8df7efc/6a571cfc0d6ad7ba157dc5ed/main.m3u8">Preview</button>
+              
             </li>
             <li class="curriculum-row locked" >
               <div class="curriculum-row-left">
@@ -704,7 +791,7 @@ main { flex: 1; padding: 2rem 0 5rem; }
               <div class="curriculum-row-left">
                 <span class="row-num">8</span>
                 <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                <span class="truncate">Building AI Apps: A simple call to OpenAI API</span>
+                <span class="truncate">Code: Building AI Apps: A simple call to OpenAI API</span>
               </div>
               
             </li>
@@ -712,7 +799,7 @@ main { flex: 1; padding: 2rem 0 5rem; }
               <div class="curriculum-row-left">
                 <span class="row-num">9</span>
                 <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                <span class="truncate">Building AI Apps: Zero-shot, Few-shot, Many-shot</span>
+                <span class="truncate">Code: Building AI Apps: Zero-shot, Few-shot, Many-shot</span>
               </div>
               
             </li>
@@ -720,7 +807,7 @@ main { flex: 1; padding: 2rem 0 5rem; }
               <div class="curriculum-row-left">
                 <span class="row-num">10</span>
                 <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                <span class="truncate">How to secure your prompts</span>
+                <span class="truncate">Code: How to secure your prompts</span>
               </div>
               
             </li>
@@ -728,7 +815,7 @@ main { flex: 1; padding: 2rem 0 5rem; }
               <div class="curriculum-row-left">
                 <span class="row-num">11</span>
                 <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                <span class="truncate">Structured Output, Max Output Tokens, and Temperature</span>
+                <span class="truncate">Code: Structured Output, Max Output Tokens, and Temperature</span>
               </div>
               
             </li>
@@ -736,7 +823,7 @@ main { flex: 1; padding: 2rem 0 5rem; }
               <div class="curriculum-row-left">
                 <span class="row-num">12</span>
                 <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                <span class="truncate">Applied examples: sentiment analysis, data extraction, ticket routing</span>
+                <span class="truncate">Code: Applied examples: sentiment analysis, data extraction, ticket routing</span>
               </div>
               
             </li>
@@ -744,23 +831,23 @@ main { flex: 1; padding: 2rem 0 5rem; }
               <div class="curriculum-row-left">
                 <span class="row-num">13</span>
                 <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                <span class="truncate">A Pizza Order taking bot</span>
+                <span class="truncate">Code: A Pizza Order taking bot</span>
               </div>
               
             </li>
-            <li class="curriculum-row clickable" data-preview-title="Testing AI Apps: Evals &amp; Graders" data-preview-src="https://video.gumlet.io/6a55e53c2a1936a5c8df7efc/6a571e28c65fbac227c03546/main.m3u8">
+            <li class="curriculum-row locked" >
               <div class="curriculum-row-left">
                 <span class="row-num">14</span>
-                
+                <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
                 <span class="truncate">Testing AI Apps: Evals, Graders &amp; Traces</span>
               </div>
-              <button type="button" class="btn-preview" data-preview-title="Testing AI Apps: Evals &amp; Graders" data-preview-src="https://video.gumlet.io/6a55e53c2a1936a5c8df7efc/6a571e28c65fbac227c03546/main.m3u8">Preview</button>
+              
             </li>
             <li class="curriculum-row locked" >
               <div class="curriculum-row-left">
                 <span class="row-num">15</span>
                 <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                <span class="truncate">Reducing Hallucinations &amp; Other Best Practices and techniques</span>
+                <span class="truncate">User input validations, reducing Hallucinations &amp; other best practices and techniques</span>
               </div>
               
             </li>
@@ -777,7 +864,7 @@ main { flex: 1; padding: 2rem 0 5rem; }
               <div class="curriculum-row-left">
                 <span class="row-num"></span>
                 <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                <span class="truncate">Quiz: Session 2: Quiz 1: Prompt Engineering Essentials</span>
+                <span class="truncate">Quiz: Session 2: Quiz 1: Prompt Engineering</span>
               </div>
             </li>
               
@@ -785,14 +872,21 @@ main { flex: 1; padding: 2rem 0 5rem; }
               <div class="curriculum-row-left">
                 <span class="row-num"></span>
                 <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 4H20v16H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
-                <span class="truncate">Pre-reading: Prompt Engineering 101 (30 mins)</span>
+                <span class="truncate">Pre-reading: 1: Prompt Engineering 101 (30 mins)</span>
               </div>
             </li>
             <li class="curriculum-row locked">
               <div class="curriculum-row-left">
                 <span class="row-num"></span>
                 <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 4H20v16H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
-                <span class="truncate">Pre-reading: Additional Readings​</span>
+                <span class="truncate">Pre-reading: 2: Additional Readings</span>
+              </div>
+            </li>
+            <li class="curriculum-row locked">
+              <div class="curriculum-row-left">
+                <span class="row-num"></span>
+                <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 4H20v16H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+                <span class="truncate">Pre-reading: 3: Github samples</span>
               </div>
             </li>
               
@@ -800,7 +894,21 @@ main { flex: 1; padding: 2rem 0 5rem; }
               <div class="curriculum-row-left">
                 <span class="row-num"></span>
                 <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg>
-                <span class="truncate">Mini-project: Create a simple pizza ordering chatbot</span>
+                <span class="truncate">Mini-project: 1: Build a sentiment analysis application</span>
+              </div>
+            </li>
+            <li class="curriculum-row locked">
+              <div class="curriculum-row-left">
+                <span class="row-num"></span>
+                <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg>
+                <span class="truncate">Mini-project: 2: Write a prompt to extract data from meeting transcript</span>
+              </div>
+            </li>
+            <li class="curriculum-row locked">
+              <div class="curriculum-row-left">
+                <span class="row-num"></span>
+                <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg>
+                <span class="truncate">Mini-project: 3: Create a simple customer support chatbot</span>
               </div>
             </li>
               
@@ -812,7 +920,7 @@ main { flex: 1; padding: 2rem 0 5rem; }
             <span class="accordion-trigger-inner">
               <svg class="icon icon-sm text-primary accordion-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
               <svg class="icon icon-sm text-primary accordion-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"/></svg>
-              <span class="accordion-title">Session 3: AI Agents</span>
+              <span class="accordion-title">Session 3: No-Code AI Agents</span>
             </span>
           </button>
           <div class="accordion-content">
@@ -850,19 +958,19 @@ main { flex: 1; padding: 2rem 0 5rem; }
               </div>
               
             </li>
-            <li class="curriculum-row clickable" data-preview-title="Agent Design Pattern #1: Reflection " data-preview-src="https://video.gumlet.io/6a55e53c2a1936a5c8df7efc/6a571ff6462ae4490ffe31d9/main.m3u8">
+            <li class="curriculum-row clickable" data-preview-title="Advanced: Agent Design Pattern #1: Reflection" data-preview-src="https://video.gumlet.io/6a55e53c2a1936a5c8df7efc/6a571ff6462ae4490ffe31d9/main.m3u8">
               <div class="curriculum-row-left">
                 <span class="row-num">5</span>
                 
-                <span class="truncate">Agent Design Pattern #1: Reflection </span>
+                <span class="truncate">Advanced: Agent Design Pattern #1: Reflection</span>
               </div>
-              <button type="button" class="btn-preview" data-preview-title="Agent Design Pattern #1: Reflection " data-preview-src="https://video.gumlet.io/6a55e53c2a1936a5c8df7efc/6a571ff6462ae4490ffe31d9/main.m3u8">Preview</button>
+              <button type="button" class="btn-preview" data-preview-title="Advanced: Agent Design Pattern #1: Reflection" data-preview-src="https://video.gumlet.io/6a55e53c2a1936a5c8df7efc/6a571ff6462ae4490ffe31d9/main.m3u8">Preview</button>
             </li>
             <li class="curriculum-row locked" >
               <div class="curriculum-row-left">
                 <span class="row-num">6</span>
                 <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                <span class="truncate">Agent Design Pattern #2: Tool use</span>
+                <span class="truncate">Advanced: Agent Design Pattern #2: Tool use</span>
               </div>
               
             </li>
@@ -870,7 +978,7 @@ main { flex: 1; padding: 2rem 0 5rem; }
               <div class="curriculum-row-left">
                 <span class="row-num">7</span>
                 <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                <span class="truncate">Agent Design Pattern #3: Planning</span>
+                <span class="truncate">Advanced: Agent Design Pattern #3: Planning</span>
               </div>
               
             </li>
@@ -878,7 +986,7 @@ main { flex: 1; padding: 2rem 0 5rem; }
               <div class="curriculum-row-left">
                 <span class="row-num">8</span>
                 <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                <span class="truncate">Agent Design Pattern #4: Multi-agent systems</span>
+                <span class="truncate">Advanced: Agent Design Pattern #4: Multi-agent systems</span>
               </div>
               
             </li>
@@ -886,7 +994,7 @@ main { flex: 1; padding: 2rem 0 5rem; }
               <div class="curriculum-row-left">
                 <span class="row-num">9</span>
                 <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                <span class="truncate">Tool: Basics of n8n (No-Code)</span>
+                <span class="truncate">Tool: Basics of n8n (No-Code) &amp; your first LLM Call with n8n</span>
               </div>
               
             </li>
@@ -894,7 +1002,7 @@ main { flex: 1; padding: 2rem 0 5rem; }
               <div class="curriculum-row-left">
                 <span class="row-num">10</span>
                 <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                <span class="truncate">Sentiment Analysis &amp; Data extraction with n8n: Building AI Agents with n8n (No-Code)</span>
+                <span class="truncate">No-Code: Sentiment Analysis &amp; Data extraction with n8n</span>
               </div>
               
             </li>
@@ -902,7 +1010,7 @@ main { flex: 1; padding: 2rem 0 5rem; }
               <div class="curriculum-row-left">
                 <span class="row-num">11</span>
                 <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                <span class="truncate">Pizza Ordering bot in n8n</span>
+                <span class="truncate">No-Code: Pizza Ordering bot in n8n</span>
               </div>
               
             </li>
@@ -910,7 +1018,7 @@ main { flex: 1; padding: 2rem 0 5rem; }
               <div class="curriculum-row-left">
                 <span class="row-num">12</span>
                 <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                <span class="truncate">Customer Retention AI Agent n8n</span>
+                <span class="truncate">No-Code: Customer Retention AI Agent n8n</span>
               </div>
               
             </li>
@@ -918,7 +1026,7 @@ main { flex: 1; padding: 2rem 0 5rem; }
               <div class="curriculum-row-left">
                 <span class="row-num">13</span>
                 <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                <span class="truncate">Multi agents &amp; more Agentic design patterns</span>
+                <span class="truncate">Advanced: Multi agents &amp; more Agentic design patterns</span>
               </div>
               
             </li>
@@ -942,23 +1050,23 @@ main { flex: 1; padding: 2rem 0 5rem; }
             <li class="curriculum-row locked">
               <div class="curriculum-row-left">
                 <span class="row-num"></span>
-                <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 4H20v16H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
-                <span class="truncate">Pre-reading: Introduction to AI Agents</span>
+                <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span class="truncate">Pre-reading: 1: Introduction to AI Agents</span>
               </div>
             </li>
             <li class="curriculum-row locked">
               <div class="curriculum-row-left">
                 <span class="row-num"></span>
-                <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 4H20v16H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
-                <span class="truncate">Pre-reading: Github repo with Agents sample</span>
+                <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span class="truncate">Pre-reading: 2: Github repo with Agents sample</span>
               </div>
             </li>
               
             <li class="curriculum-row locked">
               <div class="curriculum-row-left">
                 <span class="row-num"></span>
-                <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg>
-                <span class="truncate">Mini-project: Create an N8N AI agent to classify incoming support email</span>
+                <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span class="truncate">Mini-project: 1: Create an N8N AI agent to classify incoming support email</span>
               </div>
             </li>
               
@@ -996,23 +1104,23 @@ main { flex: 1; padding: 2rem 0 5rem; }
               <div class="curriculum-row-left">
                 <span class="row-num">3</span>
                 <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                <span class="truncate">What is Vibe Coding &amp; Vibe coding starter prompt</span>
+                <span class="truncate">Need a favor</span>
               </div>
               
             </li>
-            <li class="curriculum-row clickable" data-preview-title="Demo: Claude Artifacts &amp; Copilot in Excel" data-preview-src="https://video.gumlet.io/6a55e53c2a1936a5c8df7efc/6a5721340d6ad7ba157e47ef/main.m3u8">
+            <li class="curriculum-row locked" >
               <div class="curriculum-row-left">
                 <span class="row-num">4</span>
-                
-                <span class="truncate">Demo: Claude Artifacts &amp; Copilot in Excel</span>
+                <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span class="truncate">What is Vibe Coding</span>
               </div>
-              <button type="button" class="btn-preview" data-preview-title="Demo: Claude Artifacts &amp; Copilot in Excel" data-preview-src="https://video.gumlet.io/6a55e53c2a1936a5c8df7efc/6a5721340d6ad7ba157e47ef/main.m3u8">Preview</button>
+              
             </li>
             <li class="curriculum-row locked" >
               <div class="curriculum-row-left">
                 <span class="row-num">5</span>
                 <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                <span class="truncate">Tool: Lovable (Build applications and prototypes) - full walkthrough</span>
+                <span class="truncate">Why Vibe Code</span>
               </div>
               
             </li>
@@ -1020,7 +1128,7 @@ main { flex: 1; padding: 2rem 0 5rem; }
               <div class="curriculum-row-left">
                 <span class="row-num">6</span>
                 <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                <span class="truncate">Agentic Engineering &amp; GitHub Copilot Pro</span>
+                <span class="truncate">Vibe Coding prompt building blocks</span>
               </div>
               
             </li>
@@ -1028,13 +1136,61 @@ main { flex: 1; padding: 2rem 0 5rem; }
               <div class="curriculum-row-left">
                 <span class="row-num">7</span>
                 <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                <span class="truncate">Best Practices &amp; Where AI can add benefits in Software Development</span>
+                <span class="truncate">Vibe Coding tools</span>
               </div>
               
             </li>
             <li class="curriculum-row locked" >
               <div class="curriculum-row-left">
                 <span class="row-num">8</span>
+                <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span class="truncate">Demo: Claude Artifacts</span>
+              </div>
+              
+            </li>
+            <li class="curriculum-row locked" >
+              <div class="curriculum-row-left">
+                <span class="row-num">9</span>
+                <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span class="truncate">Demo: Copilot in Excel</span>
+              </div>
+              
+            </li>
+            <li class="curriculum-row locked" >
+              <div class="curriculum-row-left">
+                <span class="row-num">10</span>
+                <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span class="truncate">Tool: Lovable (Build applications and prototypes) - full walkthrough</span>
+              </div>
+              
+            </li>
+            <li class="curriculum-row locked" >
+              <div class="curriculum-row-left">
+                <span class="row-num">11</span>
+                <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span class="truncate">Advanced: GitHub Copilot Pro - full walkthrough</span>
+              </div>
+              
+            </li>
+            <li class="curriculum-row locked" >
+              <div class="curriculum-row-left">
+                <span class="row-num">12</span>
+                <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span class="truncate">Vibe Coding vs Agentic Engineering</span>
+              </div>
+              
+            </li>
+            <li class="curriculum-row locked" >
+              <div class="curriculum-row-left">
+                <span class="row-num">13</span>
+                <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span class="truncate">Advanced: Best Practices &amp; Where AI can add efficiency gains in Software Development processes</span>
+              </div>
+              
+            </li>
+            <li class="curriculum-row locked" >
+              <div class="curriculum-row-left">
+                <span class="row-num">14</span>
                 <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
                 <span class="truncate">Conclusion</span>
               </div>
@@ -1049,12 +1205,11 @@ main { flex: 1; padding: 2rem 0 5rem; }
               </div>
             </li>
               
-              
             <li class="curriculum-row locked">
               <div class="curriculum-row-left">
                 <span class="row-num"></span>
-                <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg>
-                <span class="truncate">Mini-project: Create a TO-DO app entirely vibe coded</span>
+                <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span class="truncate">Mini-project: 1: Create a Roadmap tracker app entirely vibe coded</span>
               </div>
             </li>
               
@@ -1072,33 +1227,44 @@ main { flex: 1; padding: 2rem 0 5rem; }
           <div class="accordion-content">
             <ul class="curriculum-list">
               
-            <li class="curriculum-row clickable" data-preview-title="Capstone Projects Discussion" data-preview-src="https://video.gumlet.io/6a55e53c2a1936a5c8df7efc/6a5721340d6ad7ba157e4801/main.m3u8">
+            <li class="curriculum-row clickable" data-preview-title="Capstone Projects 1 &amp; 2 Discussion" data-preview-src="https://video.gumlet.io/6a55e53c2a1936a5c8df7efc/6a5721340d6ad7ba157e4801/main.m3u8">
               <div class="curriculum-row-left">
                 <span class="row-num">1</span>
                 
-                <span class="truncate">Capstone Projects Discussion</span>
+                <span class="truncate">Capstone Projects 1 &amp; 2 Discussion</span>
               </div>
-              <button type="button" class="btn-preview" data-preview-title="Capstone Projects Discussion" data-preview-src="https://video.gumlet.io/6a55e53c2a1936a5c8df7efc/6a5721340d6ad7ba157e4801/main.m3u8">Preview</button>
+              <button type="button" class="btn-preview" data-preview-title="Capstone Projects 1 &amp; 2 Discussion" data-preview-src="https://video.gumlet.io/6a55e53c2a1936a5c8df7efc/6a5721340d6ad7ba157e4801/main.m3u8">Preview</button>
             </li>
             <li class="curriculum-row locked" >
               <div class="curriculum-row-left">
                 <span class="row-num">2</span>
                 <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                <span class="truncate">Capstone Projects Solution</span>
+                <span class="truncate">Capstone Project 1 Solution</span>
               </div>
               
             </li>
-              
               
             <li class="curriculum-row locked">
               <div class="curriculum-row-left">
                 <span class="row-num"></span>
-                <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 4H20v16H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
-                <span class="truncate">Pre-reading: Kaggle dataset</span>
+                <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span class="truncate">Pre-reading: 1: Kaggle dataset</span>
               </div>
             </li>
-              
-              
+            <li class="curriculum-row locked">
+              <div class="curriculum-row-left">
+                <span class="row-num"></span>
+                <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span class="truncate">Mini-project: Capstone Project 3: Feature request intelligence dashboard</span>
+              </div>
+            </li>
+            <li class="curriculum-row locked">
+              <div class="curriculum-row-left">
+                <span class="row-num"></span>
+                <svg class="icon icon-sm text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span class="truncate">Mini-project: Capstone Project 4: Hiring pipeline copilot</span>
+              </div>
+            </li>
             </ul>
           </div>
         </div></div>
