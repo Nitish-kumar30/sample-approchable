@@ -330,6 +330,45 @@
       color: var(--accent);
       font-weight: 600;
     }
+    .curriculum-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    @media (max-width: 640px) {
+      .curriculum-columns { grid-template-columns: 1fr; gap: 20px; }
+    }
+    .curriculum-col-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 10px;
+    }
+    .curriculum-outcome-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .curriculum-outcome-list li {
+      position: relative;
+      padding-left: 22px;
+      font-size: 13px;
+      color: var(--text-primary);
+      line-height: 1.5;
+    }
+    .curriculum-outcome-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
 
     /* What you'll be able to do */
     .outcomes-grid {
@@ -780,8 +819,8 @@
       <div class="hero" style="padding:0 0 48px;">
         <div class="hero-label">Cohort 6 · <span data-cohort-date-short></span> · 20 seats max</div>
         <h1>Master the AI fundamentals <br>with <span>Claude Ecosystem</span><br>in 6 Weeks</h1>
-        <p style="font-size:13px;color:var(--text-muted);margin:0 auto 12px;font-weight:500;">Mentor: Ranbeer Makin</p>
-        <p>A small, mentor-led study group covering AI fundamentals, and Claude Chat, Claude Code, Claude Cowork, and the Claude API — from first principles to live projects.</p>
+        <p style="font-size:13px;color:var(--text-muted);margin:0 auto 12px;font-weight:500;">Mentor: Ranbeer Makin (Claude Certified & Claude Partner)</p>
+        <p>A small, mentor-led study group covering AI fundamentals, and Claude Chat, Claude Design, Claude Code, Claude Cowork, and the Claude API — from first principles to live projects.</p>
         <div class="hero-actions">
           <a href="#pricing" class="btn-primary" onclick="trackCTA('Hero Primary','Hero')">Become AI Capable →</a>
           <a href="#curriculum" class="btn-secondary">See the Curriculum</a>
@@ -864,17 +903,27 @@
               </div>
             </div>
             <div class="curriculum-body">
-              <div class="curriculum-tags">
-                <span class="curriculum-tag highlight">How LLMs work</span>
-                <span class="curriculum-tag highlight">Loop Engineering</span>
-                <span class="curriculum-tag">Key terms: tokens, hallucinations, MCP</span>
-                <span class="curriculum-tag">Human Capital vs Token Capital</span>
-                <span class="curriculum-tag">Where the industry is heading</span>
-                <span class="curriculum-tag">Open source model benchmarks</span>
-                <span class="curriculum-tag">Claude ecosystem overview</span>
-                <span class="curriculum-tag">Claude models explained</span>
-                <span class="curriculum-tag">How to access Claude: Chat, Code, Cowork, API</span>
-                <span class="curriculum-tag">Claude design principles</span>
+              <div class="curriculum-columns">
+                <div class="curriculum-outcomes">
+                  <div class="curriculum-col-label">Outcomes</div>
+                  <ul class="curriculum-outcome-list">
+                    <li>A clear mental model of how LLMs work — enough to explain it to your team or boss</li>
+                    <li>Speak AI fluently: tokens, hallucinations, MCP, Human Capital vs Token Capital </li>
+                    <li>Clarity on which Claude product to use for which job — Chat, Code, Cowork, Design or API</li>
+                  </ul>
+                </div>
+                <div class="curriculum-covered">
+                  <div class="curriculum-col-label">What's Covered</div>
+                  <div class="curriculum-tags">
+                    <span class="curriculum-tag highlight">How LLMs work</span>
+                    <span class="curriculum-tag highlight">Loop Engineering</span>
+                    <span class="curriculum-tag">Key terms: tokens, hallucinations, MCP</span>
+                    <span class="curriculum-tag">Human Capital vs Token Capital</span>
+                    <span class="curriculum-tag">Where the industry is heading</span>
+                    <span class="curriculum-tag">Claude ecosystem overview</span>
+                    <span class="curriculum-tag">How to access Claude: Chat, Code, Cowork, Design, API</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -889,35 +938,64 @@
               </div>
             </div>
             <div class="curriculum-body">
-              <div class="curriculum-tags">
-                <span class="curriculum-tag highlight">Prompt library & context management</span>
-                <span class="curriculum-tag highlight">Web search → Deep research workflow</span>
-                <span class="curriculum-tag">Internal knowledge vs external search</span>
-                <span class="curriculum-tag">Projects & Artifacts</span>
-                <span class="curriculum-tag">Connectors & customisation</span>
-                <span class="curriculum-tag">Calling the Claude API (intro)</span>
-                <span class="curriculum-tag">🛠 Live project: build with Claude Chat</span>
+              <div class="curriculum-columns">
+                <div class="curriculum-outcomes">
+                  <div class="curriculum-col-label">Outcomes</div>
+                  <ul class="curriculum-outcome-list">
+                    <li>Your own reusable prompt library, ready to use at work</li>
+                    <li>Automate research, reporting, competitive intelligence, and operational workflows that normally consume hours.</li>
+                    <li>Learn the fundamentals of using AI APIs to integrate intelligence into your workflows.</li>
+                    <li>Produce high-quality reports, presentations, and analyses in a fraction of the time.</li>
+                    <li>How to optimize tokens in Claude Chat</li>
+                  </ul>
+                </div>
+                <div class="curriculum-covered">
+                  <div class="curriculum-col-label">What's Covered</div>
+                  <div class="curriculum-tags">
+                    <span class="curriculum-tag highlight">Prompt library & context management</span>
+                    <span class="curriculum-tag highlight">Web search → Deep research workflow</span>
+                    <span class="curriculum-tag">Internal knowledge vs external search</span>
+                    <span class="curriculum-tag">Projects & Artifacts</span>
+                    <span class="curriculum-tag">Connectors & customisation</span>
+                    <span class="curriculum-tag">Calling the Claude API (intro)</span>
+                    <span class="curriculum-tag">🛠 Live project: build with Claude API</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
-          <!-- Session 3 -->
+           <!-- Session 3 -->
           <div class="curriculum-block">
             <div class="curriculum-header">
               <div class="curriculum-num">3</div>
               <div>
                 <div class="curriculum-session-label">Session 3</div>
-                <div class="curriculum-title">Claude Code — Agentic Development</div>
+                <div class="curriculum-title">Claude Cowork - Agentic Task Automation</div>
               </div>
             </div>
             <div class="curriculum-body">
-              <div class="curriculum-tags">
-                <span class="curriculum-tag highlight">CLAUDE.md — memory and context files</span>
-                <span class="curriculum-tag highlight">Skills, MCP, Hooks, Plugins, Routines</span>
-                <span class="curriculum-tag highlight">Loop Engineering in code</span>
-                <span class="curriculum-tag">Claude Code in large projects — best practices</span>
-                <span class="curriculum-tag">Working with codebases you didn't write</span>
-                <span class="curriculum-tag">🛠 Live project: ship something with Claude Code</span>
+              <div class="curriculum-columns">
+                <div class="curriculum-outcomes">
+                  <div class="curriculum-col-label">Outcomes</div>
+                  <ul class="curriculum-outcome-list">
+                    <li>Build your first AI agent that independently completes real knowledge-work tasks.</li>
+                    <li>Automate repetitive workflows that consume hours every week.</li>
+                    <li>Learn how to delegate multi-step work to AI while maintaining quality and control.</li>
+                    <li>Leave with production-ready automations you can start using immediately.</li>
+                  </ul>
+                </div>
+                <div class="curriculum-covered">
+                  <div class="curriculum-col-label">What's Covered</div>
+                  <div class="curriculum-tags">
+                    <span class="curriculum-tag highlight">AI Agents</span>
+                    <span class="curriculum-tag highlight">Claude Cowork</span>
+                    <span class="curriculum-tag highlight">Claude in Chrome</span>
+                    <span class="curriculum-tag highlight">Live Artifacts</span>
+                    <span class="curriculum-tag">Automating multi-step knowledge work</span>
+                    <span class="curriculum-tag">🛠 Live project: end-to-end Cowork workflow</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -928,19 +1006,36 @@
               <div class="curriculum-num">4</div>
               <div>
                 <div class="curriculum-session-label">Session 4</div>
-                <div class="curriculum-title">Claude Cowork, Chrome & Live Artifacts</div>
+                <div class="curriculum-title">Claude Code — Agentic Development</div>
               </div>
             </div>
             <div class="curriculum-body">
-              <div class="curriculum-tags">
-                <span class="curriculum-tag highlight">Claude Cowork: Schedule & Dispatch</span>
-                <span class="curriculum-tag highlight">Claude in Chrome — browsing agent</span>
-                <span class="curriculum-tag highlight">Live Artifacts</span>
-                <span class="curriculum-tag">Automating multi-step knowledge work</span>
-                <span class="curriculum-tag">🛠 Live project: end-to-end Cowork workflow</span>
+              <div class="curriculum-columns">
+                <div class="curriculum-outcomes">
+                  <div class="curriculum-col-label">Outcomes</div>
+                  <ul class="curriculum-outcome-list">
+                    <li>Build software faster by collaborating effectively with Claude Code.</li>
+                    <li>Ship real features or prototypes with significantly less manual effort.</li>
+                    <li>Apply proven practices to maximize quality while minimizing AI cost.</li>
+                    <li>Learn workflows for navigating, understanding, and modifying unfamiliar codebases.</li>
+
+                    
+                  </ul>
+                </div>
+                <div class="curriculum-covered">
+                  <div class="curriculum-col-label">What's Covered</div>
+                  <div class="curriculum-tags">
+                    <span class="curriculum-tag highlight">CLAUDE.md — memory and context files</span>
+                    <span class="curriculum-tag highlight">Skills, MCP, Hooks, Plugins, Routines</span>
+                    <span class="curriculum-tag highlight">Loop Engineering in code</span>
+                    <span class="curriculum-tag">Claude Code in large projects — best practices</span>
+                    <span class="curriculum-tag">🛠 Live project: ship something with Claude Code</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+
 
           <!-- Capstone -->
           <div class="curriculum-block" style="border:2px solid var(--accent);">
@@ -952,11 +1047,26 @@
               </div>
             </div>
             <div class="curriculum-body">
-              <div class="curriculum-tags">
-                <span class="curriculum-tag highlight">2 capstone projects you choose</span>
-                <span class="curriculum-tag">Focused doubt-clearing sessions</span>
-                <span class="curriculum-tag">Demo to the group</span>
-                <span class="curriculum-tag">Portfolio-ready output</span>
+              <div class="curriculum-columns">
+                <div class="curriculum-outcomes">
+                  <div class="curriculum-col-label">Outcomes</div>
+                  <ul class="curriculum-outcome-list">
+                    <li>Complete two portfolio-worthy AI projects relevant to your role.</li>
+                    <li>Present a live demo showcasing practical AI implementation.</li>
+                    <li>Receive personalized feedback to refine your workflows and solve real challenges.</li>
+                    <li>Finish the cohort with repeatable AI workflows you can apply immediately at work.</li>
+                  
+                  </ul>
+                </div>
+                <div class="curriculum-covered">
+                  <div class="curriculum-col-label">What's Covered</div>
+                  <div class="curriculum-tags">
+                    <span class="curriculum-tag highlight">2 capstone projects you choose</span>
+                    <span class="curriculum-tag">Focused doubt-clearing sessions</span>
+                    <span class="curriculum-tag">Demo to the group</span>
+                    <span class="curriculum-tag">Portfolio-ready output</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -976,19 +1086,19 @@
           <div class="outcome-card">
             <div class="outcome-icon" style="background:#4F33C8;">💬</div>
             <h3>Build Custom AI Applications</h3>
-            <p>Create intelligent chatbots for customer service, data summarization, data extraction tasks, and more — no coding required.</p>
+            <p>Create intelligent applications for customer service, data summarization, data extraction tasks, and more — no coding required.</p>
             <div class="outcome-project">✓ Project: Your own business AI assistant</div>
           </div>
           <div class="outcome-card">
             <div class="outcome-icon" style="background:#0D9488;">⚡</div>
-            <h3>Automate Repetitive Tasks with AI Agents</h3>
-            <p>Build Agentic AI workflows that save 5-10 hours per week: customer support, report generation, ticket routing, classification, and more.</p>
-            <div class="outcome-project">✓ Project: 3+ working automations</div>
+            <h3>Build AI employees with AI Agents</h3>
+            <p>Build Agentic AI workflows with Cowork that save 5-10 hours per week: customer support, report generation, ticket routing, classification, and more.</p>
+            <div class="outcome-project">✓ Project: AI Agent working 24x7 for you</div>
           </div>
           <div class="outcome-card">
             <div class="outcome-icon" style="background:#7C3AED;">💡</div>
             <h3>Ship AI Prototypes Fast</h3>
-            <p>Use vibe coding tools to turn ideas into working demos in days, not months. Perfect for validating startup ideas or pitching to investors.</p>
+            <p>Use Claude Code to turn ideas into working demos in days, not months. Perfect for validating startup ideas or pitching to investors.</p>
             <div class="outcome-project">✓ Capstone: Demo-ready AI prototype</div>
           </div>
         </div>
@@ -1040,7 +1150,7 @@
           </div>
           <div>
             <div class="mentor-name">Ranbeer Makin</div>
-            <div class="mentor-role">Entrepreneur & AI Educator</div>
+            <div class="mentor-role">Entrepreneur, AI Educator & Claude Partner</div>
             <a href="https://www.linkedin.com/in/ranbeer/" target="_blank" rel="noopener noreferrer" style="font-size:13px;color:var(--text-muted);text-decoration:none;display:inline-flex;align-items:center;gap:6px;margin-bottom:16px;">
               <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
               linkedin.com/in/ranbeer
@@ -1166,7 +1276,7 @@
               <div class="step-num">2</div>
               <div>
                 <div class="step-title">We'll reach out within 12 hrs</div>
-                <div class="step-desc">Seat confirmed + payment link for <span data-cohort-price-india></span> / <span data-cohort-price-intl></span>.</div>
+                <div class="step-desc">Seat confirmed </div>
               </div>
             </div>
             <div class="signup-step">
