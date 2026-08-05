@@ -745,7 +745,7 @@
       } else if (COHORT.state === 'early') {
         banner.innerHTML = `${COHORT.prevCohortDate} cohort filled all ${COHORT.seatsTotal} seats &nbsp;•&nbsp; Early seats open for ${COHORT.dateShort} cohort <a href="#pricing" onclick="trackCTA('Banner','Top')">Reserve Seat →</a>`;
       } else {
-        banner.innerHTML = `🔥 Cohort 6 starts ${COHORT.dateShort} &nbsp;•&nbsp; Only ${COHORT.seatsLeft} seats left <a href="#pricing" onclick="trackCTA('Banner','Top')">Reserve Seat →</a>`;
+        banner.innerHTML = `🔥 Cohort 7 starts ${COHORT.dateShort} &nbsp;•&nbsp; Only ${COHORT.seatsLeft} seats left <a href="#pricing" onclick="trackCTA('Banner','Top')">Reserve Seat →</a>`;
       }
 
       document.querySelectorAll('[data-cohort-date]').forEach(el => el.textContent = COHORT.date);
@@ -817,7 +817,7 @@
     <!-- HERO -->
     <section style="padding:64px 24px 0; border-bottom:1px solid var(--border);">
       <div class="hero" style="padding:0 0 48px;">
-        <div class="hero-label">Cohort 6 · <span data-cohort-date-short></span> · 20 seats max</div>
+        <div class="hero-label">Cohort 7 · <span data-cohort-date-short></span> · 20 seats max</div>
         <h1>Master the AI fundamentals <br>with <span>Claude Ecosystem</span><br>in 6 Weeks</h1>
         <p style="font-size:13px;color:var(--text-muted);margin:0 auto 12px;font-weight:500;">Mentor: Ranbeer Makin (Claude Certified & Claude Partner)</p>
         <p>A small, mentor-led study group covering AI fundamentals, and Claude Chat, Claude Design, Claude Code, Claude Cowork, and the Claude API — from first principles to live projects.</p>
@@ -1376,7 +1376,7 @@
   <!-- FLOATING CTA -->
   <div id="floatingCta">
     <div class="floating-inner">
-      <div class="floating-text">🔥 Only <span data-seats-left></span> seats left · Cohort 6 starts <span data-cohort-date-short></span></div>
+      <div class="floating-text">🔥 Only <span data-seats-left></span> seats left · Cohort 7 starts <span data-cohort-date-short></span></div>
       <div class="floating-actions">
         <a href="#pricing" class="floating-cta-btn" onclick="trackCTA('Floating CTA','Float')">Get One of <span data-seats-left></span> Seats →</a>
         <button class="floating-close" onclick="document.getElementById('floatingCta').style.display='none'">&times;</button>
