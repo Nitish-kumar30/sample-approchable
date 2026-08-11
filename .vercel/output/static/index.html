@@ -556,6 +556,18 @@
       padding: 6px 12px;
       align-self: flex-start;
     }
+    .price-countdown {
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-secondary);
+      background: var(--bg-warm);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      margin-bottom: 20px;
+    }
+    .price-countdown strong { color: var(--accent); font-variant-numeric: tabular-nums; }
+    .price-tagline--expired { text-decoration: line-through; opacity: 0.6; }
     .pricing-includes { margin-bottom: 28px; }
     .pricing-includes li {
       display: flex;
@@ -735,6 +747,16 @@
       pricePerSessionIndia: '₹874',
       pricePerSessionIntl: '$24.99',
       formUrl: 'https://learn.approachable.dev/registration',
+
+      // Price increase countdown — after this moment, the "late" price/tagline kick in automatically.
+      priceIncreaseAt: '2026-08-13T23:59:59+05:30',
+      priceIncreaseDateShort: 'Aug 13',
+      priceIndiaLate: '₹4,499',
+      priceIntlLate: '$129',
+      priceTaglineIndiaLate: "That's just ₹1,124 per live session with your mentor",
+      priceTaglineIntlLate: "That's just $32.25 per live session with your mentor",
+      pricePerSessionIndiaLate: '₹1,124',
+      pricePerSessionIntlLate: '$32.25',
     };
     // ============================================================
 
@@ -751,20 +773,71 @@
       document.querySelectorAll('[data-cohort-date]').forEach(el => el.textContent = COHORT.date);
       document.querySelectorAll('[data-cohort-date-short]').forEach(el => el.textContent = COHORT.dateShort);
       document.querySelectorAll('[data-cohort-time]').forEach(el => el.textContent = COHORT.time);
-      document.querySelectorAll('[data-cohort-price-india]').forEach(el => el.textContent = COHORT.priceIndia);
-      document.querySelectorAll('[data-cohort-price-intl]').forEach(el => el.textContent = COHORT.priceIntl);
       document.querySelectorAll('[data-cohort-original-price-india]').forEach(el => el.textContent = COHORT.originalPriceIndia);
       document.querySelectorAll('[data-cohort-original-price-intl]').forEach(el => el.textContent = COHORT.originalPriceIntl);
-      document.querySelectorAll('[data-cohort-price-tagline-india]').forEach(el => el.textContent = COHORT.priceTaglineIndia);
-      document.querySelectorAll('[data-cohort-price-tagline-intl]').forEach(el => el.textContent = COHORT.priceTaglineIntl);
-      document.querySelectorAll('[data-cohort-price-per-session-india]').forEach(el => el.textContent = COHORT.pricePerSessionIndia);
-      document.querySelectorAll('[data-cohort-price-per-session-intl]').forEach(el => el.textContent = COHORT.pricePerSessionIntl);
       document.querySelectorAll('[data-cohort-students]').forEach(el => el.textContent = COHORT.studentsTotal);
       document.querySelectorAll('[data-cohort-form]').forEach(el => el.href = COHORT.formUrl);
       document.querySelectorAll('[data-seats-left]').forEach(el => el.textContent = COHORT.seatsLeft);
+      document.querySelectorAll('[data-price-increase-date]').forEach(el => el.textContent = COHORT.priceIncreaseDateShort);
 
       const badge = document.getElementById('seatsBadge');
       if (badge) badge.textContent = `${COHORT.seatsLeft} seats left`;
+
+      applyPricing();
+      startPriceCountdown();
+    }
+
+    // Applies the current (early or late) price fields to the page. Re-run once
+    // the countdown expires so the "late" price kicks in without a reload.
+    function applyPricing() {
+      const late = COHORT.priceIncreaseAt && Date.now() >= new Date(COHORT.priceIncreaseAt).getTime();
+      const p = late ? {
+        priceIndia: COHORT.priceIndiaLate,
+        priceIntl: COHORT.priceIntlLate,
+        priceTaglineIndia: COHORT.priceTaglineIndiaLate,
+        priceTaglineIntl: COHORT.priceTaglineIntlLate,
+        pricePerSessionIndia: COHORT.pricePerSessionIndiaLate,
+        pricePerSessionIntl: COHORT.pricePerSessionIntlLate,
+      } : COHORT;
+
+      document.querySelectorAll('[data-cohort-price-india]').forEach(el => el.textContent = p.priceIndia);
+      document.querySelectorAll('[data-cohort-price-intl]').forEach(el => el.textContent = p.priceIntl);
+      document.querySelectorAll('[data-cohort-price-tagline-india]').forEach(el => el.textContent = p.priceTaglineIndia);
+      document.querySelectorAll('[data-cohort-price-tagline-intl]').forEach(el => el.textContent = p.priceTaglineIntl);
+      document.querySelectorAll('[data-cohort-price-per-session-india]').forEach(el => el.textContent = p.pricePerSessionIndia);
+      document.querySelectorAll('[data-cohort-price-per-session-intl]').forEach(el => el.textContent = p.pricePerSessionIntl);
+    }
+
+    // Ticking "price goes up in..." countdown. Once it hits zero, swaps in the
+    // late price via applyPricing() and stops.
+    function startPriceCountdown() {
+      const el = document.getElementById('priceCountdown');
+      if (!el || !COHORT.priceIncreaseAt) return;
+      const target = new Date(COHORT.priceIncreaseAt).getTime();
+
+      const dEl = document.getElementById('cdDays');
+      const hEl = document.getElementById('cdHours');
+      const mEl = document.getElementById('cdMins');
+      const sEl = document.getElementById('cdSecs');
+
+      let timer;
+      function tick() {
+        const diff = target - Date.now();
+        if (diff <= 0) {
+          el.innerHTML = 'Early price has ended — new price is now live';
+          const tagline = document.getElementById('earlyPriceTagline');
+          if (tagline) tagline.classList.add('price-tagline--expired');
+          applyPricing();
+          clearInterval(timer);
+          return;
+        }
+        dEl.textContent = Math.floor(diff / 86400000);
+        hEl.textContent = String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0');
+        mEl.textContent = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
+        sEl.textContent = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
+      }
+      tick();
+      timer = setInterval(tick, 1000);
     }
 
     function trackCTA(label, loc) {
@@ -1217,8 +1290,14 @@
 
         <div class="pricing-card">
           <div style="text-align:center;margin-bottom:20px;">
-            <span class="price-tagline" style="display:inline-block;">🚀 Early registration price — 50% off</span>
+            <span class="price-tagline" id="earlyPriceTagline" style="display:inline-block;">🚀 Early registration price — 50% off</span>
           </div>
+
+          <div class="price-countdown" id="priceCountdown">
+            Price goes up on <span data-price-increase-date></span> in
+            <strong><span id="cdDays">–</span>d <span id="cdHours">–</span>h <span id="cdMins">–</span>m <span id="cdSecs">–</span>s</strong>
+          </div>
+
           <div class="pricing-head">
             <div>
               <div style="font-size:12px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px;">India</div>
