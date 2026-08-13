@@ -1,7 +1,4 @@
 {
   "version": 2,
-  "name": "approachable-landing",
-  "builds": [
-    { "src": "index.html", "use": "@vercel/static" }
-  ]
+  "name": "approachable-landing"
 }
