@@ -1,0 +1,187 @@
+{
+  "slug": "ai-mastery-for-working-professionals",
+  "title": "AI Mastery for Working Professionals",
+  "heroImage": "https://csxrrefkjqflxcynbixj.supabase.co/storage/v1/object/public/course-images/courses/605d4fa0-54b3-4fa6-a30d-12fde2c0e73c.png",
+  "instructor": {
+    "name": "Ranbeer Makin",
+    "email": "ranbeer@gmail.com"
+  },
+  "pricing": {
+    "inr": { "original": "₹1,999", "current": "₹999" },
+    "usd": { "original": "$99", "current": "$49" },
+    "discountPercent": 50
+  },
+  "discountLabel": "🎉 Launch Offer — 50% OFF for early learners. Limited time.",
+  "metadata": {
+    "type": "Recorded",
+    "skillLevel": "Beginner & Intermediate",
+    "language": "English",
+    "certificateAvailable": true,
+    "sampleCertificateUrl": "https://learn.approachable.dev/sample-certificate",
+    "videoCount": 48,
+    "duration": "5+ hours"
+  },
+  "description": "<p>AI is changing how we work—but most professionals don't know where to begin.</p>\n<p>This course is designed to help you move from <strong>AI Curious</strong> to <strong>AI Capable</strong> through practical, hands-on learning. Instead of focusing on theory, you'll learn how to use today's leading AI tools to save time, improve productivity, automate repetitive work, and build AI-powered solutions.</p>\n<p>You'll explore tools like <strong>ChatGPT, Claude, NotebookLM, n8n, GitHub Copilot, Lovable</strong>, and more while understanding the concepts behind modern AI, prompt engineering, AI agents, and AI-powered workflows.</p>\n<p>Whether you're in business, marketing, HR, finance, operations, consulting, or software development, this course will help you confidently apply AI to your daily work.</p>\n<p>For any queries regarding this course or the Approachable platform, email me at <a href=\"mailto:ranbeer@gmail.com\">ranbeer@gmail.com</a></p>\n<hr>\n<h1>What You'll Learn</h1>\n<p>By the end of this course, you'll be able to:</p>\n<ul>\n<li>Understand how modern AI and Large Language Models (LLMs) work</li>\n<li>Master prompt engineering techniques for better AI outputs</li>\n<li>Use ChatGPT, Claude, Gemini, and other leading AI tools effectively</li>\n<li>Build repeatable AI workflows that save hours every week</li>\n<li>Understand AI Agents and how they differ from chatbots</li>\n<li>Automate business processes using n8n (no-code)</li>\n<li>Build simple AI applications using APIs</li>\n<li>Create AI-powered assistants for research, content, analysis, and customer support</li>\n<li>Learn the fundamentals of Vibe Coding and AI-assisted software development</li>\n<li>Apply AI safely using best practices for prompting, validation, and evaluation</li>\n<li>Stay ahead in an AI-first workplace</li>\n</ul>\n<hr>\n<h1>Who Is This Course For?</h1>\n<p>This course is ideal for:</p>\n<ul>\n<li>Working professionals looking to become AI-ready</li>\n<li>Managers and team leads who want to improve productivity</li>\n<li>Product Managers and Business Analysts</li>\n<li>Consultants and freelancers</li>\n<li>Entrepreneurs and startup founders</li>\n<li>Software developers who want to leverage AI coding tools</li>\n<li>Marketing, Sales, HR, Finance, and Operations professionals</li>\n<li>Anyone curious about AI but unsure where to start</li>\n</ul>\n<p>No prior AI experience is required.</p>\n<hr>\n<h1>What's Included</h1>\n<ul>\n<li>🎥 <strong>48 recorded videos</strong></li>\n<li>📚 <strong>5+ hours of structured video content</strong></li>\n<li>🛠 Hands-on demos and real-world AI workflows</li>\n<li>📝 Quizzes and practical exercises</li>\n<li>💻 Capstone project (do on your own)</li>\n<li>🤝 Private learner community (coming soon)</li>\n<li>📂 Downloadable prompts, templates, and resources</li>\n<li>🚀 Lifetime access to course recordings</li>\n<li>🎓 Certificate of Completion (Available now!)</li>\n</ul>\n<hr>\n<h2>Tools we will use in this course</h2>\n<ul>\n<li>ChatGPT</li>\n<li>Claude</li>\n<li>NotebookLM</li>\n<li>GitHub Copilot</li>\n<li>Lovable</li>\n<li>n8n</li>\n<li>OpenAI API</li>\n</ul>\n<hr>\n<h2>Course Outcome</h2>\n<p>By the end of this course, you'll have the confidence to use AI in your everyday work, automate repetitive tasks, build AI-powered workflows, and understand where AI can create the greatest impact in your career and organization.</p>\n<p><strong>The goal isn't just to learn AI. It's to become AI Capable.</strong></p>",
+  "instructorBio": "Ranbeer Makin is passionate about helping working professionals confidently adopt AI. He has already trained 250+ learners through hands-on workshops and practical courses. As a software entrepreneur with 18+ years of experience, he now focuses on helping professionals move from AI Curious to AI Capable by teaching practical workflows, automation, and real-world AI applications.",
+  "inclusions": [
+    "48 recorded videos",
+    "5+ hours of structured video content",
+    "Hands-on demos and real-world AI workflows",
+    "Quizzes and practical exercises",
+    "Capstone project (do on your own)",
+    "Private learner community (coming soon)",
+    "Downloadable prompts, templates, and resources",
+    "Lifetime access to course recordings",
+    "Certificate of Completion (Available now!)"
+  ],
+  "tools": ["ChatGPT", "Claude", "NotebookLM", "GitHub Copilot", "Lovable", "n8n", "OpenAI API"],
+  "sessions": [
+    {
+      "id": "54bead70-2084-431b-a79e-d05554bc8bdd",
+      "number": 1,
+      "title": "Session 1: Introduction to AI & Kickoff",
+      "defaultOpen": true,
+      "items": [
+        { "number": 1, "title": "Course Introduction", "type": "video", "locked": false, "previewUrl": "https://video.gumlet.io/6a55e53c2a1936a5c8df7efc/6a6b0683731270e6e7906598/main.m3u8" },
+        { "number": 2, "title": "Course Objectives (Must watch)", "type": "video", "locked": true },
+        { "number": 3, "title": "Two hot topics in AI currently", "type": "video", "locked": true },
+        { "number": 4, "title": "AI layoffs", "type": "video", "locked": true },
+        { "number": 5, "title": "AI native teams", "type": "video", "locked": true },
+        { "number": 6, "title": "AI Interfaces & Course Roadmap", "type": "video", "locked": true },
+        { "number": 7, "title": "History of AI & Industry Evolution", "type": "video", "locked": true },
+        { "number": 8, "title": "Popular LLMs", "type": "video", "locked": true },
+        { "number": 9, "title": "Advanced: How LLMs Work", "type": "video", "locked": true },
+        { "number": 10, "title": "Everyday AI tools", "type": "video", "locked": true },
+        { "number": 11, "title": "ChatGPT & Claude Personalization", "type": "video", "locked": true },
+        { "number": 12, "title": "Projects in ChatGPT & Claude", "type": "video", "locked": true },
+        { "number": 13, "title": "OpenAI Platform", "type": "video", "locked": true },
+        { "number": 14, "title": "Tool: Notebook LM", "type": "video", "locked": true },
+        { "number": 15, "title": "Recap & Next week session plan", "type": "video", "locked": true },
+        { "title": "Quiz: Session 1: AI Mastery: Quiz 1: AI Overview", "type": "quiz", "locked": true },
+        { "title": "Mini-project: 1: Set up and personalize your ChatGPT", "type": "project", "locked": true },
+        { "title": "Mini-project: 2: Write one prompt for a task you do weekly", "type": "project", "locked": true },
+        { "title": "Mini-project: 3: Build a persistent work Project", "type": "project", "locked": true },
+        { "title": "Mini-project: 4: NotebookLM knowledge base for your role", "type": "project", "locked": true }
+      ]
+    },
+    {
+      "id": "24660fb7-4f54-409a-999a-9683e1606b17",
+      "number": 2,
+      "title": "Session 2: Building AI Apps with Prompt Engineering and Context Management",
+      "items": [
+        { "number": 1, "title": "Introduction & Outcome of Today's Session", "type": "video", "locked": true },
+        { "number": 2, "title": "Principles of Prompting", "type": "video", "locked": true },
+        { "number": 3, "title": "Prompt Template & Prompting Guide", "type": "video", "locked": false, "previewUrl": "https://video.gumlet.io/6a55e53c2a1936a5c8df7efc/6a571cfcc65fbac227c011a1/main.m3u8" },
+        { "number": 4, "title": "Talk It Loud Prompt Method", "type": "video", "locked": true },
+        { "number": 5, "title": "Deep Research", "type": "video", "locked": true },
+        { "number": 6, "title": "AI Response Degradation, New Chats, Context Windows", "type": "video", "locked": true },
+        { "number": 7, "title": "System Prompt, User and Assistant messges", "type": "video", "locked": true },
+        { "number": 8, "title": "Code: Building AI Apps: A simple call to OpenAI API", "type": "video", "locked": true },
+        { "number": 9, "title": "Code: Building AI Apps: Zero-shot, Few-shot, Many-shot", "type": "video", "locked": true },
+        { "number": 10, "title": "Code: How to secure your prompts", "type": "video", "locked": true },
+        { "number": 11, "title": "Code: Structured Output, Max Output Tokens, and Temperature", "type": "video", "locked": true },
+        { "number": 12, "title": "Code: Applied examples: sentiment analysis, data extraction, ticket routing", "type": "video", "locked": true },
+        { "number": 13, "title": "Code: A Pizza Order taking bot", "type": "video", "locked": true },
+        { "number": 14, "title": "Testing AI Apps: Evals, Graders & Traces", "type": "video", "locked": true },
+        { "number": 15, "title": "User input validations, reducing Hallucinations & other best practices and techniques", "type": "video", "locked": true },
+        { "number": 16, "title": "Recap & Next week session plan", "type": "video", "locked": true },
+        { "title": "Quiz: Session 2: Quiz 1: Prompt Engineering", "type": "quiz", "locked": true },
+        { "title": "Pre-reading: 1: Prompt Engineering 101 (30 mins)", "type": "reading", "locked": true },
+        { "title": "Pre-reading: 2: Additional Readings", "type": "reading", "locked": true },
+        { "title": "Pre-reading: 3: Github samples", "type": "reading", "locked": true },
+        { "title": "Mini-project: 1: Build a sentiment analysis application", "type": "project", "locked": true },
+        { "title": "Mini-project: 2: Write a prompt to extract data from meeting transcript", "type": "project", "locked": true },
+        { "title": "Mini-project: 3: Create a simple customer support chatbot", "type": "project", "locked": true }
+      ]
+    },
+    {
+      "id": "18b1b309-a85a-4577-8fda-342aee80d47e",
+      "number": 3,
+      "title": "Session 3: No-Code AI Agents",
+      "items": [
+        { "number": 1, "title": "Introduction to AI Agents", "type": "video", "locked": true },
+        { "number": 2, "title": "Evolution of LLMs & Agentic AI Fundamentals", "type": "video", "locked": true },
+        { "number": 3, "title": "Agentic AI and Degress of autonomy", "type": "video", "locked": true },
+        { "number": 4, "title": "More AI Agent examples: Customer support, coding and research agents", "type": "video", "locked": true },
+        { "number": 5, "title": "Advanced: Agent Design Pattern #1: Reflection", "type": "video", "locked": false, "previewUrl": "https://video.gumlet.io/6a55e53c2a1936a5c8df7efc/6a571ff6462ae4490ffe31d9/main.m3u8" },
+        { "number": 6, "title": "Advanced: Agent Design Pattern #2: Tool use", "type": "video", "locked": true },
+        { "number": 7, "title": "Advanced: Agent Design Pattern #3: Planning", "type": "video", "locked": true },
+        { "number": 8, "title": "Advanced: Agent Design Pattern #4: Multi-agent systems", "type": "video", "locked": true },
+        { "number": 9, "title": "Tool: Basics of n8n (No-Code) & your first LLM Call with n8n", "type": "video", "locked": true },
+        { "number": 10, "title": "No-Code: Sentiment Analysis & Data extraction with n8n", "type": "video", "locked": true },
+        { "number": 11, "title": "No-Code: Pizza Ordering bot in n8n", "type": "video", "locked": true },
+        { "number": 12, "title": "No-Code: Customer Retention AI Agent n8n", "type": "video", "locked": true },
+        { "number": 13, "title": "Advanced: Multi agents & more Agentic design patterns", "type": "video", "locked": true },
+        { "number": 14, "title": "Where do I start with AI Agents, Recap and next steps", "type": "video", "locked": true },
+        { "title": "Quiz: Session 3: Quiz 1: AI Agents", "type": "quiz", "locked": true },
+        { "title": "Pre-reading: 1: Introduction to AI Agents", "type": "reading", "locked": true },
+        { "title": "Pre-reading: 2: Github repo with Agents sample", "type": "reading", "locked": true },
+        { "title": "Mini-project: 1: Create an N8N AI agent to classify incoming support email", "type": "project", "locked": true }
+      ]
+    },
+    {
+      "id": "47cfc5a0-60a2-4cd7-a2bb-dc09f74f1b4b",
+      "number": 4,
+      "title": "Session 4: Vibe Coding & Agentic Engineering",
+      "items": [
+        { "number": 1, "title": "Introduction and Precap", "type": "video", "locked": true },
+        { "number": 2, "title": "Quiz", "type": "video", "locked": true },
+        { "number": 3, "title": "Need a favor", "type": "video", "locked": true },
+        { "number": 4, "title": "What is Vibe Coding", "type": "video", "locked": true },
+        { "number": 5, "title": "Why Vibe Code", "type": "video", "locked": true },
+        { "number": 6, "title": "Vibe Coding prompt building blocks", "type": "video", "locked": true },
+        { "number": 7, "title": "Vibe Coding tools", "type": "video", "locked": true },
+        { "number": 8, "title": "Demo: Claude Artifacts", "type": "video", "locked": true },
+        { "number": 9, "title": "Demo: Copilot in Excel", "type": "video", "locked": true },
+        { "number": 10, "title": "Tool: Lovable (Build applications and prototypes) - full walkthrough", "type": "video", "locked": true },
+        { "number": 11, "title": "Advanced: GitHub Copilot Pro - full walkthrough", "type": "video", "locked": true },
+        { "number": 12, "title": "Vibe Coding vs Agentic Engineering", "type": "video", "locked": true },
+        { "number": 13, "title": "Advanced: Best Practices & Where AI can add efficiency gains in Software Development processes", "type": "video", "locked": true },
+        { "number": 14, "title": "Conclusion", "type": "video", "locked": true },
+        { "title": "Quiz: Session 4: Quiz 1: Vibe Coding", "type": "quiz", "locked": true },
+        { "title": "Mini-project: 1: Create a Roadmap tracker app entirely vibe coded", "type": "project", "locked": true }
+      ]
+    },
+    {
+      "id": "ad7e90c4-6b63-47e1-bd8d-dcd54e140408",
+      "number": 5,
+      "title": "Session 5: Capstone Projects",
+      "items": [
+        { "number": 1, "title": "Capstone Projects 1 & 2 Discussion", "type": "video", "locked": false, "previewUrl": "https://video.gumlet.io/6a55e53c2a1936a5c8df7efc/6a5721340d6ad7ba157e4801/main.m3u8" },
+        { "number": 2, "title": "Capstone Project 1 Solution", "type": "video", "locked": true },
+        { "title": "Pre-reading: 1: Kaggle dataset", "type": "reading", "locked": true },
+        { "title": "Mini-project: Capstone Project 3: Feature request intelligence dashboard", "type": "project", "locked": true },
+        { "title": "Mini-project: Capstone Project 4: Hiring pipeline copilot", "type": "project", "locked": true }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Do I need prior AI or coding experience?",
+      "answer": "No. This course is for working professionals with no prior AI background. Whether you're in business, marketing, HR, finance, or software development, you'll learn practical skills step by step — no coding degree required."
+    },
+    {
+      "question": "Is this live or self-paced?",
+      "answer": "This is a fully recorded, self-paced course. You get lifetime access to all 48 videos (5+ hours of content) and can learn on your own schedule, revisiting lessons anytime."
+    },
+    {
+      "question": "What tools or accounts will I need?",
+      "answer": "You'll use ChatGPT, Claude, NotebookLM, GitHub Copilot, Lovable, n8n, and the OpenAI API. Most tools offer free tiers, so you can follow along without expensive software."
+    },
+    {
+      "question": "How much time should I plan for?",
+      "answer": "Core videos run 5+ hours. Budget extra time for hands-on demos, quizzes, exercises, and the optional capstone project. Most learners complete it over a few weeks at their own pace."
+    },
+    {
+      "question": "Will I get a certificate?",
+      "answer": "Yes. A Certificate of Completion is available now. You'll also receive downloadable prompts, templates, and resources to use in your daily work."
+    },
+    {
+      "question": "What will I be able to do after this course?",
+      "answer": "You'll use AI tools confidently, build repeatable workflows, automate tasks with n8n, understand AI agents, and apply AI in your role — moving from AI Curious to AI Capable."
+    }
+  ],
+  "purchaseUrl": "https://learn.approachable.dev/courses/ai-mastery-for-working-professionals",
+  "ogImage": "https://www.approachable.dev/og_image_3.png",
+  "ogDescription": "AI is changing how we work—but most professionals don't know where to begin. Move from AI Curious to AI Capable through practical, hands-on learning."
+}
