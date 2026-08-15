@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
+import { redirect } from 'next/navigation';
 import { getCourseContent } from '@/lib/course-content';
 import CurriculumSection from '@/components/course/CurriculumSection';
 import CourseInfoPanel from '@/components/course/CourseInfoPanel';
@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function CourseDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const course = await getCourseContent(slug);
-  if (!course) notFound();
+  if (!course) redirect('/');
 
   return (
     <div className={styles.page}>
@@ -99,13 +99,13 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
         </div>
       </main>
 
-      <CourseStickyBar course={course} />
-
       <footer className={styles.footer}>
         <div className={styles.container}>
-          <p>© 2026 Approachable.dev. All rights reserved. For support, contact: {course.instructor.email}</p>
+          <p>© 2026 Approachable.dev. All rights reserved. For support, contact: ranbeer@gmail.com</p>
         </div>
       </footer>
+
+      <CourseStickyBar course={course} />
     </div>
   );
 }
