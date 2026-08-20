@@ -63,7 +63,7 @@ export default function PricingSection() {
               className={`price-tagline${isLate ? ' price-tagline--expired' : ''}`}
               style={{ display: 'inline-block' }}
             >
-              🚀 Early registration price — 50% off
+              🚀 DISCOUNTED price — 50% off
             </span>
           </div>
 
@@ -76,7 +76,7 @@ export default function PricingSection() {
                 </strong>
               </>
             ) : (
-              'Early price has ended — new price is now live'
+             ''
             )}
           </div>
 
