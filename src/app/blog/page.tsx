@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import Banner from '@/components/Banner';
 import { getAllPosts } from '@/lib/posts';
 
 export const metadata: Metadata = {
@@ -20,6 +21,7 @@ export default function BlogIndexPage() {
 
   return (
     <>
+      <Banner />
       <Header />
       <main style={{ backgroundColor: 'var(--bg)', minHeight: '100vh' }}>
         <div className="mx-auto max-w-[800px] px-6 py-20">

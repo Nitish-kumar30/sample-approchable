@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { marked } from 'marked';
+import Banner from '@/components/Banner';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { getAllPosts, getPostBySlug } from '@/lib/posts';
@@ -44,6 +45,7 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <>
+    <Banner />
       <Header />
       <main style={{ backgroundColor: 'var(--bg)', minHeight: '100vh' }}>
         <article className="mx-auto max-w-[740px] px-6 py-20">
