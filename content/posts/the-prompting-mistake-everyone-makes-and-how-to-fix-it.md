@@ -1,5 +1,5 @@
 ---
-title: The Prompting Mistake Everyone Makes (And How to Fix It)
+title: The Prompting Mistake Everyone Makes (And How to Fix It) - 101
 date: 2026-08-21
 excerpt: Most people treat AI prompts like search queries. That single habit is
   responsible for 80% of bad AI output — and it's a 30-second fix.
