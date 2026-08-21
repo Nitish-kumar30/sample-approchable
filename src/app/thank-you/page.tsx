@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import Script from 'next/script';
+import Header from '@/components/Header';
 
 export const metadata: Metadata = {
   title: 'Thank You',
@@ -22,19 +22,9 @@ export default function ThankYouPage() {
         }
       `}</Script>
 
-      <div className="bg-gray-900 text-gray-100 leading-relaxed antialiased min-h-screen flex flex-col">
-        <header className="py-6 border-b border-white/5">
-          <div className="mx-auto max-w-[1100px] px-6 flex items-center justify-between">
-            <Link href="/" className="flex items-center space-x-3">
-              <Image src="/logo.png" alt="Approachable" width={60} height={60} className="rounded-lg" />
-              <div>
-                <div className="text-lg font-bold">Approachable</div>
-                <div className="text-xs text-gray-400">making learning AI approachable for <em>everyone</em></div>
-              </div>
-            </Link>
-          </div>
-        </header>
+      <Header />
 
+      <div className="bg-gray-900 text-gray-100 leading-relaxed antialiased min-h-screen flex flex-col">
         <main className="flex-1">
           <section className="mx-auto max-w-[1100px] px-6 py-20 flex items-center justify-center min-h-screen">
             <div className="bg-gradient-to-br from-indigo-900/30 to-purple-900/30 rounded-xl p-8 md:p-12 border-2 border-indigo-500/40 text-center max-w-2xl">

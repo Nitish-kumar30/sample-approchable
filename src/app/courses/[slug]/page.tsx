@@ -1,14 +1,18 @@
 import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
-import { getCourseContent } from '@/lib/course-content';
+import { getCourseContent, getCourseSections, getSectionIcon } from '@/lib/course-content';
 import CurriculumSection from '@/components/course/CurriculumSection';
 import CourseInfoPanel from '@/components/course/CourseInfoPanel';
 import CourseStickyBar from '@/components/course/CourseStickyBar';
+import Header from '@/components/Header';
+import SupportFooter from '@/components/SupportFooter';
 import FAQSection from '@/components/course/FAQSection';
 import styles from './course.module.css';
 
 const COURSE_SLUGS = [
   'ai-mastery-for-working-professionals',
+  'no-code-ai-agents-mastery-for-working-professionals',
+  'vibe-coding-mastery-for-working-professionals',
 ];
 
 export function generateStaticParams() {
@@ -44,8 +48,12 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
   const course = await getCourseContent(slug);
   if (!course) redirect('/');
 
+  const sections = getCourseSections(course.description);
+
   return (
-    <div className={styles.page}>
+    <>
+      <Header />
+      <div className={styles.page}>
       {course.discountLabel && (
         <div className={styles.discountBanner}>{course.discountLabel}</div>
       )}
@@ -55,8 +63,15 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
           <div className={styles.courseLayout}>
             {/* Hero */}
             <div id="course-hero" className={styles.hero}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={course.heroImage} alt={course.title} />
+              {course.heroImage ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={course.heroImage} alt={course.title} />
+              ) : (
+                // TODO: replace with a real course hero image once available
+                <div className={styles.heroPlaceholder}>
+                  <span>{course.title}</span>
+                </div>
+              )}
             </div>
 
             {/* Header row */}
@@ -75,19 +90,28 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
             <div className={styles.courseBody}>
               <hr className={styles.separator} />
 
-              {/* About */}
-              <section className="card-elevated">
-                <div className="card-header"><h2 className="card-title">About this Course</h2></div>
-                <div className={`card-body ${styles.prose}`}>
-                  <div dangerouslySetInnerHTML={{ __html: course.description }} />
-                  {course.instructorBio && (
-                    <div className={styles.instructorBio}>
-                      <h4>About the Instructor</h4>
-                      <p>{course.instructorBio}</p>
+              {/* Description, split into clearly hierarchied sections */}
+              {sections.map((section, i) => (
+                <section className={styles.sectionCard} key={section.heading ?? i}>
+                  {section.heading && (
+                    <div className={styles.sectionCardHeader}>
+                      <span className={styles.sectionCardIcon} aria-hidden="true">
+                        {getSectionIcon(section.heading)}
+                      </span>
+                      <h2 className={styles.sectionCardTitle}>{section.heading}</h2>
                     </div>
                   )}
-                </div>
-              </section>
+                  <div className={`${styles.sectionCardBody} ${styles.prose}`}>
+                    <div dangerouslySetInnerHTML={{ __html: section.html }} />
+                    {i === 0 && course.instructorBio && (
+                      <div className={styles.instructorBio}>
+                        <h3>About the Instructor</h3>
+                        <p>{course.instructorBio}</p>
+                      </div>
+                    )}
+                  </div>
+                </section>
+              ))}
 
               {/* Curriculum */}
               <CurriculumSection sessions={course.sessions} />
@@ -99,13 +123,10 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
         </div>
       </main>
 
-      <footer className={styles.footer}>
-        <div className={styles.container}>
-          <p>© 2026 Approachable.dev. All rights reserved. For support, contact: ranbeer@gmail.com</p>
-        </div>
-      </footer>
+      <SupportFooter className={styles.footer} innerClassName={styles.container} />
 
       <CourseStickyBar course={course} />
     </div>
+    </>
   );
 }

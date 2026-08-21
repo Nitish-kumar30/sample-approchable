@@ -1,0 +1,97 @@
+{
+  "slug": "vibe-coding-mastery-for-working-professionals",
+  "title": "Vibe Coding Mastery for Working Professionals",
+  "heroImage": "",
+  "instructor": {
+    "name": "Ranbeer Makin",
+    "email": "ranbeer@gmail.com"
+  },
+  "pricing": {
+    "inr": { "original": "₹198", "current": "₹99" },
+    "usd": { "original": "$10", "current": "$5" },
+    "discountPercent": 50
+  },
+  "discountLabel": "🎉 Launch Offer — 50% OFF for early learners. Limited time.",
+  "metadata": {
+    "type": "Recorded",
+    "skillLevel": "Beginner Friendly",
+    "language": "English",
+    "certificateAvailable": true,
+    "sampleCertificateUrl": "https://learn.approachable.dev/sample-certificate",
+    "videoCount": 7,
+    "duration": "45+ minutes"
+  },
+  "description": "<p>AI is changing not just how we work, but how we build.</p>\n<p>With tools like Claude Artifacts, Copilot in Excel, and Lovable, professionals can now create useful tools, analyze data, build prototypes, and turn ideas into working applications—often without traditional software development skills.</p>\n<p>This course is designed to give you a practical introduction to Vibe Coding. You'll learn what Vibe Coding is, why it matters, how to communicate effectively with AI, and how to use modern AI-powered tools to turn your ideas into working outputs.</p>\n<p>Instead of focusing on theory, the course is built around hands-on demonstrations and real-world examples.</p>\n<p>You'll learn the fundamental building blocks of effective Vibe Coding prompts, explore Claude Artifacts and Copilot in Excel, and complete a full walkthrough of Lovable to see how an idea can be transformed into a working application or prototype.</p>\n<p>Whether you're a business professional, entrepreneur, manager, consultant, product manager, analyst, or someone simply curious about building with AI, this course will give you a practical starting point for the world of Vibe Coding.</p>\n<p>For any queries regarding this course or the Approachable platform, email me at <a href=\"mailto:ranbeer@gmail.com\">ranbeer@gmail.com</a></p>\n<hr>\n<h1>What You'll Learn</h1>\n<p>By the end of this course, you'll be able to:</p>\n<ul>\n<li>Understand what Vibe Coding is and why it is changing how people build with technology</li>\n<li>Understand when and why you should use Vibe Coding</li>\n<li>Learn the key building blocks of a good Vibe Coding prompt</li>\n<li>Understand how to structure your instructions so AI can better understand what you want to build</li>\n<li>Explore different Vibe Coding tools and understand what they can be used for</li>\n<li>Use Claude Artifacts to create useful interactive outputs</li>\n<li>Use Copilot in Excel to work more effectively with spreadsheets and data</li>\n<li>Use Lovable to build applications and prototypes using natural language</li>\n<li>Follow the process of taking an idea and turning it into a working prototype</li>\n<li>Understand how to collaborate with AI during the building process</li>\n<li>Gain the confidence to start experimenting with Vibe Coding on your own</li>\n</ul>\n<hr>\n<h1>Who Is This Course For?</h1>\n<p>This course is ideal for:</p>\n<ul>\n<li>Working professionals curious about Vibe Coding</li>\n<li>Entrepreneurs and startup founders</li>\n<li>Managers and team leads</li>\n<li>Product Managers and Business Analysts</li>\n<li>Consultants and freelancers</li>\n<li>Marketing, Sales, HR, Finance, and Operations professionals</li>\n<li>Professionals who want to build prototypes without relying entirely on developers</li>\n<li>Software developers who want to explore AI-assisted building</li>\n<li>Anyone who wants to understand how AI is changing the way applications are created</li>\n</ul>\n<p>No prior Vibe Coding experience is required.</p>\n<hr>\n<h1>What's Included</h1>\n<ul>\n<li>🎥 <strong>Recorded video sessions</strong></li>\n<li>📚 Structured, practical learning</li>\n<li>🛠 Hands-on demonstrations</li>\n<li>💻 Real-world Vibe Coding examples</li>\n<li>🧩 Vibe Coding prompt building blocks</li>\n<li>📂 Downloadable prompts and resources</li>\n<li>🚀 Practical walkthrough of building an application/prototype with Lovable</li>\n<li>🎓 Certificate of Completion</li>\n</ul>\n<hr>\n<h2>Tools We'll Explore</h2>\n<ul>\n<li>Claude Artifacts</li>\n<li>Microsoft Copilot in Excel</li>\n<li>Lovable</li>\n</ul>\n<p>You'll also learn how these tools fit into the broader Vibe Coding ecosystem and what to look for when choosing a Vibe Coding tool.</p>\n<hr>\n<h2>Course Outcome</h2>\n<p>By the end of this course, you'll understand how to think about Vibe Coding, how to communicate your ideas to AI, and how to use modern AI tools to turn those ideas into useful outputs and working prototypes.</p>\n<p>You won't just understand the concept—you'll see Vibe Coding in action and have the foundation to start experimenting yourself.</p>\n<p><strong>The goal isn't to become a programmer.</strong></p>\n<p><strong>It's to learn how to build with AI.</strong></p>",
+  "instructorBio": "Ranbeer Makin is passionate about helping working professionals confidently adopt AI. He has already trained 250+ learners through hands-on workshops and practical courses. As a software entrepreneur with 18+ years of experience, he now focuses on helping professionals move from AI Curious to AI Capable by teaching practical workflows, automation, and real-world AI applications.",
+  "inclusions": [
+    "Recorded video sessions",
+    "Structured, practical learning",
+    "Hands-on demonstrations",
+    "Real-world Vibe Coding examples",
+    "Vibe Coding prompt building blocks",
+    "Downloadable prompts and resources",
+    "Practical walkthrough of building an application/prototype with Lovable",
+    "Certificate of Completion"
+  ],
+  "tools": ["Claude Artifacts", "Microsoft Copilot in Excel", "Lovable"],
+  "sessions": [
+    {
+      "id": "session-0",
+      "number": 1,
+      "title": "Session 0: What is Vibe Coding?",
+      "defaultOpen": true,
+      "items": [
+        { "number": 1, "title": "What is Vibe Coding", "type": "video", "locked": true },
+        { "number": 2, "title": "Why Vibe Code", "type": "video", "locked": true },
+        { "number": 3, "title": "Vibe Coding Prompt Building Blocks", "type": "video", "locked": true },
+        { "number": 4, "title": "Vibe Coding Tools", "type": "video", "locked": true }
+      ]
+    },
+    {
+      "id": "session-1",
+      "number": 2,
+      "title": "Session 1: Claude Artifacts and Copilot in Excel",
+      "items": [
+        { "number": 1, "title": "Demo: Claude Artifacts", "type": "video", "locked": true },
+        { "number": 2, "title": "Demo: Copilot in Excel", "type": "video", "locked": true }
+      ]
+    },
+    {
+      "id": "session-3",
+      "number": 3,
+      "title": "Session 3: Lovable",
+      "items": [
+        { "number": 1, "title": "Tool: Lovable (Build Applications and Prototypes) — Full Walkthrough", "type": "video", "locked": true }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Do I need to know how to code for this course?",
+      "answer": "No. Vibe Coding is about communicating your ideas to AI tools so they can build for you. This course is designed for working professionals with no prior coding or Vibe Coding experience."
+    },
+    {
+      "question": "Is this course live or self-paced?",
+      "answer": "This is a fully recorded, self-paced course. You get lifetime access and can learn on your own schedule, revisiting lessons anytime."
+    },
+    {
+      "question": "What tools or accounts will I need?",
+      "answer": "You'll explore Claude Artifacts, Microsoft Copilot in Excel, and Lovable. Most of these tools offer free tiers, so you can follow along without expensive software."
+    },
+    {
+      "question": "What will I be able to do after this course?",
+      "answer": "You'll understand the core building blocks of a good Vibe Coding prompt, and be able to use Claude Artifacts, Copilot in Excel, and Lovable to turn your own ideas into working prototypes."
+    },
+    {
+      "question": "Will I get a certificate?",
+      "answer": "Yes. A Certificate of Completion is available once you finish the course, along with downloadable prompts and resources you can reuse in your own work."
+    },
+    {
+      "question": "Who is this course for?",
+      "answer": "Working professionals, entrepreneurs, managers, consultants, PMs, analysts, and anyone curious about building with AI — even software developers looking to explore AI-assisted building."
+    }
+  ],
+  "purchaseUrl": "https://learn.approachable.dev/courses/vibe-coding-mastery-for-working-professionals",
+  "ogImage": "https://www.approachable.dev/og_image_3.png",
+  "ogDescription": "Learn what Vibe Coding is and how to use Claude Artifacts, Copilot in Excel, and Lovable to turn your ideas into working prototypes."
+}

@@ -45,13 +45,15 @@ export default function CourseStickyBar({ course }: CourseStickyBarProps) {
         <div className="sticky-pay-text">
           <p className="sticky-pay-title">{course.title}</p>
           <div className="price-row">
-            <span className="price-old">{price.original}</span>
+            {price.original !== price.current && <span className="price-old">{price.original}</span>}
             <span className="price-new">{price.current}</span>
-            <span className="discount-tag">{course.pricing.discountPercent}% off</span>
+            {course.pricing.discountPercent > 0 && (
+              <span className="discount-tag">{course.pricing.discountPercent}% off</span>
+            )}
           </div>
         </div>
         <a className="btn-primary" href={course.purchaseUrl}>
-          Pay {price.current}
+          Enroll Now
         </a>
       </div>
     </div>

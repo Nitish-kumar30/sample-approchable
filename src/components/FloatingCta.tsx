@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { COHORT } from '@/lib/cohort-config';
 import { trackCTA } from '@/lib/analytics';
 
@@ -27,13 +28,13 @@ export default function FloatingCta() {
           🔥 Only {COHORT.seatsLeft} seats left · Cohort 7 starts {COHORT.dateShort}
         </div>
         <div className="floating-actions">
-          <a
-            href="#pricing"
+          <Link
+            href="/#pricing"
             className="floating-cta-btn"
             onClick={() => trackCTA('Floating CTA', 'Float')}
           >
             Get One of {COHORT.seatsLeft} Seats →
-          </a>
+          </Link>
           <button className="floating-close" onClick={() => setDismissed(true)}>
             ×
           </button>
