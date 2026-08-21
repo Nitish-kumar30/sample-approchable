@@ -5,7 +5,7 @@ excerpt: Most people treat AI prompts like search queries. That single habit is
   responsible for 80% of bad AI output — and it's a 30-second fix.
 coverImage: /public/images/posts/vibe-coding-with-ai-tools.png
 ---
-```markdown
+
 Here's the most common thing I see when people share their AI prompts: they're too short, too vague, and written like a Google search.
 
 "Write me a marketing email."
@@ -52,6 +52,4 @@ The best prompt isn't always the first one. Send something decent, review the ou
 Iteration is free. Use it.
 
 The people who get the most out of AI aren't writing magic prompts. They're just treating it like a talented colleague who needs proper direction — not a vending machine you shake until something falls out.
-
-```
 
