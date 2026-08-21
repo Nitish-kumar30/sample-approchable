@@ -16,6 +16,13 @@ export interface Post extends PostFrontmatter {
   body: string;
 }
 
+/** Normalises whatever gray-matter/js-yaml gives us for a date field to YYYY-MM-DD */
+function normaliseDate(raw: unknown): string {
+  if (!raw) return '';
+  if (raw instanceof Date) return raw.toISOString().slice(0, 10);
+  return String(raw).slice(0, 10);
+}
+
 function ensurePostsDir(): boolean {
   try {
     return fs.existsSync(POSTS_DIR);
@@ -43,7 +50,7 @@ export function getAllPosts(): Post[] {
       posts.push({
         slug,
         title: data.title ?? slug,
-        date: data.date ? String(data.date).slice(0, 10) : '',
+        date: normaliseDate(data.date),
         excerpt: data.excerpt ?? '',
         coverImage: data.coverImage,
         body: content,
@@ -64,7 +71,7 @@ export function getPostBySlug(slug: string): Post | null {
     return {
       slug,
       title: data.title ?? slug,
-      date: data.date ? String(data.date).slice(0, 10) : '',
+      date: normaliseDate(data.date),
       excerpt: data.excerpt ?? '',
       coverImage: data.coverImage,
       body: content,

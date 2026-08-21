@@ -8,6 +8,10 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { getAllPosts, getPostBySlug } from '@/lib/posts';
 
+// allow slugs committed after the last build to be rendered on-demand
+export const dynamicParams = true;
+export const revalidate = 3600;
+
 type Props = { params: Promise<{ slug: string }> };
 
 export async function generateStaticParams() {

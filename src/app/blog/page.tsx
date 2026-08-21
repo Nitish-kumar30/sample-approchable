@@ -6,6 +6,9 @@ import Footer from '@/components/Footer';
 import Banner from '@/components/Banner';
 import { getAllPosts } from '@/lib/posts';
 
+// revalidate every 60 s so new CMS posts appear without a full redeploy
+export const revalidate = 60;
+
 export const metadata: Metadata = {
   title: 'Blog — Approachable',
   description: 'Insights on AI, learning, and making the most of tools like Claude.',
