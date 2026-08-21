@@ -1,0 +1,56 @@
+{
+  "slug": "claude-101-skills-connectors-and-more",
+  "title": "Claude 101 - Skills, Connectors and more",
+  "heroImage": "https://wgkuqcwgbokzfxtimklr.supabase.co/storage/v1/object/public/course-images/courses/ed339a3b-4305-4cf7-a589-34f33354bfd8.png",
+  "isFree": true,
+  "instructor": {
+    "name": "Ava (Approachable Virtual Assistant)",
+    "email": "ranbeer@gmail.com"
+  },
+  "pricing": {
+    "inr": { "original": "Free", "current": "Free" },
+    "usd": { "original": "Free", "current": "Free" },
+    "discountPercent": 0
+  },
+  "discountLabel": "",
+  "metadata": {
+    "type": "Free",
+    "skillLevel": "Beginner Friendly",
+    "language": "English",
+    "certificateAvailable": false,
+    "videoCount": 1,
+    "duration": "Watch now"
+  },
+  "description": "<p>Explore Claude Skills, Connectors, Projects, Artifacts, and Plugins — the features that turn Claude into a powerful daily work assistant.</p>\n<hr>\n<h1>What You'll Learn</h1>\n<ul>\n<li>Claude Skills — reusable capabilities tailored to your work</li>\n<li>Connectors — link Claude to the tools you already use</li>\n<li>Projects, Artifacts, and Claude Plugins</li>\n</ul>\n<hr>\n<h1>Who Is This Course For?</h1>\n<ul>\n<li>Professionals who want to unlock Claude's full feature set</li>\n<li>Anyone ready to move from chat-only to integrated AI workflows</li>\n</ul>",
+  "instructorBio": "Ava is Approachable's virtual assistant, guiding learners through practical Claude workflows.",
+  "inclusions": [
+    "Recorded video lesson",
+    "Lifetime access",
+    "Hands-on Claude demos"
+  ],
+  "tools": ["Claude"],
+  "sessions": [
+    {
+      "id": "session-0",
+      "number": 1,
+      "title": "Session 1: Skills, Connectors, Projects, Artifacts and Plugins",
+      "defaultOpen": true,
+      "items": [
+        { "number": 1, "title": "Skills, Connectors, Projects, Artifacts and Claude Plugins", "type": "video", "locked": true }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Is this course free?",
+      "answer": "Yes. No payment is required."
+    },
+    {
+      "question": "Do I need Claude experience?",
+      "answer": "Basic familiarity with Claude helps, but the course is beginner friendly."
+    }
+  ],
+  "purchaseUrl": "https://learn.approachable.dev/courses/claude-101-skills-connectors-and-more",
+  "ogImage": "https://wgkuqcwgbokzfxtimklr.supabase.co/storage/v1/object/public/course-images/courses/ed339a3b-4305-4cf7-a589-34f33354bfd8.png",
+  "ogDescription": "You will learn Claude Skills, Connectors, Projects, Artifacts and Claude Plugins"
+}

@@ -1,3 +1,10 @@
+import introToAi from '@/data/courses/intro-to-ai-for-professionals.json';
+import claude101SubAgents from '@/data/courses/claude-101-sub-agents-hooks-and-claude-md.json';
+import claude101Skills from '@/data/courses/claude-101-skills-connectors-and-more.json';
+import aiMastery from '@/data/courses/ai-mastery-for-working-professionals.json';
+import noCodeAiAgents from '@/data/courses/no-code-ai-agents-mastery-for-working-professionals.json';
+import vibeCoding from '@/data/courses/vibe-coding-mastery-for-working-professionals.json';
+
 export interface CurriculumItem {
   number?: number;
   title: string;
@@ -24,6 +31,7 @@ export interface CourseContent {
   slug: string;
   title: string;
   heroImage: string;
+  isFree?: boolean;
   instructor: { name: string; email: string };
   pricing: CoursePricing;
   discountLabel: string;
@@ -90,13 +98,17 @@ export function getCourseSections(descriptionHtml: string): CourseSection[] {
   });
 }
 
+const COURSE_REGISTRY: Record<string, CourseContent> = {
+  'intro-to-ai-for-professionals': introToAi as CourseContent,
+  'claude-101-sub-agents-hooks-and-claude-md': claude101SubAgents as CourseContent,
+  'claude-101-skills-connectors-and-more': claude101Skills as CourseContent,
+  'ai-mastery-for-working-professionals': aiMastery as CourseContent,
+  'no-code-ai-agents-mastery-for-working-professionals': noCodeAiAgents as CourseContent,
+  'vibe-coding-mastery-for-working-professionals': vibeCoding as CourseContent,
+};
+
 export async function getCourseContent(slug: string): Promise<CourseContent | null> {
-  try {
-    const data = await import(`@/data/courses/${slug}.json`);
-    return data.default as CourseContent;
-  } catch {
-    return null;
-  }
+  return COURSE_REGISTRY[slug] ?? null;
 }
 
 export interface CourseSummary {
@@ -108,34 +120,57 @@ export interface CourseSummary {
   type: string;
   duration: string;
   enrolled: boolean;
+  isFree: boolean;
 }
 
-// Sellable courses, in display order. Add a slug here (and a matching JSON
-// file in src/data/courses/) whenever a new course goes on sale.
-const CATALOG_SLUGS = [
+export const FREE_CATALOG_SLUGS = [
+  'claude-101-sub-agents-hooks-and-claude-md',
+  'claude-101-skills-connectors-and-more',
+];
+
+export const PAID_CATALOG_SLUGS = [
   'ai-mastery-for-working-professionals',
   'no-code-ai-agents-mastery-for-working-professionals',
   'vibe-coding-mastery-for-working-professionals',
 ];
+
+export const ALL_CATALOG_SLUGS = [...FREE_CATALOG_SLUGS, ...PAID_CATALOG_SLUGS];
 
 // Slugs the visitor is already enrolled in. Static for now since the
 // marketing site has no auth/session system — wire this up to real
 // enrollment data if/when one exists.
 const ENROLLED_SLUGS: string[] = [];
 
-export async function getAllCourses(): Promise<CourseSummary[]> {
-  const courses = await Promise.all(CATALOG_SLUGS.map((slug) => getCourseContent(slug)));
+function toCourseSummary(course: CourseContent): CourseSummary {
+  return {
+    slug: course.slug,
+    title: course.title,
+    shortDescription: course.ogDescription,
+    heroImage: course.heroImage,
+    instructor: course.instructor.name,
+    type: course.metadata.type,
+    duration: course.metadata.duration,
+    enrolled: ENROLLED_SLUGS.includes(course.slug),
+    isFree: course.isFree ?? false,
+  };
+}
+
+async function getCoursesBySlugs(slugs: string[]): Promise<CourseSummary[]> {
+  const courses = await Promise.all(slugs.map((slug) => getCourseContent(slug)));
 
   return courses
     .filter((course): course is CourseContent => course !== null)
-    .map((course) => ({
-      slug: course.slug,
-      title: course.title,
-      shortDescription: course.ogDescription,
-      heroImage: course.heroImage,
-      instructor: course.instructor.name,
-      type: course.metadata.type,
-      duration: course.metadata.duration,
-      enrolled: ENROLLED_SLUGS.includes(course.slug),
-    }));
+    .map(toCourseSummary);
+}
+
+export async function getFreeCourses(): Promise<CourseSummary[]> {
+  return getCoursesBySlugs(FREE_CATALOG_SLUGS);
+}
+
+export async function getPaidCourses(): Promise<CourseSummary[]> {
+  return getCoursesBySlugs(PAID_CATALOG_SLUGS);
+}
+
+export async function getAllCourses(): Promise<CourseSummary[]> {
+  return getCoursesBySlugs(ALL_CATALOG_SLUGS);
 }

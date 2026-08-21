@@ -3,7 +3,6 @@ import Image from 'next/image';
 import { COHORT } from '@/lib/cohort-config';
 import Banner from '@/components/Banner';
 import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import FloatingCta from '@/components/FloatingCta';
 import PricingSection from '@/components/PricingSection';
 import Lightbox from '@/components/Lightbox';
@@ -466,7 +465,6 @@ export default function HomePage() {
         </section>
       </main>
 
-      <Footer />
       <FloatingCta />
     </>
   );

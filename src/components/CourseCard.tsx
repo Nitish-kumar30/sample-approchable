@@ -18,7 +18,11 @@ export default function CourseCard({ course }: CourseCardProps) {
             <span>🎓</span>
           </div>
         )}
-        {course.enrolled && <span className="course-card-badge">Enrolled</span>}
+        {course.enrolled ? (
+          <span className="course-card-badge">Enrolled</span>
+        ) : course.isFree ? (
+          <span className="course-card-badge course-card-badge-free">Free</span>
+        ) : null}
       </div>
 
       <div className="course-card-body">
@@ -28,20 +32,28 @@ export default function CourseCard({ course }: CourseCardProps) {
         <div className="course-card-bottom">
           <div className="course-card-meta">
             <span className="course-card-meta-item">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" />
-              </svg>
+              {course.isFree ? (
+                <span aria-hidden="true">🎓</span>
+              ) : (
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" />
+                </svg>
+              )}
               {course.instructor}
             </span>
-            <span className="course-card-meta-item">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                <circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" />
-              </svg>
-              {course.type}
-            </span>
+            {!course.isFree && (
+              <span className="course-card-meta-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" />
+                </svg>
+                {course.type}
+              </span>
+            )}
           </div>
 
-          <span className="course-card-footer">View details →</span>
+          <span className={`course-card-footer${course.isFree ? ' course-card-footer-free' : ''}`}>
+            {course.isFree ? 'Start learning →' : 'View details →'}
+          </span>
         </div>
       </div>
     </Link>

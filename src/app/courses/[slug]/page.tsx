@@ -1,19 +1,14 @@
 import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
-import { getCourseContent, getCourseSections, getSectionIcon } from '@/lib/course-content';
+import { getCourseContent, getCourseSections, getSectionIcon, ALL_CATALOG_SLUGS } from '@/lib/course-content';
 import CurriculumSection from '@/components/course/CurriculumSection';
 import CourseInfoPanel from '@/components/course/CourseInfoPanel';
 import CourseStickyBar from '@/components/course/CourseStickyBar';
 import Header from '@/components/Header';
-import SupportFooter from '@/components/SupportFooter';
 import FAQSection from '@/components/course/FAQSection';
 import styles from './course.module.css';
 
-const COURSE_SLUGS = [
-  'ai-mastery-for-working-professionals',
-  'no-code-ai-agents-mastery-for-working-professionals',
-  'vibe-coding-mastery-for-working-professionals',
-];
+const COURSE_SLUGS = ALL_CATALOG_SLUGS;
 
 export function generateStaticParams() {
   return COURSE_SLUGS.map((slug) => ({ slug }));
@@ -54,7 +49,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
     <>
       <Header />
       <div className={styles.page}>
-      {course.discountLabel && (
+      {course.discountLabel && !course.isFree && (
         <div className={styles.discountBanner}>{course.discountLabel}</div>
       )}
 
@@ -122,8 +117,6 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
           </div>
         </div>
       </main>
-
-      <SupportFooter className={styles.footer} innerClassName={styles.container} />
 
       <CourseStickyBar course={course} />
     </div>

@@ -1,7 +1,8 @@
 {
   "slug": "vibe-coding-mastery-for-working-professionals",
   "title": "Vibe Coding Mastery for Working Professionals",
-  "heroImage": "",
+  "heroImage": "https://wgkuqcwgbokzfxtimklr.supabase.co/storage/v1/object/public/course-images/courses/4dee3195-2b6b-4a18-bce3-4b458a4ebbaa.png",
+  "isFree": false,
   "instructor": {
     "name": "Ranbeer Makin",
     "email": "ranbeer@gmail.com"

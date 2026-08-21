@@ -2,10 +2,12 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { COHORT } from '@/lib/cohort-config';
 import { trackCTA } from '@/lib/analytics';
 
 export default function FloatingCta() {
+  const pathname = usePathname();
   const [visible, setVisible] = useState(false);
   const [dismissed, setDismissed] = useState(false);
 
@@ -19,7 +21,7 @@ export default function FloatingCta() {
     return () => window.removeEventListener('scroll', onScroll);
   }, [dismissed]);
 
-  if (dismissed) return null;
+  if (pathname !== '/' || dismissed) return null;
 
   return (
     <div id="floatingCta" className={visible ? 'visible' : ''}>

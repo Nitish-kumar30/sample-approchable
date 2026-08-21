@@ -2,6 +2,7 @@
   "slug": "ai-mastery-for-working-professionals",
   "title": "AI Mastery for Working Professionals",
   "heroImage": "https://csxrrefkjqflxcynbixj.supabase.co/storage/v1/object/public/course-images/courses/605d4fa0-54b3-4fa6-a30d-12fde2c0e73c.png",
+  "isFree": false,
   "instructor": {
     "name": "Ranbeer Makin",
     "email": "ranbeer@gmail.com"

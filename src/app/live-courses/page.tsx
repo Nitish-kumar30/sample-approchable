@@ -106,16 +106,6 @@ export default function LiveCoursesPage() {
           </div>
         </section>
       </main>
-
-      <footer className="border-t border-white/5 mt-12 py-8">
-        <div className="mx-auto max-w-[1100px] px-6 flex flex-col md:flex-row items-center justify-between">
-          <div className="text-sm text-gray-400">© 2026 Approachable • making AI approachable</div>
-          <div className="mt-4 md:mt-0 space-x-4">
-            <Link href="#" className="text-gray-400 text-sm">Privacy</Link>
-            <Link href="#" className="text-gray-400 text-sm">Terms</Link>
-          </div>
-        </div>
-      </footer>
     </div>
     </>
   );

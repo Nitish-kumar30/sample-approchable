@@ -1,0 +1,56 @@
+{
+  "slug": "claude-101-sub-agents-hooks-and-claude-md",
+  "title": "Claude 101 - Sub Agents, Hooks and Claude.MD",
+  "heroImage": "https://wgkuqcwgbokzfxtimklr.supabase.co/storage/v1/object/public/course-images/courses/ac749f4c-f8ab-4c53-9c67-fb3bcba9ae85.png",
+  "isFree": true,
+  "instructor": {
+    "name": "Ava (Approachable Virtual Assistant)",
+    "email": "ranbeer@gmail.com"
+  },
+  "pricing": {
+    "inr": { "original": "Free", "current": "Free" },
+    "usd": { "original": "Free", "current": "Free" },
+    "discountPercent": 0
+  },
+  "discountLabel": "",
+  "metadata": {
+    "type": "Free",
+    "skillLevel": "Beginner Friendly",
+    "language": "English",
+    "certificateAvailable": false,
+    "videoCount": 1,
+    "duration": "Watch now"
+  },
+  "description": "<p>Learn how to get more from Claude with Sub Agents, Hooks, and Claude.MD — practical building blocks for smarter AI workflows.</p>\n<hr>\n<h1>What You'll Learn</h1>\n<ul>\n<li>Sub Agents — delegate tasks to specialized Claude agents</li>\n<li>Hooks — automate actions at key moments in your workflow</li>\n<li>Claude.MD — structure project context Claude can reliably follow</li>\n</ul>\n<hr>\n<h1>Who Is This Course For?</h1>\n<ul>\n<li>Working professionals using Claude who want to go beyond basic chat</li>\n<li>Anyone curious about agents, automation, and project-level AI setup</li>\n</ul>",
+  "instructorBio": "Ava is Approachable's virtual assistant, guiding learners through practical Claude workflows.",
+  "inclusions": [
+    "Recorded video lesson",
+    "Lifetime access",
+    "Hands-on Claude demos"
+  ],
+  "tools": ["Claude"],
+  "sessions": [
+    {
+      "id": "session-0",
+      "number": 1,
+      "title": "Session 1: Sub Agents, Hooks and Claude.MD",
+      "defaultOpen": true,
+      "items": [
+        { "number": 1, "title": "Sub Agents, Hooks and Claude.MD", "type": "video", "locked": true }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Is this course free?",
+      "answer": "Yes. No payment is required."
+    },
+    {
+      "question": "Do I need Claude experience?",
+      "answer": "Basic familiarity with Claude helps, but the course is beginner friendly."
+    }
+  ],
+  "purchaseUrl": "https://learn.approachable.dev/courses/claude-101-sub-agents-hooks-and-claude-md",
+  "ogImage": "https://wgkuqcwgbokzfxtimklr.supabase.co/storage/v1/object/public/course-images/courses/ac749f4c-f8ab-4c53-9c67-fb3bcba9ae85.png",
+  "ogDescription": "You will learn Sub Agents, Hooks and Claude.MD"
+}

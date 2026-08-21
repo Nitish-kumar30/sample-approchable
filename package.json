@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "push:dev": "git push origin frontend-pages",
+    "push:deploy": "git push deploy frontend-pages:main",
+    "push:all": "git push origin frontend-pages && git push deploy frontend-pages:main"
   },
   "dependencies": {
     "@upstash/redis": "^1.34.3",
