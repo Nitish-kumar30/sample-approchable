@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Header from '@/components/Header';
+import CorporateTrainingNav from '@/components/corporate-training/CorporateTrainingNav';
 import ScrollReveal from '@/components/corporate-training/ScrollReveal';
 import FaqAccordion from '@/components/corporate-training/FaqAccordion';
 import MentorPhoto from '@/components/corporate-training/MentorPhoto';
@@ -19,24 +19,6 @@ export const metadata: Metadata = {
 
 const ALUMNI = ['Adobe', 'Microsoft', 'GAP Inc', 'Deloitte', 'Nordstrom', 'Upwork', 'TeamViewer', 'Coca-Cola', 'WBD'];
 
-const POSITIONING = [
-  {
-    icon: '🏢',
-    title: 'Private to your org',
-    text: 'Only your people are in the room. Every example, prompt, and exercise is built around your team\u2019s actual work.',
-  },
-  {
-    icon: '🔧',
-    title: 'Hands-on, every session',
-    text: 'Every tier — including the C-suite — spends the sessions drafting, reviewing, and building. No passive slides.',
-  },
-  {
-    icon: '🌐',
-    title: 'Vendor-neutral start, deep skill finish',
-    text: 'Session 1 covers the real AI landscape across providers. Then we go hands-on with the tools your team will actually use.',
-  },
-];
-
 const TIERS = [
   {
     id: 'cxo',
@@ -45,7 +27,7 @@ const TIERS = [
     title: 'For the people who sign off',
     role: 'CEOs, CFOs, CIOs and C-suite',
     outcome:
-      'Leaves able to review an AI-drafted board pack, draft their own memos without waiting on anyone, and tell substance from hype in a vendor pitch.',
+      'review an AI-drafted board pack and catch what\u2019s wrong, draft memos without waiting on anyone, and tell substance from hype in a vendor pitch.',
   },
   {
     id: 'director',
@@ -54,7 +36,7 @@ const TIERS = [
     title: 'For the people who translate',
     role: 'Directors and heads of function',
     outcome:
-      'Leaves able to turn a stack of team updates into one clean summary in minutes, run their own competitive scan, and build a reporting workflow that runs without them.',
+      'turn a stack of team updates into one clean summary in minutes, run a competitive scan solo, and build a reporting workflow that runs without them.',
   },
   {
     id: 'mgmt',
@@ -63,7 +45,7 @@ const TIERS = [
     title: 'For the people who run the team',
     role: 'People managers and functional leads',
     outcome:
-      'Leaves able to auto-draft performance summaries from raw notes, consolidate status updates without copy-paste, and run a first-cut forecast they trust.',
+      'auto-draft performance summaries from raw notes, consolidate status updates without copy-paste, and run a first-cut forecast they can trust.',
   },
   {
     id: 'mid',
@@ -72,7 +54,7 @@ const TIERS = [
     title: 'For the people closest to the work',
     role: 'Team leads and middle managers',
     outcome:
-      'Leaves able to build a small AI agent for a repetitive weekly task, delegate multi-step busywork with a real quality checklist, and teach their own team what they learned.',
+      'build a small AI agent for their team\u2019s most repetitive weekly task, delegate multi-step busywork with a quality checklist, and teach their own team what they learned.',
   },
 ];
 
@@ -80,52 +62,64 @@ const WEEKS = [
   {
     num: 'WEEK 1',
     title: 'AI Foundations & the Real Landscape',
-    desc: 'A vendor-neutral grounding in how modern AI works — before opening a single tool. Your team leaves able to explain AI clearly and tell which tool fits which job.',
-    chips: ['How LLMs work', 'Key vocabulary', 'Claude · ChatGPT · Gemini · Copilot', 'Your industry\u2019s AI map'],
+    desc: 'Vendor-neutral grounding in how modern AI works. Covers Claude, ChatGPT, Gemini, Copilot — and where each fits. Mapped to where your specific industry is already using AI, and where it isn\u2019t yet.',
+    outcomeLabel: 'Your team leaves able to',
+    outcome: 'explain AI clearly, evaluate any vendor pitch in 10 minutes, and pick the right tool for the job.',
   },
   {
     num: 'WEEK 2',
     title: 'Research, Reporting & Prompting',
-    desc: 'The deep, hands-on layer. Build a reusable prompt library around your team\u2019s real recurring tasks. Produce a first-draft report or analysis in minutes instead of hours.',
-    chips: ['Prompt library', 'Web search → deep research', 'Projects & artifacts', 'API intro'],
+    desc: 'Build a reusable prompt library around your team\u2019s actual recurring tasks. Go from raw data to a first-draft report or competitive scan in one sitting.',
+    outcomeLabel: 'Your team leaves with',
+    outcome:
+      'a working prompt library and one real report — drafted live, ready to reuse at their desk the next morning.',
   },
   {
     num: 'WEEK 3',
     title: 'Agentic Task Automation',
-    desc: 'Delegate real multi-step work to AI agents while keeping control of the quality. Hand off a recurring task your team does every week — built live in the session.',
-    chips: ['AI agents', 'Multi-step automation', 'Browser-based workflows', 'Quality checkpoints'],
+    desc: 'Delegate real multi-step work to AI agents — while keeping control of the quality. Your team picks a repetitive task they already do every week and automates it live.',
+    outcomeLabel: 'Your team leaves with',
+    outcome: 'one end-to-end automation, built in the session, ready to save hours the same week.',
   },
   {
     num: 'WEEK 4',
     title: 'Shipping Prototypes Fast',
-    desc: 'Turn ideas into working software or internal tools — days instead of months. Relevant for developers and non-developers alike.',
-    chips: ['AI-assisted coding', 'Internal tools & dashboards', 'Code quality control', 'Live prototype demo'],
+    desc: 'Turn ideas into working internal tools or prototypes — days instead of months. Relevant for developers and non-developers alike.',
+    outcomeLabel: 'Your team leaves with',
+    outcome: 'a working prototype or internal tool tied to a real need, demoed live to close the program.',
   },
 ];
 
-const INDUSTRIES = [
-  'Retail & CPG',
-  'Financial Services',
-  'Manufacturing',
-  'Tech & Professional Services',
-  'Healthcare Operations',
-];
+const INDUSTRIES = ['Retail & CPG', 'Financial Services', 'Manufacturing', 'Tech & Services', 'Healthcare Ops'];
 
 const TESTIMONIALS = [
   {
-    quote: 'Built my first AI agent in week 3 — something I thought would take me months.',
-    attribution: '— Verified LinkedIn review',
+    quote:
+      'Built my first working AI agent by week three — something I expected would take months to figure out.',
+    name: 'Approachable alumnus',
+    source: 'Verified LinkedIn review',
   },
   {
-    quote: 'Ranbeer makes complex AI concepts feel simple and immediately actionable.',
-    attribution: '— Verified LinkedIn review',
+    quote:
+      'Concepts that sounded complicated on paper became things I could use the same day. The small-group format is what actually made it stick.',
+    name: 'Approachable alumnus',
+    source: 'Verified LinkedIn review',
   },
 ];
 
 const PROCESS = [
-  { title: '1. Intro call', text: 'Tell us your team size, tiers, and industry. Takes about 20 minutes.' },
-  { title: '2. We tailor it', text: 'Session content, prompts, and exercises get mapped to your org\u2019s real work.' },
-  { title: '3. Four live sessions', text: 'One per week, virtual or on-site. Hands-on throughout, mentor-led start to finish.' },
+  {
+    title: '1. Intro call',
+    text: '20 minutes. Tell us your team size, tiers, industry, and goals. We\u2019ll discuss pricing and format.',
+  },
+  {
+    title: '2. We tailor it',
+    text: 'Every prompt, exercise, and example gets mapped to your org\u2019s real work before session 1.',
+  },
+  {
+    title: '3. Four live sessions',
+    text: 'One per week. Virtual or on-site, your choice. Hands-on throughout, mentor-led start to finish.',
+  },
 ];
 
 const CONTACT_MAILTO =
@@ -133,259 +127,273 @@ const CONTACT_MAILTO =
 
 export default function CorporateTrainingPage() {
   return (
-    <>
-      <Header />
-      <div className={styles.page}>
-        <ScrollReveal />
+    <div className={styles.page}>
+      <CorporateTrainingNav />
+      <ScrollReveal />
 
-        <main id="top">
-          {/* HERO */}
-          <section className={styles.hero}>
-            <div className={styles.wrap}>
-              <div className={`${styles.heroPrivate} ${styles.reveal} ${styles.revealIn}`}>
-                <span>🔒</span> <strong>Private engagement</strong> — built for one organization at a time
+      <main id="top">
+        {/* HERO */}
+        <section className={styles.hero}>
+          <div className={styles.wrap}>
+            <div className={`${styles.heroBadges} ${styles.reveal} ${styles.revealIn}`}>
+              <span className={styles.heroBadge}>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                  <rect x="1" y="5" width="12" height="8" rx="2" stroke="currentColor" strokeWidth="1.4" />
+                  <path
+                    d="M4 5V3.5a3 3 0 116 0V5"
+                    stroke="currentColor"
+                    strokeWidth="1.4"
+                    strokeLinecap="round"
+                  />
+                </svg>
+                <strong>Private</strong> — one org at a time
+              </span>
+              <span className={styles.heroBadge}>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                  <circle cx="7" cy="7" r="5.5" stroke="currentColor" strokeWidth="1.4" />
+                  <path
+                    d="M4 7.5l2 2 4-4.5"
+                    stroke="currentColor"
+                    strokeWidth="1.4"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                <strong>Vendor-neutral</strong> landscape, deep skill finish
+              </span>
+            </div>
+            <h1>
+              Get your leadership team <em className={styles.heroHighlight}>actually using</em> AI.
+            </h1>
+            <p className={styles.heroSub}>
+              Four live, hands-on sessions. Use cases built around your industry. Your team leaves with working AI
+              workflows — not a certificate.
+            </p>
+            <div className={styles.heroCtas}>
+              <a href="#contact" className={`${styles.btn} ${styles.btnAccent}`}>
+                Book a 20-minute intro call →
+              </a>
+              <a href="#curriculum" className={`${styles.btn} ${styles.btnGhost}`}>
+                See the curriculum
+              </a>
+            </div>
+
+            <div className={`${styles.heroProof} ${styles.reveal} ${styles.revealIn}`}>
+              <div className={styles.proofItem}>
+                <span className={styles.pNum}>250+</span>
+                <span className={styles.pLabel}>professionals trained</span>
               </div>
-              <h1>
-                Get your leadership team <em className={styles.heroHighlight}>actually using</em> AI.
-              </h1>
-              <p className={styles.heroSub}>
-                A private, hands-on AI training program delivered to your company. Four live sessions. Use cases from
-                your industry. Every level — CxO to middle manager — leaves having built something real, not just sat
-                through a deck.
-              </p>
-              <div className={styles.heroCtas}>
-                <a href="#contact" className={`${styles.btn} ${styles.btnAccent}`}>
-                  Request a proposal →
-                </a>
-                <a href="#curriculum" className={`${styles.btn} ${styles.btnGhost}`}>
-                  See the curriculum
-                </a>
+              <div className={styles.proofItem}>
+                <span className={styles.pNum}>4.9★</span>
+                <span className={styles.pLabel}>avg. rating</span>
+              </div>
+              <div className={styles.proofItem}>
+                <span className={styles.pNum}>4</span>
+                <span className={styles.pLabel}>live sessions</span>
+              </div>
+              <div className={styles.proofItem}>
+                <span className={styles.pNum}>1</span>
+                <span className={styles.pLabel}>dedicated mentor</span>
               </div>
             </div>
-          </section>
+          </div>
+        </section>
 
-          <div className={styles.alumniStrip}>
-            <div className={styles.wrap}>
-              <span className={styles.alumniLabel}>MENTOR&apos;S ALUMNI FROM</span>
-              <div className={styles.alumniNames}>
-                {ALUMNI.map((name) => (
-                  <span key={name}>{name}</span>
+        {/* LOGOS */}
+        <div className={styles.logoStrip}>
+          <div className={styles.wrap}>
+            <span className={styles.logoLabel}>ALUMNI FROM</span>
+            <div className={styles.logoNames}>
+              {ALUMNI.map((name) => (
+                <span key={name}>{name}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* TIERS */}
+        <section id="tiers" className={styles.section}>
+          <div className={styles.wrap}>
+            <div className={`${styles.sectionHead} ${styles.reveal}`}>
+              <span className={styles.eyebrow}>Who it&apos;s for</span>
+              <h2>Four tiers in one room. Each leaves with something different.</h2>
+              <p>
+                Everyone attends the same live sessions — but what they build is calibrated to their actual job.
+              </p>
+            </div>
+            <div className={`${styles.tierGrid} ${styles.reveal}`}>
+              {TIERS.map((tier) => (
+                <div className={`${styles.tierCard} ${tier.className}`} key={tier.id}>
+                  <span className={styles.tierTag}>{tier.tag}</span>
+                  <h3>{tier.title}</h3>
+                  <p className={styles.tierRole}>{tier.role}</p>
+                  <p className={styles.tierOutcome}>
+                    <strong>Leaves able to:</strong> {tier.outcome}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CURRICULUM */}
+        <section id="curriculum" className={`${styles.section} ${styles.sectionAlt}`}>
+          <div className={styles.wrap}>
+            <div className={`${styles.sectionHead} ${styles.reveal}`}>
+              <span className={styles.eyebrow}>The 4 weeks</span>
+              <h2>Four live sessions. 60–90 minutes each. Hands-on throughout.</h2>
+            </div>
+            <div className={`${styles.weekTrack} ${styles.reveal}`}>
+              {WEEKS.map((week) => (
+                <div className={styles.week} key={week.num}>
+                  <div className={styles.weekTop}>
+                    <span className={styles.weekNum}>{week.num}</span>
+                    <h3>{week.title}</h3>
+                  </div>
+                  <p className={styles.weekDesc}>{week.desc}</p>
+                  <div className={styles.weekOutcome}>
+                    <strong>{week.outcomeLabel}</strong>
+                    {week.outcome}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* INDUSTRY */}
+        <section className={styles.section} style={{ paddingTop: 0 }}>
+          <div className={styles.wrap}>
+            <div className={`${styles.industryLine} ${styles.reveal}`}>
+              <h3>Every example gets swapped for one from your world.</h3>
+              <p>All prompts, exercises, and use cases are rebuilt around your industry before session 1.</p>
+              <div className={styles.indChips}>
+                {INDUSTRIES.map((industry) => (
+                  <span className={styles.indChip} key={industry}>
+                    {industry}
+                  </span>
                 ))}
               </div>
             </div>
           </div>
+        </section>
 
-          {/* WHAT THIS IS */}
-          <section className={styles.section}>
-            <div className={styles.wrap}>
-              <div className={`${styles.sectionHead} ${styles.reveal}`}>
-                <span className={styles.eyebrow}>What this is</span>
-                <h2>Not a webinar. Not a video course. Not a vendor pitch.</h2>
-              </div>
-              <div className={`${styles.positioningGrid} ${styles.reveal}`}>
-                {POSITIONING.map((item) => (
-                  <div className={styles.posCard} key={item.title}>
-                    <span className={styles.posIcon}>{item.icon}</span>
-                    <h3>{item.title}</h3>
-                    <p>{item.text}</p>
-                  </div>
-                ))}
-              </div>
+        {/* MENTOR */}
+        <section id="mentor" className={`${styles.section} ${styles.sectionAlt}`}>
+          <div className={styles.wrap}>
+            <div className={`${styles.sectionHead} ${styles.reveal}`}>
+              <span className={styles.eyebrow}>Your mentor</span>
+              <h2>One named mentor. Not a rotating bench.</h2>
             </div>
-          </section>
-
-          {/* TIERS */}
-          <section id="tiers" className={`${styles.section} ${styles.sectionAlt}`}>
-            <div className={styles.wrap}>
-              <div className={`${styles.sectionHead} ${styles.reveal}`}>
-                <span className={styles.eyebrow}>Who it&apos;s for</span>
-                <h2>Four tiers in one room. Each leaves with something different.</h2>
-                <p>
-                  Your CxOs, directors, managers, and middle managers all attend the same live sessions — but what
-                  they build is calibrated to what each tier does day to day.
+            <div className={`${styles.mentor} ${styles.reveal}`}>
+              <MentorPhoto />
+              <div>
+                <h3 style={{ fontSize: 22, marginBottom: 2 }}>Ranbeer Makin</h3>
+                <p style={{ color: 'var(--ink-soft)', marginBottom: 14, fontSize: 15 }}>
+                  Entrepreneur · AI Educator · Claude Certified &amp; Claude Partner
                 </p>
-              </div>
-              <div className={`${styles.tierGrid} ${styles.reveal}`}>
-                {TIERS.map((tier) => (
-                  <div className={`${styles.tierCard} ${tier.className}`} key={tier.id}>
-                    <span className={styles.tierTag}>{tier.tag}</span>
-                    <h3>{tier.title}</h3>
-                    <p className={styles.tierRole}>{tier.role}</p>
-                    <p className={styles.tierOutcome}>{tier.outcome}</p>
+                <div className={styles.mentorStats}>
+                  <div>
+                    <span className={styles.mNum}>250+</span>
+                    <span className={styles.mLabel}>professionals trained</span>
                   </div>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          {/* CURRICULUM */}
-          <section id="curriculum" className={styles.section}>
-            <div className={styles.wrap}>
-              <div className={`${styles.sectionHead} ${styles.reveal}`}>
-                <span className={styles.eyebrow}>The 4 weeks</span>
-                <h2>Four live sessions. Each 60–90 minutes, hands-on throughout.</h2>
-              </div>
-              <div className={`${styles.weekTrack} ${styles.reveal}`}>
-                {WEEKS.map((week) => (
-                  <div className={styles.week} key={week.num}>
-                    <div className={styles.weekTop}>
-                      <span className={styles.weekNum}>{week.num}</span>
-                      <h3>{week.title}</h3>
-                    </div>
-                    <p className={styles.weekDesc}>{week.desc}</p>
-                    <div className={styles.chips}>
-                      {week.chips.map((chip) => (
-                        <span className={styles.chip} key={chip}>
-                          {chip}
-                        </span>
-                      ))}
-                    </div>
+                  <div>
+                    <span className={styles.mNum}>4.9★</span>
+                    <span className={styles.mLabel}>average rating</span>
                   </div>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          {/* INDUSTRY */}
-          <section className={styles.section} style={{ paddingTop: 0 }}>
-            <div className={styles.wrap}>
-              <div className={`${styles.industryLine} ${styles.reveal}`}>
-                <h3>Every example gets swapped for one from your world.</h3>
-                <p>
-                  The curriculum above is the spine. What changes company to company is the material — all prompts,
-                  exercises, and use cases are rebuilt around your industry before session 1.
-                </p>
-                <div className={styles.indChips}>
-                  {INDUSTRIES.map((industry) => (
-                    <span className={styles.indChip} key={industry}>
-                      {industry}
-                    </span>
-                  ))}
+                  <div>
+                    <span className={styles.mNum}>3 yrs</span>
+                    <span className={styles.mLabel}>teaching AI full-time</span>
+                  </div>
                 </div>
+                <blockquote className={styles.mentorQuote}>
+                  &ldquo;I created Approachable because I believe anyone should be able to build with AI. My goal is 1
+                  million students — this is my way of giving back.&rdquo;
+                </blockquote>
               </div>
             </div>
-          </section>
+          </div>
+        </section>
 
-          {/* MENTOR */}
-          <section id="mentor" className={`${styles.section} ${styles.sectionAlt}`}>
-            <div className={styles.wrap}>
-              <div className={`${styles.sectionHead} ${styles.reveal}`}>
-                <span className={styles.eyebrow}>Your mentor</span>
-                <h2>One named mentor. Not a rotating bench.</h2>
-              </div>
-              <div className={`${styles.mentor} ${styles.reveal}`}>
-                <MentorPhoto />
-                <div>
-                  <h3 style={{ fontSize: 22, marginBottom: 2 }}>Ranbeer Makin</h3>
-                  <p style={{ color: 'var(--ink-soft)', marginBottom: 14, fontSize: 15 }}>
-                    Entrepreneur, AI Educator, Claude Certified &amp; Claude Partner
-                  </p>
-                  <div className={styles.mentorStats}>
-                    <div>
-                      <span className={styles.mNum}>250+</span>
-                      <span className={styles.mLabel}>professionals trained</span>
-                    </div>
-                    <div>
-                      <span className={styles.mNum}>4.9★</span>
-                      <span className={styles.mLabel}>average rating</span>
-                    </div>
-                    <div>
-                      <span className={styles.mNum}>3 yrs</span>
-                      <span className={styles.mLabel}>teaching AI</span>
-                    </div>
-                  </div>
-                  <blockquote className={styles.mentorQuote}>
-                    &ldquo;I created Approachable because I believe anyone should be able to build with AI. My goal is 1
-                    million students — this is my way of giving back.&rdquo;
-                  </blockquote>
+        {/* TESTIMONIALS */}
+        <section className={styles.section}>
+          <div className={styles.wrap}>
+            <div className={`${styles.sectionHead} ${styles.reveal}`}>
+              <span className={styles.eyebrow}>From alumni</span>
+              <h2>What past participants say</h2>
+            </div>
+            <div className={`${styles.testiRow} ${styles.reveal}`}>
+              {TESTIMONIALS.map((testimonial) => (
+                <div className={styles.testiCard} key={testimonial.quote}>
+                  <p>&ldquo;{testimonial.quote}&rdquo;</p>
+                  <span className={styles.testiAttr}>
+                    <span className={styles.testiName}>{testimonial.name}</span>
+                    {testimonial.source}
+                  </span>
                 </div>
-              </div>
+              ))}
             </div>
-          </section>
+          </div>
+        </section>
 
-          {/* TESTIMONIALS */}
-          <section className={styles.section}>
-            <div className={styles.wrap}>
-              <div className={`${styles.sectionHead} ${styles.reveal}`}>
-                <span className={styles.eyebrow}>From alumni</span>
-                <h2>What past participants say</h2>
-              </div>
-              <div className={`${styles.testiRow} ${styles.reveal}`}>
-                {TESTIMONIALS.map((testimonial) => (
-                  <div className={styles.testiCard} key={testimonial.quote}>
-                    <p>&ldquo;{testimonial.quote}&rdquo;</p>
-                    <span>{testimonial.attribution}</span>
-                  </div>
-                ))}
-              </div>
+        {/* PROCESS */}
+        <section className={`${styles.section} ${styles.sectionAlt}`}>
+          <div className={styles.wrap}>
+            <div className={`${styles.sectionHead} ${styles.reveal}`}>
+              <span className={styles.eyebrow}>How to get started</span>
+              <h2>Three steps to a running program</h2>
             </div>
-          </section>
-
-          {/* PROCESS */}
-          <section className={`${styles.section} ${styles.sectionAlt}`}>
-            <div className={styles.wrap}>
-              <div className={`${styles.sectionHead} ${styles.reveal}`}>
-                <span className={styles.eyebrow}>How it works</span>
-                <h2>From first email to finished program</h2>
-              </div>
-              <div className={`${styles.process} ${styles.reveal}`}>
-                {PROCESS.map((step) => (
-                  <div className={styles.procCard} key={step.title}>
-                    <h3>{step.title}</h3>
-                    <p>{step.text}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          {/* FAQ */}
-          <section id="faq" className={styles.section}>
-            <div className={styles.wrap}>
-              <div className={`${styles.sectionHead} ${styles.reveal}`}>
-                <span className={styles.eyebrow}>FAQ</span>
-                <h2>Common questions</h2>
-              </div>
-              <div className={styles.reveal}>
-                <FaqAccordion />
-              </div>
-            </div>
-          </section>
-
-          {/* CTA */}
-          <section id="contact" className={styles.section}>
-            <div className={styles.wrap}>
-              <div className={`${styles.ctaBand} ${styles.reveal}`}>
-                <span className={styles.eyebrow} style={{ color: 'var(--accent)' }}>
-                  Get started
-                </span>
-                <h2>Bring this to your team.</h2>
-                <p>
-                  Tell us your company, team size, and industry. We&apos;ll come back with a tailored outline and dates
-                  within a few days.
-                </p>
-                <div className={styles.ctaCtas}>
-                  <a href={CONTACT_MAILTO} className={`${styles.btn} ${styles.btnAccent}`}>
-                    Email us a proposal request →
-                  </a>
-                  <a
-                    href="https://www.bigintsolutions.com"
-                    className={`${styles.btn} ${styles.btnGhost}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Visit BIGINT Solutions
-                  </a>
+            <div className={`${styles.process} ${styles.reveal}`}>
+              {PROCESS.map((step) => (
+                <div className={styles.procCard} key={step.title}>
+                  <h3>{step.title}</h3>
+                  <p>{step.text}</p>
                 </div>
-                <div className={styles.ctaMeta}>
-                  Delivered via BIGINT Solutions · Pricing based on team size — discussed on the call · 🔒 Your data stays
-                  private
-                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section id="faq" className={styles.section}>
+          <div className={styles.wrap}>
+            <div className={`${styles.sectionHead} ${styles.reveal}`}>
+              <span className={styles.eyebrow}>FAQ</span>
+              <h2>Common questions</h2>
+            </div>
+            <div className={styles.reveal}>
+              <FaqAccordion />
+            </div>
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section id="contact" className={styles.section}>
+          <div className={styles.wrap}>
+            <div className={`${styles.ctaBand} ${styles.reveal}`}>
+              <span className={styles.eyebrow} style={{ color: 'var(--accent)' }}>
+                Get started
+              </span>
+              <h2>Bring this to your team.</h2>
+              <p>
+                Tell us your company, team size, and industry. We&apos;ll come back with a tailored outline and dates
+                within a few days.
+              </p>
+              <div className={styles.ctaCtas}>
+                <a href="#contact" className={`${styles.btn} ${styles.btnAccent}`}>
+                  Book a 20-minute intro call →
+                </a>
+                <a href={CONTACT_MAILTO} className={`${styles.btn} ${styles.btnGhost}`}>
+                  Or email us directly
+                </a>
+              </div>
+              <div className={styles.ctaMeta}>
+                Delivered via BIGINT Solutions · www.bigintsolutions.com · Pricing discussed on the call
               </div>
             </div>
-          </section>
-        </main>
-      </div>
-    </>
+          </div>
+        </section>
+      </main>
+    </div>
   );
 }

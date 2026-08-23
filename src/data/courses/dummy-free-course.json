@@ -1,0 +1,32 @@
+{
+  "slug": "dummy-free-course",
+  "title": "Dummy Free Course",
+  "heroImage": "",
+  "isFree": true,
+  "instructor": {
+    "name": "Test Instructor",
+    "email": "test@example.com"
+  },
+  "pricing": {
+    "inr": { "original": "Free", "current": "Free" },
+    "usd": { "original": "Free", "current": "Free" },
+    "discountPercent": 0
+  },
+  "discountLabel": "",
+  "metadata": {
+    "type": "Free",
+    "skillLevel": "Beginner",
+    "language": "English",
+    "certificateAvailable": false,
+    "videoCount": 1,
+    "duration": "Test"
+  },
+  "description": "<p>Dummy course for horizontal scroll testing.</p>",
+  "inclusions": [],
+  "tools": [],
+  "sessions": [],
+  "faqs": [],
+  "purchaseUrl": "#",
+  "ogImage": "",
+  "ogDescription": "Placeholder free course to test horizontal scroll on the courses page."
+}

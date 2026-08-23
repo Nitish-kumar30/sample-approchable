@@ -51,7 +51,7 @@ export default function CourseCard({ course }: CourseCardProps) {
             )}
           </div>
 
-          <span className={`course-card-footer${course.isFree ? ' course-card-footer-free' : ''}`}>
+          <span className={`course-card-footer${course.isFree ? ' course-card-footer-free' : ' course-card-footer-paid'}`}>
             {course.isFree ? 'Start learning →' : 'View details →'}
           </span>
         </div>

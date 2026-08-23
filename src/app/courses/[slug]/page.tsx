@@ -48,7 +48,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
   return (
     <>
       <Header />
-      <div className={styles.page}>
+      <div className={`${styles.page}${course.isFree ? ` ${styles.pageNoSticky}` : ''}`}>
       {course.discountLabel && !course.isFree && (
         <div className={styles.discountBanner}>{course.discountLabel}</div>
       )}
@@ -118,7 +118,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
         </div>
       </main>
 
-      <CourseStickyBar course={course} />
+      {!course.isFree && <CourseStickyBar course={course} />}
     </div>
     </>
   );

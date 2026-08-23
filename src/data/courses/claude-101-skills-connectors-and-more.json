@@ -18,25 +18,31 @@
     "skillLevel": "Beginner Friendly",
     "language": "English",
     "certificateAvailable": false,
-    "videoCount": 1,
-    "duration": "Watch now"
+    "videoCount": 6,
+    "duration": "6 lessons"
   },
-  "description": "<p>Explore Claude Skills, Connectors, Projects, Artifacts, and Plugins — the features that turn Claude into a powerful daily work assistant.</p>\n<hr>\n<h1>What You'll Learn</h1>\n<ul>\n<li>Claude Skills — reusable capabilities tailored to your work</li>\n<li>Connectors — link Claude to the tools you already use</li>\n<li>Projects, Artifacts, and Claude Plugins</li>\n</ul>\n<hr>\n<h1>Who Is This Course For?</h1>\n<ul>\n<li>Professionals who want to unlock Claude's full feature set</li>\n<li>Anyone ready to move from chat-only to integrated AI workflows</li>\n</ul>",
+  "description": "<p>Explore Claude Skills, Connectors, Projects, Artifacts, and Plugins — the features that turn Claude into a powerful daily work assistant.</p>\n<hr>\n<h1>What You'll Learn</h1>\n<ul>\n<li>Claude Skills — reusable capabilities tailored to your work</li>\n<li>Claude Connectors (MCP) — link Claude to the tools you already use</li>\n<li>Claude Projects — organize context for ongoing work</li>\n<li>Claude Artifacts — create and iterate on outputs in real time</li>\n<li>Claude Plugins — extend Claude with additional capabilities</li>\n<li>Test your knowledge with the Claude 101 quiz</li>\n</ul>\n<hr>\n<h1>Who Is This Course For?</h1>\n<ul>\n<li>Professionals who want to unlock Claude's full feature set</li>\n<li>Anyone ready to move from chat-only to integrated AI workflows</li>\n</ul>",
   "instructorBio": "Ava is Approachable's virtual assistant, guiding learners through practical Claude workflows.",
   "inclusions": [
-    "Recorded video lesson",
+    "6 recorded lessons",
     "Lifetime access",
-    "Hands-on Claude demos"
+    "Hands-on Claude demos",
+    "Claude 101 quiz"
   ],
   "tools": ["Claude"],
   "sessions": [
     {
       "id": "session-0",
       "number": 1,
-      "title": "Session 1: Skills, Connectors, Projects, Artifacts and Plugins",
+      "title": "Claude 101 - Skills, Connectors and more",
       "defaultOpen": true,
       "items": [
-        { "number": 1, "title": "Skills, Connectors, Projects, Artifacts and Claude Plugins", "type": "video", "locked": true }
+        { "number": 1, "title": "Claude Skills", "type": "video", "locked": false },
+        { "number": 2, "title": "Claude Connectors (MCP)", "type": "video", "locked": false },
+        { "number": 3, "title": "Claude Projects", "type": "video", "locked": false },
+        { "number": 4, "title": "Claude Artifacts", "type": "video", "locked": false },
+        { "number": 5, "title": "Claude Plugins", "type": "video", "locked": false },
+        { "number": 6, "title": "Claude 101 - Quiz", "type": "quiz", "locked": false }
       ]
     }
   ],
@@ -50,7 +56,7 @@
       "answer": "Basic familiarity with Claude helps, but the course is beginner friendly."
     }
   ],
-  "purchaseUrl": "https://learn.approachable.dev/courses/claude-101-skills-connectors-and-more",
+  "purchaseUrl": "https://learn.approachable.dev/on-demand/claude-101---skills-connectors-and-more",
   "ogImage": "https://wgkuqcwgbokzfxtimklr.supabase.co/storage/v1/object/public/course-images/courses/ed339a3b-4305-4cf7-a589-34f33354bfd8.png",
-  "ogDescription": "You will learn Claude Skills, Connectors, Projects, Artifacts and Claude Plugins"
+  "ogDescription": "Learn Claude Skills, Connectors (MCP), Projects, Artifacts, Plugins — plus a quiz to test your knowledge"
 }

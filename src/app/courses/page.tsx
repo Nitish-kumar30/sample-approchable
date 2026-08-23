@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import CourseCard from '@/components/CourseCard';
+import CoursesScrollRow from '@/components/CoursesScrollRow';
 import { getFreeCourses, getPaidCourses } from '@/lib/course-content';
 
 export const metadata: Metadata = {
@@ -40,11 +41,11 @@ export default async function CoursesPage() {
                   <h2 className="courses-section-title">Start for Free</h2>
                   <p className="courses-section-sub">No payment required — get started with AI today.</p>
                 </div>
-                <div className="courses-grid">
+                <CoursesScrollRow>
                   {freeCourses.map((course) => (
                     <CourseCard key={course.slug} course={course} />
                   ))}
-                </div>
+                </CoursesScrollRow>
               </div>
             )}
 
@@ -56,7 +57,7 @@ export default async function CoursesPage() {
                 <h2 className="courses-section-title">Recorded Courses</h2>
                 <p className="courses-section-sub">Go deeper with self-paced courses and lifetime access.</p>
               </div>
-              <div className="courses-grid">
+              <CoursesScrollRow>
                 {paidCourses.length > 0 ? (
                   paidCourses.map((course) => (
                     <CourseCard key={course.slug} course={course} />
@@ -64,7 +65,7 @@ export default async function CoursesPage() {
                 ) : (
                   <p className="courses-empty">Recorded courses are unavailable right now. Please refresh the page.</p>
                 )}
-              </div>
+              </CoursesScrollRow>
             </div>
           </div>
         </section>
