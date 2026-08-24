@@ -9,13 +9,12 @@ import PricingSection from '@/components/PricingSection';
 import Lightbox from '@/components/Lightbox';
 import LinkedInReviews from '@/components/LinkedInReviews';
 
-const COHORT_TITLE = 'Claude AI Cohort — Master the Claude Ecosystem in 6 Weeks | Approachable';
 const COHORT_DESCRIPTION =
   'A small-group, mentor-led cohort on the full Claude ecosystem — Claude Chat, Claude Code, Claude Cowork, and the API. 20 seats. Live sessions. Real projects.';
 const COHORT_OG_IMAGE = '/img/og-image.png';
 
 export const metadata: Metadata = {
-  title: COHORT_TITLE,
+  title: { absolute: 'Claude AI Cohort — Master the Claude Ecosystem in 6 Weeks' },
   description: COHORT_DESCRIPTION,
   alternates: { canonical: '/' },
   openGraph: {

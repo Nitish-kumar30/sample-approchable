@@ -6,14 +6,36 @@ import CoursesScrollRow from '@/components/CoursesScrollRow';
 import ExploreMoreCard from '@/components/ExploreMoreCard';
 import { getFreeCourses, getPaidCourses } from '@/lib/course-content';
 
+const COURSES_OG_IMAGE = '/img/og-image.png';
+const COURSES_DESCRIPTION =
+  'Free Claude 101 courses and recorded AI training on Mastery, No-Code Agents, and Vibe Coding. Hands-on learning for working professionals.';
+const COURSES_OG_DESCRIPTION =
+  'Free Claude 101 and recorded AI courses for professionals. Start free, then go deeper with hands-on projects.';
+
 export const metadata: Metadata = {
-  title: 'Courses — Approachable | Free & Recorded AI Courses for Working Professionals',
-  description:
-    'Start free with our Claude 101 courses, then explore recorded courses on AI Mastery, No-Code AI Agents, and Vibe Coding — practical, hands-on learning for working professionals.',
+  title: 'Free & Recorded AI Courses',
+  description: COURSES_DESCRIPTION,
+  alternates: { canonical: '/courses' },
   openGraph: {
-    title: 'Courses — Approachable',
-    description: 'Free and recorded AI courses for working professionals — start free, then go deeper with AI Mastery, No-Code AI Agents, and Vibe Coding.',
-    url: 'https://approachable.dev/courses',
+    type: 'website',
+    title: 'AI Courses — Approachable',
+    description: COURSES_OG_DESCRIPTION,
+    url: '/courses',
+    siteName: 'Approachable',
+    images: [
+      {
+        url: COURSES_OG_IMAGE,
+        width: 1200,
+        height: 630,
+        alt: 'Approachable AI courses for working professionals',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'AI Courses — Approachable',
+    description: COURSES_OG_DESCRIPTION,
+    images: [COURSES_OG_IMAGE],
   },
 };
 
