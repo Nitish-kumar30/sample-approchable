@@ -44,7 +44,7 @@
       "items": [
         { "number": 1, "title": "What is Vibe Coding", "type": "video", "locked": true },
         { "number": 2, "title": "Why Vibe Code", "type": "video", "locked": true },
-        { "number": 3, "title": "Vibe Coding Prompt Building Blocks", "type": "video", "locked": true },
+        { "number": 3, "title": "Vibe Coding Prompt Building Blocks", "type": "video", "locked": false, "previewUrl": "https://video.gumlet.io/6a55e53c2a1936a5c8df7efc/6a6ad61f88fd78cc8e254645/main.m3u8" },
         { "number": 4, "title": "Vibe Coding Tools", "type": "video", "locked": true }
       ]
     },

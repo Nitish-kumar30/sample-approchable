@@ -44,7 +44,7 @@
       "defaultOpen": true,
       "items": [
         { "number": 1, "title": "Introduction to AI Agents", "type": "video", "locked": true },
-        { "number": 2, "title": "Evolution of LLMs & Agentic AI Fundamentals", "type": "video", "locked": true },
+        { "number": 2, "title": "Evolution of LLMs & Agentic AI Fundamentals", "type": "video", "locked": false, "previewUrl": "https://video.gumlet.io/6a55e53c2a1936a5c8df7efc/6a571ff6462ae4490ffe31de/main.m3u8" },
         { "number": 3, "title": "Agentic AI and Degrees of Autonomy", "type": "video", "locked": true },
         { "number": 4, "title": "AI Agent examples: Customer support, coding and research agents", "type": "video", "locked": true }
       ]
@@ -54,7 +54,7 @@
       "number": 2,
       "title": "Session 1: Agents Design Patterns",
       "items": [
-        { "number": 1, "title": "Agent Design Pattern #1: Reflection", "type": "video", "locked": true },
+        { "number": 1, "title": "Agent Design Pattern #1: Reflection", "type": "video", "locked": false, "previewUrl": "https://video.gumlet.io/6a55e53c2a1936a5c8df7efc/6a571ff6462ae4490ffe31d9/main.m3u8" },
         { "number": 2, "title": "Agent Design Pattern #2: Tool Use", "type": "video", "locked": true },
         { "number": 3, "title": "Agent Design Pattern #3: Planning", "type": "video", "locked": true },
         { "number": 4, "title": "Agent Design Pattern #4: Multi-Agent Systems", "type": "video", "locked": true }
