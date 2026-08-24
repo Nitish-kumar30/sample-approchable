@@ -14,6 +14,10 @@ interface CoursesScrollRowProps {
   children: ReactNode;
 }
 
+const DESKTOP_SCROLL_GAP = 24;
+const MOBILE_SCROLL_GAP = 16;
+const MOBILE_MEDIA_QUERY = '(max-width: 640px)';
+
 function ChevronIcon({ direction }: { direction: 'left' | 'right' }) {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
@@ -24,6 +28,11 @@ function ChevronIcon({ direction }: { direction: 'left' | 'right' }) {
       )}
     </svg>
   );
+}
+
+function getScrollGap() {
+  if (typeof window === 'undefined') return DESKTOP_SCROLL_GAP;
+  return window.matchMedia(MOBILE_MEDIA_QUERY).matches ? MOBILE_SCROLL_GAP : DESKTOP_SCROLL_GAP;
 }
 
 export default function CoursesScrollRow({ children }: CoursesScrollRowProps) {
@@ -51,7 +60,8 @@ export default function CoursesScrollRow({ children }: CoursesScrollRowProps) {
     if (!el) return;
 
     const card = el.querySelector<HTMLElement>('.course-card-v2');
-    const cardWidth = card ? card.offsetWidth + 24 : el.clientWidth * 0.85;
+    const gap = getScrollGap();
+    const cardWidth = card ? card.offsetWidth + gap : el.clientWidth;
 
     el.scrollBy({
       left: direction === 'left' ? -cardWidth : cardWidth,
@@ -60,7 +70,7 @@ export default function CoursesScrollRow({ children }: CoursesScrollRowProps) {
   }, []);
 
   useEffect(() => {
-    const mq = window.matchMedia('(max-width: 640px)');
+    const mq = window.matchMedia(MOBILE_MEDIA_QUERY);
     const onChange = () => setIsMobile(mq.matches);
     onChange();
     mq.addEventListener('change', onChange);
@@ -70,14 +80,7 @@ export default function CoursesScrollRow({ children }: CoursesScrollRowProps) {
   useLayoutEffect(() => {
     updateScrollState();
     const raf = requestAnimationFrame(updateScrollState);
-    const timer = window.setTimeout(updateScrollState, 200);
-    const lateTimer = window.setTimeout(updateScrollState, 600);
-
-    return () => {
-      cancelAnimationFrame(raf);
-      window.clearTimeout(timer);
-      window.clearTimeout(lateTimer);
-    };
+    return () => cancelAnimationFrame(raf);
   }, [updateScrollState, childCount]);
 
   useEffect(() => {
@@ -100,9 +103,7 @@ export default function CoursesScrollRow({ children }: CoursesScrollRowProps) {
 
     const resizeObserver = new ResizeObserver(updateScrollState);
     resizeObserver.observe(el);
-    if (el.firstElementChild) {
-      resizeObserver.observe(el.firstElementChild);
-    }
+    Array.from(el.children).forEach((child) => resizeObserver.observe(child));
 
     return () => {
       el.removeEventListener('scroll', onScroll);
