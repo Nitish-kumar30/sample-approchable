@@ -31,7 +31,7 @@ export default function Header({ coursePage = false, showBackToCourses = false, 
         )}
 
         {showBackToCourses ? (
-          <Link href="/courses" className="header-back-link">
+          <Link href="/courses" className="header-back-link" aria-label="Back to courses">
             <svg
               className="header-back-link-icon"
               width="16"
@@ -44,7 +44,8 @@ export default function Header({ coursePage = false, showBackToCourses = false, 
             >
               <path d="M15 18l-6-6 6-6" />
             </svg>
-            Back to Courses
+            <span className="header-back-text-full">Back to Courses</span>
+            <span className="header-back-text-short">Back</span>
           </Link>
         ) : (
           !coursePage && (

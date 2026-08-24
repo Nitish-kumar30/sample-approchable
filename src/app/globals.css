@@ -65,6 +65,7 @@ body {
   position: sticky;
   top: 36px;
   z-index: 90;
+  overflow-x: hidden;
 }
 /* Pages without the top promo banner (e.g. /courses) */
 body:not(:has(#topBanner)) .site-header {
@@ -153,6 +154,33 @@ body:not(:has(#topBanner)) .site-header {
   transition: background 0.15s;
 }
 .header-cta:hover { background: var(--accent-hover); }
+.header-back-text-short {
+  display: none;
+}
+@media (max-width: 640px) {
+  .header-inner {
+    gap: 10px;
+    padding: 12px 16px;
+  }
+  .logo-wrap {
+    min-width: 0;
+    flex: 1;
+    flex-shrink: 1;
+  }
+  .logo-sub {
+    display: none;
+  }
+  .header-cta {
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+  .header-back-text-full {
+    display: none;
+  }
+  .header-back-text-short {
+    display: inline;
+  }
+}
 
 /* Hero */
 .hero {
@@ -788,9 +816,12 @@ section { padding: 64px 24px; }
   gap: 24px;
   margin-top: 28px;
 }
+.courses-scroll-container {
+  margin-top: 28px;
+}
 .courses-scroll-wrap {
   position: relative;
-  margin-top: 28px;
+  margin-top: 0;
   overflow: hidden;
 }
 .courses-scroll-hint {
@@ -867,17 +898,19 @@ section { padding: 64px 24px; }
   .courses-scroll-hint {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 4px;
-    margin: -12px 0 12px;
-    font-size: 0.8125rem;
-    color: var(--text-muted);
+    justify-content: flex-end;
+    gap: 6px;
+    margin: 0 0 10px;
+    padding-right: 4px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--accent);
     letter-spacing: 0.01em;
   }
   .courses-scroll-hint svg {
-    width: 14px;
-    height: 14px;
-    opacity: 0.7;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
     animation: courses-scroll-hint-nudge 1.6s ease-in-out infinite;
   }
   .courses-scroll-btn {
@@ -892,7 +925,7 @@ section { padding: 64px 24px; }
     scroll-padding-inline: 0;
   }
   .courses-scroll-row .course-card-v2 {
-    flex: 0 0 100%;
+    flex: 0 0 88%;
     scroll-snap-align: start;
     scroll-snap-stop: always;
   }

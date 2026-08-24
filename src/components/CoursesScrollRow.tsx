@@ -1,6 +1,14 @@
 'use client';
 
-import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
+import {
+  Children,
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+  type ReactNode,
+} from 'react';
 
 interface CoursesScrollRowProps {
   children: ReactNode;
@@ -23,6 +31,8 @@ export default function CoursesScrollRow({ children }: CoursesScrollRowProps) {
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const childCount = Children.count(children);
 
   const updateScrollState = useCallback(() => {
     const el = scrollRef.current;
@@ -33,7 +43,7 @@ export default function CoursesScrollRow({ children }: CoursesScrollRowProps) {
       setHasScrolled(true);
     }
     setCanScrollLeft(el.scrollLeft > 4);
-    setCanScrollRight(el.scrollLeft < maxScroll - 4);
+    setCanScrollRight(maxScroll > 4 && el.scrollLeft < maxScroll - 4);
   }, []);
 
   const scrollByDirection = useCallback((direction: 'left' | 'right') => {
@@ -48,6 +58,27 @@ export default function CoursesScrollRow({ children }: CoursesScrollRowProps) {
       behavior: 'smooth',
     });
   }, []);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 640px)');
+    const onChange = () => setIsMobile(mq.matches);
+    onChange();
+    mq.addEventListener('change', onChange);
+    return () => mq.removeEventListener('change', onChange);
+  }, []);
+
+  useLayoutEffect(() => {
+    updateScrollState();
+    const raf = requestAnimationFrame(updateScrollState);
+    const timer = window.setTimeout(updateScrollState, 200);
+    const lateTimer = window.setTimeout(updateScrollState, 600);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      window.clearTimeout(timer);
+      window.clearTimeout(lateTimer);
+    };
+  }, [updateScrollState, childCount]);
 
   useEffect(() => {
     const el = scrollRef.current;
@@ -78,48 +109,52 @@ export default function CoursesScrollRow({ children }: CoursesScrollRowProps) {
       el.removeEventListener('wheel', onWheel);
       resizeObserver.disconnect();
     };
-  }, [updateScrollState]);
+  }, [updateScrollState, childCount]);
+
+  const showSwipeHint = isMobile && !hasScrolled && (canScrollRight || childCount > 1);
 
   return (
-    <div
-      className={[
-        'courses-scroll-wrap',
-        canScrollLeft ? 'courses-scroll-wrap--left' : '',
-        canScrollRight ? 'courses-scroll-wrap--right' : '',
-      ].filter(Boolean).join(' ')}
-    >
-      {canScrollRight && !hasScrolled && (
+    <div className="courses-scroll-container">
+      {showSwipeHint && (
         <p className="courses-scroll-hint">
-          Swipe to see more courses
+          Swipe to see more
           <ChevronIcon direction="right" />
         </p>
       )}
 
-      {canScrollLeft && (
-        <button
-          type="button"
-          className="courses-scroll-btn courses-scroll-btn-prev"
-          onClick={() => scrollByDirection('left')}
-          aria-label="Scroll courses left"
-        >
-          <ChevronIcon direction="left" />
-        </button>
-      )}
+      <div
+        className={[
+          'courses-scroll-wrap',
+          canScrollLeft ? 'courses-scroll-wrap--left' : '',
+          canScrollRight ? 'courses-scroll-wrap--right' : '',
+        ].filter(Boolean).join(' ')}
+      >
+        {canScrollLeft && (
+          <button
+            type="button"
+            className="courses-scroll-btn courses-scroll-btn-prev"
+            onClick={() => scrollByDirection('left')}
+            aria-label="Scroll courses left"
+          >
+            <ChevronIcon direction="left" />
+          </button>
+        )}
 
-      <div ref={scrollRef} className="courses-scroll-row" tabIndex={0}>
-        {children}
+        <div ref={scrollRef} className="courses-scroll-row" tabIndex={0}>
+          {children}
+        </div>
+
+        {canScrollRight && (
+          <button
+            type="button"
+            className="courses-scroll-btn courses-scroll-btn-next"
+            onClick={() => scrollByDirection('right')}
+            aria-label="Scroll courses right"
+          >
+            <ChevronIcon direction="right" />
+          </button>
+        )}
       </div>
-
-      {canScrollRight && (
-        <button
-          type="button"
-          className="courses-scroll-btn courses-scroll-btn-next"
-          onClick={() => scrollByDirection('right')}
-          aria-label="Scroll courses right"
-        >
-          <ChevronIcon direction="right" />
-        </button>
-      )}
     </div>
   );
 }
