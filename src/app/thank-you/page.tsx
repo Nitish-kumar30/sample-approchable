@@ -6,6 +6,7 @@ import Header from '@/components/Header';
 export const metadata: Metadata = {
   title: 'Thank You',
   description: 'Thank you for signing up for the Approachable AI learning cohort.',
+  robots: { index: false, follow: false },
 };
 
 export default function ThankYouPage() {

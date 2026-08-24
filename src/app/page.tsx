@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { COHORT } from '@/lib/cohort-config';
+import { buildCohortSchema } from '@/lib/seo/cohort-schema';
 import Banner from '@/components/Banner';
 import Header from '@/components/Header';
 import FloatingCta from '@/components/FloatingCta';
@@ -8,15 +9,35 @@ import PricingSection from '@/components/PricingSection';
 import Lightbox from '@/components/Lightbox';
 import LinkedInReviews from '@/components/LinkedInReviews';
 
+const COHORT_TITLE = 'Claude AI Cohort — Master the Claude Ecosystem in 6 Weeks | Approachable';
+const COHORT_DESCRIPTION =
+  'A small-group, mentor-led cohort on the full Claude ecosystem — Claude Chat, Claude Code, Claude Cowork, and the API. 20 seats. Live sessions. Real projects.';
+const COHORT_OG_IMAGE = '/img/og-image.png';
+
 export const metadata: Metadata = {
-  title: 'AI Cohort — Approachable | Master the AI fundamentals & Claude Ecosystem in 6 Weeks',
-  description:
-    'A small-group, mentor-led cohort on the full Claude ecosystem — Claude Chat, Claude Code, Claude Cowork, and the API. 20 seats. Live sessions. Real projects.',
+  title: COHORT_TITLE,
+  description: COHORT_DESCRIPTION,
+  alternates: { canonical: '/' },
   openGraph: {
+    type: 'website',
     title: 'Claude AI Cohort — Master the Claude Ecosystem in 6 Weeks',
     description: 'Small-group, mentor-led cohort on Claude Chat, Claude Code, Cowork, and the API. 20 seats max.',
-    url: 'https://approachable.dev/',
-    images: [{ url: 'https://approachable.dev/img/og-image.png' }],
+    url: '/',
+    siteName: 'Approachable',
+    images: [
+      {
+        url: COHORT_OG_IMAGE,
+        width: 1200,
+        height: 630,
+        alt: 'Approachable Claude AI Cohort — master the Claude ecosystem in 6 weeks',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Claude AI Cohort — Master the Claude Ecosystem in 6 Weeks',
+    description: 'Small-group, mentor-led cohort on Claude Chat, Claude Code, Cowork, and the API. 20 seats max.',
+    images: [COHORT_OG_IMAGE],
   },
 };
 
@@ -128,8 +149,14 @@ const FAQ = [
 ];
 
 export default function HomePage() {
+  const cohortSchema = buildCohortSchema(FAQ);
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(cohortSchema) }}
+      />
       <Banner />
       <Header />
       <main>
@@ -186,7 +213,7 @@ export default function HomePage() {
         <section style={{ background: 'var(--bg-warm)', padding: '56px 24px' }}>
           <div className="container-max" style={{ maxWidth: 780 }}>
             <div className="section-label" style={{ textAlign: 'center' }}>Cohort overview</div>
-            <div className="section-title" style={{ textAlign: 'center', marginBottom: 32 }}>See what you&apos;re signing up for</div>
+            <h2 className="section-title" style={{ textAlign: 'center', marginBottom: 32 }}>See what you&apos;re signing up for</h2>
             <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, borderRadius: 14, overflow: 'hidden', border: '1px solid var(--border)', boxShadow: '0 4px 24px rgba(0,0,0,0.08)' }}>
               <iframe
                 src="https://player.vimeo.com/video/1208021044?badge=0&autopause=0&player_id=0&app_id=58479"
@@ -205,7 +232,7 @@ export default function HomePage() {
         <section id="curriculum" style={{ background: 'var(--bg)' }}>
           <div className="container-max">
             <div className="section-label">What you&apos;ll learn</div>
-            <div className="section-title">The full AI fundamentals and Claude curriculum</div>
+            <h2 className="section-title">The full AI fundamentals and Claude curriculum</h2>
             <p className="section-sub">Four live sessions, each 60-90 minutes with hands-on activities. Then two weeks to build your capstone project.</p>
 
             <div className="curriculum-wrap" style={{ marginTop: 40 }}>
@@ -277,7 +304,7 @@ export default function HomePage() {
         <section id="outcomes" style={{ background: 'var(--bg-warm)' }}>
           <div className="container-max">
             <div className="section-label">After 6 weeks</div>
-            <div className="section-title">What you&apos;ll be able to do</div>
+            <h2 className="section-title">What you&apos;ll be able to do</h2>
             <div className="outcomes-grid">
               <div className="outcome-card">
                 <div className="outcome-icon" style={{ background: '#4F33C8' }}>💬</div>
@@ -307,7 +334,7 @@ export default function HomePage() {
         <section id="how">
           <div className="container-max">
             <div className="section-label">Process</div>
-            <div className="section-title">How the cohort works</div>
+            <h2 className="section-title">How the cohort works</h2>
             <div className="how-grid">
               {[
                 { icon: '📋', title: 'Join the cohort', desc: 'Fill out the short form. We confirm your seat and send payment details within 12 hours.' },
@@ -331,7 +358,7 @@ export default function HomePage() {
         <section id="mentor" style={{ background: 'var(--bg-warm)' }}>
           <div className="container-max">
             <div className="section-label" style={{ textAlign: 'center' }}>Your mentor</div>
-            <div className="section-title" style={{ textAlign: 'center' }}>Meet Ranbeer</div>
+            <h2 className="section-title" style={{ textAlign: 'center' }}>Meet Ranbeer</h2>
             <div className="mentor-card">
               <div>
                 <Image src="/img/Ranbeer makin aug 22.jpg" alt="Ranbeer Makin" className="mentor-photo" width={160} height={200} />
@@ -398,7 +425,7 @@ export default function HomePage() {
         <section id="signup" className="signup-section">
           <div className="container-max" style={{ maxWidth: 680 }}>
             <div className="section-label" style={{ textAlign: 'center' }}>Register</div>
-            <div className="section-title" style={{ textAlign: 'center' }}>Here&apos;s what happens next</div>
+            <h2 className="section-title" style={{ textAlign: 'center' }}>Here&apos;s what happens next</h2>
 
             <div className="signup-steps">
               <div className="signup-step">
@@ -452,11 +479,11 @@ export default function HomePage() {
         {/* FAQ */}
         <section id="faq">
           <div className="container-max" style={{ maxWidth: 680 }}>
-            <div className="section-title">FAQ</div>
+            <h2 className="section-title">FAQ</h2>
             <div className="faq-list" style={{ marginTop: 24 }}>
               {FAQ.map((item, i) => (
                 <div key={i} className="faq-item">
-                  <div className="faq-q">{item.q}</div>
+                  <h3 className="faq-q">{item.q}</h3>
                   <div className="faq-a">{item.a}</div>
                 </div>
               ))}

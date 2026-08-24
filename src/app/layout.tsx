@@ -6,21 +6,43 @@ import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
+const defaultTitle = 'Approachable — Making AI Approachable for Everyone';
+const defaultDescription =
+  'A small-group, mentor-led cohort on the full Claude ecosystem — Claude Chat, Claude Code, Claude Cowork, and the API. 20 seats. Live sessions. Real projects.';
+const defaultOgImage = '/img/og-image.png';
+
 export const metadata: Metadata = {
+  metadataBase: new URL('https://approachable.dev'),
   title: {
-    default: 'Approachable — Making AI Approachable for Everyone',
+    default: defaultTitle,
     template: '%s — Approachable',
   },
-  description:
-    'A small-group, mentor-led cohort on the full Claude ecosystem — Claude Chat, Claude Code, Claude Cowork, and the API. 20 seats. Live sessions. Real projects.',
+  description: defaultDescription,
   keywords: ['Claude AI', 'Claude Code', 'AI cohort', 'Claude ecosystem', 'AI learning', 'mentor-led', 'Anthropic', 'approachable'],
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     type: 'website',
-    url: 'https://approachable.dev/',
+    url: '/',
     siteName: 'Approachable',
-    images: [{ url: 'https://approachable.dev/img/og-image.png' }],
+    title: defaultTitle,
+    description: defaultDescription,
+    images: [
+      {
+        url: defaultOgImage,
+        width: 1200,
+        height: 630,
+        alt: 'Approachable — Claude AI cohort for working professionals',
+      },
+    ],
   },
-  twitter: { card: 'summary_large_image' },
+  twitter: {
+    card: 'summary_large_image',
+    title: defaultTitle,
+    description: defaultDescription,
+    images: [defaultOgImage],
+  },
   icons: {
     icon: [
       { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },

@@ -2,8 +2,7 @@ import introToAi from '@/data/courses/intro-to-ai-for-professionals.json';
 import claude101SubAgents from '@/data/courses/claude-101-sub-agents-hooks-and-claude-md.json';
 import claude101Skills from '@/data/courses/claude-101-skills-connectors-and-more.json';
 import claudeEcosystem from '@/data/courses/claude-ecosystem---chat-code-cowork.json';
-import dummyFreeCourse from '@/data/courses/dummy-free-course.json';
-import dummyPaidCourse from '@/data/courses/dummy-paid-course.json';
+import introductionToAiAgents from '@/data/courses/introduction-to-ai-agents.json';
 import aiMastery from '@/data/courses/ai-mastery-for-working-professionals.json';
 import noCodeAiAgents from '@/data/courses/no-code-ai-agents-mastery-for-working-professionals.json';
 import vibeCoding from '@/data/courses/vibe-coding-mastery-for-working-professionals.json';
@@ -104,13 +103,12 @@ export function getCourseSections(descriptionHtml: string): CourseSection[] {
 const COURSE_REGISTRY: Record<string, CourseContent> = {
   'intro-to-ai-for-professionals': introToAi as CourseContent,
   'claude-ecosystem---chat-code-cowork': claudeEcosystem as CourseContent,
+  'introduction-to-ai-agents': introductionToAiAgents as CourseContent,
   'claude-101-sub-agents-hooks-and-claude-md': claude101SubAgents as CourseContent,
   'claude-101-skills-connectors-and-more': claude101Skills as CourseContent,
   'ai-mastery-for-working-professionals': aiMastery as CourseContent,
   'no-code-ai-agents-mastery-for-working-professionals': noCodeAiAgents as CourseContent,
   'vibe-coding-mastery-for-working-professionals': vibeCoding as CourseContent,
-  'dummy-free-course': dummyFreeCourse as CourseContent,
-  'dummy-paid-course': dummyPaidCourse as CourseContent,
 };
 
 export async function getCourseContent(slug: string): Promise<CourseContent | null> {
@@ -130,17 +128,16 @@ export interface CourseSummary {
 }
 
 export const FREE_CATALOG_SLUGS = [
+  'introduction-to-ai-agents',
   'claude-ecosystem---chat-code-cowork',
   'claude-101-sub-agents-hooks-and-claude-md',
   'claude-101-skills-connectors-and-more',
-  'dummy-free-course',
 ];
 
 export const PAID_CATALOG_SLUGS = [
   'ai-mastery-for-working-professionals',
   'no-code-ai-agents-mastery-for-working-professionals',
   'vibe-coding-mastery-for-working-professionals',
-  'dummy-paid-course',
 ];
 
 export const ALL_CATALOG_SLUGS = [...FREE_CATALOG_SLUGS, ...PAID_CATALOG_SLUGS];

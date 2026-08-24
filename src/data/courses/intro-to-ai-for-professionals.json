@@ -1,7 +1,7 @@
 {
   "slug": "intro-to-ai-for-professionals",
   "title": "Intro to AI for Working Professionals",
-  "heroImage": "https://www.approachable.dev/og_image_3.png",
+  "heroImage": "https://approachable.dev/og_image_3.png",
   "isFree": true,
   "instructor": {
     "name": "Ranbeer Makin",
@@ -53,6 +53,6 @@
     }
   ],
   "purchaseUrl": "https://learn.approachable.dev/courses/intro-to-ai-for-professionals",
-  "ogImage": "https://www.approachable.dev/og_image_3.png",
+  "ogImage": "https://approachable.dev/og_image_3.png",
   "ogDescription": "A free starter course for working professionals curious about AI — learn the basics and take your first step toward becoming AI Capable."
 }

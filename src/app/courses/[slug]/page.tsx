@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       type: 'website',
       title: `${course.title} — Approachable`,
       description: course.ogDescription,
-      url: `https://www.approachable.dev/courses/${course.slug}`,
+      url: `/courses/${course.slug}`,
       siteName: 'Approachable',
       images: [{ url: course.ogImage, alt: 'Approachable — your AI journey starts here' }],
     },
@@ -47,7 +47,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
 
   return (
     <>
-      <Header />
+      <Header coursePage showBackToCourses />
       <div className={`${styles.page}${course.isFree ? ` ${styles.pageNoSticky}` : ''}`}>
       {course.discountLabel && !course.isFree && (
         <div className={styles.discountBanner}>{course.discountLabel}</div>

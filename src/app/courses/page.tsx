@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Header from '@/components/Header';
 import CourseCard from '@/components/CourseCard';
 import CoursesScrollRow from '@/components/CoursesScrollRow';
+import ExploreMoreCard from '@/components/ExploreMoreCard';
 import { getFreeCourses, getPaidCourses } from '@/lib/course-content';
 
 export const metadata: Metadata = {
@@ -21,7 +22,7 @@ export default async function CoursesPage() {
 
   return (
     <>
-      <Header />
+      <Header coursePage />
       <main>
         <section className="courses-page" style={{ paddingBottom: 0 }}>
           <div className="container-max">
@@ -45,6 +46,7 @@ export default async function CoursesPage() {
                   {freeCourses.map((course) => (
                     <CourseCard key={course.slug} course={course} />
                   ))}
+                  <ExploreMoreCard variant="free" />
                 </CoursesScrollRow>
               </div>
             )}
@@ -65,6 +67,7 @@ export default async function CoursesPage() {
                 ) : (
                   <p className="courses-empty">Recorded courses are unavailable right now. Please refresh the page.</p>
                 )}
+                <ExploreMoreCard variant="paid" />
               </CoursesScrollRow>
             </div>
           </div>
@@ -78,7 +81,7 @@ export default async function CoursesPage() {
             <p className="section-sub" style={{ margin: '0 auto 24px' }}>
               If you want live, mentor-led sessions instead of recorded courses, check out our flagship cohort — small groups, real projects, direct access to your mentor.
             </p>
-            <Link href="/#pricing" className="btn-primary">See the AI Cohort →</Link>
+            <Link href="/" className="btn-primary">See the AI Cohort →</Link>
           </div>
         </section>
       </main>
