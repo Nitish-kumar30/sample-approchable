@@ -157,7 +157,7 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(cohortSchema) }}
       />
       <Banner />
-      <Header />
+      <Header hideNav />
       <main>
         {/* HERO */}
         <section style={{ padding: '64px 24px 0', borderBottom: '1px solid var(--border)' }}>

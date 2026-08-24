@@ -4,9 +4,10 @@ import Link from 'next/link';
 interface HeaderProps {
   coursePage?: boolean;
   showBackToCourses?: boolean;
+  hideNav?: boolean;
 }
 
-export default function Header({ coursePage = false, showBackToCourses = false }: HeaderProps) {
+export default function Header({ coursePage = false, showBackToCourses = false, hideNav = false }: HeaderProps) {
   return (
     <header className="site-header">
       <div className="container-max header-inner">
@@ -18,7 +19,7 @@ export default function Header({ coursePage = false, showBackToCourses = false }
           </div>
         </Link>
 
-        {!coursePage && (
+        {!coursePage && !hideNav && (
           <nav className="header-nav">
             <Link href="/courses" className="header-nav-link">
               Courses
