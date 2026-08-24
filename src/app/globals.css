@@ -713,3 +713,17 @@ section { padding: 64px 24px; }
   overflow-x: auto; margin-bottom: 1.25em;
 }
 .prose-content pre code { background: none; padding: 0; }
+.prose-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin: 1.75em 0;
+  display: block;
+}
+.prose-content figure { margin: 1.75em 0; }
+.prose-content figcaption {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 0.5em;
+  color: var(--text-muted);
+}

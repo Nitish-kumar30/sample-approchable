@@ -9,11 +9,20 @@ export interface PostFrontmatter {
   date: string;
   excerpt: string;
   coverImage?: string;
+  tags?: string[];
 }
 
 export interface Post extends PostFrontmatter {
   slug: string;
   body: string;
+  tags: string[];
+}
+
+export interface MonthGroup {
+  year: number;
+  month: number;
+  label: string;
+  posts: Post[];
 }
 
 /** Normalises whatever gray-matter/js-yaml gives us for a date field to YYYY-MM-DD */
@@ -53,6 +62,7 @@ export function getAllPosts(): Post[] {
         date: normaliseDate(data.date),
         excerpt: data.excerpt ?? '',
         coverImage: data.coverImage,
+        tags: Array.isArray(data.tags) ? data.tags : [],
         body: content,
       });
     } catch {
@@ -74,9 +84,47 @@ export function getPostBySlug(slug: string): Post | null {
       date: normaliseDate(data.date),
       excerpt: data.excerpt ?? '',
       coverImage: data.coverImage,
+      tags: Array.isArray(data.tags) ? data.tags : [],
       body: content,
     };
   } catch {
     return null;
   }
+}
+
+export function getAllTags(): { tag: string; count: number }[] {
+  const counts: Record<string, number> = {};
+  for (const post of getAllPosts()) {
+    for (const tag of post.tags) {
+      counts[tag] = (counts[tag] ?? 0) + 1;
+    }
+  }
+  return Object.entries(counts)
+    .map(([tag, count]) => ({ tag, count }))
+    .sort((a, b) => b.count - a.count);
+}
+
+export function getPostsByTag(tag: string): Post[] {
+  return getAllPosts().filter((post) => post.tags.includes(tag));
+}
+
+const MONTH_NAMES = [
+  'January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December',
+];
+
+export function getPostsGroupedByMonth(): MonthGroup[] {
+  const map = new Map<string, MonthGroup>();
+  for (const post of getAllPosts()) {
+    if (!post.date) continue;
+    const [yearStr, monthStr] = post.date.split('-');
+    const year = parseInt(yearStr, 10);
+    const month = parseInt(monthStr, 10);
+    const key = `${year}-${String(month).padStart(2, '0')}`;
+    if (!map.has(key)) {
+      map.set(key, { year, month, label: `${MONTH_NAMES[month - 1]} ${year}`, posts: [] });
+    }
+    map.get(key)!.posts.push(post);
+  }
+  return Array.from(map.values());
 }

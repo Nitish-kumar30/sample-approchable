@@ -3,6 +3,7 @@ title: Getting Started with AI — What Nobody Tells You
 date: 2026-08-01
 excerpt: Most people jump straight into prompting without building a mental model of how AI actually works. Here's the foundation that changes everything.
 coverImage: /images/posts/getting-started-with-ai.jpg
+tags: ["ai", "learning"]
 ---
 
 If you've tried using AI tools and felt like you were missing something, you're not alone. The gap between "I typed something and it gave me a mediocre answer" and "I use AI to do real, high-leverage work every day" isn't about having better prompts — it's about having a better mental model.

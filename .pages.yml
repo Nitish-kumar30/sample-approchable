@@ -22,6 +22,17 @@ content:
         required: true
       - name: coverImage
         type: image
+      - name: tags
+        type: select
+        multiple: true
+        options:
+          values:
+            - ai
+            - nextjs
+            - cms
+            - prompting
+            - productivity
+            - learning
       - name: body
         type: rich-text
         required: true

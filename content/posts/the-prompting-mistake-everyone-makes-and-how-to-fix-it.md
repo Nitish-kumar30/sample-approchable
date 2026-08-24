@@ -3,7 +3,8 @@ title: The Prompting Mistake Everyone Makes (And How to Fix It) - 101
 date: 2026-08-21
 excerpt: Most people treat AI prompts like search queries. That single habit is
   responsible for 80% of bad AI output — and it's a 30-second fix.
-coverImage: /public/images/posts/vibe-coding-with-ai-tools.png
+coverImage: /images/posts/vibe-coding-with-ai-tools.png
+tags: ["ai", "prompting"]
 ---
 
 Here's the most common thing I see when people share their AI prompts: they're too short, too vague, and written like a Google search.
@@ -29,6 +30,8 @@ Compare these two prompts:
 **Strong:** `You're a conversion copywriter. Write a 200-word email to professionals who are curious about AI but haven't taken the leap yet. The email should feel warm and direct, not hype-y. It's promoting a 6-week cohort called Approachable that teaches Claude AI tools. End with a single clear CTA to book a call.`
 
 The second prompt takes 20 extra seconds to write. The output difference is enormous.
+
+![Vibe coding with AI tools — the right prompt makes all the difference](/img/semantic-search-with-llms-rag.png)
 
 ## The Fix: Use the RCTF Framework
 

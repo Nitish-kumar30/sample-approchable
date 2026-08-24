@@ -1,29 +1,36 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
+import Banner from '@/components/Banner';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import Banner from '@/components/Banner';
 import LatestPosts from '@/components/LatestPosts';
 import TagCounts from '@/components/TagCounts';
 import ArchiveWidget from '@/components/ArchiveWidget';
-import { getAllPosts } from '@/lib/posts';
+import { getAllTags, getPostsByTag } from '@/lib/posts';
 
-// revalidate every 60 s so new CMS posts appear without a full redeploy
 export const revalidate = 60;
+export const dynamicParams = false;
 
-export const metadata: Metadata = {
-  title: 'Blog — Approachable',
-  description: 'Insights on AI, learning, and making the most of tools like Claude.',
-  openGraph: {
-    title: 'Blog — Approachable',
-    description: 'Insights on AI, learning, and making the most of tools like Claude.',
-    url: 'https://approachable.dev/blog',
-  },
-};
+type Props = { params: Promise<{ tag: string }> };
 
-export default function BlogIndexPage() {
-  const posts = getAllPosts();
+export async function generateStaticParams() {
+  return getAllTags().map(({ tag }) => ({ tag: encodeURIComponent(tag) }));
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { tag } = await params;
+  const decoded = decodeURIComponent(tag);
+  return {
+    title: `Posts tagged "${decoded}" — Approachable`,
+    description: `All blog posts tagged with "${decoded}".`,
+  };
+}
+
+export default async function TagPage({ params }: Props) {
+  const { tag } = await params;
+  const decoded = decodeURIComponent(tag);
+  const posts = getPostsByTag(decoded);
 
   return (
     <>
@@ -33,18 +40,24 @@ export default function BlogIndexPage() {
         <div className="mx-auto max-w-[1100px] px-6 py-20">
           <div className="flex flex-col lg:flex-row gap-12">
             <div className="flex-1 min-w-0">
-              <h1
-                className="text-4xl font-bold mb-3"
-                style={{ color: 'var(--text-primary)' }}
+              <Link
+                href="/blog"
+                className="text-sm mb-8 inline-block"
+                style={{ color: 'var(--accent)' }}
               >
-                Blog
+                ← All posts
+              </Link>
+
+              <h1 className="text-4xl font-bold mb-3" style={{ color: 'var(--text-primary)' }}>
+                Tag:{' '}
+                <span style={{ color: 'var(--accent)' }}>{decoded}</span>
               </h1>
-              <p className="mb-12 text-lg" style={{ color: 'var(--text-secondary)' }}>
-                Thoughts on AI, learning, and the Claude ecosystem.
+              <p className="mb-10 text-lg" style={{ color: 'var(--text-secondary)' }}>
+                {posts.length} post{posts.length !== 1 ? 's' : ''}
               </p>
 
               {posts.length === 0 ? (
-                <p style={{ color: 'var(--text-muted)' }}>No posts yet. Check back soon.</p>
+                <p style={{ color: 'var(--text-muted)' }}>No posts for this tag yet.</p>
               ) : (
                 <ul className="flex flex-col gap-10">
                   {posts.map((post) => (
@@ -71,10 +84,7 @@ export default function BlogIndexPage() {
                           >
                             {post.date}
                           </time>
-                          <h2
-                            className="text-xl font-semibold mt-1 mb-2"
-                            style={{ color: 'var(--text-primary)' }}
-                          >
+                          <h2 className="text-xl font-semibold mt-1 mb-2" style={{ color: 'var(--text-primary)' }}>
                             <Link href={`/blog/${post.slug}`} className="hover:underline">
                               {post.title}
                             </Link>
@@ -82,14 +92,14 @@ export default function BlogIndexPage() {
                           <p style={{ color: 'var(--text-secondary)' }}>{post.excerpt}</p>
                           {post.tags.length > 0 && (
                             <div className="flex flex-wrap gap-2 mt-4">
-                              {post.tags.map((tag) => (
+                              {post.tags.map((t) => (
                                 <Link
-                                  key={tag}
-                                  href={`/blog/tag/${encodeURIComponent(tag)}`}
+                                  key={t}
+                                  href={`/blog/tag/${encodeURIComponent(t)}`}
                                   className="inline-block rounded-full px-3 py-0.5 text-xs font-medium hover:opacity-80 transition-opacity"
                                   style={{ backgroundColor: 'var(--bg-accent-light)', color: 'var(--accent)' }}
                                 >
-                                  {tag}
+                                  {t}
                                 </Link>
                               ))}
                             </div>
