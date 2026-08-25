@@ -1,8 +1,6 @@
 import type { Metadata } from 'next';
 import Header from '@/components/Header';
-import AdminSecretForm from '@/components/admin/AdminSecretForm';
 import SubmissionsList from '@/components/admin/SubmissionsList';
-import { adminSecretRequired, isAdminAuthorized } from '@/lib/admin-auth';
 import { getSubmissions } from '@/lib/submissions';
 
 export const metadata: Metadata = {
@@ -10,24 +8,15 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-type PageProps = {
-  searchParams: Promise<{ secret?: string }>;
-};
-
-export default async function AdminSubmissionsPage({ searchParams }: PageProps) {
-  const { secret } = await searchParams;
-  const authorized = isAdminAuthorized(secret);
-
+export default async function AdminSubmissionsPage() {
   let submissions: Awaited<ReturnType<typeof getSubmissions>> = [];
   let loadError: string | null = null;
 
-  if (authorized) {
-    try {
-      submissions = await getSubmissions();
-    } catch (error) {
-      console.error('Failed to load submissions:', error);
-      loadError = 'Could not load submissions. Check that blob storage is configured.';
-    }
+  try {
+    submissions = await getSubmissions();
+  } catch (error) {
+    console.error('Failed to load submissions:', error);
+    loadError = 'Could not load submissions. Check that blob storage is configured.';
   }
 
   return (
@@ -44,12 +33,7 @@ export default async function AdminSubmissionsPage({ searchParams }: PageProps) 
               </p>
             </div>
 
-            {!authorized ? (
-              <div className="admin-gate">
-                <p className="admin-gate-text">Enter the admin secret to view submissions.</p>
-                <AdminSecretForm />
-              </div>
-            ) : loadError ? (
+            {loadError ? (
               <p className="admin-error">{loadError}</p>
             ) : (
               <div className="admin-submissions-wrap">
@@ -58,10 +42,6 @@ export default async function AdminSubmissionsPage({ searchParams }: PageProps) 
                 </div>
                 <SubmissionsList submissions={submissions} />
               </div>
-            )}
-
-            {authorized && adminSecretRequired() && (
-              <p className="admin-hint">Bookmark this page with <code>?secret=…</code> in the URL to return without re-entering the secret.</p>
             )}
           </div>
         </section>
