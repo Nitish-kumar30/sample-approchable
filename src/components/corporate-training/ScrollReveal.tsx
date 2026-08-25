@@ -4,15 +4,26 @@ import { useEffect } from 'react';
 import styles from '@/app/corporate-training/corporate-training.module.css';
 
 /**
- * Fades/slides `.reveal` elements into view as they enter the viewport,
- * mirroring the original page's scroll-reveal script.
+ * Progressively enhances `.reveal` elements with scroll animations.
+ * Content stays visible until JS runs (no-JS safe via default `.reveal` styles).
  */
 export default function ScrollReveal() {
   useEffect(() => {
     const targets = document.querySelectorAll(`.${styles.reveal}`);
 
+    targets.forEach((el) => {
+      if (!el.classList.contains(styles.revealIn)) {
+        el.classList.add(styles.revealPending);
+      }
+    });
+
+    const reveal = (el: Element) => {
+      el.classList.add(styles.revealIn);
+      el.classList.remove(styles.revealPending);
+    };
+
     if (!('IntersectionObserver' in window)) {
-      targets.forEach((el) => el.classList.add(styles.revealIn));
+      targets.forEach(reveal);
       return;
     }
 
@@ -20,12 +31,12 @@ export default function ScrollReveal() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add(styles.revealIn);
+            reveal(entry.target);
             observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.12 }
+      { threshold: 0.12 },
     );
 
     targets.forEach((el) => observer.observe(el));

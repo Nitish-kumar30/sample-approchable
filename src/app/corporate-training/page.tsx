@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-import CorporateTrainingNav from '@/components/corporate-training/CorporateTrainingNav';
+import Link from 'next/link';
+import Header from '@/components/Header';
 import ScrollReveal from '@/components/corporate-training/ScrollReveal';
 import FaqAccordion from '@/components/corporate-training/FaqAccordion';
 import MentorPhoto from '@/components/corporate-training/MentorPhoto';
@@ -122,13 +123,11 @@ const PROCESS = [
   },
 ];
 
-const CONTACT_MAILTO =
-  'mailto:hello@bigintsolutions.com?subject=Approachable%20for%20Teams%20-%20Proposal%20Request&body=Company%3A%0AApprox.%20team%20size%3A%0ATiers%20to%20include%3A%0AIndustry%3A%0APreferred%20timing%3A';
-
 export default function CorporateTrainingPage() {
   return (
-    <div className={styles.page}>
-      <CorporateTrainingNav />
+    <>
+      <Header coursePage />
+      <div className={styles.page}>
       <ScrollReveal />
 
       <main id="top">
@@ -170,9 +169,9 @@ export default function CorporateTrainingPage() {
               workflows — not a certificate.
             </p>
             <div className={styles.heroCtas}>
-              <a href="#contact" className={`${styles.btn} ${styles.btnAccent}`}>
-                Book a 20-minute intro call →
-              </a>
+              <Link href="/corporate-training/inquiry" className={`${styles.btn} ${styles.btnAccent}`}>
+                Send an inquiry →
+              </Link>
               <a href="#curriculum" className={`${styles.btn} ${styles.btnGhost}`}>
                 See the curriculum
               </a>
@@ -288,18 +287,18 @@ export default function CorporateTrainingPage() {
             <div className={`${styles.mentor} ${styles.reveal}`}>
               <MentorPhoto />
               <div>
-                <h3 style={{ fontSize: 22, marginBottom: 2 }}>Ranbeer Makin</h3>
-                <p style={{ color: 'var(--ink-soft)', marginBottom: 14, fontSize: 15 }}>
+                <h3 className={styles.mentorName}>Ranbeer Makin</h3>
+                <p className={styles.mentorSubtitle}>
                   Entrepreneur · AI Educator · Claude Certified &amp; Claude Partner
                 </p>
                 <div className={styles.mentorStats}>
                   <div>
-                    <span className={styles.mNum}>250+</span>
-                    <span className={styles.mLabel}>professionals trained</span>
+                    <span className={styles.mNum}>Claude</span>
+                    <span className={styles.mLabel}>certified educator</span>
                   </div>
                   <div>
-                    <span className={styles.mNum}>4.9★</span>
-                    <span className={styles.mLabel}>average rating</span>
+                    <span className={styles.mNum}>Partner</span>
+                    <span className={styles.mLabel}>Anthropic program</span>
                   </div>
                   <div>
                     <span className={styles.mNum}>3 yrs</span>
@@ -368,7 +367,7 @@ export default function CorporateTrainingPage() {
         </section>
 
         {/* CTA */}
-        <section id="contact" className={styles.section}>
+        <section className={styles.section}>
           <div className={styles.wrap}>
             <div className={`${styles.ctaBand} ${styles.reveal}`}>
               <span className={styles.eyebrow} style={{ color: 'var(--accent)' }}>
@@ -380,12 +379,9 @@ export default function CorporateTrainingPage() {
                 within a few days.
               </p>
               <div className={styles.ctaCtas}>
-                <a href="#contact" className={`${styles.btn} ${styles.btnAccent}`}>
-                  Book a 20-minute intro call →
-                </a>
-                <a href={CONTACT_MAILTO} className={`${styles.btn} ${styles.btnGhost}`}>
-                  Or email us directly
-                </a>
+                <Link href="/corporate-training/inquiry" className={`${styles.btn} ${styles.btnAccent}`}>
+                  Send an inquiry →
+                </Link>
               </div>
               <div className={styles.ctaMeta}>
                 Delivered via BIGINT Solutions · www.bigintsolutions.com · Pricing discussed on the call
@@ -394,6 +390,7 @@ export default function CorporateTrainingPage() {
           </div>
         </section>
       </main>
-    </div>
+      </div>
+    </>
   );
 }

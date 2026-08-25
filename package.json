@@ -4,15 +4,18 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "clean": "node -e \"try{require('fs').rmSync('.next',{recursive:true,force:true})}catch(e){}\"",
+    "dev:clean": "npm run clean && next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "push:dev": "git push origin frontend-pages",
-    "push:deploy": "git push deploy frontend-pages:main",
-    "push:all": "git push origin frontend-pages && git push deploy frontend-pages:main"
+    "push:dev": "git push origin corporate-page",
+    "push:deploy": "git push deploy corporate-page:main",
+    "push:all": "git push origin corporate-page && git push deploy corporate-page:main"
   },
   "dependencies": {
     "@upstash/redis": "^1.34.3",
+    "@vercel/blob": "^2.8.0",
     "hls.js": "^1.7.0",
     "next": "^15.3.3",
     "react": "^19.1.0",

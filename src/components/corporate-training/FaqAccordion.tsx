@@ -40,24 +40,30 @@ export default function FaqAccordion() {
   };
 
   return (
-    <div style={{ maxWidth: 700 }}>
+    <div className={styles.faqList}>
       {FAQS.map((faq, i) => {
         const isOpen = openIndex === i;
         const answerEl = answerRefs.current[i];
+        const buttonId = `faq-button-${i}`;
+        const panelId = `faq-panel-${i}`;
+
         return (
           <div key={faq.question} className={`${styles.faqItem} ${isOpen ? styles.faqItemOpen : ''}`}>
             <button
               type="button"
+              id={buttonId}
               className={styles.faqQ}
               aria-expanded={isOpen}
+              aria-controls={panelId}
               onClick={() => handleClick(i)}
             >
               <span>{faq.question}</span>
-              <span className={styles.faqPlus} aria-hidden="true">
-                +
-              </span>
+              <span className={styles.faqPlus} aria-hidden="true">+</span>
             </button>
             <div
+              id={panelId}
+              role="region"
+              aria-labelledby={buttonId}
               className={styles.faqA}
               style={{ maxHeight: isOpen && answerEl ? `${answerEl.scrollHeight}px` : '0px' }}
             >
