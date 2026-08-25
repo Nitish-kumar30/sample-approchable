@@ -1,0 +1,65 @@
+{
+  "slug": "claude-ecosystem---chat-code-cowork",
+  "title": "Claude Ecosystem - Chat, Code, Cowork and Design",
+  "heroImage": "https://wgkuqcwgbokzfxtimklr.supabase.co/storage/v1/object/public/course-images/courses/c1997e1c-602b-4e79-a846-ba0638abbf68.png",
+  "isFree": true,
+  "instructor": {
+    "name": "Ava (Approachable Virtual Assistant)",
+    "email": "ranbeer@gmail.com"
+  },
+  "pricing": {
+    "inr": { "original": "Free", "current": "Free" },
+    "usd": { "original": "Free", "current": "Free" },
+    "discountPercent": 0
+  },
+  "discountLabel": "",
+  "metadata": {
+    "type": "Free",
+    "skillLevel": "Beginner Friendly",
+    "language": "English",
+    "certificateAvailable": false,
+    "videoCount": 6,
+    "duration": "6 lessons"
+  },
+  "description": "<p>Explore the full Claude ecosystem — Chat, Code, Cowork, and Design — and learn when to use each product for your daily work.</p>\n<hr>\n<h1>What You'll Learn</h1>\n<ul>\n<li>Claude Chat — conversational AI for everyday tasks</li>\n<li>Claude Code — AI-powered coding in your terminal and IDE</li>\n<li>Claude Cowork — collaborative AI for team workflows</li>\n<li>Claude Design — visual and creative outputs with Claude</li>\n<li>How Chat, Code, Cowork, and Design fit together</li>\n</ul>\n<hr>\n<h1>Who Is This Course For?</h1>\n<ul>\n<li>Professionals who want a clear map of the Claude product lineup</li>\n<li>Anyone curious about which Claude tool to use for which job</li>\n<li>Learners ready to go beyond a single chat interface</li>\n</ul>",
+  "instructorBio": "Ava is Approachable's virtual assistant, guiding learners through practical Claude workflows.",
+  "inclusions": [
+    "6 recorded video lessons",
+    "Lifetime access",
+    "Claude Ecosystem quiz"
+  ],
+  "tools": ["Claude"],
+  "sessions": [
+    {
+      "id": "session-0",
+      "number": 1,
+      "title": "Claude Ecosystem",
+      "defaultOpen": true,
+      "items": [
+        { "number": 1, "title": "Claude Design", "type": "video", "locked": false },
+        { "number": 2, "title": "Claude Cowork", "type": "video", "locked": false },
+        { "number": 3, "title": "Claude Code", "type": "video", "locked": false },
+        { "number": 4, "title": "Claude Chat", "type": "video", "locked": false },
+        { "number": 5, "title": "Claude Chat vs Code vs Cowork", "type": "video", "locked": false },
+        { "number": 6, "title": "Claude Ecosystem Quiz", "type": "quiz", "locked": false }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Is this course free?",
+      "answer": "Yes. No payment is required."
+    },
+    {
+      "question": "Do I need Claude experience?",
+      "answer": "No prior experience is needed. The course is beginner friendly and covers each product from the ground up."
+    },
+    {
+      "question": "Which Claude products are covered?",
+      "answer": "Claude Chat, Claude Code, Claude Cowork, and Claude Design — plus a lesson on how they compare and when to use each."
+    }
+  ],
+  "purchaseUrl": "https://learn.approachable.dev/on-demand/claude-ecosystem---chat-code-cowork",
+  "ogImage": "https://wgkuqcwgbokzfxtimklr.supabase.co/storage/v1/object/public/course-images/courses/c1997e1c-602b-4e79-a846-ba0638abbf68.png",
+  "ogDescription": "Learn Claude Chat, Code, Cowork, and Design — and how they fit together in the Claude ecosystem"
+}

@@ -1,0 +1,115 @@
+{
+  "slug": "no-code-ai-agents-mastery-for-working-professionals",
+  "title": "No Code AI Agents Mastery for Working Professionals",
+  "heroImage": "https://wgkuqcwgbokzfxtimklr.supabase.co/storage/v1/object/public/course-images/courses/0d1a0d9b-bf54-4455-ab8b-15fc0c217e8b.png",
+  "isFree": false,
+  "instructor": {
+    "name": "Ranbeer Makin",
+    "email": "ranbeer@gmail.com"
+  },
+  "pricing": {
+    "inr": { "original": "₹1,598", "current": "₹799" },
+    "usd": { "original": "$78", "current": "$39" },
+    "discountPercent": 50
+  },
+  "discountLabel": "🎉 Launch Offer — 50% OFF for early learners. Limited time.",
+  "metadata": {
+    "type": "Recorded",
+    "skillLevel": "Beginner Friendly (No-Code)",
+    "language": "English",
+    "certificateAvailable": true,
+    "sampleCertificateUrl": "https://learn.approachable.dev/sample-certificate",
+    "videoCount": 14,
+    "duration": "1.5+ hours"
+  },
+  "description": "<p>AI is moving beyond chatbots.</p>\n<p>Modern AI systems can now reason, use tools, make decisions, follow multi-step processes, and work autonomously toward a goal. These systems—commonly called <strong>AI Agents</strong>—are becoming an important part of how businesses automate work and build intelligent workflows.</p>\n<p>This course is designed to give you a practical introduction to AI Agents and Agentic AI, with a strong focus on understanding how agents work and building them using n8n's no-code platform.</p>\n<p>You'll start by understanding the evolution from LLMs to Agentic AI, explore different levels of agent autonomy, and learn the core design patterns behind modern AI agents.</p>\n<p>You'll then put these concepts into practice by building agents with n8n—including sentiment analysis workflows, data extraction, a pizza ordering bot, and a customer retention AI agent.</p>\n<p>The course is designed for working professionals who want to understand what AI Agents are, where they can be used, and how to start building them without becoming an AI engineer or software developer.</p>\n<p>For any queries regarding this course or the Approachable platform, email me at <a href=\"mailto:ranbeer@gmail.com\">ranbeer@gmail.com</a></p>\n<hr>\n<h1>What You'll Learn</h1>\n<p>By the end of this course, you'll be able to:</p>\n<ul>\n<li>Understand what AI Agents are and how they differ from traditional chatbots and LLM applications</li>\n<li>Understand the evolution of LLMs toward Agentic AI</li>\n<li>Understand different degrees of autonomy in AI agents</li>\n<li>Identify practical AI Agent use cases across business functions</li>\n<li>Understand common agent examples such as customer support, coding, and research agents</li>\n<li>Learn the fundamental AI Agent design patterns</li>\n<li>Understand how agents use reflection to improve their outputs</li>\n<li>Understand tool use and how agents interact with external systems</li>\n<li>Understand how agents use planning to complete multi-step tasks</li>\n<li>Understand the fundamentals of multi-agent systems</li>\n<li>Learn the basics of n8n and no-code AI automation</li>\n<li>Make your first LLM call using n8n</li>\n<li>Build workflows for sentiment analysis and data extraction</li>\n<li>Build a Pizza Ordering AI Bot</li>\n<li>Build a Customer Retention AI Agent</li>\n<li>Explore advanced agentic design patterns and multi-agent systems</li>\n<li>Understand where to start when applying AI Agents to your own work</li>\n<li>Build your own AI Agent in n8n to classify incoming support emails</li>\n</ul>\n<hr>\n<h1>Who Is This Course For?</h1>\n<p>This course is ideal for:</p>\n<ul>\n<li>Working professionals who want to understand AI Agents</li>\n<li>Entrepreneurs and startup founders</li>\n<li>Managers and team leads</li>\n<li>Product Managers and Business Analysts</li>\n<li>Consultants and freelancers</li>\n<li>Marketing, Sales, HR, Finance, and Operations professionals</li>\n<li>Customer Support and Customer Success teams</li>\n<li>Professionals looking to automate repetitive business processes</li>\n<li>AI enthusiasts who want to move beyond basic ChatGPT usage</li>\n<li>Developers who want to explore no-code Agentic AI</li>\n</ul>\n<p>No prior AI Agent or programming experience is required.</p>\n<hr>\n<h1>What's Included</h1>\n<ul>\n<li>🎥 <strong>Structured video sessions</strong></li>\n<li>📚 Practical, hands-on learning</li>\n<li>🛠 Real-world AI Agent examples</li>\n<li>🤖 Step-by-step n8n agent-building demonstrations</li>\n<li>🧩 AI Agent design pattern explanations</li>\n<li>📝 Quiz on AI Agents</li>\n<li>💻 Mini-project: Build an n8n AI Agent to classify incoming support emails</li>\n<li>📂 Downloadable resources and examples</li>\n<li>🎓 Certificate of Completion</li>\n</ul>\n<hr>\n<h2>Tool We'll Use</h2>\n<ul>\n<li>n8n — No-code workflow automation and AI Agent platform</li>\n</ul>\n<p>You'll learn how to combine LLMs, tools, workflows, and business logic in n8n to create practical AI Agents.</p>\n<hr>\n<h2>Course Outcome</h2>\n<p>By the end of this course, you'll understand how AI Agents work, how agentic systems are designed, and where they can create real business value.</p>\n<p>More importantly, you'll have hands-on experience building AI-powered workflows and agents using n8n, without needing to write traditional software code.</p>\n<p>You'll leave with a practical framework for identifying agent opportunities, choosing the right design pattern, and taking your first steps toward building AI Agents for real-world business processes.</p>\n<p><strong>The goal isn't just to understand AI Agents.</strong></p>\n<p><strong>It's to learn how to build and apply them.</strong></p>",
+  "instructorBio": "Ranbeer Makin is passionate about helping working professionals confidently adopt AI. He has already trained 250+ learners through hands-on workshops and practical courses. As a software entrepreneur with 18+ years of experience, he now focuses on helping professionals move from AI Curious to AI Capable by teaching practical workflows, automation, and real-world AI applications.",
+  "inclusions": [
+    "Structured video sessions",
+    "Practical, hands-on learning",
+    "Real-world AI Agent examples",
+    "Step-by-step n8n agent-building demonstrations",
+    "AI Agent design pattern explanations",
+    "Quiz on AI Agents",
+    "Mini-project: Build an n8n AI Agent to classify incoming support emails",
+    "Downloadable resources and examples",
+    "Certificate of Completion"
+  ],
+  "tools": ["n8n"],
+  "sessions": [
+    {
+      "id": "session-0",
+      "number": 1,
+      "title": "Session 0: What are AI Agents?",
+      "defaultOpen": true,
+      "items": [
+        { "number": 1, "title": "Introduction to AI Agents", "type": "video", "locked": true },
+        { "number": 2, "title": "Evolution of LLMs & Agentic AI Fundamentals", "type": "video", "locked": false, "previewUrl": "https://video.gumlet.io/6a55e53c2a1936a5c8df7efc/6a571ff6462ae4490ffe31de/main.m3u8" },
+        { "number": 3, "title": "Agentic AI and Degrees of Autonomy", "type": "video", "locked": true },
+        { "number": 4, "title": "AI Agent examples: Customer support, coding and research agents", "type": "video", "locked": true }
+      ]
+    },
+    {
+      "id": "session-1",
+      "number": 2,
+      "title": "Session 1: Agents Design Patterns",
+      "items": [
+        { "number": 1, "title": "Agent Design Pattern #1: Reflection", "type": "video", "locked": false, "previewUrl": "https://video.gumlet.io/6a55e53c2a1936a5c8df7efc/6a571ff6462ae4490ffe31d9/main.m3u8" },
+        { "number": 2, "title": "Agent Design Pattern #2: Tool Use", "type": "video", "locked": true },
+        { "number": 3, "title": "Agent Design Pattern #3: Planning", "type": "video", "locked": true },
+        { "number": 4, "title": "Agent Design Pattern #4: Multi-Agent Systems", "type": "video", "locked": true }
+      ]
+    },
+    {
+      "id": "session-2",
+      "number": 3,
+      "title": "Session 2: Building AI Agents with n8n",
+      "items": [
+        { "number": 1, "title": "Basics of n8n (No-Code) & Your First LLM Call with n8n", "type": "video", "locked": true },
+        { "number": 2, "title": "Sentiment Analysis & Data Extraction with n8n", "type": "video", "locked": true },
+        { "number": 3, "title": "Pizza Ordering Bot in n8n", "type": "video", "locked": true },
+        { "number": 4, "title": "Customer Retention AI Agent in n8n", "type": "video", "locked": true }
+      ]
+    },
+    {
+      "id": "session-4",
+      "number": 4,
+      "title": "Session 4: Advanced",
+      "items": [
+        { "number": 1, "title": "Multi-Agents & More Agentic Design Patterns", "type": "video", "locked": true },
+        { "number": 2, "title": "Where Do I Start With AI Agents? Recap and Next Steps", "type": "video", "locked": true },
+        { "title": "Quiz: Session 3: Quiz 1: AI Agents", "type": "quiz", "locked": true },
+        { "title": "Mini-project: 1: Create an n8n AI Agent to Classify Incoming Support Emails", "type": "project", "locked": true }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Do I need to know how to code to take this course?",
+      "answer": "No. This is a completely no-code course. You'll build AI Agents using n8n's visual, drag-and-drop platform — no programming experience required."
+    },
+    {
+      "question": "Is this course live or self-paced?",
+      "answer": "This is a fully recorded, self-paced course. You get lifetime access and can learn on your own schedule, revisiting lessons anytime."
+    },
+    {
+      "question": "What tools or accounts will I need?",
+      "answer": "You'll use n8n, a no-code workflow automation and AI Agent platform. n8n offers a free tier, so you can follow along without any paid software."
+    },
+    {
+      "question": "What will I be able to build by the end of this course?",
+      "answer": "You'll be able to design and build no-code AI Agents in n8n — including sentiment analysis and data extraction workflows, a pizza ordering bot, a customer retention agent, and your own agent that classifies incoming support emails."
+    },
+    {
+      "question": "Will I get a certificate?",
+      "answer": "Yes. A Certificate of Completion is available once you finish the course, along with downloadable resources and examples to use in your own work."
+    },
+    {
+      "question": "Who is this course for?",
+      "answer": "Working professionals, managers, PMs, consultants, and teams across marketing, sales, HR, finance, and operations who want to automate repetitive work with AI Agents — no prior AI or programming background needed."
+    }
+  ],
+  "purchaseUrl": "https://learn.approachable.dev/courses/no-code-ai-agents-mastery-for-working-professionals",
+  "ogImage": "https://approachable.dev/og_image_3.png",
+  "ogDescription": "A practical, hands-on introduction to AI Agents and Agentic AI — build no-code agents in n8n, from your first LLM call to a customer retention AI agent."
+}

@@ -1,0 +1,65 @@
+{
+  "slug": "introduction-to-ai-agents",
+  "title": "Introduction to AI Agents",
+  "heroImage": "https://wgkuqcwgbokzfxtimklr.supabase.co/storage/v1/object/public/course-images/courses/ai%20agent.png",
+  "isFree": true,
+  "instructor": {
+    "name": "Ava (Approachable Virtual Assistant)",
+    "email": "ranbeer@gmail.com"
+  },
+  "pricing": {
+    "inr": { "original": "Free", "current": "Free" },
+    "usd": { "original": "Free", "current": "Free" },
+    "discountPercent": 0
+  },
+  "discountLabel": "",
+  "metadata": {
+    "type": "Free",
+    "skillLevel": "Beginner Friendly",
+    "language": "English",
+    "certificateAvailable": false,
+    "videoCount": 6,
+    "duration": "6 lessons"
+  },
+  "description": "<p>AI Agents Fundamentals — understand how agents are different from LLMs, when to use workflows vs AI agents, and build a solid foundation before going deeper.</p>\n<hr>\n<h1>What You'll Learn</h1>\n<ul>\n<li>What are AI Agents?</li>\n<li>Workflows vs AI Agents</li>\n<li>Going beyond chatbot</li>\n<li>From Prompt to Context Engineering</li>\n<li>Agent workflow patterns</li>\n<li>Test your knowledge with the AI Agents quiz</li>\n</ul>\n<hr>\n<h1>Who Is This Course For?</h1>\n<ul>\n<li>Professionals new to AI agents who want foundational understanding</li>\n<li>Anyone curious about how agents differ from chatbots and LLM workflows</li>\n<li>Learners ready to understand agent patterns before building more advanced solutions</li>\n</ul>",
+  "instructorBio": "Ava is Approachable's virtual assistant, guiding learners through practical AI workflows.",
+  "inclusions": [
+    "6 recorded video lessons",
+    "Lifetime access",
+    "AI Agents quiz"
+  ],
+  "tools": ["Claude"],
+  "sessions": [
+    {
+      "id": "session-0",
+      "number": 1,
+      "title": "Introduction to AI Agents",
+      "defaultOpen": true,
+      "items": [
+        { "number": 1, "title": "What are AI Agents?", "type": "video", "locked": false },
+        { "number": 2, "title": "Workflows vs AI Agents", "type": "video", "locked": false },
+        { "number": 3, "title": "Going beyond chatbot", "type": "video", "locked": false },
+        { "number": 4, "title": "From Prompt to Context Engineering", "type": "video", "locked": false },
+        { "number": 5, "title": "Agent workflow patterns", "type": "video", "locked": false },
+        { "number": 6, "title": "Quiz", "type": "quiz", "locked": false }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Is this course free?",
+      "answer": "Yes. No payment is required."
+    },
+    {
+      "question": "Do I need prior AI experience?",
+      "answer": "No prior experience is needed. The course is beginner friendly and covers AI agent fundamentals from the ground up."
+    },
+    {
+      "question": "What is the difference between workflows and AI agents?",
+      "answer": "Workflows follow predefined steps, while AI agents can reason, use tools, and make decisions autonomously. This course explains both and when to use each."
+    }
+  ],
+  "purchaseUrl": "https://learn.approachable.dev/on-demand/introduction-to-ai-agents",
+  "ogImage": "https://wgkuqcwgbokzfxtimklr.supabase.co/storage/v1/object/public/course-images/courses/ai%20agent.png",
+  "ogDescription": "AI Agents Fundamentals — How Agents are different from LLM, Workflows vs AI Agents, get complete command on the basics."
+}

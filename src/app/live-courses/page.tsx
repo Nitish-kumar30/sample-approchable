@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import Header from '@/components/Header';
 import { courses } from '@/lib/courses-data';
 
 export default function LiveCoursesPage() {
@@ -40,30 +41,9 @@ export default function LiveCoursesPage() {
   }
 
   return (
-    <div className="bg-gray-900 text-gray-100 leading-relaxed antialiased min-h-screen">
-      <header className="py-6">
-        <div className="mx-auto max-w-[1100px] px-6 flex items-center justify-between">
-          <Link href="/live-courses" className="flex items-center space-x-3">
-            <Image src="/logo.png" alt="Approachable" width={60} height={60} className="rounded-lg" />
-            <div>
-              <div className="text-lg font-bold">Approachable</div>
-              <div className="text-xs text-gray-400">making learning AI approachable for <em>everyone</em></div>
-            </div>
-          </Link>
-          <nav className="hidden md:flex items-center space-x-6 text-gray-300">
-            <Link href="/live-courses" className="hover:text-white font-semibold text-indigo-400">🔥 Live Courses</Link>
-            <a
-              href="https://forms.gle/dArAPFpBEqy2512J9"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-2 bg-indigo-600 rounded text-white font-medium shadow"
-            >
-              Get early access to Live Courses
-            </a>
-          </nav>
-        </div>
-      </header>
-
+    <>
+      <Header />
+      <div className="bg-gray-900 text-gray-100 leading-relaxed antialiased min-h-screen">
       <main>
         <section className="mx-auto max-w-[1100px] px-6 py-6">
           <div className="text-center mb-12">
@@ -126,16 +106,7 @@ export default function LiveCoursesPage() {
           </div>
         </section>
       </main>
-
-      <footer className="border-t border-white/5 mt-12 py-8">
-        <div className="mx-auto max-w-[1100px] px-6 flex flex-col md:flex-row items-center justify-between">
-          <div className="text-sm text-gray-400">© 2026 Approachable • making AI approachable</div>
-          <div className="mt-4 md:mt-0 space-x-4">
-            <Link href="#" className="text-gray-400 text-sm">Privacy</Link>
-            <Link href="#" className="text-gray-400 text-sm">Terms</Link>
-          </div>
-        </div>
-      </footer>
     </div>
+    </>
   );
 }

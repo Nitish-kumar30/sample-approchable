@@ -46,8 +46,11 @@ export default function CurriculumSection({ sessions }: CurriculumSectionProps) 
 
   return (
     <section className='curriculum-section'>
-      <h2 className="section-title">Course Content</h2>
-      <div className="accordion" style={{ marginTop: '1rem' }}>
+      <h2 className="section-title">
+        <span className="section-icon" aria-hidden="true">📚</span>
+        Course Content
+      </h2>
+      <div className="accordion">
         {sessions.map((session) => (
           <Accordion key={session.id} title={session.title} defaultOpen={session.defaultOpen}>
             <ul className="curriculum-list">
