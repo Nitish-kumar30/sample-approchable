@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/thank-you', '/api/'],
+      disallow: ['/api/'],
     },
     sitemap: 'https://approachable.dev/sitemap.xml',
   };
