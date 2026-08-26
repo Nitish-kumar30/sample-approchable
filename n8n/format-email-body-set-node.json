@@ -1,0 +1,34 @@
+{
+  "name": "Format Email Body (Set node replacement)",
+  "nodes": [
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "email-body",
+              "name": "emailBody",
+              "value": "={{ `<table border=\"1\" cellpadding=\"8\" cellspacing=\"0\" style=\"border-collapse:collapse;font-family:sans-serif;max-width:640px;\">\n<tr><td><b>ID</b></td><td>${$json.id ?? ''}</td></tr>\n<tr><td><b>Form Type</b></td><td>${$json.formType ?? ''}</td></tr>\n<tr><td><b>Submitted At</b></td><td>${$json.submittedAt ?? ''}</td></tr>\n<tr><td><b>Company</b></td><td>${$json.company ?? ''}</td></tr>\n<tr><td><b>Contact Name</b></td><td>${$json.contactName ?? ''}</td></tr>\n<tr><td><b>Email</b></td><td>${$json.email ?? ''}</td></tr>\n<tr><td><b>Phone</b></td><td>${$json.phone ?? ''}</td></tr>\n<tr><td><b>Team Size</b></td><td>${$json.teamSize ?? ''}</td></tr>\n<tr><td><b>Tiers</b></td><td>${Array.isArray($json.tiers) ? $json.tiers.join(', ') : ($json.tiers ?? '')}</td></tr>\n<tr><td><b>Industry</b></td><td>${$json.industry ?? ''}</td></tr>\n<tr><td><b>Timing</b></td><td>${$json.timing ?? ''}</td></tr>\n<tr><td><b>Requirements</b></td><td>${$json.requirements ?? ''}</td></tr>\n<tr><td><b>Source</b></td><td>${$json.meta?.source ?? ''}</td></tr>\n</table>` }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "format-email-body-set",
+      "name": "Format Email Body",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [480, 300]
+    }
+  ],
+  "connections": {},
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "tags": []
+}
