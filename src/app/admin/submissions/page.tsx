@@ -3,6 +3,8 @@ import Header from '@/components/Header';
 import SubmissionsList from '@/components/admin/SubmissionsList';
 import { getSubmissions } from '@/lib/submissions';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'Form submissions',
   robots: { index: false, follow: false },
