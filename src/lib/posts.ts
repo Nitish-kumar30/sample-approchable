@@ -32,6 +32,14 @@ function normaliseDate(raw: unknown): string {
   return String(raw).slice(0, 10);
 }
 
+/** Next.js serves public/ at root — strip accidental /public prefix from CMS paths */
+function normaliseCoverImage(raw: unknown): string | undefined {
+  if (!raw || typeof raw !== 'string') return undefined;
+  const trimmed = raw.trim();
+  if (!trimmed) return undefined;
+  return trimmed.replace(/^\/public(?=\/)/, '');
+}
+
 function ensurePostsDir(): boolean {
   try {
     return fs.existsSync(POSTS_DIR);
@@ -61,7 +69,7 @@ export function getAllPosts(): Post[] {
         title: data.title ?? slug,
         date: normaliseDate(data.date),
         excerpt: data.excerpt ?? '',
-        coverImage: data.coverImage,
+        coverImage: normaliseCoverImage(data.coverImage),
         tags: Array.isArray(data.tags) ? data.tags : [],
         body: content,
       });
@@ -83,7 +91,7 @@ export function getPostBySlug(slug: string): Post | null {
       title: data.title ?? slug,
       date: normaliseDate(data.date),
       excerpt: data.excerpt ?? '',
-      coverImage: data.coverImage,
+      coverImage: normaliseCoverImage(data.coverImage),
       tags: Array.isArray(data.tags) ? data.tags : [],
       body: content,
     };

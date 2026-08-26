@@ -1,4 +1,6 @@
-media: public/images/posts
+media:
+  input: public/images/posts
+  output: /images/posts
 content:
   - name: posts
     label: Blog Posts
@@ -22,6 +24,8 @@ content:
         required: true
       - name: coverImage
         type: image
+        options:
+          path: public/images/posts
       - name: tags
         type: select
         multiple: true
