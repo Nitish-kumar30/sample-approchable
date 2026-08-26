@@ -9,6 +9,7 @@ import Footer from '@/components/Footer';
 import LatestPosts from '@/components/LatestPosts';
 import TagCounts from '@/components/TagCounts';
 import ArchiveWidget from '@/components/ArchiveWidget';
+import SubscribeForm from '@/components/SubscribeForm';
 import { getAllPosts, getPostBySlug } from '@/lib/posts';
 
 // allow slugs committed after the last build to be rendered on-demand
@@ -114,6 +115,7 @@ export default async function BlogPostPage({ params }: Props) {
             </article>
 
             <aside className="lg:w-72 shrink-0 flex flex-col gap-6">
+              <SubscribeForm />
               <LatestPosts />
               <TagCounts />
               <ArchiveWidget />

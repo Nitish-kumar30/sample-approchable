@@ -7,6 +7,7 @@ import Banner from '@/components/Banner';
 import LatestPosts from '@/components/LatestPosts';
 import TagCounts from '@/components/TagCounts';
 import ArchiveWidget from '@/components/ArchiveWidget';
+import SubscribeForm from '@/components/SubscribeForm';
 import { getAllPosts } from '@/lib/posts';
 
 // revalidate every 60 s so new CMS posts appear without a full redeploy
@@ -110,6 +111,7 @@ export default function BlogIndexPage() {
             </div>
 
             <aside className="lg:w-72 shrink-0 flex flex-col gap-6">
+              <SubscribeForm />
               <LatestPosts />
               <TagCounts />
               <ArchiveWidget />
