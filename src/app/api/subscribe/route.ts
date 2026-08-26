@@ -1,5 +1,5 @@
 import { NextRequest } from 'next/server';
-import { put, list } from '@vercel/blob';
+import { put, list, getDownloadUrl } from '@vercel/blob';
 
 const BLOB_PATH = 'subscribers/emails.json';
 
@@ -11,7 +11,8 @@ interface Subscriber {
 async function getSubscribers(): Promise<Subscriber[]> {
   const { blobs } = await list({ prefix: BLOB_PATH });
   if (!blobs.length) return [];
-  const res = await fetch(blobs[0].url);
+  const downloadUrl = await getDownloadUrl(blobs[0].url);
+  const res = await fetch(downloadUrl);
   return res.json();
 }
 
@@ -43,7 +44,7 @@ export async function POST(req: NextRequest) {
     if (!exists) {
       subscribers.push({ email: email.toLowerCase(), subscribedAt: new Date().toISOString() });
       await put(BLOB_PATH, JSON.stringify(subscribers), {
-        access: 'public',
+        access: 'private',
         addRandomSuffix: false,
       });
     }
