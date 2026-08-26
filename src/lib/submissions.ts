@@ -1,8 +1,9 @@
 import { get, list } from '@vercel/blob';
 import type { CorporateInquiryRecord } from '@/lib/corporate-inquiry';
+import { blobOptions } from '@/lib/blob-client';
 
 async function readSubmission(pathname: string): Promise<CorporateInquiryRecord | null> {
-  const result = await get(pathname, { access: 'private' });
+  const result = await get(pathname, { access: 'private', ...blobOptions() });
 
   if (!result || result.statusCode !== 200 || !result.stream) {
     return null;
@@ -13,11 +14,7 @@ async function readSubmission(pathname: string): Promise<CorporateInquiryRecord 
 }
 
 export async function getSubmissions(): Promise<CorporateInquiryRecord[]> {
-  if (!process.env.BLOB_READ_WRITE_TOKEN) {
-    throw new Error('Blob storage is not configured');
-  }
-
-  const { blobs } = await list({ prefix: 'submissions/' });
+  const { blobs } = await list({ prefix: 'submissions/', ...blobOptions() });
 
   const submissions = await Promise.all(
     blobs.map(async (blob) => {

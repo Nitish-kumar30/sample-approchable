@@ -6,17 +6,10 @@ import {
   isHoneypotTriggered,
   validateCorporateInquiry,
 } from '@/lib/corporate-inquiry';
+import { blobOptions } from '@/lib/blob-client';
 
 export async function POST(req: NextRequest) {
   try {
-    if (!process.env.BLOB_READ_WRITE_TOKEN) {
-      console.error('BLOB_READ_WRITE_TOKEN is not configured');
-      return NextResponse.json(
-        { success: false, error: 'Form storage is not configured' },
-        { status: 500 },
-      );
-    }
-
     const body = await req.json();
 
     if (isHoneypotTriggered(body)) {
@@ -47,6 +40,7 @@ export async function POST(req: NextRequest) {
       access: 'private',
       contentType: 'application/json',
       addRandomSuffix: false,
+      ...blobOptions(),
     });
 
     const webhookUrl = process.env.N8N_WEBHOOK_URL;

@@ -4,6 +4,7 @@ import SubmissionsList from '@/components/admin/SubmissionsList';
 import { getSubmissions } from '@/lib/submissions';
 
 export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
 
 export const metadata: Metadata = {
   title: 'Form submissions',
@@ -18,7 +19,7 @@ export default async function AdminSubmissionsPage() {
     submissions = await getSubmissions();
   } catch (error) {
     console.error('Failed to load submissions:', error);
-    loadError = 'Could not load submissions. Check that blob storage is configured.';
+    loadError = 'Could not load submissions. Connect Vercel Blob to this project (Storage → Blob → Connect), or set BLOB_READ_WRITE_TOKEN in Vercel environment variables.';
   }
 
   return (
