@@ -54,6 +54,28 @@
 .brandDot { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); }
 .navLinks { display: flex; align-items: center; gap: 34px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.14em; color: #5d5a54; }
 .navLinks a:hover { color: var(--ink); }
+.navEnquiryTag {
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.navEnquiryTag:hover {
+  background: var(--accent-dark);
+  color: #fff;
+  transform: translateY(-1px);
+}
+.navEnquiryTag:focus-visible {
+  outline: 3px solid var(--accent-dark);
+  outline-offset: 2px;
+}
 .btn {
   display: inline-flex;
   align-items: center;
@@ -235,8 +257,6 @@
 .ctaCard { display: flex; flex-direction: column; align-items: flex-start; }
 .ctaCard .btn { font-size: 16px; padding: 18px 28px; }
 .ctaMicro { font-family: monospace; font-size: 10px; color: #77756f; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 13px; }
-.formWrap { width: 100%; max-width: 640px; }
-.finalCta .formWrap { justify-self: stretch; }
 
 /* RESPONSIVE */
 @media (max-width: 900px) {

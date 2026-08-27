@@ -1,5 +1,9 @@
 import type { Metadata } from 'next';
-import CorporateTrainingForm from '@/components/corporate-training/CorporateTrainingForm';
+import {
+  EnquiryModalProvider,
+  OpenEnquiryButton,
+  TeamAiTrainingNav,
+} from '@/components/corporate-training/EnquiryModal';
 import styles from './team-ai-training.module.css';
 
 export const metadata: Metadata = {
@@ -16,25 +20,9 @@ export const metadata: Metadata = {
 
 export default function TeamAiTrainingPage() {
   return (
-    <div className={styles.page}>
-      <nav className={styles.nav}>
-        <div className={`${styles.container} ${styles.navInner}`}>
-          <a className={styles.brand} href="#">
-            <span className={styles.brandDot}></span>
-            Approachable
-          </a>
-          <div className={styles.navLinks}>
-            <a href="#program">Program</a>
-            <a href="#work">What we build</a>
-            <a href="#proof">Proof</a>
-            <a href="#pricing">Pricing</a>
-            <a href="#faq">Questions</a>
-          </div>
-          <a className={`${styles.btn} ${styles.btnDark}`} href="#book">
-            Book an AI assessment
-          </a>
-        </div>
-      </nav>
+    <EnquiryModalProvider>
+      <div className={styles.page}>
+        <TeamAiTrainingNav />
 
       <main>
         {/* HERO */}
@@ -52,9 +40,9 @@ export default function TeamAiTrainingPage() {
                 workflows, one automated process, and a working prototype.
               </p>
               <div className={styles.heroActions}>
-                <a className={`${styles.btn} ${styles.btnPrimary}`} href="#book">
+                <OpenEnquiryButton className={`${styles.btn} ${styles.btnPrimary}`}>
                   Book a 20-min AI team assessment →
-                </a>
+                </OpenEnquiryButton>
                 <a className={`${styles.btn} ${styles.btnGhost}`} href="#program">
                   See what you get
                 </a>
@@ -478,9 +466,9 @@ export default function TeamAiTrainingPage() {
                   <li>Recordings</li>
                   <li>30-day check-in</li>
                 </ul>
-                <a href="#book" className={`${styles.btn} ${styles.btnPrimary}`} style={{ marginTop: 25 }}>
+                <OpenEnquiryButton className={`${styles.btn} ${styles.btnPrimary}`} style={{ marginTop: 25 }}>
                   Get your exact number →
-                </a>
+                </OpenEnquiryButton>
                 <div className={styles.pricingNote}>No per-seat pricing. No enterprise contract.</div>
               </div>
             </div>
@@ -533,7 +521,7 @@ export default function TeamAiTrainingPage() {
           </div>
         </section>
 
-        {/* FINAL CTA + INQUIRY FORM */}
+        {/* FINAL CTA */}
         <section className={styles.finalCta} id="book">
           <div className={`${styles.container} ${styles.ctaGrid}`}>
             <div>
@@ -547,12 +535,16 @@ export default function TeamAiTrainingPage() {
                 Delivered via BIGINT Solutions · www.bigintsolutions.com · Pricing discussed on the call
               </p>
             </div>
-            <div className={styles.formWrap}>
-              <CorporateTrainingForm />
+            <div className={styles.ctaCard}>
+              <OpenEnquiryButton className={`${styles.btn} ${styles.btnPrimary}`}>
+                Send an enquiry →
+              </OpenEnquiryButton>
+              <div className={styles.ctaMicro}>20 minutes · no pitch · honest answer on fit</div>
             </div>
           </div>
         </section>
       </main>
-    </div>
+      </div>
+    </EnquiryModalProvider>
   );
 }

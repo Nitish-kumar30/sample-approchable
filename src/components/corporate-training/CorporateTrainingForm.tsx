@@ -5,8 +5,6 @@ import styles from './inquiry-form.module.css';
 import type { CorporateInquiryFields } from '@/lib/corporate-inquiry';
 import { validateCorporateInquiry } from '@/lib/corporate-inquiry';
 
-const TIERS = ['CxO', 'Director', 'Management', 'Middle Manager'] as const;
-
 const CONTACT_EMAIL = 'ranbeer@bigintsolutions.com';
 
 type FormErrors = Partial<Record<keyof CorporateInquiryFields, string>>;
@@ -17,14 +15,12 @@ const INITIAL: CorporateInquiryFields = {
   email: '',
   phone: '',
   teamSize: '',
-  tiers: [],
   industry: '',
   timing: '',
   requirements: '',
 };
 
 function focusFieldId(field: string): string {
-  if (field === 'tiers') return 'tier-fieldset';
   if (field === 'teamSize') return 'teamSize';
   return field;
 }
@@ -45,7 +41,6 @@ export default function CorporateTrainingForm() {
   const [submitError, setSubmitError] = useState('');
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const surfaceClass = styles.inquiryFormHighContrast;
 
   function updateField<K extends keyof CorporateInquiryFields>(key: K, value: CorporateInquiryFields[K]) {
     setForm((prev) => ({ ...prev, [key]: value }));
@@ -53,23 +48,6 @@ export default function CorporateTrainingForm() {
       setErrors((prev) => {
         const next = { ...prev };
         delete next[key];
-        return next;
-      });
-    }
-    if (submitError) setSubmitError('');
-  }
-
-  function toggleTier(tier: string) {
-    setForm((prev) => {
-      const tiers = prev.tiers.includes(tier)
-        ? prev.tiers.filter((t) => t !== tier)
-        : [...prev.tiers, tier];
-      return { ...prev, tiers };
-    });
-    if (errors.tiers) {
-      setErrors((prev) => {
-        const next = { ...prev };
-        delete next.tiers;
         return next;
       });
     }
@@ -123,7 +101,7 @@ export default function CorporateTrainingForm() {
 
   if (submitted) {
     return (
-      <div className={`${styles.formSuccess} ${surfaceClass}`}>
+      <div className={styles.formSuccess}>
         <h3>Thanks — we received your inquiry.</h3>
         <p>
           We&apos;ll come back with a tailored outline and dates within a few days. If you need to
@@ -148,7 +126,7 @@ export default function CorporateTrainingForm() {
   }
 
   return (
-    <form className={`${styles.inquiryForm} ${surfaceClass}`} onSubmit={handleSubmit}>
+    <form className={styles.inquiryForm} onSubmit={handleSubmit} noValidate>
       {submitError && (
         <p className={styles.formSubmitError} role="alert">
           {submitError}
@@ -263,29 +241,6 @@ export default function CorporateTrainingForm() {
           <FieldError id="industry-error" error={errors.industry} />
         </div>
       </div>
-
-      <fieldset
-        id="tier-fieldset"
-        className={styles.tierFieldset}
-        disabled={loading}
-        aria-invalid={errors.tiers ? true : undefined}
-        aria-describedby={errors.tiers ? 'tiers-error' : undefined}
-      >
-        <legend className={styles.formLabel}>Tiers to include</legend>
-        <div className={styles.tierChecks}>
-          {TIERS.map((tier) => (
-            <label key={tier} className={styles.tierCheck}>
-              <input
-                type="checkbox"
-                checked={form.tiers.includes(tier)}
-                onChange={() => toggleTier(tier)}
-              />
-              <span>{tier}</span>
-            </label>
-          ))}
-        </div>
-        <FieldError id="tiers-error" error={errors.tiers} />
-      </fieldset>
 
       <div className={styles.formField}>
         <label htmlFor="timing">Preferred timing</label>

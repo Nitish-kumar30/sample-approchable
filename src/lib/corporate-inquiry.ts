@@ -6,7 +6,6 @@ export type CorporateInquiryFields = {
   email: string;
   phone: string;
   teamSize: string;
-  tiers: string[];
   industry: string;
   timing: string;
   requirements: string;
@@ -31,11 +30,6 @@ function asString(value: unknown): string {
   return typeof value === 'string' ? value.trim() : '';
 }
 
-function asStringArray(value: unknown): string[] {
-  if (!Array.isArray(value)) return [];
-  return value.filter((item) => typeof item === 'string');
-}
-
 export function validateCorporateInquiry(body: unknown): ValidationSuccess | ValidationFailure {
   if (!body || typeof body !== 'object') {
     return { ok: false, errors: { form: 'Invalid submission payload' } };
@@ -52,7 +46,6 @@ export function validateCorporateInquiry(body: unknown): ValidationSuccess | Val
   const industry = asString(raw.industry);
   const timing = asString(raw.timing);
   const requirements = asString(raw.requirements);
-  const tiers = asStringArray(raw.tiers);
 
   if (!company) errors.company = 'Company name is required';
   if (!contactName) errors.contactName = 'Contact name is required';
@@ -60,7 +53,6 @@ export function validateCorporateInquiry(body: unknown): ValidationSuccess | Val
   else if (!EMAIL_RE.test(email)) errors.email = 'Enter a valid email address';
   if (!teamSize) errors.teamSize = 'Select a team size';
   if (!industry) errors.industry = 'Industry is required';
-  if (tiers.length === 0) errors.tiers = 'Select at least one tier';
   if (!requirements) errors.requirements = 'Please describe your requirements';
 
   if (Object.keys(errors).length > 0) {
@@ -75,7 +67,6 @@ export function validateCorporateInquiry(body: unknown): ValidationSuccess | Val
       email,
       phone,
       teamSize,
-      tiers,
       industry,
       timing,
       requirements,

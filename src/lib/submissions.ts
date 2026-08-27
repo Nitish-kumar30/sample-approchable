@@ -30,7 +30,6 @@ export async function getSubmissions(): Promise<CorporateInquiryRecord[]> {
         email: '',
         phone: '',
         teamSize: '',
-        tiers: [],
         industry: '',
         timing: '',
         requirements: '',

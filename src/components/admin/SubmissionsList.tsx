@@ -53,14 +53,6 @@ export default function SubmissionsList({ submissions }: { submissions: Corporat
             <Field label="Timing" value={submission.timing} />
           </dl>
 
-          {submission.tiers.length > 0 && (
-            <div className="admin-submission-tags">
-              {submission.tiers.map((tier) => (
-                <span key={tier} className="curriculum-tag highlight">{tier}</span>
-              ))}
-            </div>
-          )}
-
           {submission.requirements && (
             <div className="admin-submission-requirements">
               <div className="admin-field-label">Requirements</div>
