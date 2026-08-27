@@ -1,4 +1,4 @@
-.inquiryForm {
+.formRoot {
   --form-ink: #171715;
   --form-ink-soft: #4b5563;
   --form-label: #171715;
@@ -8,7 +8,9 @@
   --form-accent: #df7958;
   --form-accent-dark: #c96243;
   --form-radius: 10px;
+}
 
+.inquiryForm {
   width: 100%;
   background: var(--form-bg);
   border: 1px solid #cbd5e1;
@@ -182,7 +184,8 @@
 }
 
 .formSuccess {
-  background: var(--form-bg);
+  width: 100%;
+  background: #ffffff;
   border: 1px solid #cbd5e1;
   border-radius: var(--form-radius);
   padding: 32px 30px;
@@ -192,24 +195,31 @@
 .formSuccess h3 {
   font-size: 22px;
   font-weight: 700;
-  color: var(--form-ink);
-  margin-bottom: 10px;
+  color: #171715;
+  margin: 0 0 10px;
 }
 
 .formSuccess p {
-  color: var(--form-ink-soft);
+  color: #4b5563;
   font-size: 16px;
   line-height: 1.6;
-  margin-bottom: 20px;
+  margin: 0 0 20px;
 }
 
 .formSuccess a {
-  color: var(--form-accent-dark);
+  color: #c96243;
   font-weight: 600;
 }
 
-.formSuccess .formError {
-  color: #b45309;
+.formSuccess .btnGhost {
+  color: #171715;
+  border-color: #64748b;
+  background: #ffffff;
+}
+
+.formSuccess .btnGhost:hover {
+  border-color: #171715;
+  background: #f8fafc;
 }
 
 .formSuccess a:hover {

@@ -101,31 +101,34 @@ export default function CorporateTrainingForm() {
 
   if (submitted) {
     return (
-      <div className={styles.formSuccess}>
-        <h3>Thanks — we received your inquiry.</h3>
-        <p>
-          We&apos;ll come back with a tailored outline and dates within a few days. If you need to
-          reach us directly, email{' '}
-          <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.
-        </p>
-        <button
-          type="button"
-          className={`${styles.btn} ${styles.btnGhost}`}
-          onClick={() => {
-            setForm(INITIAL);
-            setHoneypot('');
-            setErrors({});
-            setSubmitError('');
-            setSubmitted(false);
-          }}
-        >
-          Submit another inquiry
-        </button>
+      <div className={styles.formRoot}>
+        <div className={styles.formSuccess} role="status">
+          <h3>Thanks — we received your inquiry.</h3>
+          <p>
+            We&apos;ll come back with a tailored outline and dates within a few days. If you need to
+            reach us directly, email{' '}
+            <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.
+          </p>
+          <button
+            type="button"
+            className={`${styles.btn} ${styles.btnGhost}`}
+            onClick={() => {
+              setForm(INITIAL);
+              setHoneypot('');
+              setErrors({});
+              setSubmitError('');
+              setSubmitted(false);
+            }}
+          >
+            Submit another inquiry
+          </button>
+        </div>
       </div>
     );
   }
 
   return (
+    <div className={styles.formRoot}>
     <form className={styles.inquiryForm} onSubmit={handleSubmit} noValidate>
       {submitError && (
         <p className={styles.formSubmitError} role="alert">
@@ -273,5 +276,6 @@ export default function CorporateTrainingForm() {
         {loading ? 'Sending…' : 'Send inquiry →'}
       </button>
     </form>
+    </div>
   );
 }
