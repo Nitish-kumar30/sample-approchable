@@ -525,16 +525,13 @@ export default function TeamAiTrainingPage() {
               <div className={styles.eyebrow}>Start with one conversation</div>
               <h2>Let&apos;s find one thing your team can improve with AI.</h2>
               <p>
-                Tell us your business, team size and industry. We&apos;ll come back with a tailored outline and
-                dates within a few days.
-              </p>
-              <p className={styles.ctaMicro}>
-                Delivered via BIGINT Solutions · www.bigintsolutions.com · Pricing discussed on the call
+                Tell us your business, team size and industry. In a 20-minute conversation, we&apos;ll look at how
+                your team currently uses AI and tell you whether this is a fit.
               </p>
             </div>
             <div className={styles.ctaCard}>
               <OpenEnquiryButton className={`${styles.btn} ${styles.btnPrimary}`}>
-                Send an enquiry →
+                Book a free 20-min AI team assessment →
               </OpenEnquiryButton>
               <div className={styles.ctaMicro}>20 minutes · no pitch · honest answer on fit</div>
             </div>
