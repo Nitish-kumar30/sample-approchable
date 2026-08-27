@@ -24,7 +24,7 @@ export default function Header({ coursePage = false, showBackToCourses = false, 
             <Link href="/courses" className="header-nav-link">
               Courses
             </Link>
-            <Link href="/corporate-training" className="header-nav-link">
+            <Link href="/team-ai-training" className="header-nav-link">
               Corporate Training
             </Link>
           </nav>

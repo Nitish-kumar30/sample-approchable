@@ -20,13 +20,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: `${BASE_URL}/corporate-training`,
+      url: `${BASE_URL}/team-ai-training`,
       lastModified,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: `${BASE_URL}/corporate-training/inquiry`,
+      url: `${BASE_URL}/team-ai-training/inquiry`,
       lastModified,
       changeFrequency: 'monthly',
       priority: 0.7,
