@@ -1,5 +1,5 @@
 import { permanentRedirect } from 'next/navigation';
 
-export default function CorporateInquiryPage() {
+export default function TeamAiTrainingInquiryPage() {
   permanentRedirect('/team-ai-training#book');
 }

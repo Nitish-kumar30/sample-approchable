@@ -53,7 +53,7 @@ export default function Header({
             <Link href="/courses" className="header-nav-link">
               Courses
             </Link>
-            <Link href="/corporate-training" className="header-nav-link">
+            <Link href="/team-ai-training" className="header-nav-link">
               Corporate Training
             </Link>
           </nav>
@@ -63,12 +63,12 @@ export default function Header({
           <BackLink href="/courses" ariaLabel="Back to courses" fullLabel="Back to Courses" />
         ) : showBackToCorporate ? (
           <BackLink
-            href="/corporate-training"
+            href="/team-ai-training"
             ariaLabel="Back to corporate training"
             fullLabel="Back to Corporate Training"
           />
         ) : showCorporateEnquiry ? (
-          <a href="#inquiry" className="header-cta header-cta-corporate">
+          <a href="#book" className="header-cta header-cta-corporate">
             Send enquiry →
           </a>
         ) : (

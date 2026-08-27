@@ -31,7 +31,7 @@ export async function POST(req: NextRequest) {
       submittedAt: new Date().toISOString(),
       ...validation.data,
       meta: {
-        source: 'corporate-training/inquiry',
+        source: 'team-ai-training/inquiry',
         userAgent: req.headers.get('user-agent') ?? undefined,
       },
     };

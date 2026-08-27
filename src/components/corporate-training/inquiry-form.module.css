@@ -1,0 +1,285 @@
+.formRoot {
+  --ink: #171715;
+  --ink-soft: #67645e;
+  --paper: #fbfaf7;
+  --line: #dedbd3;
+  --accent: #df7958;
+  --accent-dark: #c96243;
+  --accent-ink: #3a2a0c;
+  --card: #fffefa;
+  --radius: 10px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 14px 24px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.btnAccent {
+  background: var(--accent);
+  color: #fff;
+}
+
+.btnAccent:hover {
+  transform: translateY(-1px);
+  background: var(--accent-dark);
+}
+
+.btnGhost {
+  background: transparent;
+  color: var(--ink);
+  border: 1.5px solid var(--line);
+}
+
+.btnGhost:hover {
+  border-color: var(--ink);
+}
+
+.btn:focus-visible {
+  outline: 3px solid var(--accent-dark);
+  outline-offset: 2px;
+}
+
+.inquiryForm {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 28px 30px;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+@media (min-width: 600px) {
+  .formRow {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.formField {
+  margin-bottom: 16px;
+}
+
+.formField:last-of-type {
+  margin-bottom: 20px;
+}
+
+.formField label,
+.formLabel {
+  display: block;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 6px;
+}
+
+.formField input,
+.formField select,
+.formField textarea {
+  width: 100%;
+  font-family: inherit;
+  font-size: 15px;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  padding: 12px 14px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.formField input::placeholder,
+.formField textarea::placeholder {
+  color: var(--ink-soft);
+  opacity: 0.7;
+}
+
+.formField input:focus,
+.formField select:focus,
+.formField textarea:focus {
+  outline: none;
+  border-color: var(--accent-dark);
+  box-shadow: 0 0 0 3px rgba(223, 121, 88, 0.2);
+}
+
+.formField textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.55;
+}
+
+.formError {
+  font-size: 13px;
+  color: #b45309;
+  margin-top: 4px;
+  margin-bottom: 0;
+}
+
+.formSubmitError {
+  font-size: 14px;
+  color: #b45309;
+  font-weight: 600;
+  background: #fef3c7;
+  border: 1px solid #fcd34d;
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-bottom: 16px;
+}
+
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.tierFieldset {
+  border: none;
+  padding: 0;
+  margin: 0 0 16px;
+}
+
+.tierChecks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tierCheck {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1.5px solid var(--line);
+  border-radius: 999px;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.tierCheck input {
+  width: auto;
+  margin: 0;
+  accent-color: var(--accent-dark);
+}
+
+.tierCheck:has(input:checked) {
+  border-color: var(--accent-dark);
+  background: #fdf6e8;
+}
+
+.formSuccess {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 32px 30px;
+}
+
+.formSuccess h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.formSuccess p {
+  color: var(--ink-soft);
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.formSuccess a {
+  color: var(--accent-dark);
+  font-weight: 600;
+}
+
+.inquiryFormHighContrast.inquiryForm,
+.inquiryFormHighContrast.formSuccess {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.08);
+}
+
+.inquiryFormHighContrast .formField label,
+.inquiryFormHighContrast .formLabel {
+  color: #0f172a;
+  font-size: 12.5px;
+  font-weight: 700;
+}
+
+.inquiryFormHighContrast .formField input,
+.inquiryFormHighContrast .formField select,
+.inquiryFormHighContrast .formField textarea {
+  background: #ffffff;
+  border-color: #94a3b8;
+  color: #0f172a;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.inquiryFormHighContrast .formField input::placeholder,
+.inquiryFormHighContrast .formField textarea::placeholder {
+  color: #64748b;
+  opacity: 1;
+}
+
+.inquiryFormHighContrast .formField select:invalid {
+  color: #64748b;
+}
+
+.inquiryFormHighContrast .formField select option {
+  color: #0f172a;
+}
+
+.inquiryFormHighContrast .tierCheck {
+  background: #ffffff;
+  border-color: #94a3b8;
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.inquiryFormHighContrast .tierCheck:has(input:checked) {
+  border-color: var(--accent-dark);
+  background: #fffbeb;
+  color: #0f172a;
+}
+
+.inquiryFormHighContrast.formSuccess h3 {
+  color: #0f172a;
+}
+
+.inquiryFormHighContrast.formSuccess p {
+  color: #334155;
+}
+
+.inquiryFormHighContrast .formError {
+  color: #b45309;
+  font-weight: 600;
+}
+
+.inquiryFormHighContrast .formSuccess a {
+  color: var(--accent-dark);
+}
+
+.inquiryFormHighContrast .btnAccent {
+  color: #fff;
+  font-weight: 700;
+}

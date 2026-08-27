@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, type FormEvent } from 'react';
-import styles from '@/app/corporate-training/corporate-training.module.css';
+import styles from './inquiry-form.module.css';
 import type { CorporateInquiryFields } from '@/lib/corporate-inquiry';
 import { validateCorporateInquiry } from '@/lib/corporate-inquiry';
 
