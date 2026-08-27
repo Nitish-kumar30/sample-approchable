@@ -15,7 +15,7 @@ export default function LinkedInReviews() {
           <img
             key={n}
             src={`/img/linkedin-review-${n}.png`}
-            alt={`LinkedIn Review ${n}`}
+            alt={`LinkedIn review from cohort alumni ${n}`}
             className="linkedin-review-thumb"
             onClick={() => openLightbox(`/img/linkedin-review-${n}.png`)}
           />

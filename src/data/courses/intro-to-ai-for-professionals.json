@@ -1,0 +1,58 @@
+{
+  "slug": "intro-to-ai-for-professionals",
+  "title": "Intro to AI for Working Professionals",
+  "heroImage": "https://approachable.dev/og_image_3.png",
+  "isFree": true,
+  "instructor": {
+    "name": "Ranbeer Makin",
+    "email": "ranbeer@gmail.com"
+  },
+  "pricing": {
+    "inr": { "original": "Free", "current": "Free" },
+    "usd": { "original": "Free", "current": "Free" },
+    "discountPercent": 0
+  },
+  "discountLabel": "",
+  "metadata": {
+    "type": "Free",
+    "skillLevel": "Beginner Friendly",
+    "language": "English",
+    "certificateAvailable": false,
+    "videoCount": 3,
+    "duration": "30+ minutes"
+  },
+  "description": "<p>Curious about AI but not sure where to start?</p>\n<p>This free mini-course gives working professionals a practical first step into the world of AI — no technical background required.</p>\n<p>You'll learn what modern AI can (and can't) do, how professionals are using it today, and how to get started with your first AI workflow.</p>\n<p>For any queries regarding this course or the Approachable platform, email me at <a href=\"mailto:ranbeer@gmail.com\">ranbeer@gmail.com</a></p>\n<hr>\n<h1>What You'll Learn</h1>\n<ul>\n<li>What AI is and how it fits into everyday work</li>\n<li>How to think about AI as a productivity tool, not a replacement</li>\n<li>Practical first steps to start using AI confidently</li>\n</ul>\n<hr>\n<h1>Who Is This Course For?</h1>\n<ul>\n<li>Working professionals who are AI Curious</li>\n<li>Anyone who wants a free, low-commitment starting point before diving deeper</li>\n</ul>\n<hr>\n<h1>What's Included</h1>\n<ul>\n<li>3 recorded video lessons</li>\n<li>30+ minutes of practical content</li>\n<li>Lifetime access</li>\n</ul>",
+  "instructorBio": "Ranbeer Makin is passionate about helping working professionals confidently adopt AI. He has already trained 250+ learners through hands-on workshops and practical courses.",
+  "inclusions": [
+    "3 recorded video lessons",
+    "30+ minutes of practical content",
+    "Lifetime access"
+  ],
+  "tools": ["ChatGPT", "Claude"],
+  "sessions": [
+    {
+      "id": "session-0",
+      "number": 1,
+      "title": "Session 1: AI Basics for Professionals",
+      "defaultOpen": true,
+      "items": [
+        { "number": 1, "title": "What Is AI and Why It Matters at Work", "type": "video", "locked": true },
+        { "number": 2, "title": "Your First AI Workflow", "type": "video", "locked": true },
+        { "number": 3, "title": "What to Learn Next", "type": "video", "locked": true }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Is this course really free?",
+      "answer": "Yes. This is a free starter course with no payment required."
+    },
+    {
+      "question": "Do I need any prior AI experience?",
+      "answer": "No. This course is designed for complete beginners."
+    }
+  ],
+  "purchaseUrl": "https://learn.approachable.dev/courses/intro-to-ai-for-professionals",
+  "ogImage": "https://approachable.dev/og_image_3.png",
+  "ogDescription": "A free starter course for working professionals curious about AI — learn the basics and take your first step toward becoming AI Capable."
+}

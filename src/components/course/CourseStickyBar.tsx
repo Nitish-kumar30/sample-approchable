@@ -38,6 +38,7 @@ export default function CourseStickyBar({ course }: CourseStickyBarProps) {
   }, []);
 
   const price = isIntl ? course.pricing.usd : course.pricing.inr;
+  const isFree = course.isFree ?? false;
 
   return (
     <div id="sticky-pay" className={`sticky-pay${visible ? ' visible' : ''}`} aria-hidden={!visible}>
@@ -45,13 +46,21 @@ export default function CourseStickyBar({ course }: CourseStickyBarProps) {
         <div className="sticky-pay-text">
           <p className="sticky-pay-title">{course.title}</p>
           <div className="price-row">
-            <span className="price-old">{price.original}</span>
-            <span className="price-new">{price.current}</span>
-            <span className="discount-tag">{course.pricing.discountPercent}% off</span>
+            {isFree ? (
+              <span className="price-new">Free</span>
+            ) : (
+              <>
+                {price.original !== price.current && <span className="price-old">{price.original}</span>}
+                <span className="price-new">{price.current}</span>
+                {course.pricing.discountPercent > 0 && (
+                  <span className="discount-tag">{course.pricing.discountPercent}% off</span>
+                )}
+              </>
+            )}
           </div>
         </div>
         <a className="btn-primary" href={course.purchaseUrl}>
-          Pay {price.current}
+          {isFree ? 'Start learning' : 'Enroll Now'}
         </a>
       </div>
     </div>
