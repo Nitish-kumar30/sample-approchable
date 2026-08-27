@@ -54,6 +54,7 @@ export async function POST(req: NextRequest) {
       await put(BLOB_PATH, JSON.stringify(subscribers), {
         access: 'private',
         addRandomSuffix: false,
+        allowOverwrite: true,
       });
       console.log('[subscribe] Blob write successful, new count:', subscribers.length);
     } else {
