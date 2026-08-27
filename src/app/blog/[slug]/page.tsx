@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { marked } from 'marked';
 import Banner from '@/components/Banner';
 import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import LatestPosts from '@/components/LatestPosts';
 import TagCounts from '@/components/TagCounts';
 import ArchiveWidget from '@/components/ArchiveWidget';
@@ -123,7 +122,6 @@ export default async function BlogPostPage({ params }: Props) {
           </div>
         </div>
       </main>
-      <Footer />
     </>
   );
 }

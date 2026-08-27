@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import Banner from '@/components/Banner';
 import LatestPosts from '@/components/LatestPosts';
 import TagCounts from '@/components/TagCounts';
@@ -119,7 +118,6 @@ export default function BlogIndexPage() {
           </div>
         </div>
       </main>
-      <Footer />
     </>
   );
 }
