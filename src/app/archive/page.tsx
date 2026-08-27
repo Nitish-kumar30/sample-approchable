@@ -23,7 +23,7 @@ export default function ArchivePage() {
   return (
     <>
       <Banner />
-      <Header />
+      <Header hideNav coursePage />
       <main style={{ backgroundColor: 'var(--bg)', minHeight: '100vh' }}>
         <div className="mx-auto max-w-[800px] px-6 py-20">
           <h1 className="text-4xl font-bold mb-10" style={{ color: 'var(--text-primary)' }}>
@@ -73,7 +73,6 @@ export default function ArchivePage() {
           )}
         </div>
       </main>
-      <Footer />
     </>
   );
 }

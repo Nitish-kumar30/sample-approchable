@@ -1,19 +1,11 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export default function SubscribeForm() {
   const [email, setEmail] = useState('');
-  const [count, setCount] = useState<number | null>(null);
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
-
-  useEffect(() => {
-    fetch('/api/subscribe')
-      .then((res) => res.json())
-      .then((data) => setCount(data.count))
-      .catch(() => {});
-  }, []);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -35,7 +27,6 @@ export default function SubscribeForm() {
       }
 
       setStatus('success');
-      setCount(data.count);
       setEmail('');
     } catch {
       setStatus('error');
@@ -90,9 +81,9 @@ export default function SubscribeForm() {
         </form>
       )}
 
-      {count !== null && count > 0 && (
+      {status !== 'success' && (
         <p className="text-xs mt-3" style={{ color: 'var(--text-muted)' }}>
-          Join {count} {count === 1 ? 'other' : 'others'} who subscribed
+          Join 100+ others who subscribed
         </p>
       )}
     </div>
