@@ -25,12 +25,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.8,
     },
-    {
-      url: `${BASE_URL}/corporate-training/inquiry`,
-      lastModified,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
   ];
 
   const courseRoutes: MetadataRoute.Sitemap = ALL_CATALOG_SLUGS.map((slug) => ({

@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import Header from '@/components/Header';
 import ScrollReveal from '@/components/corporate-training/ScrollReveal';
 import FaqAccordion from '@/components/corporate-training/FaqAccordion';
 import MentorPhoto from '@/components/corporate-training/MentorPhoto';
+import CorporateTrainingForm from '@/components/corporate-training/CorporateTrainingForm';
 import styles from './corporate-training.module.css';
 
 export const metadata: Metadata = {
@@ -126,7 +126,7 @@ const PROCESS = [
 export default function CorporateTrainingPage() {
   return (
     <>
-      <Header coursePage />
+      <Header coursePage showCorporateEnquiry />
       <div className={styles.page}>
       <ScrollReveal />
 
@@ -169,9 +169,9 @@ export default function CorporateTrainingPage() {
               workflows — not a certificate.
             </p>
             <div className={styles.heroCtas}>
-              <Link href="/corporate-training/inquiry" className={`${styles.btn} ${styles.btnAccent}`}>
+              <a href="#inquiry" className={`${styles.btn} ${styles.btnAccent}`}>
                 Send an inquiry →
-              </Link>
+              </a>
               <a href="#curriculum" className={`${styles.btn} ${styles.btnGhost}`}>
                 See the curriculum
               </a>
@@ -366,26 +366,22 @@ export default function CorporateTrainingPage() {
           </div>
         </section>
 
-        {/* CTA */}
-        <section className={styles.section}>
+        {/* INQUIRY */}
+        <section id="inquiry" className={`${styles.section} ${styles.formSection} ${styles.inquirySection} ${styles.reveal}`}>
           <div className={styles.wrap}>
-            <div className={`${styles.ctaBand} ${styles.reveal}`}>
-              <span className={styles.eyebrow} style={{ color: 'var(--accent)' }}>
-                Get started
-              </span>
-              <h2>Bring this to your team.</h2>
-              <p>
-                Tell us your company, team size, and industry. We&apos;ll come back with a tailored outline and dates
-                within a few days.
-              </p>
-              <div className={styles.ctaCtas}>
-                <Link href="/corporate-training/inquiry" className={`${styles.btn} ${styles.btnAccent}`}>
-                  Send an inquiry →
-                </Link>
+            <div className={styles.formLayout}>
+              <div className={`${styles.formIntro} ${styles.formIntroSticky}`}>
+                <span className={styles.eyebrow}>Get started</span>
+                <h2>Tell us about your team.</h2>
+                <p>
+                  Share your company details and training requirements. We&apos;ll come back with a tailored outline and
+                  dates within a few days.
+                </p>
+                <p className={styles.formPageMeta}>
+                  Delivered via BIGINT Solutions · www.bigintsolutions.com · Pricing discussed on the call
+                </p>
               </div>
-              <div className={styles.ctaMeta}>
-                Delivered via BIGINT Solutions · www.bigintsolutions.com · Pricing discussed on the call
-              </div>
+              <CorporateTrainingForm />
             </div>
           </div>
         </section>

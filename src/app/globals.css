@@ -29,6 +29,13 @@ body {
   background: var(--bg);
   color: var(--text-primary);
   line-height: 1.6;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
 }
 
 .container-max { max-width: 1080px; margin: 0 auto; }
@@ -165,6 +172,11 @@ body:not(:has(#topBanner)) .site-header {
   transition: background 0.15s;
 }
 .header-cta:hover { background: var(--accent-hover); }
+.header-cta-corporate {
+  background: #E2A23D;
+  color: #1A1208;
+}
+.header-cta-corporate:hover { background: #C8892A; color: #fff; }
 .header-back-text-short {
   display: none;
 }

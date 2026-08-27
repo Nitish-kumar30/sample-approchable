@@ -7,7 +7,7 @@ import { validateCorporateInquiry } from '@/lib/corporate-inquiry';
 
 const TIERS = ['CxO', 'Director', 'Management', 'Middle Manager'] as const;
 
-const CONTACT_EMAIL = 'hello@bigintsolutions.com';
+const CONTACT_EMAIL = 'ranbeer@bigintsolutions.com';
 
 type FormErrors = Partial<Record<keyof CorporateInquiryFields, string>>;
 

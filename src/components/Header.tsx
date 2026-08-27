@@ -5,6 +5,7 @@ interface HeaderProps {
   coursePage?: boolean;
   showBackToCourses?: boolean;
   showBackToCorporate?: boolean;
+  showCorporateEnquiry?: boolean;
   hideNav?: boolean;
 }
 
@@ -33,6 +34,7 @@ export default function Header({
   coursePage = false,
   showBackToCourses = false,
   showBackToCorporate = false,
+  showCorporateEnquiry = false,
   hideNav = false,
 }: HeaderProps) {
   return (
@@ -65,6 +67,10 @@ export default function Header({
             ariaLabel="Back to corporate training"
             fullLabel="Back to Corporate Training"
           />
+        ) : showCorporateEnquiry ? (
+          <a href="#inquiry" className="header-cta header-cta-corporate">
+            Send enquiry →
+          </a>
         ) : (
           !coursePage && (
             <Link href="/#pricing" className="header-cta">

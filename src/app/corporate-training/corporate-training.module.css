@@ -385,7 +385,18 @@
 .ctaBand .ctaMeta { margin-top: 24px; }
 
 /* INQUIRY FORM */
+.inquirySection { scroll-margin-top: 80px; padding-bottom: 88px; }
 .formSection { padding: 72px 0; background: var(--paper-alt); }
+.formPageMeta {
+  margin-top: 24px;
+  font-size: 13px;
+  color: var(--ink-soft);
+  font-family: var(--font-ibm-mono), monospace;
+  line-height: 1.55;
+}
+@media (min-width: 860px) {
+  .formIntroSticky { position: sticky; top: 100px; }
+}
 .formPageIntro { max-width: 620px; margin-bottom: 36px; }
 .formPageIntro h1 { font-size: clamp(28px, 3.6vw, 40px); margin-bottom: 12px; }
 .formPageIntro p { color: var(--ink-soft); font-size: 16.5px; margin-bottom: 0; max-width: 48ch; }
