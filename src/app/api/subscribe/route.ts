@@ -1,5 +1,5 @@
 import { NextRequest } from 'next/server';
-import { put, list, getDownloadUrl } from '@vercel/blob';
+import { put, list } from '@vercel/blob';
 
 const BLOB_PATH = 'subscribers/emails.json';
 
@@ -11,8 +11,9 @@ interface Subscriber {
 async function getSubscribers(): Promise<Subscriber[]> {
   const { blobs } = await list({ prefix: BLOB_PATH });
   if (!blobs.length) return [];
-  const downloadUrl = await getDownloadUrl(blobs[0].url);
-  const res = await fetch(downloadUrl);
+  const res = await fetch(blobs[0].url, {
+    headers: { Authorization: `Bearer ${process.env.BLOB_READ_WRITE_TOKEN}` },
+  });
   return res.json();
 }
 
