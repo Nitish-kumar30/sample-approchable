@@ -73,10 +73,6 @@ Legacy serverless handler also exists at `api/likes.js` for Vercel compatibility
 - Floating CTA bar and sticky header
 - External registration form (`COHORT.formUrl`)
 
-### Live courses (`/live-courses`)
-- Dark-themed course grid with glass-card styling
-- Per-course like/interest tracking
-- Early-access signup via Google Form
 
 ### Course detail (`/courses/[slug]`)
 - JSON-driven content (sessions, videos, quizzes, projects)
