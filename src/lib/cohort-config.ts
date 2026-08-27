@@ -1,5 +1,5 @@
 export const COHORT = {
-  state: 'active' as 'active' | 'early' | 'soldout',
+  state: 'soldout' as 'active' | 'early' | 'soldout',
   date: 'Aug 27, 2026',
   dateShort: 'Aug 27',
   day: 'Thursday',
