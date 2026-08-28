@@ -113,6 +113,14 @@ body:not(:has(#topBanner)) .site-header {
   background: var(--bg-muted, rgba(0, 0, 0, 0.04));
   color: var(--text-primary);
 }
+.header-nav-link-static {
+  cursor: default;
+  opacity: 0.75;
+}
+.header-nav-link-static:hover {
+  background: transparent;
+  color: var(--text-secondary);
+}
 .header-back-link {
   display: inline-flex;
   align-items: center;
