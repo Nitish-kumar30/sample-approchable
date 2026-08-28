@@ -125,9 +125,6 @@ export function TeamAiTrainingNav() {
           <a href="#proof">Proof</a>
           <a href="#pricing">Pricing</a>
           <a href="#faq">Questions</a>
-          <button type="button" className={pageStyles.navEnquiryTag} onClick={open}>
-            Enquiry
-          </button>
         </div>
         <button type="button" className={`${pageStyles.btn} ${pageStyles.btnDark}`} onClick={open}>
           Book an AI assessment

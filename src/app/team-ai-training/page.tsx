@@ -43,6 +43,9 @@ export default function TeamAiTrainingPage() {
                 <OpenEnquiryButton className={`${styles.btn} ${styles.btnPrimary}`}>
                   Book a 20-min AI team assessment →
                 </OpenEnquiryButton>
+                <a className={`${styles.btn} ${styles.btnGhost}`} href="#program">
+                  See what you get
+                </a>
               </div>
               <div className={`${styles.heroNote} ${styles.small}`}>
                 No pitch. We&apos;ll look at your current AI use and tell you honestly if this fits.
