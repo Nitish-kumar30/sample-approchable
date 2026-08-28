@@ -22,13 +22,11 @@ export const metadata: Metadata = {
 const caseStudies = [
   {
     image: '/images/team-ai-case-01.png',
-    alt: 'From repeated work to a shared AI workflow',
+    alt: 'Messy manual inputs turned into a structured AI workflow with a prompt library and reusable templates, producing consistent dashboards and reports',
     label: 'CASE STUDY 01',
     title: 'From repeated work to a shared AI workflow',
     description:
-      'Show the original manual process, the AI workflow, and what the team can now reuse.',
-    result:
-      'The same request that used to take one person a few hours now runs through a shared workflow anyone on the team can use.',
+      'We took the manual back-and-forth the team was doing by hand and turned it into a repeatable AI workflow, complete with a prompt library and templates anyone can reuse.',
   },
   {
     image: '/images/team-ai-case-02.png',
@@ -36,9 +34,7 @@ const caseStudies = [
     label: 'CASE STUDY 02',
     title: 'One real task automated',
     description:
-      'Show a repetitive task the team used to do manually and the working automation that replaced it.',
-    result:
-      'A task that ate up hours every week now runs on its own, with a person only stepping in when something needs judgment.',
+      'We found the task eating the most hours every week and built the automation that now handles it end to end — sorting, routing, and completing it without manual input.',
   },
   {
     image: '/images/team-ai-case-03.png',
@@ -46,8 +42,7 @@ const caseStudies = [
     label: 'CASE STUDY 03',
     title: 'A useful internal AI prototype',
     description:
-      'Show the actual tool, not a conceptual diagram. Let buyers see what “ship a prototype” means.',
-    result: 'A tool the team actually opens every day — not a demo, a working part of how they get work done.',
+      'By the end of the program the team has an actual working tool, not a slide deck — something people open and use to get real work done.',
   },
 ] as const;
 
@@ -261,7 +256,6 @@ export default function TeamAiTrainingPage() {
                     <div className={styles.mono}>{study.label}</div>
                     <h3>{study.title}</h3>
                     <p>{study.description}</p>
-                    <div className={styles.caseResult}>{study.result}</div>
                   </div>
                 </article>
               ))}
