@@ -136,18 +136,18 @@
 .work { padding: 105px 0; background: #eeece5; }
 .workGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 .case { background: var(--paper); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
-.placeholder {
-  min-height: 255px;
-  background: #e4e1d8;
+.caseMedia {
+  overflow: hidden;
   border-bottom: 1px solid var(--line);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 30px;
-  color: #77736b;
+  background: #e4e1d8;
 }
-.placeholder span { max-width: 260px; font-size: 13px; }
+.caseImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  min-height: 255px;
+}
 .caseBody { padding: 25px; }
 .caseBody h3 { font-size: 21px; }
 .caseBody p { font-size: 14px; color: var(--muted); }
@@ -177,10 +177,8 @@
 }
 .logo { font-weight: 700; color: #69665f; font-size: 16px; }
 .testimonialGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-.testimonial { border: 1px solid var(--line); padding: 29px; background: var(--bg); border-radius: 7px; }
-.quote { font-size: 20px; line-height: 1.42; margin-bottom: 28px; }
-.person { font-size: 11px; text-transform: uppercase; letter-spacing: 0.11em; color: #77736c; }
-.proofPlaceholder { border: 1px dashed #c9c5bb; padding: 13px 16px; color: #88847b; font-size: 12px; margin-top: 20px; }
+.testimonial { border-radius: 12px; overflow: hidden; }
+.testimonialImage { width: 100%; height: auto; display: block; }
 
 /* FIT */
 .fit { padding: 105px 0; }

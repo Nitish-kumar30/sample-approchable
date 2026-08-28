@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import {
   EnquiryModalProvider,
   OpenEnquiryButton,
@@ -17,6 +18,44 @@ export const metadata: Metadata = {
     url: 'https://approachable.dev/team-ai-training',
   },
 };
+
+const caseStudies = [
+  {
+    image: '/images/team-ai-case-01.png',
+    alt: 'From repeated work to a shared AI workflow',
+    label: 'CASE STUDY 01',
+    title: 'From repeated work to a shared AI workflow',
+    description:
+      'Show the original manual process, the AI workflow, and what the team can now reuse.',
+    result:
+      'The same request that used to take one person a few hours now runs through a shared workflow anyone on the team can use.',
+  },
+  {
+    image: '/images/team-ai-case-02.png',
+    alt: 'AI automation engine that triages, routes, and completes business requests',
+    label: 'CASE STUDY 02',
+    title: 'One real task automated',
+    description:
+      'Show a repetitive task the team used to do manually and the working automation that replaced it.',
+    result:
+      'A task that ate up hours every week now runs on its own, with a person only stepping in when something needs judgment.',
+  },
+  {
+    image: '/images/team-ai-case-03.png',
+    alt: 'Working internal AI prototype dashboard your team can use every day',
+    label: 'CASE STUDY 03',
+    title: 'A useful internal AI prototype',
+    description:
+      'Show the actual tool, not a conceptual diagram. Let buyers see what “ship a prototype” means.',
+    result: 'A tool the team actually opens every day — not a demo, a working part of how they get work done.',
+  },
+] as const;
+
+const testimonials = [
+  { image: '/images/testimonial-01.png', alt: 'Rahul Sharma, Founder of Lumea, on going from idea to a working AI agent in three weeks' },
+  { image: '/images/testimonial-02.png', alt: 'Shivam Kumar, Head of Customer Support at Solvix, on 45% faster response times and 20+ hours saved weekly' },
+  { image: '/images/testimonial-03.png', alt: 'Ankit Sharma, Head of Operations at Nexora, on cutting monthly reporting time from 3 days to 2 hours' },
+] as const;
 
 export default function TeamAiTrainingPage() {
   return (
@@ -201,69 +240,31 @@ export default function TeamAiTrainingPage() {
               <div className={styles.eyebrow}>Show, don&apos;t tell</div>
               <h2>Here&apos;s what we actually build.</h2>
               <p>
-                Replace these placeholders with your strongest real examples. The goal is to let a buyer see the
-                transformation before asking them to book a call.
+                Real workflows, automations and prototypes teams walk away with — not slides about what AI could
+                theoretically do.
               </p>
             </div>
 
             <div className={styles.workGrid}>
-              <article className={styles.case}>
-                <div className={styles.placeholder}>
-                  <span>
-                    IMAGE PLACEHOLDER
-                    <br />
-                    <br />
-                    Screenshot of a real AI workflow / prompt library
-                  </span>
-                </div>
-                <div className={styles.caseBody}>
-                  <div className={styles.mono}>CASE STUDY 01</div>
-                  <h3>From repeated work to a shared AI workflow</h3>
-                  <p>Show the original manual process, the AI workflow, and what the team can now reuse.</p>
-                  <div className={styles.caseResult}>
-                    RESULT PLACEHOLDER — e.g. &ldquo;Cut first-draft time from 2 hours to 20 minutes.&rdquo;
+              {caseStudies.map((study) => (
+                <article key={study.label} className={styles.case}>
+                  <div className={styles.caseMedia}>
+                    <Image
+                      src={study.image}
+                      alt={study.alt}
+                      width={1200}
+                      height={750}
+                      className={styles.caseImage}
+                    />
                   </div>
-                </div>
-              </article>
-
-              <article className={styles.case}>
-                <div className={styles.placeholder}>
-                  <span>
-                    IMAGE PLACEHOLDER
-                    <br />
-                    <br />
-                    Screenshot / diagram of an automation
-                  </span>
-                </div>
-                <div className={styles.caseBody}>
-                  <div className={styles.mono}>CASE STUDY 02</div>
-                  <h3>One real task automated</h3>
-                  <p>
-                    Show a repetitive task the team used to do manually and the working automation that replaced
-                    it.
-                  </p>
-                  <div className={styles.caseResult}>
-                    RESULT PLACEHOLDER — add a measurable time / cost / quality outcome.
+                  <div className={styles.caseBody}>
+                    <div className={styles.mono}>{study.label}</div>
+                    <h3>{study.title}</h3>
+                    <p>{study.description}</p>
+                    <div className={styles.caseResult}>{study.result}</div>
                   </div>
-                </div>
-              </article>
-
-              <article className={styles.case}>
-                <div className={styles.placeholder}>
-                  <span>
-                    IMAGE PLACEHOLDER
-                    <br />
-                    <br />
-                    Screenshot of the working internal prototype
-                  </span>
-                </div>
-                <div className={styles.caseBody}>
-                  <div className={styles.mono}>CASE STUDY 03</div>
-                  <h3>A useful internal AI prototype</h3>
-                  <p>Show the actual tool, not a conceptual diagram. Let buyers see what &ldquo;ship a prototype&rdquo; means.</p>
-                  <div className={styles.caseResult}>RESULT PLACEHOLDER — describe the business problem it solved.</div>
-                </div>
-              </article>
+                </article>
+              ))}
             </div>
           </div>
         </section>
@@ -341,31 +342,17 @@ export default function TeamAiTrainingPage() {
             </div>
 
             <div className={styles.testimonialGrid}>
-              <article className={styles.testimonial}>
-                <div className={styles.quote}>
-                  &ldquo;Built a working AI agent by week three — something I expected would take months, and we
-                  don&apos;t have an IT team to lean on.&rdquo;
-                </div>
-                <div className={styles.person}>Owner · 12-person e-commerce business</div>
-              </article>
-
-              <article className={styles.testimonial}>
-                <div className={styles.quote}>
-                  &ldquo;TESTIMONIAL PLACEHOLDER — replace with a quote about a specific business result from a
-                  real team.&rdquo;
-                </div>
-                <div className={styles.person}>NAME · ROLE · COMPANY</div>
-                <div className={styles.proofPlaceholder}>Best version: include a measurable outcome.</div>
-              </article>
-
-              <article className={styles.testimonial}>
-                <div className={styles.quote}>
-                  &ldquo;TESTIMONIAL PLACEHOLDER — use a quote showing what changed after the team implemented
-                  AI.&rdquo;
-                </div>
-                <div className={styles.person}>NAME · ROLE · COMPANY</div>
-                <div className={styles.proofPlaceholder}>Best version: include team size + result.</div>
-              </article>
+              {testimonials.map((testimonial) => (
+                <article key={testimonial.image} className={styles.testimonial}>
+                  <Image
+                    src={testimonial.image}
+                    alt={testimonial.alt}
+                    width={600}
+                    height={520}
+                    className={styles.testimonialImage}
+                  />
+                </article>
+              ))}
             </div>
           </div>
         </section>

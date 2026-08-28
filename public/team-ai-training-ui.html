@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Approachable — Practical AI Implementation for Teams</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+.hidden { display: none !important; }
+.howBonusGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+@media (max-width: 900px) { #team-ai-training-ui .howBonusGrid { grid-template-columns: 1fr; } }
+#team-ai-training-ui .statNumber .accentStar { color: var(--accent); }
+#team-ai-training-ui button.btn,
+#team-ai-training-ui a.btn { font-family: inherit; line-height: 1.2; }
+
+#team-ai-training-ui{
+  --bg: #f7f5f0;
+  --paper: #fbfaf7;
+  --ink: #171715;
+  --muted: #67645e;
+  --line: #dedbd3;
+  --accent: #df7958;
+  --accent-dark: #c96243;
+  --green: #3f604d;
+  --white: #fffefa;
+  --black: #181816;
+  --max: 1180px;
+  --radius: 10px;
+
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}#team-ai-training-ui a{ color: inherit; text-decoration: none; }#team-ai-training-ui img{ max-width: 100%; display: block; }#team-ai-training-ui .wrap{ width: min(var(--max), calc(100% - 64px)); margin: auto; }#team-ai-training-ui .eyebrow{ color: var(--accent); text-transform: uppercase; letter-spacing: 0.18em; font-size: 11px; font-weight: 700; }#team-ai-training-ui h1, #team-ai-training-ui h2, #team-ai-training-ui h3, #team-ai-training-ui p{ margin-top: 0; }#team-ai-training-ui h1, #team-ai-training-ui h2, #team-ai-training-ui h3{ letter-spacing: -0.045em; line-height: 1.02; }#team-ai-training-ui h1{ font-size: clamp(40px, 6vw, 64px); max-width: 780px; margin-bottom: 20px; }#team-ai-training-ui h2{ font-size: clamp(36px, 5vw, 58px); margin-bottom: 20px; }#team-ai-training-ui h3{ font-size: 24px; margin-bottom: 10px; }#team-ai-training-ui .muted{ color: var(--muted); }#team-ai-training-ui .small{ font-size: 13px; color: var(--muted); }#team-ai-training-ui .mono{
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 10px;
+}#team-ai-training-ui .nav{
+  height: 76px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  background: rgba(247, 245, 240, 0.94);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(12px);
+}#team-ai-training-ui .navInner{ display: flex; align-items: center; justify-content: space-between; gap: 30px; }#team-ai-training-ui .brand{ font-size: 20px; font-weight: 650; display: flex; align-items: center; gap: 10px; }#team-ai-training-ui .brandDot{ width: 9px; height: 9px; border-radius: 50%; background: var(--accent); }#team-ai-training-ui .navLinks{ display: flex; align-items: center; gap: 34px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.14em; color: #5d5a54; }#team-ai-training-ui .navLinks a:hover{ color: var(--ink); }#team-ai-training-ui .btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 15px 23px;
+  font-weight: 700;
+  font-size: 14px;
+  transition: 0.2s ease;
+  border: 1px solid transparent;
+  cursor: pointer;
+}#team-ai-training-ui .btn.btnPrimary{ background: var(--accent); color: white; }#team-ai-training-ui .btn.btnPrimary:hover{ background: var(--accent-dark); transform: translateY(-1px); }#team-ai-training-ui .btn.btnDark{ background: var(--black); color: white; }#team-ai-training-ui .btn.btnDark:hover{ transform: translateY(-1px); }#team-ai-training-ui .btn.btnGhost{ border-color: var(--line); background: transparent; color: var(--ink); }#team-ai-training-ui .btn.btnGhost:hover{ background: white; }#team-ai-training-ui .hero{ padding: 36px 0 48px; border-bottom: 1px solid var(--line); }#team-ai-training-ui .heroGrid{ display: grid; grid-template-columns: 1.12fr 0.88fr; gap: 70px; align-items: center; }#team-ai-training-ui .heroGrid h1 span{ color: var(--accent); }#team-ai-training-ui .heroSub{ font-size: 17px; line-height: 1.45; max-width: 650px; color: #4f4d48; margin-bottom: 20px; }#team-ai-training-ui .heroActions{ display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }#team-ai-training-ui .heroNote{ margin-top: 10px; }#team-ai-training-ui .heroCard{
+  background: var(--paper);
+  border: 1px solid var(--line);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.05);
+  border-radius: var(--radius);
+  overflow: hidden;
+}#team-ai-training-ui .cardTop{ padding: 20px 24px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 20px; }#team-ai-training-ui .cardTop .live{ color: var(--accent); }#team-ai-training-ui .weekList{ padding: 0; }#team-ai-training-ui .weekRow{ display: grid; grid-template-columns: 48px 1fr; gap: 14px; padding: 20px 24px; border-bottom: 1px solid var(--line); }#team-ai-training-ui .weekRow:last-child{ border-bottom: 0; }#team-ai-training-ui .weekNum{ color: var(--accent); font-size: 11px; font-family: monospace; }#team-ai-training-ui .weekTitle{ font-weight: 700; }#team-ai-training-ui .weekDesc{ font-size: 13px; color: var(--muted); margin-top: 4px; }#team-ai-training-ui .heroCardFoot{ background: #f1efe9; padding: 17px 24px; font-size: 12px; color: #68655f; }#team-ai-training-ui .trust{ border-bottom: 1px solid var(--line); }#team-ai-training-ui .stats{ display: grid; grid-template-columns: repeat(4, 1fr); }#team-ai-training-ui .stat{ padding: 31px 26px; border-right: 1px solid var(--line); }#team-ai-training-ui .stat:first-child{ padding-left: 0; }#team-ai-training-ui .stat:last-child{ border-right: 0; }#team-ai-training-ui .statNumber{ font-size: 42px; letter-spacing: -0.05em; line-height: 1; margin-bottom: 7px; }#team-ai-training-ui .statLabel{ font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: #77736c; }#team-ai-training-ui .problem{ padding: 105px 0; background: var(--green); color: #f7f4ed; }#team-ai-training-ui .problemIntro{ display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 90px; margin-bottom: 65px; }#team-ai-training-ui .problemIntro h2{ max-width: 560px; }#team-ai-training-ui .problemCopy{ font-size: 20px; color: #e1e6df; max-width: 650px; }#team-ai-training-ui .problemGrid{ display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(255, 255, 255, 0.2); border-bottom: 1px solid rgba(255, 255, 255, 0.2); }#team-ai-training-ui .problemItem{ padding: 34px 28px 38px; border-right: 1px solid rgba(255, 255, 255, 0.2); }#team-ai-training-ui .problemItem:first-child{ padding-left: 0; }#team-ai-training-ui .problemItem:last-child{ border-right: 0; }#team-ai-training-ui .problemNum{ color: #c9b9a7; font-family: monospace; font-size: 11px; }#team-ai-training-ui .problemItem p{ color: #dce1db; margin: 18px 0 0; }#team-ai-training-ui .problemClose{ font-size: 25px; font-weight: 700; margin: 38px 0 0; }#team-ai-training-ui .outcomes{ padding: 105px 0; }#team-ai-training-ui .sectionHead{ max-width: 720px; margin-bottom: 55px; }#team-ai-training-ui .sectionHead p{ font-size: 18px; color: var(--muted); }#team-ai-training-ui .outcomeGrid{ display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }#team-ai-training-ui .outcome{ border: 1px solid var(--line); background: var(--paper); padding: 27px 22px; min-height: 210px; border-radius: 7px; }#team-ai-training-ui .outcome .icon{
+  width: 32px; height: 32px; border: 1px solid #d5d1c8; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 35px; font-size: 13px;
+}#team-ai-training-ui .outcome p{ font-size: 14px; color: var(--muted); margin-bottom: 0; }#team-ai-training-ui .work{ padding: 105px 0; background: #eeece5; }#team-ai-training-ui .workGrid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }#team-ai-training-ui .case{ background: var(--paper); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }#team-ai-training-ui .caseMedia{
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+  background: #e4e1d8;
+}#team-ai-training-ui .caseImage{
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  min-height: 255px;
+}#team-ai-training-ui .caseBody{ padding: 25px; }#team-ai-training-ui .caseBody h3{ font-size: 21px; }#team-ai-training-ui .caseBody p{ font-size: 14px; color: var(--muted); }#team-ai-training-ui .caseResult{ border-top: 1px solid var(--line); padding-top: 15px; font-weight: 650; font-size: 13px; }#team-ai-training-ui .how{ padding: 105px 0; }#team-ai-training-ui .howRow{
+  display: grid;
+  grid-template-columns: 130px 1fr 1.25fr;
+  gap: 25px;
+  padding: 34px 0;
+  border-top: 1px solid var(--line);
+  align-items: start;
+}#team-ai-training-ui .howRow:last-of-type{ border-bottom: 1px solid var(--line); }#team-ai-training-ui .howNum{ color: var(--accent); font-family: monospace; font-size: 11px; }#team-ai-training-ui .howRow h3{ margin: 0; font-size: 27px; }#team-ai-training-ui .howRow p{ margin: 0; color: var(--muted); max-width: 650px; }#team-ai-training-ui .proof{ padding: 105px 0; background: var(--paper); }#team-ai-training-ui .logos{
+  border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  padding: 26px 0; margin: 45px 0 55px;
+  display: flex; gap: 30px; justify-content: space-between; flex-wrap: wrap;
+}#team-ai-training-ui .companyLogo{ font-weight: 700; color: #69665f; font-size: 16px; }#team-ai-training-ui .testimonialGrid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }#team-ai-training-ui .testimonial{ border-radius: 12px; overflow: hidden; }#team-ai-training-ui .testimonialImage{ width: 100%; height: auto; display: block; }#team-ai-training-ui .fit{ padding: 105px 0; }#team-ai-training-ui .fitGrid{ display: grid; grid-template-columns: 1fr 1fr; gap: 70px; }#team-ai-training-ui .fitCol{ border-top: 1px solid var(--line); padding-top: 28px; }#team-ai-training-ui .fitList{ list-style: none; padding: 0; margin: 25px 0 0; }#team-ai-training-ui .fitList li{ padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 16px; }#team-ai-training-ui .fitList li::before{ content: '→'; color: var(--accent); margin-right: 12px; }#team-ai-training-ui .notFor .fitList li::before{ content: '—'; color: #9a958b; }#team-ai-training-ui .why{ padding: 105px 0; background: #e9e7df; }#team-ai-training-ui .whyGrid{ display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 90px; }#team-ai-training-ui .whyCopy{ font-size: 21px; color: #514e48; }#team-ai-training-ui .whyPoints{ display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); }#team-ai-training-ui .whyPoint{ background: var(--paper); padding: 29px; }#team-ai-training-ui .whyPoint h3{ font-size: 20px; }#team-ai-training-ui .whyPoint p{ font-size: 14px; color: var(--muted); margin-bottom: 0; }#team-ai-training-ui .pricing{ padding: 105px 0; }#team-ai-training-ui .priceBox{
+  display: grid; grid-template-columns: 0.9fr 1.1fr;
+  border: 1px solid var(--line); background: var(--paper); border-radius: 8px; overflow: hidden;
+}#team-ai-training-ui .priceMain{ padding: 45px; border-right: 1px solid var(--line); }#team-ai-training-ui .price{ font-size: 68px; letter-spacing: -0.06em; line-height: 1; margin: 18px 0 12px; }#team-ai-training-ui .priceNote{ font-family: monospace; font-size: 11px; color: #77736b; }#team-ai-training-ui .priceDetail{ padding: 45px; }#team-ai-training-ui .priceDetail p{ font-size: 18px; color: #55524c; max-width: 550px; }#team-ai-training-ui .priceList{ display: grid; grid-template-columns: 1fr 1fr; gap: 8px 25px; padding: 0; list-style: none; }#team-ai-training-ui .priceList li{ font-size: 14px; padding: 9px 0; border-bottom: 1px solid var(--line); }#team-ai-training-ui .priceList li::before{ content: '✓'; color: var(--accent); margin-right: 8px; }#team-ai-training-ui .pricingNote{ margin-top: 18px; font-size: 12px; color: #77736b; }#team-ai-training-ui .faq{ padding: 105px 0 0; }#team-ai-training-ui .faqGrid{ display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 90px; }#team-ai-training-ui .faqGrid details{ border-top: 1px solid var(--line); padding: 20px 0; }#team-ai-training-ui .faqGrid details:last-child{ border-bottom: 1px solid var(--line); }#team-ai-training-ui .faqGrid summary{ cursor: pointer; list-style: none; font-weight: 650; display: flex; justify-content: space-between; gap: 20px; }#team-ai-training-ui .faqGrid summary::-webkit-details-marker{ display: none; }#team-ai-training-ui .faqGrid summary::after{ content: '+'; color: var(--accent); font-size: 20px; }#team-ai-training-ui .faqGrid details[open] summary::after{ content: '×'; }#team-ai-training-ui .faqGrid details p{ margin: 14px 30px 0 0; color: var(--muted); font-size: 15px; }#team-ai-training-ui .finalCta{ margin-top: 105px; background: var(--black); color: #f7f5f0; padding: 90px 0; }#team-ai-training-ui .ctaGrid{ display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }#team-ai-training-ui .finalCta h2{ max-width: 600px; }#team-ai-training-ui .finalCta p{ color: #bdbbb5; font-size: 18px; max-width: 560px; }#team-ai-training-ui .ctaCard{ display: flex; flex-direction: column; align-items: flex-start; }#team-ai-training-ui .ctaCard .btn{ font-size: 16px; padding: 18px 28px; }#team-ai-training-ui .ctaMicro{ font-family: monospace; font-size: 10px; color: #77756f; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 13px; }@media (max-width: 900px) {#team-ai-training-ui .wrap{ width: min(var(--max), calc(100% - 40px)); }#team-ai-training-ui .navLinks{ display: none; }#team-ai-training-ui .heroGrid, #team-ai-training-ui .problemIntro, #team-ai-training-ui .whyGrid, #team-ai-training-ui .fitGrid, #team-ai-training-ui .faqGrid, #team-ai-training-ui .ctaGrid{ grid-template-columns: 1fr; gap: 45px; }#team-ai-training-ui .outcomeGrid{ grid-template-columns: repeat(2, 1fr); }#team-ai-training-ui .workGrid, #team-ai-training-ui .testimonialGrid{ grid-template-columns: 1fr; }#team-ai-training-ui .problemGrid{ grid-template-columns: 1fr; }#team-ai-training-ui .problemItem{ border-right: 0; border-bottom: 1px solid rgba(255, 255, 255, 0.2); padding-left: 0; }#team-ai-training-ui .problemItem:last-child{ border-bottom: 0; }#team-ai-training-ui .stats{ grid-template-columns: repeat(2, 1fr); }#team-ai-training-ui .stat{ border-bottom: 1px solid var(--line); }#team-ai-training-ui .stat:nth-child(2){ border-right: 0; }#team-ai-training-ui .howRow{ grid-template-columns: 70px 1fr; gap: 15px; }#team-ai-training-ui .howRow p{ grid-column: 2; }#team-ai-training-ui .priceBox{ grid-template-columns: 1fr; }#team-ai-training-ui .priceMain{ border-right: 0; border-bottom: 1px solid var(--line); }}@media (max-width: 560px) {#team-ai-training-ui .wrap{ width: min(var(--max), calc(100% - 28px)); }#team-ai-training-ui .nav{ height: 66px; }#team-ai-training-ui .hero{ padding: 65px 0; }#team-ai-training-ui h1{ font-size: 46px; }#team-ai-training-ui .outcomes, #team-ai-training-ui .work, #team-ai-training-ui .how, #team-ai-training-ui .proof, #team-ai-training-ui .fit, #team-ai-training-ui .why, #team-ai-training-ui .pricing, #team-ai-training-ui .faq{ padding: 70px 0; }#team-ai-training-ui .outcomeGrid{ grid-template-columns: 1fr; }#team-ai-training-ui .stats{ grid-template-columns: 1fr 1fr; }#team-ai-training-ui .stat{ padding: 25px 15px; }#team-ai-training-ui .statNumber{ font-size: 34px; }#team-ai-training-ui .stat:first-child{ padding-left: 0; }#team-ai-training-ui .heroActions .btn{ width: 100%; }#team-ai-training-ui .price{ font-size: 55px; }#team-ai-training-ui .priceMain, #team-ai-training-ui .priceDetail{ padding: 30px; }#team-ai-training-ui .priceList{ grid-template-columns: 1fr; }#team-ai-training-ui .whyPoints{ grid-template-columns: 1fr; }}
+#enquiry-overlay{
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(24, 24, 22, 0.72);
+  backdrop-filter: blur(6px);
+}#enquiry-overlay .dialog{
+  display: flex;
+  flex-direction: column;
+  width: min(720px, 100%);
+  max-height: min(92vh, 920px);
+  background: #181816;
+  border: 1px solid #3a3a36;
+  border-radius: 16px;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}#enquiry-overlay .dialogHeader{
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 28px 28px 20px;
+  background: #181816;
+}#enquiry-overlay .dialogEyebrow{
+  margin: 0 0 8px;
+  color: #df7958;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 11px;
+  font-weight: 700;
+}#enquiry-overlay .dialogTitle{
+  margin: 0 0 10px;
+  font-size: clamp(24px, 4vw, 32px);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: #f7f5f0;
+  font-weight: 700;
+}#enquiry-overlay .dialogSub{
+  margin: 0;
+  max-width: 54ch;
+  color: #bdbbb5;
+  font-size: 16px;
+  line-height: 1.6;
+}#enquiry-overlay .closeButton{
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #4a4a46;
+  border-radius: 999px;
+  background: transparent;
+  color: #f7f5f0;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}#enquiry-overlay .closeButton:hover{
+  background: rgba(255, 255, 255, 0.08);
+  border-color: #f7f5f0;
+}#enquiry-overlay .closeButton:focus-visible{
+  outline: 3px solid #df7958;
+  outline-offset: 2px;
+}#enquiry-overlay .dialogBody{
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 28px 28px;
+  background: #181816;
+}@media (max-width: 560px) {#enquiry-overlay{
+    padding: 0;
+    align-items: flex-end;
+  }#enquiry-overlay .dialog{
+    width: 100%;
+    max-height: 96vh;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }#enquiry-overlay .dialogHeader, #enquiry-overlay .dialogBody{
+    padding-left: 20px;
+    padding-right: 20px;
+  }}
+#enquiry-overlay .formRoot{
+  --form-ink: #171715;
+  --form-ink-soft: #4b5563;
+  --form-label: #171715;
+  --form-line: #64748b;
+  --form-line-focus: #c96243;
+  --form-bg: #ffffff;
+  --form-accent: #df7958;
+  --form-accent-dark: #c96243;
+  --form-radius: 10px;
+}#enquiry-overlay .inquiryForm{
+  width: 100%;
+  background: var(--form-bg);
+  border: 1px solid #cbd5e1;
+  border-radius: var(--form-radius);
+  padding: 28px 30px;
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.08);
+}#enquiry-overlay .formRoot .btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 14px 24px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.15s ease, background 0.15s ease;
+}#enquiry-overlay .formRoot .btnAccent{
+  background: var(--form-accent);
+  color: #fff;
+  margin-top: 4px;
+}#enquiry-overlay .formRoot .btnAccent:hover:not(:disabled){
+  transform: translateY(-1px);
+  background: var(--form-accent-dark);
+}#enquiry-overlay .formRoot .btnAccent:disabled{
+  opacity: 0.7;
+  cursor: not-allowed;
+}#enquiry-overlay .formRoot .btnGhost{
+  background: transparent;
+  color: var(--form-ink);
+  border: 2px solid #94a3b8;
+}#enquiry-overlay .formRoot .btnGhost:hover{
+  border-color: var(--form-ink);
+}#enquiry-overlay .formRoot .btn:focus-visible{
+  outline: 3px solid var(--form-accent-dark);
+  outline-offset: 2px;
+}#enquiry-overlay .formRow{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  margin-bottom: 18px;
+}@media (min-width: 600px) {#enquiry-overlay .formRow{
+    grid-template-columns: 1fr 1fr;
+  }}#enquiry-overlay .formField{
+  margin-bottom: 18px;
+}#enquiry-overlay .formField:last-of-type{
+  margin-bottom: 22px;
+}#enquiry-overlay .formField label, #enquiry-overlay .formLabel{
+  display: block;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--form-label);
+  margin-bottom: 8px;
+  line-height: 1.4;
+}#enquiry-overlay .formField input, #enquiry-overlay .formField select, #enquiry-overlay .formField textarea{
+  display: block;
+  width: 100%;
+  min-height: 48px;
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--form-ink);
+  background-color: var(--form-bg);
+  border: 2px solid var(--form-line);
+  border-radius: var(--form-radius);
+  padding: 12px 14px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  appearance: none;
+  -webkit-appearance: none;
+}#enquiry-overlay .formField input::placeholder, #enquiry-overlay .formField textarea::placeholder{
+  color: var(--form-ink-soft);
+  opacity: 1;
+}#enquiry-overlay .formField select{
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%234b5563' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 42px;
+}#enquiry-overlay .formField select:invalid{
+  color: var(--form-ink-soft);
+}#enquiry-overlay .formField select option{
+  color: var(--form-ink);
+}#enquiry-overlay .formField input:focus, #enquiry-overlay .formField select:focus, #enquiry-overlay .formField textarea:focus{
+  outline: none;
+  border-color: var(--form-line-focus);
+  box-shadow: 0 0 0 4px rgba(223, 121, 88, 0.18);
+}#enquiry-overlay .formField textarea{
+  resize: vertical;
+  min-height: 140px;
+  line-height: 1.55;
+}#enquiry-overlay .formError{
+  font-size: 14px;
+  color: #b45309;
+  font-weight: 600;
+  margin-top: 6px;
+  margin-bottom: 0;
+}#enquiry-overlay .formSubmitError{
+  font-size: 15px;
+  color: #92400e;
+  font-weight: 600;
+  background: #fef3c7;
+  border: 1px solid #fcd34d;
+  border-radius: var(--form-radius);
+  padding: 12px 14px;
+  margin-bottom: 18px;
+}#enquiry-overlay .honeypot{
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}#enquiry-overlay .formSuccess{
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: var(--form-radius);
+  padding: 32px 30px;
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.08);
+}#enquiry-overlay .formSuccess h3{
+  font-size: 22px;
+  font-weight: 700;
+  color: #171715;
+  margin: 0 0 10px;
+}#enquiry-overlay .formSuccess p{
+  color: #4b5563;
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0 0 20px;
+}#enquiry-overlay .formSuccess a{
+  color: #c96243;
+  font-weight: 600;
+}#enquiry-overlay .formSuccess .btnGhost{
+  color: #171715;
+  border-color: #64748b;
+  background: #ffffff;
+}#enquiry-overlay .formSuccess .btnGhost:hover{
+  border-color: #171715;
+  background: #f8fafc;
+}#enquiry-overlay .formSuccess a:hover{
+  text-decoration: underline;
+}
+
+.site-footer {
+  background: #1C1917;
+  color: #A8A29E;
+  padding: 28px 24px;
+}
+.footer-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.site-footer a { color: #78716C; font-size: 13px; text-decoration: none; }
+.site-footer a:hover { color: white; }
+
+
+#team-ai-training-ui {
+  font-size: 16px;
+  line-height: 1.55;
+  width: 100%;
+}
+#team-ai-training-ui .wrap {
+  width: calc(100% - 64px);
+  max-width: 1180px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#team-ai-training-ui .nav {
+  display: block;
+  width: 100%;
+}
+#team-ai-training-ui .nav > .wrap {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+#team-ai-training-ui .navLinks,
+#team-ai-training-ui .navLinks a {
+  font-size: 12px !important;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+#team-ai-training-ui .companyLogo {
+  font-size: 16px !important;
+  font-weight: 700;
+}
+#team-ai-training-ui .testimonialQuote {
+  font-size: 20px !important;
+  line-height: 1.42;
+}
+#team-ai-training-ui .btn {
+  font-size: 14px !important;
+}
+@media (max-width: 900px) {
+  #team-ai-training-ui .wrap { width: calc(100% - 40px); }
+}
+@media (max-width: 560px) {
+  #team-ai-training-ui .wrap { width: calc(100% - 28px); }
+}
+
+  </style>
+</head>
+<body>
+<div class="page" id="team-ai-training-ui">
+  <nav class="nav">
+    <div class="wrap navInner">
+      <a class="brand" href="#">
+        <span class="brandDot"></span>
+        Approachable
+      </a>
+      <div class="navLinks">
+        <a href="#program">Program</a>
+        <a href="#work">What we build</a>
+        <a href="#proof">Proof</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">Questions</a>
+      </div>
+      <button type="button" class="btn btnDark" data-open-enquiry>Book an AI assessment</button>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="wrap heroGrid">
+        <div>
+          <div class="eyebrow">AI implementation for teams</div>
+          <h1>
+            Your team is using AI.
+            <br />
+            <span>Now make it actually useful.</span>
+          </h1>
+          <p class="heroSub">
+            A four-week, hands-on program for teams of 5–20. We turn your team's real work into reusable AI
+            workflows, one automated process, and a working prototype.
+          </p>
+          <div class="heroActions">
+            <button type="button" class="btn btnPrimary" data-open-enquiry>Book a 20-min AI team assessment →</button>
+            <a class="btn btnGhost" href="#program">See what you get</a>
+          </div>
+          <div class="heroNote small">
+            No pitch. We'll look at your current AI use and tell you honestly if this fits.
+          </div>
+        </div>
+
+        <div class="heroCard">
+          <div class="cardTop mono">
+            <span>THE FOUR WEEKS</span>
+            <span class="live">LIVE · UP TO 20 PEOPLE</span>
+          </div>
+          <div class="weekList">
+            <div class="weekRow">
+              <div class="weekNum">01</div>
+              <div>
+                <div class="weekTitle">See the real landscape</div>
+                <div class="weekDesc">Choose the right AI tools for your actual work.</div>
+              </div>
+            </div>
+            <div class="weekRow">
+              <div class="weekNum">02</div>
+              <div>
+                <div class="weekTitle">Build reusable AI workflows</div>
+                <div class="weekDesc">Turn repeated work into reliable, shared processes.</div>
+              </div>
+            </div>
+            <div class="weekRow">
+              <div class="weekNum">03</div>
+              <div>
+                <div class="weekTitle">Automate one real task</div>
+                <div class="weekDesc">Your team ships something it actually needs.</div>
+              </div>
+            </div>
+            <div class="weekRow">
+              <div class="weekNum">04</div>
+              <div>
+                <div class="weekTitle">Ship a working prototype</div>
+                <div class="weekDesc">Demo a useful internal tool built around your business.</div>
+              </div>
+            </div>
+          </div>
+          <div class="heroCardFoot">
+            Then a 30-day check-in. Recordings and your shared library stay with the team.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust">
+      <div class="wrap stats">
+        <div class="stat">
+          <div class="statNumber">250+</div>
+          <div class="statLabel">Professionals trained</div>
+        </div>
+        <div class="stat">
+          <div class="statNumber">4.9<span class="accentStar">★</span></div>
+          <div class="statLabel">Average rating</div>
+        </div>
+        <div class="stat">
+          <div class="statNumber">20</div>
+          <div class="statLabel">People per team</div>
+        </div>
+        <div class="stat">
+          <div class="statNumber">1</div>
+          <div class="statLabel">Dedicated mentor</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="problem">
+      <div class="wrap">
+        <div class="problemIntro">
+          <div>
+            <div class="eyebrow">The problem</div>
+            <h2>AI adoption isn't the problem. AI adoption that sticks is.</h2>
+          </div>
+          <p class="problemCopy">
+            Your team has access to ChatGPT, Claude, Gemini or Copilot. A few people are experimenting. But
+            there is no shared way of working, no reliable standard, and no clear path from "interesting
+            demo" to "this saves us time every week."
+          </p>
+        </div>
+        <div class="problemGrid">
+          <div class="problemItem">
+            <div class="problemNum">01</div>
+            <p>Everyone uses AI differently. Prompts, quality and results vary from person to person.</p>
+          </div>
+          <div class="problemItem">
+            <div class="problemNum">02</div>
+            <p>Nobody is checking whether the outputs are actually good enough for your business.</p>
+          </div>
+          <div class="problemItem">
+            <div class="problemNum">03</div>
+            <p>
+              Generic webinars show possibilities. Enterprise programs cost too much. Your team needs the
+              middle ground.
+            </p>
+          </div>
+        </div>
+        <div class="problemClose">That's the gap we fill.</div>
+      </div>
+    </section>
+
+    <section class="outcomes" id="program">
+      <div class="wrap">
+        <div class="sectionHead">
+          <div class="eyebrow">The outcome</div>
+          <h2>Don't leave with notes. Leave with things that work.</h2>
+          <p>In four weeks, your team moves from experimenting with AI to using it inside real business workflows.</p>
+        </div>
+        <div class="outcomeGrid">
+          <div class="outcome">
+            <div class="icon">01</div>
+            <h3>Shared workflows</h3>
+            <p>A common way for your team to use AI for recurring work.</p>
+          </div>
+          <div class="outcome">
+            <div class="icon">02</div>
+            <h3>Prompt library</h3>
+            <p>Reusable prompts built around your team's actual tasks and data.</p>
+          </div>
+          <div class="outcome">
+            <div class="icon">03</div>
+            <h3>One automation</h3>
+            <p>A repetitive business task turned into a working automated process.</p>
+          </div>
+          <div class="outcome">
+            <div class="icon">04</div>
+            <h3>One prototype</h3>
+            <p>A useful internal AI tool demonstrated live on the final session.</p>
+          </div>
+          <div class="outcome">
+            <div class="icon">05</div>
+            <h3>30-day support</h3>
+            <p>A follow-up check-in to see what stuck and unblock what didn't.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="work" id="work">
+      <div class="wrap">
+        <div class="sectionHead">
+          <div class="eyebrow">Show, don't tell</div>
+          <h2>Here's what we actually build.</h2>
+          <p>
+            Real workflows, automations and prototypes teams walk away with — not slides about what AI could
+            theoretically do.
+          </p>
+        </div>
+        <div class="workGrid">
+          <article class="case">
+            <div class="caseMedia">
+              <img src="./images/team-ai-case-01.png" alt="From repeated work to a shared AI workflow" class="caseImage" />
+            </div>
+            <div class="caseBody">
+              <div class="mono">CASE STUDY 01</div>
+              <h3>From repeated work to a shared AI workflow</h3>
+              <p>Show the original manual process, the AI workflow, and what the team can now reuse.</p>
+              <div class="caseResult">The same request that used to take one person a few hours now runs through a shared workflow anyone on the team can use.</div>
+            </div>
+          </article>
+          <article class="case">
+            <div class="caseMedia">
+              <img src="./images/team-ai-case-02.png" alt="AI automation engine that triages, routes, and completes business requests" class="caseImage" />
+            </div>
+            <div class="caseBody">
+              <div class="mono">CASE STUDY 02</div>
+              <h3>One real task automated</h3>
+              <p>Show a repetitive task the team used to do manually and the working automation that replaced it.</p>
+              <div class="caseResult">A task that ate up hours every week now runs on its own, with a person only stepping in when something needs judgment.</div>
+            </div>
+          </article>
+          <article class="case">
+            <div class="caseMedia">
+              <img src="./images/team-ai-case-03.png" alt="Working internal AI prototype dashboard your team can use every day" class="caseImage" />
+            </div>
+            <div class="caseBody">
+              <div class="mono">CASE STUDY 03</div>
+              <h3>A useful internal AI prototype</h3>
+              <p>Show the actual tool, not a conceptual diagram. Let buyers see what "ship a prototype" means.</p>
+              <div class="caseResult">A tool the team actually opens every day — not a demo, a working part of how they get work done.</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="how">
+      <div class="wrap">
+        <div class="sectionHead">
+          <div class="eyebrow">How it works</div>
+          <h2>Four weeks. Your business. One working outcome.</h2>
+          <p>Every session is built around your team's actual work, not sample data or toy examples.</p>
+        </div>
+        <div class="howRow">
+          <div class="howNum">WEEK 01</div>
+          <h3>See the real landscape</h3>
+          <p>Claude, ChatGPT, Gemini, Copilot and other tools — mapped to your industry and the jobs your team actually does.</p>
+        </div>
+        <div class="howRow">
+          <div class="howNum">WEEK 02</div>
+          <h3>Build reusable AI workflows</h3>
+          <p>Turn real work into repeatable prompts and workflows your team can use consistently instead of starting from scratch every time.</p>
+        </div>
+        <div class="howRow">
+          <div class="howNum">WEEK 03</div>
+          <h3>Automate one real task</h3>
+          <p>Your team chooses something repetitive it does every week and builds a working automation around it.</p>
+        </div>
+        <div class="howRow">
+          <div class="howNum">WEEK 04</div>
+          <h3>Ship a prototype</h3>
+          <p>A working internal tool tied to something you actually need, demonstrated live on the final call.</p>
+        </div>
+        <div class="howBonusGrid">
+          <div class="outcome">
+            <div class="mono">DAY 30</div>
+            <h3 style="margin-top: 25px">Check-in</h3>
+            <p>See what stuck, unblock what didn't, and help the team keep using what it built.</p>
+          </div>
+          <div class="outcome">
+            <div class="mono">YOURS TO KEEP</div>
+            <h3 style="margin-top: 25px">The knowledge stays</h3>
+            <p>Recordings, workflows and your prompt library stay with your team for future use and onboarding.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="proof" id="proof">
+      <div class="wrap">
+        <div class="sectionHead">
+          <div class="eyebrow">Proof</div>
+          <h2>Trusted by professionals who want practical AI, not another demo.</h2>
+          <p>More than 250 professionals have trained with Ranbeer, with an average rating of 4.9/5.</p>
+        </div>
+        <div class="logos" aria-label="Organizations represented in previous training">
+          <span class="companyLogo">Adobe</span>
+          <span class="companyLogo">Microsoft</span>
+          <span class="companyLogo">GAP Inc.</span>
+          <span class="companyLogo">Deloitte</span>
+          <span class="companyLogo">Nordstrom</span>
+          <span class="companyLogo">Upwork</span>
+          <span class="companyLogo">TeamViewer</span>
+          <span class="companyLogo">Coca-Cola</span>
+          <span class="companyLogo">WBD</span>
+        </div>
+        <div class="testimonialGrid">
+          <article class="testimonial">
+            <img src="./images/testimonial-01.png" alt="Rahul Sharma, Founder of Lumea, on going from idea to a working AI agent in three weeks" class="testimonialImage" />
+          </article>
+          <article class="testimonial">
+            <img src="./images/testimonial-02.png" alt="Shivam Kumar, Head of Customer Support at Solvix, on 45% faster response times and 20+ hours saved weekly" class="testimonialImage" />
+          </article>
+          <article class="testimonial">
+            <img src="./images/testimonial-03.png" alt="Ankit Sharma, Head of Operations at Nexora, on cutting monthly reporting time from 3 days to 2 hours" class="testimonialImage" />
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="fit">
+      <div class="wrap">
+        <div class="fitGrid">
+          <div class="fitCol">
+            <div class="eyebrow">Good fit</div>
+            <h2>Built for teams that are ready to use AI.</h2>
+            <ul class="fitList">
+              <li>5–20 people</li>
+              <li>No dedicated AI or IT team</li>
+              <li>People already experimenting with ChatGPT, Claude or similar tools</li>
+              <li>Repetitive knowledge-work processes that could be improved</li>
+              <li>An owner, founder or team lead who wants practical adoption</li>
+            </ul>
+          </div>
+          <div class="fitCol notFor">
+            <div class="eyebrow">Not the right fit</div>
+            <h2>We're not trying to be your enterprise AI department.</h2>
+            <ul class="fitList">
+              <li>Large-scale enterprise AI transformation</li>
+              <li>Generic awareness-only workshops</li>
+              <li>Long consulting engagements with no implementation target</li>
+              <li>Custom software development as the primary deliverable</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="why">
+      <div class="wrap whyGrid">
+        <div>
+          <div class="eyebrow">Why this works</div>
+          <h2>Most AI training stops at learning. We stay until something works.</h2>
+          <p class="whyCopy">
+            Your team doesn't need another afternoon of impressive demos. It needs enough structure,
+            practice and follow-through to change how work gets done.
+          </p>
+        </div>
+        <div class="whyPoints">
+          <div class="whyPoint">
+            <h3>Real business data</h3>
+            <p>We work from your team's actual workflows and problems, not generic examples.</p>
+          </div>
+          <div class="whyPoint">
+            <h3>Hands-on implementation</h3>
+            <p>The team builds during the program instead of passively watching.</p>
+          </div>
+          <div class="whyPoint">
+            <h3>Shared knowledge</h3>
+            <p>Workflows and prompts become reusable team assets rather than individual tricks.</p>
+          </div>
+          <div class="whyPoint">
+            <h3>Follow-through</h3>
+            <p>The 30-day check-in gives the team a reason to keep using what it built.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+      <div class="wrap">
+        <div class="sectionHead">
+          <div class="eyebrow">Investment</div>
+          <h2>One team. One program. No per-seat pricing.</h2>
+          <p>The exact scope depends on your format, team and implementation depth. We agree on the number before anything is committed.</p>
+        </div>
+        <div class="priceBox">
+          <div class="priceMain">
+            <div class="mono">PRICING</div>
+            <div class="price">$3,000–$8,000</div>
+            <div class="priceNote">FLAT PER TEAM · UP TO 20 PEOPLE</div>
+          </div>
+          <div class="priceDetail">
+            <p>Includes the four-week live program, hands-on implementation, your team's reusable AI assets, and the 30-day check-in.</p>
+            <ul class="priceList">
+              <li>4 live sessions</li>
+              <li>Up to 20 people</li>
+              <li>Real business workflows</li>
+              <li>Shared prompt / workflow library</li>
+              <li>One automation target</li>
+              <li>One working prototype target</li>
+              <li>Recordings</li>
+              <li>30-day check-in</li>
+            </ul>
+            <button type="button" class="btn btnPrimary" style="margin-top: 25px" data-open-enquiry>Get your exact number →</button>
+            <div class="pricingNote">No per-seat pricing. No enterprise contract.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq" id="faq">
+      <div class="wrap faqGrid">
+        <div>
+          <div class="eyebrow">Questions worth asking</div>
+          <h2>Before you book.</h2>
+          <p class="muted">A few practical questions we hear from small teams.</p>
+        </div>
+        <div>
+          <details open>
+            <summary>We're a small team — is this overkill?</summary>
+            <p>No. It's designed specifically for teams without a dedicated AI or L&amp;D department. The goal is practical implementation, not a large transformation project.</p>
+          </details>
+          <details>
+            <summary>Do we need everyone to already use AI?</summary>
+            <p>No. Some familiarity helps, but the program is designed to create a shared baseline and shared workflows across the team.</p>
+          </details>
+          <details>
+            <summary>Is this a pitch for one AI tool?</summary>
+            <p>No. The program can cover Claude, ChatGPT, Gemini, Copilot and other tools. The focus is choosing what works for the job.</p>
+          </details>
+          <details>
+            <summary>Virtual, on-site, or hybrid?</summary>
+            <p>PLACEHOLDER — specify the formats you currently offer.</p>
+          </details>
+          <details>
+            <summary>What if it doesn't work for us?</summary>
+            <p>The intro assessment is designed to establish fit before you commit. We'll tell you honestly if the program isn't appropriate for your team.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="finalCta" id="book">
+      <div class="wrap ctaGrid">
+        <div>
+          <div class="eyebrow">Start with one conversation</div>
+          <h2>Let's find one thing your team can improve with AI.</h2>
+          <p>
+            Tell us your business, team size and industry. In a 20-minute conversation, we'll look at how
+            your team currently uses AI and tell you whether this is a fit.
+          </p>
+        </div>
+        <div class="ctaCard">
+          <button type="button" class="btn btnPrimary" data-open-enquiry>Book a free 20-min AI team assessment →</button>
+          <div class="ctaMicro">20 minutes · no pitch · honest answer on fit</div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div style="font-size: 13px">© 2026 Approachable · making AI approachable for everyone</div>
+    <div style="display: flex; gap: 20px">
+      <a href="https://www.linkedin.com/in/ranbeer/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<div id="enquiry-overlay" class="overlay hidden" role="presentation">
+  <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="enquiry-title">
+    <div class="dialogHeader">
+      <div>
+        <p class="dialogEyebrow">Enquiry</p>
+        <h2 id="enquiry-title" class="dialogTitle">Tell us about your team</h2>
+        <p class="dialogSub">
+          Share your company details and training requirements. We'll come back with a tailored
+          outline and dates within a few days.
+        </p>
+      </div>
+      <button type="button" class="closeButton" data-close-enquiry aria-label="Close enquiry form">×</button>
+    </div>
+    <div class="dialogBody">
+      <div class="formRoot">
+        <form id="enquiry-form" class="inquiryForm">
+          <div class="formRow">
+            <div class="formField">
+              <label for="company">Company name</label>
+              <input id="company" type="text" name="company" placeholder="Your organization" required />
+            </div>
+            <div class="formField">
+              <label for="contactName">Contact name</label>
+              <input id="contactName" type="text" name="contactName" placeholder="Your full name" required />
+            </div>
+          </div>
+          <div class="formRow">
+            <div class="formField">
+              <label for="email">Email</label>
+              <input id="email" type="email" name="email" placeholder="you@company.com" required />
+            </div>
+            <div class="formField">
+              <label for="phone">Phone (optional)</label>
+              <input id="phone" type="tel" name="phone" placeholder="+1 555 000 0000" />
+            </div>
+          </div>
+          <div class="formRow">
+            <div class="formField">
+              <label for="teamSize">Approx. team size</label>
+              <select id="teamSize" name="teamSize" required>
+                <option value="">Select team size</option>
+                <option value="5-10">5–10 people</option>
+                <option value="11-25">11–25 people</option>
+                <option value="26-50">26–50 people</option>
+                <option value="51-100">51–100 people</option>
+                <option value="100+">100+ people</option>
+              </select>
+            </div>
+            <div class="formField">
+              <label for="industry">Industry</label>
+              <input id="industry" type="text" name="industry" placeholder="e.g. Retail, Financial Services" required />
+            </div>
+          </div>
+          <div class="formField">
+            <label for="timing">Preferred timing</label>
+            <input id="timing" type="text" name="timing" placeholder="e.g. Q2 2026, flexible" />
+          </div>
+          <div class="formField">
+            <label for="requirements">Company requirements &amp; goals</label>
+            <textarea id="requirements" name="requirements" rows="5" placeholder="Tell us about your team's current AI experience, specific use cases you want covered, format preferences (virtual vs on-site), and any other requirements." required></textarea>
+          </div>
+          <button type="submit" class="btn btnAccent">Send inquiry →</button>
+        </form>
+        <div id="enquiry-success" class="formSuccess hidden" role="status">
+          <h3>Thanks — we received your inquiry.</h3>
+          <p>
+            We'll come back with a tailored outline and dates within a few days. If you need to
+            reach us directly, email
+            <a href="mailto:ranbeer@bigintsolutions.com">ranbeer@bigintsolutions.com</a>.
+          </p>
+          <button type="button" class="btn btnGhost" id="enquiry-reset">Submit another inquiry</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  const overlay = document.getElementById('enquiry-overlay');
+  const form = document.getElementById('enquiry-form');
+  const success = document.getElementById('enquiry-success');
+  const resetBtn = document.getElementById('enquiry-reset');
+
+  function openEnquiry() {
+    if (!overlay) return;
+    overlay.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeEnquiry() {
+    if (!overlay) return;
+    overlay.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('[data-open-enquiry]').forEach(function (el) {
+    el.addEventListener('click', openEnquiry);
+  });
+
+  document.querySelectorAll('[data-close-enquiry]').forEach(function (el) {
+    el.addEventListener('click', closeEnquiry);
+  });
+
+  if (overlay) {
+    overlay.addEventListener('click', function (e) {
+      if (e.target === overlay) closeEnquiry();
+    });
+  }
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeEnquiry();
+  });
+
+  if (location.hash === '#enquiry' || location.hash === '#book') {
+    openEnquiry();
+  }
+
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      form.classList.add('hidden');
+      if (success) success.classList.remove('hidden');
+    });
+  }
+
+  if (resetBtn && form && success) {
+    resetBtn.addEventListener('click', function () {
+      form.reset();
+      success.classList.add('hidden');
+      form.classList.remove('hidden');
+    });
+  }
+})();
+
+</script>
+</body>
+</html>
