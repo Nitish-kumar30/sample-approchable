@@ -86,6 +86,7 @@
         { "number": 14, "title": "Testing AI Apps: Evals, Graders & Traces", "type": "video", "locked": true },
         { "number": 15, "title": "User input validations, reducing Hallucinations & other best practices and techniques", "type": "video", "locked": true },
         { "number": 16, "title": "Recap & Next week session plan", "type": "video", "locked": true },
+        { "number": 17, "title": "Demo: Ticket Classification - prompt building", "type": "video", "locked": true, "isNew": true },
         { "title": "Quiz: Session 2: Quiz 1: Prompt Engineering", "type": "quiz", "locked": true },
         { "title": "Pre-reading: 1: Prompt Engineering 101 (30 mins)", "type": "reading", "locked": true },
         { "title": "Pre-reading: 2: Additional Readings", "type": "reading", "locked": true },
