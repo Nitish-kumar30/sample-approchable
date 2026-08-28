@@ -10,12 +10,14 @@ export interface PostFrontmatter {
   excerpt: string;
   coverImage?: string;
   tags?: string[];
+  draft?: boolean;
 }
 
 export interface Post extends PostFrontmatter {
   slug: string;
   body: string;
   tags: string[];
+  draft: boolean;
 }
 
 export interface MonthGroup {
@@ -38,6 +40,16 @@ function normaliseCoverImage(raw: unknown): string | undefined {
   const trimmed = raw.trim();
   if (!trimmed) return undefined;
   return trimmed.replace(/^\/public(?=\/)/, '');
+}
+
+function normaliseDraft(raw: unknown): boolean {
+  if (typeof raw === 'boolean') return raw;
+  if (typeof raw === 'string') return raw.trim().toLowerCase() === 'true';
+  return false;
+}
+
+export function isSeoExcludedPost(post: Pick<Post, 'slug' | 'draft'>): boolean {
+  return post.draft || /^test/i.test(post.slug);
 }
 
 function ensurePostsDir(): boolean {
@@ -71,6 +83,7 @@ export function getAllPosts(): Post[] {
         excerpt: data.excerpt ?? '',
         coverImage: normaliseCoverImage(data.coverImage),
         tags: Array.isArray(data.tags) ? data.tags : [],
+        draft: normaliseDraft(data.draft),
         body: content,
       });
     } catch {
@@ -78,7 +91,9 @@ export function getAllPosts(): Post[] {
     }
   }
 
-  return posts.sort((a, b) => (a.date < b.date ? 1 : -1));
+  return posts
+    .filter((post) => !isSeoExcludedPost(post))
+    .sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
 export function getPostBySlug(slug: string): Post | null {
@@ -93,6 +108,7 @@ export function getPostBySlug(slug: string): Post | null {
       excerpt: data.excerpt ?? '',
       coverImage: normaliseCoverImage(data.coverImage),
       tags: Array.isArray(data.tags) ? data.tags : [],
+      draft: normaliseDraft(data.draft),
       body: content,
     };
   } catch {

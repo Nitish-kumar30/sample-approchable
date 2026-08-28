@@ -8,25 +8,55 @@ import TagCounts from '@/components/TagCounts';
 import ArchiveWidget from '@/components/ArchiveWidget';
 import SubscribeForm from '@/components/SubscribeForm';
 import { getAllPosts } from '@/lib/posts';
+import { buildBlogIndexSchema } from '@/lib/seo/blog-schema';
+import { DEFAULT_OG_IMAGE, SITE_NAME } from '@/lib/seo/site';
 
 // revalidate every 60 s so new CMS posts appear without a full redeploy
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: 'Blog — Approachable',
-  description: 'Insights on AI, learning, and making the most of tools like Claude.',
+  title: { absolute: `Blog | ${SITE_NAME} — AI & Claude Insights` },
+  description: 'The Approachable blog with insights on AI, Claude, learning, and practical workflows.',
+  keywords: ['Approachable blog', 'AI blog', 'Claude AI', 'approachable.dev'],
+  alternates: {
+    canonical: '/blog',
+    types: {
+      'application/rss+xml': '/feed.xml',
+    },
+  },
   openGraph: {
-    title: 'Blog — Approachable',
-    description: 'Insights on AI, learning, and making the most of tools like Claude.',
-    url: 'https://approachable.dev/blog',
+    type: 'website',
+    title: `Blog | ${SITE_NAME} — AI & Claude Insights`,
+    description: 'Insights on AI, Claude, learning, and practical workflows from Approachable.',
+    url: '/blog',
+    siteName: SITE_NAME,
+    images: [
+      {
+        url: DEFAULT_OG_IMAGE,
+        width: 1200,
+        height: 630,
+        alt: `${SITE_NAME} blog`,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `Blog | ${SITE_NAME} — AI & Claude Insights`,
+    description: 'Insights on AI, Claude, learning, and practical workflows from Approachable.',
+    images: [DEFAULT_OG_IMAGE],
   },
 };
 
 export default function BlogIndexPage() {
   const posts = getAllPosts();
+  const blogSchema = buildBlogIndexSchema(posts);
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}
+      />
       <Banner />
       <Header hideNav coursePage/>
       <main style={{ backgroundColor: 'var(--bg)', minHeight: '100vh' }}>

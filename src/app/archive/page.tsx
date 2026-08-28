@@ -2,18 +2,28 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Banner from '@/components/Banner';
 import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import { getPostsGroupedByMonth } from '@/lib/posts';
+import { DEFAULT_OG_IMAGE, SITE_NAME } from '@/lib/seo/site';
 
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: 'Archives — Approachable',
+  title: { absolute: `Archives | ${SITE_NAME} Blog` },
   description: 'Browse all blog posts by month and year.',
+  alternates: { canonical: '/archive' },
   openGraph: {
-    title: 'Archives — Approachable',
+    type: 'website',
+    title: `Archives | ${SITE_NAME} Blog`,
     description: 'Browse all blog posts by month and year.',
-    url: 'https://approachable.dev/archive',
+    url: '/archive',
+    siteName: SITE_NAME,
+    images: [DEFAULT_OG_IMAGE],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `Archives | ${SITE_NAME} Blog`,
+    description: 'Browse all blog posts by month and year.',
+    images: [DEFAULT_OG_IMAGE],
   },
 };
 

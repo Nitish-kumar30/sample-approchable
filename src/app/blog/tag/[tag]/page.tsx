@@ -3,11 +3,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Banner from '@/components/Banner';
 import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import LatestPosts from '@/components/LatestPosts';
 import TagCounts from '@/components/TagCounts';
 import ArchiveWidget from '@/components/ArchiveWidget';
 import { getAllTags, getPostsByTag } from '@/lib/posts';
+import { DEFAULT_OG_IMAGE, SITE_NAME } from '@/lib/seo/site';
 
 export const revalidate = 60;
 export const dynamicParams = false;
@@ -21,9 +21,27 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { tag } = await params;
   const decoded = decodeURIComponent(tag);
+  const canonical = `/blog/tag/${encodeURIComponent(decoded)}`;
+  const title = `Posts tagged "${decoded}" | ${SITE_NAME} Blog`;
+  const description = `All blog posts tagged with "${decoded}" on Approachable.`;
   return {
-    title: `Posts tagged "${decoded}" — Approachable`,
-    description: `All blog posts tagged with "${decoded}".`,
+    title: { absolute: title },
+    description,
+    alternates: { canonical },
+    openGraph: {
+      type: 'website',
+      title,
+      description,
+      url: canonical,
+      siteName: SITE_NAME,
+      images: [DEFAULT_OG_IMAGE],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [DEFAULT_OG_IMAGE],
+    },
   };
 }
 
