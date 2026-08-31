@@ -22,7 +22,6 @@ const NAV_LINKS = {
     { label: 'Courses', href: '/courses' },
     { label: 'Team Training', href: '/team-ai-training' },
     { label: 'Blog', href: '/blog' },
-    { label: 'Contact Us', href: '/contact' },
   ],
   blog: [
     { label: 'Live AI Cohort', href: '/' },
