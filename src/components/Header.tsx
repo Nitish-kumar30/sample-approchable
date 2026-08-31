@@ -7,7 +7,23 @@ interface HeaderProps {
   showBackToCorporate?: boolean;
   showCorporateEnquiry?: boolean;
   hideNav?: boolean;
+  navVariant?: 'course' | 'blog';
 }
+
+const NAV_LINKS = {
+  course: [
+    { label: 'Live AI Cohort', href: '/' },
+    { label: 'Team Training', href: '/team-ai-training' },
+    { label: 'Blog', href: '/blog' },
+    { label: 'Contact Us' },
+  ],
+  blog: [
+    { label: 'Live AI Cohort', href: '/' },
+    { label: 'Courses', href: '/courses' },
+    { label: 'Team Training', href: '/team-ai-training' },
+    { label: 'Contact Us' },
+  ],
+} as const;
 
 function BackLink({ href, ariaLabel, fullLabel }: { href: string; ariaLabel: string; fullLabel: string }) {
   return (
@@ -36,7 +52,10 @@ export default function Header({
   showBackToCorporate = false,
   showCorporateEnquiry = false,
   hideNav = false,
+  navVariant,
 }: HeaderProps) {
+  const links = navVariant ? NAV_LINKS[navVariant] : null;
+
   return (
     <header className="site-header">
       <div className="container-max header-inner">
@@ -48,7 +67,22 @@ export default function Header({
           </div>
         </Link>
 
-        {!coursePage && !hideNav && (
+        {links ? (
+          <nav className="header-nav">
+            {links.map(({ label, href }) =>
+              href ? (
+                <Link key={label} href={href} className="header-nav-link">
+                  {label}
+                </Link>
+              ) : (
+                <span key={label} className="header-nav-link header-nav-link-static" aria-disabled="true">
+                  {label}
+                </span>
+              )
+            )}
+          </nav>
+        ) : (
+          !coursePage && !hideNav && (
           <nav className="header-nav">
             <Link href="/courses" className="header-nav-link">
               Courses
@@ -57,6 +91,7 @@ export default function Header({
               Corporate Training
             </Link>
           </nav>
+          )
         )}
 
         {showBackToCourses ? (
@@ -72,7 +107,7 @@ export default function Header({
             Send enquiry →
           </a>
         ) : (
-          !coursePage && (
+          !coursePage && !hideNav && !navVariant && (
             <Link href="/#pricing" className="header-cta">
               Join the Cohort →
             </Link>

@@ -47,7 +47,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
 
   return (
     <>
-      <Header coursePage showBackToCourses />
+      <Header navVariant="course" showBackToCourses />
       <div className={`${styles.page}${course.isFree ? ` ${styles.pageNoSticky}` : ''}`}>
       {course.discountLabel && !course.isFree && (
         <div className={styles.discountBanner}>{course.discountLabel}</div>

@@ -44,7 +44,7 @@ export default async function CoursesPage() {
 
   return (
     <>
-      <Header coursePage />
+      <Header navVariant="course" />
       <main>
         <section className="courses-page" style={{ paddingBottom: 0 }}>
           <div className="container-max">
