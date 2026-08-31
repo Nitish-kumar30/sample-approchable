@@ -11,7 +11,8 @@ import ArchiveWidget from '@/components/ArchiveWidget';
 import SubscribeForm from '@/components/SubscribeForm';
 import { getAllPosts, getPostBySlug, isSeoExcludedPost } from '@/lib/posts';
 import { buildBlogPostSchema } from '@/lib/seo/blog-schema';
-import { DEFAULT_OG_IMAGE, SITE_NAME } from '@/lib/seo/site';
+import { DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from '@/lib/seo/site';
+import ShareButtons from '@/components/ShareButtons';
 
 // allow slugs committed after the last build to be rendered on-demand
 export const dynamicParams = true;
@@ -123,6 +124,8 @@ export default async function BlogPostPage({ params }: Props) {
                 </div>
               )}
 
+              <ShareButtons title={post.title} url={`${SITE_URL}/blog/${slug}`} />
+
               <p className="text-lg mb-10" style={{ color: 'var(--text-secondary)' }}>
                 {post.excerpt}
               </p>
@@ -138,6 +141,8 @@ export default async function BlogPostPage({ params }: Props) {
                 style={{ color: 'var(--text-primary)' }}
                 dangerouslySetInnerHTML={{ __html: html }}
               />
+
+              <ShareButtons title={post.title} url={`${SITE_URL}/blog/${slug}`} variant="full" />
             </article>
 
             <aside className="lg:w-72 shrink-0 flex flex-col gap-6">
