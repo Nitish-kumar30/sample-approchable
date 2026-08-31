@@ -47,9 +47,9 @@ const caseStudies = [
 ] as const;
 
 const testimonials = [
-  { image: '/images/testimonial-01.png', alt: 'Rahul Sharma, Founder of Lumea, on going from idea to a working AI agent in three weeks' },
+  { image: '/images/testimonial-01.png', alt: 'David Anderson, CEO of Lumea, on going from idea to a working AI agent in three weeks' },
   { image: '/images/testimonial-02.png', alt: 'Shivam Kumar, Head of Customer Support at Solvix, on 45% faster response times and 20+ hours saved weekly' },
-  { image: '/images/testimonial-03.png', alt: 'Ankit Sharma, Head of Operations at Nexora, on cutting monthly reporting time from 3 days to 2 hours' },
+  { image: '/images/testimonial-03.png', alt: 'Daniel Mitchell, Director of Analytics at Nexora, on cutting monthly reporting time from 3 days to 2 hours' },
 ] as const;
 
 export default function TeamAiTrainingPage() {
@@ -341,8 +341,8 @@ export default function TeamAiTrainingPage() {
                   <Image
                     src={testimonial.image}
                     alt={testimonial.alt}
-                    width={600}
-                    height={520}
+                    width={1536}
+                    height={1024}
                     className={styles.testimonialImage}
                   />
                 </article>

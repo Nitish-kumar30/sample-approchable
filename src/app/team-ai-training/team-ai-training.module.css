@@ -177,13 +177,11 @@
 }
 .logo { font-weight: 700; color: #69665f; font-size: 16px; }
 .testimonialGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-.testimonial { border-radius: 12px; overflow: hidden; border: 1px solid var(--line); }
+.testimonial { border-radius: 12px; overflow: hidden; }
 .testimonialImage {
   width: 100%;
   height: auto;
   display: block;
-  transform: scale(1.12);
-  transform-origin: center;
 }
 
 /* FIT */
