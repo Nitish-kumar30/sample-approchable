@@ -15,7 +15,6 @@ type FormErrors = Partial<Record<keyof ContactInquiryFields, string>>;
 
 type ContactFormProps = {
   defaultEnquiryType?: EnquiryType | '';
-  paidCourses: { slug: string; title: string }[];
 };
 
 function buildInitial(defaultEnquiryType: EnquiryType | '' = ''): ContactInquiryFields {
@@ -25,7 +24,6 @@ function buildInitial(defaultEnquiryType: EnquiryType | '' = ''): ContactInquiry
     phone: '',
     organization: '',
     enquiryType: defaultEnquiryType,
-    paidCourse: '',
     message: '',
   };
 }
@@ -39,7 +37,7 @@ function FieldError({ id, error }: { id: string; error?: string }) {
   );
 }
 
-export default function ContactForm({ defaultEnquiryType = '', paidCourses }: ContactFormProps) {
+export default function ContactForm({ defaultEnquiryType = '' }: ContactFormProps) {
   const [form, setForm] = useState<ContactInquiryFields>(() => buildInitial(defaultEnquiryType));
   const [honeypot, setHoneypot] = useState('');
   const [errors, setErrors] = useState<FormErrors>({});
@@ -162,29 +160,7 @@ export default function ContactForm({ defaultEnquiryType = '', paidCourses }: Co
             disabled={loading}
             aria-invalid={errors.enquiryType ? true : undefined}
             aria-describedby={errors.enquiryType ? 'enquiryType-error' : undefined}
-            onChange={(e) => {
-              const enquiryType = e.target.value as ContactInquiryFields['enquiryType'];
-              setForm((prev) => ({
-                ...prev,
-                enquiryType,
-                paidCourse: enquiryType === 'courses' ? prev.paidCourse : '',
-              }));
-              if (errors.enquiryType) {
-                setErrors((prev) => {
-                  const next = { ...prev };
-                  delete next.enquiryType;
-                  return next;
-                });
-              }
-              if (enquiryType !== 'courses' && errors.paidCourse) {
-                setErrors((prev) => {
-                  const next = { ...prev };
-                  delete next.paidCourse;
-                  return next;
-                });
-              }
-              if (submitError) setSubmitError('');
-            }}
+            onChange={(e) => updateField('enquiryType', e.target.value as ContactInquiryFields['enquiryType'])}
           >
             <option value="">Select an option</option>
             {ENQUIRY_TYPES.map(({ value, label }) => (
@@ -195,29 +171,6 @@ export default function ContactForm({ defaultEnquiryType = '', paidCourses }: Co
           </select>
           <FieldError id="enquiryType-error" error={errors.enquiryType} />
         </div>
-
-        {form.enquiryType === 'courses' && (
-          <div className={styles.formField}>
-            <label htmlFor="paidCourse">Which paid course?</label>
-            <select
-              id="paidCourse"
-              required
-              value={form.paidCourse}
-              disabled={loading}
-              aria-invalid={errors.paidCourse ? true : undefined}
-              aria-describedby={errors.paidCourse ? 'paidCourse-error' : undefined}
-              onChange={(e) => updateField('paidCourse', e.target.value)}
-            >
-              <option value="">Select a course</option>
-              {paidCourses.map(({ slug, title }) => (
-                <option key={slug} value={slug}>
-                  {title}
-                </option>
-              ))}
-            </select>
-            <FieldError id="paidCourse-error" error={errors.paidCourse} />
-          </div>
-        )}
 
         <div className={styles.formRow}>
           <div className={styles.formField}>

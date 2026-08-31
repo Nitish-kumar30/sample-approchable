@@ -3,7 +3,6 @@ import Header from '@/components/Header';
 import ContactForm from '@/components/contact/ContactForm';
 import JsonLd from '@/components/JsonLd';
 import { enquiryTypeFromTopic } from '@/lib/contact-inquiry';
-import { getPaidCourses } from '@/lib/course-content';
 import { buildContactPageSchema } from '@/lib/seo/contact-schema';
 import { buildPageMetadata } from '@/lib/seo/metadata';
 
@@ -24,7 +23,6 @@ type PageProps = {
 export default async function ContactPage({ searchParams }: PageProps) {
   const { topic } = await searchParams;
   const defaultEnquiryType = enquiryTypeFromTopic(topic);
-  const paidCourses = await getPaidCourses();
 
   return (
     <>
@@ -43,10 +41,7 @@ export default async function ContactPage({ searchParams }: PageProps) {
             </div>
 
             <div className="contact-form-wrap">
-              <ContactForm
-                defaultEnquiryType={defaultEnquiryType}
-                paidCourses={paidCourses.map(({ slug, title }) => ({ slug, title }))}
-              />
+              <ContactForm defaultEnquiryType={defaultEnquiryType} />
             </div>
           </div>
         </section>

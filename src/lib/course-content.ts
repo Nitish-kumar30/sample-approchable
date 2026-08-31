@@ -181,7 +181,3 @@ export async function getPaidCourses(): Promise<CourseSummary[]> {
 export async function getAllCourses(): Promise<CourseSummary[]> {
   return getCoursesBySlugs(ALL_CATALOG_SLUGS);
 }
-
-export function getCourseTitle(slug: string): string | undefined {
-  return COURSE_REGISTRY[slug]?.title;
-}

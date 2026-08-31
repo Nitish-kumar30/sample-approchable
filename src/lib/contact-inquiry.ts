@@ -1,5 +1,3 @@
-import { PAID_CATALOG_SLUGS, getCourseTitle } from '@/lib/course-content';
-
 export const FORM_TYPE = 'contact-inquiry';
 
 export const ENQUIRY_TYPES = [
@@ -17,7 +15,6 @@ export type ContactInquiryFields = {
   phone: string;
   organization: string;
   enquiryType: EnquiryType | '';
-  paidCourse: string;
   message: string;
 };
 
@@ -37,7 +34,6 @@ type ValidationFailure = { ok: false; errors: Record<string, string> };
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const VALID_ENQUIRY_TYPES = new Set<string>(ENQUIRY_TYPES.map((t) => t.value));
-const VALID_PAID_COURSE_SLUGS = new Set<string>(PAID_CATALOG_SLUGS);
 
 function asString(value: unknown): string {
   return typeof value === 'string' ? value.trim() : '';
@@ -50,10 +46,6 @@ export function enquiryTypeFromTopic(topic: string | undefined): EnquiryType | '
 
 export function enquiryTypeLabel(value: EnquiryType): string {
   return ENQUIRY_TYPES.find((t) => t.value === value)?.label ?? value;
-}
-
-export function paidCourseLabel(slug: string): string {
-  return getCourseTitle(slug) ?? slug;
 }
 
 export function validateContactInquiry(body: unknown): ValidationSuccess | ValidationFailure {
@@ -69,7 +61,6 @@ export function validateContactInquiry(body: unknown): ValidationSuccess | Valid
   const phone = asString(raw.phone);
   const organization = asString(raw.organization);
   const enquiryType = asString(raw.enquiryType);
-  const paidCourseRaw = asString(raw.paidCourse);
   const message = asString(raw.message);
 
   if (!name) errors.name = 'Full name is required';
@@ -77,13 +68,7 @@ export function validateContactInquiry(body: unknown): ValidationSuccess | Valid
   else if (!EMAIL_RE.test(email)) errors.email = 'Enter a valid email address';
   if (!enquiryType) errors.enquiryType = 'Select what we can help you with';
   else if (!VALID_ENQUIRY_TYPES.has(enquiryType)) errors.enquiryType = 'Select a valid enquiry type';
-  if (enquiryType === 'courses') {
-    if (!paidCourseRaw) errors.paidCourse = 'Select a paid course';
-    else if (!VALID_PAID_COURSE_SLUGS.has(paidCourseRaw)) errors.paidCourse = 'Select a valid paid course';
-  }
   if (!message) errors.message = 'Please enter your message';
-
-  const paidCourse = enquiryType === 'courses' ? paidCourseRaw : '';
 
   if (Object.keys(errors).length > 0) {
     return { ok: false, errors };
@@ -97,7 +82,6 @@ export function validateContactInquiry(body: unknown): ValidationSuccess | Valid
       phone,
       organization,
       enquiryType: enquiryType as EnquiryType,
-      paidCourse,
       message,
     },
   };
