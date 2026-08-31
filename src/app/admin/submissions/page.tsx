@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import Header from '@/components/Header';
 import AdminSecretForm from '@/components/admin/AdminSecretForm';
-import SubmissionsList from '@/components/admin/SubmissionsList';
+import SubmissionsTabs from '@/components/admin/SubmissionsTabs';
 import { adminSecretRequired, isAdminAuthorized } from '@/lib/admin-auth';
-import { getSubmissions } from '@/lib/submissions';
+import { getContactSubmissions, getCorporateSubmissions } from '@/lib/submissions';
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
@@ -30,9 +30,9 @@ export default async function AdminSubmissionsPage({ searchParams }: PageProps) 
             <div className="container-max">
               <div className="courses-hero">
                 <div className="section-label">Admin</div>
-                <h1 className="section-title">Corporate training inquiries</h1>
+                <h1 className="section-title">Form submissions</h1>
                 <p className="section-sub" style={{ margin: '0 auto' }}>
-                  Submissions from the team inquiry form, newest first.
+                  Contact and team training inquiries, organized by form type.
                 </p>
               </div>
 
@@ -48,11 +48,15 @@ export default async function AdminSubmissionsPage({ searchParams }: PageProps) 
     );
   }
 
-  let submissions: Awaited<ReturnType<typeof getSubmissions>> = [];
+  let contactSubmissions: Awaited<ReturnType<typeof getContactSubmissions>> = [];
+  let corporateSubmissions: Awaited<ReturnType<typeof getCorporateSubmissions>> = [];
   let loadError: string | null = null;
 
   try {
-    submissions = await getSubmissions();
+    [contactSubmissions, corporateSubmissions] = await Promise.all([
+      getContactSubmissions(),
+      getCorporateSubmissions(),
+    ]);
   } catch (error) {
     console.error('Failed to load submissions:', error);
     loadError =
@@ -67,9 +71,9 @@ export default async function AdminSubmissionsPage({ searchParams }: PageProps) 
           <div className="container-max">
             <div className="courses-hero">
               <div className="section-label">Admin</div>
-              <h1 className="section-title">Corporate training inquiries</h1>
+              <h1 className="section-title">Form submissions</h1>
               <p className="section-sub" style={{ margin: '0 auto' }}>
-                Submissions from the team inquiry form, newest first.
+                Contact and team training inquiries, organized by form type.
               </p>
             </div>
 
@@ -77,10 +81,10 @@ export default async function AdminSubmissionsPage({ searchParams }: PageProps) 
               <p className="admin-error">{loadError}</p>
             ) : (
               <div className="admin-submissions-wrap">
-                <div className="admin-submissions-count">
-                  {submissions.length} submission{submissions.length === 1 ? '' : 's'}
-                </div>
-                <SubmissionsList submissions={submissions} />
+                <SubmissionsTabs
+                  contactSubmissions={contactSubmissions}
+                  corporateSubmissions={corporateSubmissions}
+                />
               </div>
             )}
           </div>

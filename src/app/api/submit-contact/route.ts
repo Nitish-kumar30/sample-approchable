@@ -1,12 +1,8 @@
 import { randomUUID } from 'crypto';
 import { put } from '@vercel/blob';
 import { NextRequest, NextResponse } from 'next/server';
-import {
-  FORM_TYPE,
-  isHoneypotTriggered,
-  validateCorporateInquiry,
-  type CorporateInquiryRecord,
-} from '@/lib/corporate-inquiry';
+import { isHoneypotTriggered } from '@/lib/corporate-inquiry';
+import { FORM_TYPE, validateContactInquiry, type ContactInquiryRecord } from '@/lib/contact-inquiry';
 import { blobOptions } from '@/lib/blob-client';
 import { submissionBlobPath } from '@/lib/blob-paths';
 import { toWebhookPayload } from '@/lib/webhook-payload';
@@ -19,7 +15,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ success: true, message: 'Submission received' });
     }
 
-    const validation = validateCorporateInquiry(body);
+    const validation = validateContactInquiry(body);
     if (!validation.ok) {
       return NextResponse.json(
         { success: false, errors: validation.errors },
@@ -28,18 +24,18 @@ export async function POST(req: NextRequest) {
     }
 
     const id = randomUUID();
-    const record: CorporateInquiryRecord = {
+    const record: ContactInquiryRecord = {
       id,
       formType: FORM_TYPE,
       submittedAt: new Date().toISOString(),
       ...validation.data,
       meta: {
-        source: 'team-ai-training/inquiry',
+        source: 'contact',
         userAgent: req.headers.get('user-agent') ?? undefined,
       },
     };
 
-    await put(submissionBlobPath('corporate', id), JSON.stringify(record, null, 2), {
+    await put(submissionBlobPath('contact', id), JSON.stringify(record, null, 2), {
       access: 'private',
       contentType: 'application/json',
       addRandomSuffix: false,
@@ -68,7 +64,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ success: true, message: 'Submission received' });
   } catch (error) {
-    console.error('Error in submit-form handler:', error);
+    console.error('Error in submit-contact handler:', error);
     return NextResponse.json(
       { success: false, error: 'Failed to save submission' },
       { status: 500 },

@@ -15,13 +15,13 @@ const NAV_LINKS = {
     { label: 'Live AI Cohort', href: '/' },
     { label: 'Team Training', href: '/team-ai-training' },
     { label: 'Blog', href: '/blog' },
-    { label: 'Contact Us' },
+    { label: 'Contact Us', href: '/contact' },
   ],
   blog: [
     { label: 'Live AI Cohort', href: '/' },
     { label: 'Courses', href: '/courses' },
     { label: 'Team Training', href: '/team-ai-training' },
-    { label: 'Contact Us' },
+    { label: 'Contact Us', href: '/contact' },
   ],
 } as const;
 
@@ -89,6 +89,9 @@ export default function Header({
             </Link>
             <Link href="/team-ai-training" className="header-nav-link">
               Corporate Training
+            </Link>
+            <Link href="/contact" className="header-nav-link">
+              Contact Us
             </Link>
           </nav>
           )

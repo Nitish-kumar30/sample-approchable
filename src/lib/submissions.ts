@@ -1,8 +1,12 @@
 import { get, list } from '@vercel/blob';
 import type { CorporateInquiryRecord } from '@/lib/corporate-inquiry';
+import type { ContactInquiryRecord } from '@/lib/contact-inquiry';
+import { BLOB_FOLDERS, isLegacyFlatBlobPath, type SubmissionFolder } from '@/lib/blob-paths';
+import type { SubmissionRecord } from '@/lib/submissions-types';
+import { isContactSubmission, isCorporateSubmission } from '@/lib/submissions-types';
 import { blobOptions } from '@/lib/blob-client';
 
-async function readSubmission(pathname: string): Promise<CorporateInquiryRecord | null> {
+async function readSubmission(pathname: string): Promise<SubmissionRecord | null> {
   const result = await get(pathname, { access: 'private', ...blobOptions() });
 
   if (!result || result.statusCode !== 200 || !result.stream) {
@@ -10,14 +14,24 @@ async function readSubmission(pathname: string): Promise<CorporateInquiryRecord 
   }
 
   const text = await new Response(result.stream).text();
-  return JSON.parse(text) as CorporateInquiryRecord;
+  return JSON.parse(text) as SubmissionRecord;
 }
 
-export async function getSubmissions(): Promise<CorporateInquiryRecord[]> {
-  const { blobs } = await list({ prefix: 'submissions/', ...blobOptions() });
+function sortByNewest(submissions: SubmissionRecord[]): SubmissionRecord[] {
+  return submissions.sort((a, b) => Date.parse(b.submittedAt) - Date.parse(a.submittedAt));
+}
+
+async function listFromFolder(folder: SubmissionFolder): Promise<SubmissionRecord[]> {
+  const prefix = `${BLOB_FOLDERS[folder]}/`;
+  const { blobs } = await list({ prefix, ...blobOptions() });
+
+  const relevantBlobs =
+    folder === 'legacy'
+      ? blobs.filter((blob) => isLegacyFlatBlobPath(blob.pathname))
+      : blobs.filter((blob) => blob.pathname.endsWith('.json'));
 
   const submissions = await Promise.all(
-    blobs.map(async (blob) => {
+    relevantBlobs.map(async (blob) => {
       const record = await readSubmission(blob.pathname);
       if (record) return record;
 
@@ -38,6 +52,35 @@ export async function getSubmissions(): Promise<CorporateInquiryRecord[]> {
     }),
   );
 
-  submissions.sort((a, b) => Date.parse(b.submittedAt) - Date.parse(a.submittedAt));
-  return submissions;
+  return sortByNewest(submissions);
 }
+
+export async function getContactSubmissions(): Promise<ContactInquiryRecord[]> {
+  const [fromFolder, legacy] = await Promise.all([
+    listFromFolder('contact'),
+    listFromFolder('legacy'),
+  ]);
+
+  const legacyContact = legacy.filter(isContactSubmission);
+  return sortByNewest([...fromFolder.filter(isContactSubmission), ...legacyContact]) as ContactInquiryRecord[];
+}
+
+export async function getCorporateSubmissions(): Promise<CorporateInquiryRecord[]> {
+  const [fromFolder, legacy] = await Promise.all([
+    listFromFolder('corporate'),
+    listFromFolder('legacy'),
+  ]);
+
+  const legacyCorporate = legacy.filter(isCorporateSubmission);
+  return sortByNewest([
+    ...fromFolder.filter(isCorporateSubmission),
+    ...legacyCorporate,
+  ]) as CorporateInquiryRecord[];
+}
+
+export async function getSubmissions(): Promise<SubmissionRecord[]> {
+  const [contact, corporate] = await Promise.all([getContactSubmissions(), getCorporateSubmissions()]);
+  return sortByNewest([...contact, ...corporate]);
+}
+
+export type { SubmissionRecord, ContactInquiryRecord, CorporateInquiryRecord };

@@ -110,7 +110,7 @@ body:not(:has(#topBanner)) .site-header {
 .header-nav {
   display: none;
   align-items: center;
-  gap: 4px;
+  gap: 28px;
   flex: 1;
   justify-content: center;
 }
@@ -118,26 +118,29 @@ body:not(:has(#topBanner)) .site-header {
   .header-nav { display: flex; }
 }
 .header-nav-link {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
   color: var(--text-secondary);
   text-decoration: none;
-  padding: 8px 14px;
-  border-radius: 8px;
-  transition: background 0.15s, color 0.15s;
+  text-underline-offset: 5px;
+  text-decoration-thickness: 2px;
+  padding: 8px 2px;
+  border-radius: 0;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
   white-space: nowrap;
 }
 .header-nav-link:hover {
-  background: var(--bg-muted, rgba(0, 0, 0, 0.04));
   color: var(--text-primary);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
 }
 .header-nav-link-static {
   cursor: default;
   opacity: 0.75;
 }
 .header-nav-link-static:hover {
-  background: transparent;
   color: var(--text-secondary);
+  text-decoration: none;
 }
 .header-back-link {
   display: inline-flex;
@@ -827,6 +830,11 @@ section { padding: 64px 24px; }
 
 /* Courses listing page */
 .courses-hero { text-align: center; max-width: 680px; margin: 0 auto; }
+.contact-form-wrap {
+  max-width: 640px;
+  margin: 0 auto;
+  padding-bottom: 64px;
+}
 .courses-section { margin-top: 48px; }
 .courses-section-divider {
   margin: 48px 0 0;
@@ -1194,6 +1202,61 @@ section { padding: 64px 24px; }
   max-width: 780px;
   margin: 0 auto;
 }
+.admin-submissions-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.admin-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 4px;
+  border-radius: 999px;
+  background: var(--bg-secondary, #f4f4f0);
+  border: 1px solid var(--border);
+  width: fit-content;
+  margin: 0 auto;
+}
+.admin-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.admin-tab:hover {
+  color: var(--text-primary);
+}
+.admin-tab-active {
+  background: var(--bg, #fff);
+  color: var(--text-primary);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+}
+.admin-tab-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: rgba(223, 121, 88, 0.12);
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+}
+.admin-tab-panel {
+  width: 100%;
+}
 .admin-submissions-count {
   font-size: 13px;
   font-weight: 600;
@@ -1243,10 +1306,23 @@ section { padding: 64px 24px; }
 .admin-submission-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 12px;
+  gap: 8px;
+  align-items: center;
   margin-top: 4px;
-  font-size: 14px;
+  font-size: 13px;
   color: var(--text-secondary);
+}
+.admin-submission-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: rgba(223, 121, 88, 0.12);
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 .admin-submission-email {
   color: var(--accent);
