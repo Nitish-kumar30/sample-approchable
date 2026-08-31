@@ -1,4 +1,4 @@
-import { enquiryTypeLabel } from '@/lib/contact-inquiry';
+import { enquiryTypeLabel, paidCourseLabel } from '@/lib/contact-inquiry';
 import type { SubmissionRecord } from '@/lib/submissions-types';
 import { isContactSubmission, isCorporateSubmission } from '@/lib/submissions-types';
 
@@ -55,6 +55,9 @@ function ContactSubmissionCard({
       <dl className="admin-submission-body">
         <Field label="Phone" value={submission.phone} />
         <Field label="Organization" value={submission.organization} />
+        {submission.paidCourse && (
+          <Field label="Paid course" value={paidCourseLabel(submission.paidCourse)} />
+        )}
       </dl>
 
       {submission.message && (

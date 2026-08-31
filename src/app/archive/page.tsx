@@ -23,7 +23,7 @@ export default function ArchivePage() {
   return (
     <>
       <Banner />
-      <Header hideNav coursePage />
+      <Header navVariant="blog" />
       <main style={{ backgroundColor: 'var(--bg)', minHeight: '100vh' }}>
         <div className="mx-auto max-w-[800px] px-6 py-20">
           <h1 className="text-4xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>

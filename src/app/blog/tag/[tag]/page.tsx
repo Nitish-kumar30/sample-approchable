@@ -42,7 +42,7 @@ export default async function TagPage({ params }: Props) {
   return (
     <>
       <Banner />
-      <Header hideNav coursePage/>
+      <Header navVariant="blog" />
       <main style={{ backgroundColor: 'var(--bg)', minHeight: '100vh' }}>
         <div className="mx-auto max-w-[1100px] px-6 py-20">
           <div className="flex flex-col lg:flex-row gap-12">
