@@ -27,7 +27,7 @@ export default async function ContactPage({ searchParams }: PageProps) {
   return (
     <>
       <JsonLd data={buildContactPageSchema()} />
-      <Header navVariant="course" />
+      <Header navVariant="contact" />
       <main>
         <section className="courses-page contact-page">
           <div className="container-max">

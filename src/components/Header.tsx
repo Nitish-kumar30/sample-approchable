@@ -7,12 +7,19 @@ interface HeaderProps {
   showBackToCorporate?: boolean;
   showCorporateEnquiry?: boolean;
   hideNav?: boolean;
-  navVariant?: 'course' | 'blog';
+  navVariant?: 'course' | 'blog' | 'contact';
 }
 
 const NAV_LINKS = {
   course: [
     { label: 'Live AI Cohort', href: '/' },
+    { label: 'Team Training', href: '/team-ai-training' },
+    { label: 'Blog', href: '/blog' },
+    { label: 'Contact Us', href: '/contact' },
+  ],
+  contact: [
+    { label: 'Live AI Cohort', href: '/' },
+    { label: 'Courses', href: '/courses' },
     { label: 'Team Training', href: '/team-ai-training' },
     { label: 'Blog', href: '/blog' },
     { label: 'Contact Us', href: '/contact' },
