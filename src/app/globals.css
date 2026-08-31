@@ -79,11 +79,19 @@ body:not(:has(#topBanner)) .site-header {
   top: 0;
 }
 .header-inner {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
-  justify-content: space-between;
   gap: 20px;
   padding: 14px 24px;
+}
+.header-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  justify-self: end;
+  grid-column: 3;
+  min-width: 0;
 }
 .logo-wrap {
   display: flex;
@@ -92,6 +100,8 @@ body:not(:has(#topBanner)) .site-header {
   text-decoration: none;
   color: var(--text-primary);
   flex-shrink: 0;
+  justify-self: start;
+  grid-column: 1;
 }
 .logo-wrap > span {
   flex-shrink: 0;
@@ -111,8 +121,8 @@ body:not(:has(#topBanner)) .site-header {
   display: none;
   align-items: center;
   gap: 28px;
-  flex: 1;
-  justify-content: center;
+  justify-self: center;
+  grid-column: 2;
 }
 @media (min-width: 800px) {
   .header-nav { display: flex; }
@@ -146,7 +156,6 @@ body:not(:has(#topBanner)) .site-header {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  margin-left: auto;
   font-size: 14px;
   font-weight: 600;
   color: var(--text-secondary);
@@ -190,6 +199,21 @@ body:not(:has(#topBanner)) .site-header {
 .header-cta-corporate:hover { background: #C8892A; color: #fff; }
 .header-back-text-short {
   display: none;
+}
+@media (max-width: 799px) {
+  .header-inner {
+    display: flex;
+    justify-content: space-between;
+  }
+  .logo-wrap,
+  .header-nav,
+  .header-actions {
+    grid-column: auto;
+    justify-self: auto;
+  }
+  .header-actions {
+    margin-left: auto;
+  }
 }
 @media (max-width: 640px) {
   .header-inner {

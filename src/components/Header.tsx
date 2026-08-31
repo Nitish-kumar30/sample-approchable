@@ -97,25 +97,27 @@ export default function Header({
           )
         )}
 
-        {showBackToCourses ? (
-          <BackLink href="/courses" ariaLabel="Back to courses" fullLabel="Back to Courses" />
-        ) : showBackToCorporate ? (
-          <BackLink
-            href="/team-ai-training"
-            ariaLabel="Back to corporate training"
-            fullLabel="Back to Corporate Training"
-          />
-        ) : showCorporateEnquiry ? (
-          <a href="#book" className="header-cta header-cta-corporate">
-            Send enquiry →
-          </a>
-        ) : (
-          !coursePage && !hideNav && !navVariant && (
-            <Link href="/#pricing" className="header-cta">
-              Join the Cohort →
-            </Link>
-          )
-        )}
+        <div className="header-actions">
+          {showBackToCourses ? (
+            <BackLink href="/courses" ariaLabel="Back to courses" fullLabel="Back to Courses" />
+          ) : showBackToCorporate ? (
+            <BackLink
+              href="/team-ai-training"
+              ariaLabel="Back to corporate training"
+              fullLabel="Back to Corporate Training"
+            />
+          ) : showCorporateEnquiry ? (
+            <a href="#book" className="header-cta header-cta-corporate">
+              Send enquiry →
+            </a>
+          ) : (
+            !coursePage && !hideNav && !navVariant && (
+              <Link href="/#pricing" className="header-cta">
+                Join the Cohort →
+              </Link>
+            )
+          )}
+        </div>
       </div>
     </header>
   );
