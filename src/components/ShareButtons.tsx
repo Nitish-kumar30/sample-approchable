@@ -75,7 +75,7 @@ export default function ShareButtons({ title, url, variant = 'compact' }: ShareB
   const platforms = [
     { name: 'LinkedIn', href: `https://www.linkedin.com/shareArticle?mini=true&url=${encodedUrl}&title=${encodedTitle}`, icon: <LinkedInIcon /> },
     { name: 'X', href: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`, icon: <XIcon /> },
-    { name: 'Facebook', href: `https://www.facebook.com/sharer.php?u=${encodedUrl}`, icon: <FacebookIcon /> },
+    { name: 'Facebook', href: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}&quote=${encodedTitle}`, icon: <FacebookIcon /> },
     { name: 'WhatsApp', href: `https://api.whatsapp.com/send?text=${encodedTitle}%20${encodedUrl}`, icon: <WhatsAppIcon /> },
     { name: 'Email', href: `mailto:?subject=${encodedTitle}&body=${encodedUrl}`, icon: <EmailIcon /> },
   ];
