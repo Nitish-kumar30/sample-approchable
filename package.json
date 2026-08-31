@@ -14,9 +14,12 @@
     "push:all": "git push origin corporate-page && git push deploy corporate-page:main"
   },
   "dependencies": {
+    "@types/marked": "^5.0.2",
     "@upstash/redis": "^1.34.3",
     "@vercel/blob": "^2.8.0",
+    "gray-matter": "^4.0.3",
     "hls.js": "^1.7.0",
+    "marked": "^18.0.10",
     "next": "^15.3.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
