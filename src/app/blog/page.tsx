@@ -7,26 +7,30 @@ import LatestPosts from '@/components/LatestPosts';
 import TagCounts from '@/components/TagCounts';
 import ArchiveWidget from '@/components/ArchiveWidget';
 import SubscribeForm from '@/components/SubscribeForm';
+import JsonLd from '@/components/JsonLd';
 import { getAllPosts } from '@/lib/posts';
+import { buildBlogIndexSchema } from '@/lib/seo/blog-schema';
+import { buildPageMetadata } from '@/lib/seo/metadata';
 
 // revalidate every 60 s so new CMS posts appear without a full redeploy
 export const revalidate = 60;
 
-export const metadata: Metadata = {
-  title: 'Blog — Approachable',
-  description: 'Insights on AI, learning, and making the most of tools like Claude.',
-  openGraph: {
-    title: 'Blog — Approachable',
-    description: 'Insights on AI, learning, and making the most of tools like Claude.',
-    url: 'https://approachable.dev/blog',
-  },
-};
+const BLOG_DESCRIPTION = 'Insights on AI, learning, and making the most of tools like Claude.';
+
+export const metadata: Metadata = buildPageMetadata({
+  title: 'Blog',
+  description: BLOG_DESCRIPTION,
+  path: '/blog',
+  ogImageAlt: 'Approachable Blog — insights on AI and the Claude ecosystem',
+});
 
 export default function BlogIndexPage() {
   const posts = getAllPosts();
+  const blogSchema = buildBlogIndexSchema(posts.map((post) => ({ slug: post.slug, title: post.title })));
 
   return (
     <>
+      <JsonLd data={blogSchema} />
       <Banner />
       <Header hideNav coursePage/>
       <main style={{ backgroundColor: 'var(--bg)', minHeight: '100vh' }}>

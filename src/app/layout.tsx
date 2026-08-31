@@ -19,9 +19,6 @@ export const metadata: Metadata = {
   },
   description: defaultDescription,
   keywords: ['Claude AI', 'Claude Code', 'AI cohort', 'Claude ecosystem', 'AI learning', 'mentor-led', 'Anthropic', 'approachable'],
-  alternates: {
-    canonical: '/',
-  },
   openGraph: {
     type: 'website',
     url: '/',
@@ -52,6 +49,11 @@ export const metadata: Metadata = {
     shortcut: '/favicon.ico',
   },
   manifest: '/site.webmanifest',
+};
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

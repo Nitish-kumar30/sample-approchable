@@ -3,11 +3,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Banner from '@/components/Banner';
 import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import LatestPosts from '@/components/LatestPosts';
 import TagCounts from '@/components/TagCounts';
 import ArchiveWidget from '@/components/ArchiveWidget';
 import { getAllTags, getPostsByTag } from '@/lib/posts';
+import { buildPageMetadata } from '@/lib/seo/metadata';
 
 export const revalidate = 60;
 export const dynamicParams = false;
@@ -21,10 +21,17 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { tag } = await params;
   const decoded = decodeURIComponent(tag);
-  return {
-    title: `Posts tagged "${decoded}" — Approachable`,
-    description: `All blog posts tagged with "${decoded}".`,
-  };
+  const posts = getPostsByTag(decoded);
+  const title = `Posts tagged "${decoded}"`;
+  const description = `All blog posts tagged with "${decoded}".`;
+
+  return buildPageMetadata({
+    title,
+    description,
+    path: `/blog/tag/${tag}`,
+    ogImageAlt: `Approachable blog posts tagged ${decoded}`,
+    robots: posts.length <= 1 ? { index: false, follow: true } : undefined,
+  });
 }
 
 export default async function TagPage({ params }: Props) {
@@ -53,7 +60,7 @@ export default async function TagPage({ params }: Props) {
                 <span style={{ color: 'var(--accent)' }}>{decoded}</span>
               </h1>
               <p className="mb-10 text-lg" style={{ color: 'var(--text-secondary)' }}>
-                {posts.length} post{posts.length !== 1 ? 's' : ''}
+                {posts.length} post{posts.length !== 1 ? 's' : ''} about {decoded} and related topics from the Approachable blog.
               </p>
 
               {posts.length === 0 ? (

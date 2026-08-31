@@ -4,54 +4,39 @@ import Header from '@/components/Header';
 import CourseCard from '@/components/CourseCard';
 import CoursesScrollRow from '@/components/CoursesScrollRow';
 import ExploreMoreCard from '@/components/ExploreMoreCard';
+import JsonLd from '@/components/JsonLd';
 import { getFreeCourses, getPaidCourses } from '@/lib/course-content';
+import { buildCoursesListSchema } from '@/lib/seo/course-schema';
+import { buildPageMetadata } from '@/lib/seo/metadata';
 
-const COURSES_OG_IMAGE = '/img/og-image.png';
 const COURSES_DESCRIPTION =
   'Free Claude 101 courses and recorded AI training on Mastery, No-Code Agents, and Vibe Coding. Hands-on learning for working professionals.';
-const COURSES_OG_DESCRIPTION =
-  'Free Claude 101 and recorded AI courses for professionals. Start free, then go deeper with hands-on projects.';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: 'Free & Recorded AI Courses',
   description: COURSES_DESCRIPTION,
-  alternates: { canonical: '/courses' },
-  openGraph: {
-    type: 'website',
-    title: 'AI Courses — Approachable',
-    description: COURSES_OG_DESCRIPTION,
-    url: '/courses',
-    siteName: 'Approachable',
-    images: [
-      {
-        url: COURSES_OG_IMAGE,
-        width: 1200,
-        height: 630,
-        alt: 'Approachable AI courses for working professionals',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'AI Courses — Approachable',
-    description: COURSES_OG_DESCRIPTION,
-    images: [COURSES_OG_IMAGE],
-  },
-};
+  path: '/courses',
+  ogImageAlt: 'Approachable AI courses for working professionals',
+});
 
 export default async function CoursesPage() {
   const [freeCourses, paidCourses] = await Promise.all([getFreeCourses(), getPaidCourses()]);
+  const allCourses = [...freeCourses, ...paidCourses];
+  const coursesListSchema = buildCoursesListSchema(
+    allCourses.map((course) => ({ slug: course.slug, title: course.title })),
+  );
 
   return (
     <>
+      <JsonLd data={coursesListSchema} />
       <Header navVariant="course" />
       <main>
         <section className="courses-page" style={{ paddingBottom: 0 }}>
           <div className="container-max">
             <div className="courses-hero">
-              <div className="section-title" style={{ textAlign: 'center' }}>
+              <h1 className="section-title" style={{ textAlign: 'center' }}>
                 Pick your path to becoming AI Capable
-              </div>
+              </h1>
               <p className="section-sub" style={{ margin: '0 auto' }}>
                 Start with a free course, then explore recorded, self-paced courses taught by Ranbeer Makin. Lifetime access, hands-on projects, and a certificate when you finish.
               </p>

@@ -9,7 +9,10 @@ import LatestPosts from '@/components/LatestPosts';
 import TagCounts from '@/components/TagCounts';
 import ArchiveWidget from '@/components/ArchiveWidget';
 import SubscribeForm from '@/components/SubscribeForm';
+import JsonLd from '@/components/JsonLd';
 import { getAllPosts, getPostBySlug } from '@/lib/posts';
+import { buildBlogPostSchema } from '@/lib/seo/blog-schema';
+import { buildPageMetadata, DEFAULT_OG_IMAGE } from '@/lib/seo/metadata';
 
 // allow slugs committed after the last build to be rendered on-demand
 export const dynamicParams = true;
@@ -25,22 +28,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const post = getPostBySlug(slug);
   if (!post) return {};
-  return {
-    title: `${post.title} — Approachable`,
+  return buildPageMetadata({
+    title: post.title,
     description: post.excerpt,
-    openGraph: {
-      title: `${post.title} — Approachable`,
-      description: post.excerpt,
-      url: `https://approachable.dev/blog/${slug}`,
-      ...(post.coverImage && { images: [{ url: post.coverImage }] }),
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: `${post.title} — Approachable`,
-      description: post.excerpt,
-      ...(post.coverImage && { images: [post.coverImage] }),
-    },
-  };
+    path: `/blog/${slug}`,
+    ogImage: post.coverImage ?? DEFAULT_OG_IMAGE,
+    ogImageAlt: post.title,
+    ogType: 'article',
+  });
 }
 
 export default async function BlogPostPage({ params }: Props) {
@@ -49,9 +44,11 @@ export default async function BlogPostPage({ params }: Props) {
   if (!post) notFound();
 
   const html = await marked(post.body);
+  const blogPostSchema = buildBlogPostSchema(post);
 
   return (
     <>
+      <JsonLd data={blogPostSchema} />
     <Banner />
       <Header hideNav coursePage/>
       <main style={{ backgroundColor: 'var(--bg)', minHeight: '100vh' }}>

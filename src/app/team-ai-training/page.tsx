@@ -5,19 +5,20 @@ import {
   OpenEnquiryButton,
   TeamAiTrainingNav,
 } from '@/components/corporate-training/EnquiryModal';
+import JsonLd from '@/components/JsonLd';
+import { buildPageMetadata } from '@/lib/seo/metadata';
+import { buildTeamTrainingSchema } from '@/lib/seo/team-training-schema';
 import styles from './team-ai-training.module.css';
 
-export const metadata: Metadata = {
-  title: 'Approachable — Practical AI Implementation for Teams',
-  description:
-    'A four-week, hands-on AI implementation program for teams. Build practical AI workflows, automate one real task, and ship a working prototype.',
-  openGraph: {
-    title: 'Approachable — Practical AI Implementation for Teams',
-    description:
-      'A four-week, hands-on AI implementation program for teams. Build practical AI workflows, automate one real task, and ship a working prototype.',
-    url: 'https://approachable.dev/team-ai-training',
-  },
-};
+const TEAM_TRAINING_DESCRIPTION =
+  'A four-week, hands-on AI implementation program for teams. Build practical AI workflows, automate one real task, and ship a working prototype.';
+
+export const metadata: Metadata = buildPageMetadata({
+  title: 'Practical AI Implementation for Teams',
+  description: TEAM_TRAINING_DESCRIPTION,
+  path: '/team-ai-training',
+  ogImageAlt: 'Approachable — practical AI implementation for teams',
+});
 
 const caseStudies = [
   {
@@ -55,6 +56,7 @@ const testimonials = [
 export default function TeamAiTrainingPage() {
   return (
     <EnquiryModalProvider>
+      <JsonLd data={buildTeamTrainingSchema()} />
       <div className={styles.page}>
         <TeamAiTrainingNav />
 
@@ -489,7 +491,7 @@ export default function TeamAiTrainingPage() {
               </details>
               <details>
                 <summary>Virtual, on-site, or hybrid?</summary>
-                <p>PLACEHOLDER — specify the formats you currently offer.</p>
+                <p>Virtual preferred. Open to travel, based on initial call.</p>
               </details>
               <details>
                 <summary>What if it doesn&apos;t work for us?</summary>
