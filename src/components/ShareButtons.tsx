@@ -73,10 +73,10 @@ export default function ShareButtons({ title, url, variant = 'compact' }: ShareB
   const encodedTitle = encodeURIComponent(title);
 
   const platforms = [
-    { name: 'LinkedIn', href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`, icon: <LinkedInIcon /> },
-    { name: 'X', href: `https://x.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`, icon: <XIcon /> },
-    { name: 'Facebook', href: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`, icon: <FacebookIcon /> },
-    { name: 'WhatsApp', href: `https://wa.me/?text=${encodedTitle}%20${encodedUrl}`, icon: <WhatsAppIcon /> },
+    { name: 'LinkedIn', href: `https://www.linkedin.com/shareArticle?mini=true&url=${encodedUrl}&title=${encodedTitle}`, icon: <LinkedInIcon /> },
+    { name: 'X', href: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`, icon: <XIcon /> },
+    { name: 'Facebook', href: `https://www.facebook.com/sharer.php?u=${encodedUrl}`, icon: <FacebookIcon /> },
+    { name: 'WhatsApp', href: `https://api.whatsapp.com/send?text=${encodedTitle}%20${encodedUrl}`, icon: <WhatsAppIcon /> },
     { name: 'Email', href: `mailto:?subject=${encodedTitle}&body=${encodedUrl}`, icon: <EmailIcon /> },
   ];
 
