@@ -9,23 +9,47 @@ import SubscribeForm from '@/components/SubscribeForm';
 import JsonLd from '@/components/JsonLd';
 import { getAllPosts } from '@/lib/posts';
 import { buildBlogIndexSchema } from '@/lib/seo/blog-schema';
-import { buildPageMetadata } from '@/lib/seo/metadata';
+import { DEFAULT_OG_IMAGE, SITE_NAME } from '@/lib/seo/site';
 
 // revalidate every 60 s so new CMS posts appear without a full redeploy
 export const revalidate = 60;
 
-const BLOG_DESCRIPTION = 'Insights on AI, learning, and making the most of tools like Claude.';
-
-export const metadata: Metadata = buildPageMetadata({
-  title: 'Blog',
-  description: BLOG_DESCRIPTION,
-  path: '/blog',
-  ogImageAlt: 'Approachable Blog — insights on AI and the Claude ecosystem',
-});
+export const metadata: Metadata = {
+  title: { absolute: `Blog | ${SITE_NAME} — AI & Claude Insights` },
+  description: 'The Approachable blog with insights on AI, Claude, learning, and practical workflows.',
+  keywords: ['Approachable blog', 'AI blog', 'Claude AI', 'approachable.dev'],
+  alternates: {
+    canonical: '/blog',
+    types: {
+      'application/rss+xml': '/feed.xml',
+    },
+  },
+  openGraph: {
+    type: 'website',
+    title: `Blog | ${SITE_NAME} — AI & Claude Insights`,
+    description: 'Insights on AI, Claude, learning, and practical workflows from Approachable.',
+    url: '/blog',
+    siteName: SITE_NAME,
+    images: [
+      {
+        url: DEFAULT_OG_IMAGE,
+        width: 1200,
+        height: 630,
+        alt: `${SITE_NAME} blog`,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `Blog | ${SITE_NAME} — AI & Claude Insights`,
+    description: 'Insights on AI, Claude, learning, and practical workflows from Approachable.',
+    images: [DEFAULT_OG_IMAGE],
+  },
+};
 
 export default function BlogIndexPage() {
   const posts = getAllPosts();
-  const blogSchema = buildBlogIndexSchema(posts.map((post) => ({ slug: post.slug, title: post.title })));
+  const blogSchema = buildBlogIndexSchema(posts);
 
   return (
     <>

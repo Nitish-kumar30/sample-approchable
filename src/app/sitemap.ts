@@ -1,63 +1,77 @@
 import type { MetadataRoute } from 'next';
 import { ALL_CATALOG_SLUGS } from '@/lib/course-content';
 import { getAllPosts, getAllTags } from '@/lib/posts';
-
-const BASE_URL = 'https://approachable.dev';
+import { absoluteUrl } from '@/lib/seo/site';
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const lastModified = new Date();
+  const posts = getAllPosts();
+  const tags = getAllTags();
+
   const staticRoutes: MetadataRoute.Sitemap = [
     {
-      url: BASE_URL,
+      url: absoluteUrl('/'),
+      lastModified,
       changeFrequency: 'weekly',
       priority: 1,
     },
     {
-      url: `${BASE_URL}/courses`,
+      url: absoluteUrl('/courses'),
+      lastModified,
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
-      url: `${BASE_URL}/team-ai-training`,
+      url: absoluteUrl('/team-ai-training'),
+      lastModified,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: `${BASE_URL}/contact`,
+      url: absoluteUrl('/contact'),
+      lastModified,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
-      url: `${BASE_URL}/blog`,
+      url: absoluteUrl('/blog'),
+      lastModified,
       changeFrequency: 'weekly',
-      priority: 0.8,
+      priority: 0.9,
     },
     {
-      url: `${BASE_URL}/archive`,
+      url: absoluteUrl('/archive'),
+      lastModified,
       changeFrequency: 'weekly',
-      priority: 0.5,
+      priority: 0.6,
     },
   ];
 
   const courseRoutes: MetadataRoute.Sitemap = ALL_CATALOG_SLUGS.map((slug) => ({
-    url: `${BASE_URL}/courses/${slug}`,
+    url: absoluteUrl(`/courses/${slug}`),
+    lastModified,
     changeFrequency: 'monthly',
     priority: 0.8,
   }));
 
-  const blogRoutes: MetadataRoute.Sitemap = getAllPosts().map((post) => ({
-    url: `${BASE_URL}/blog/${post.slug}`,
-    lastModified: post.date ? new Date(post.date) : undefined,
-    changeFrequency: 'monthly',
-    priority: 0.7,
-  }));
+  const blogRoutes: MetadataRoute.Sitemap = posts.map((post) => {
+    const postDate = new Date(post.date);
+    return {
+      url: absoluteUrl(`/blog/${post.slug}`),
+      lastModified: Number.isNaN(postDate.getTime()) ? lastModified : postDate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    };
+  });
 
-  const tagRoutes: MetadataRoute.Sitemap = getAllTags()
+  const blogTagRoutes: MetadataRoute.Sitemap = tags
     .filter(({ count }) => count > 1)
     .map(({ tag }) => ({
-      url: `${BASE_URL}/blog/tag/${encodeURIComponent(tag)}`,
+      url: absoluteUrl(`/blog/tag/${encodeURIComponent(tag)}`),
+      lastModified,
       changeFrequency: 'weekly',
-      priority: 0.4,
+      priority: 0.5,
     }));
 
-  return [...staticRoutes, ...courseRoutes, ...blogRoutes, ...tagRoutes];
+  return [...staticRoutes, ...courseRoutes, ...blogRoutes, ...blogTagRoutes];
 }

@@ -1,52 +1,94 @@
 import type { Post } from '@/lib/posts';
-import { SITE_URL } from '@/lib/seo/metadata';
+import { DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL, absoluteUrl } from '@/lib/seo/site';
 
-function absoluteUrl(path: string): string {
-  return path.startsWith('http') ? path : `${SITE_URL}${path}`;
+const BLOG_PATH = '/blog';
+const ORGANIZATION_ID = `${SITE_URL}/#organization`;
+const WEBSITE_ID = `${SITE_URL}/#website`;
+const BLOG_ID = `${SITE_URL}${BLOG_PATH}#blog`;
+const AUTHOR_NAME = 'Ranbeer Makin';
+const AUTHOR_URL = 'https://www.linkedin.com/in/ranbeer/';
+
+function normalizeSchemaDate(date: string): string {
+  const parsed = new Date(date);
+  if (Number.isNaN(parsed.getTime())) return new Date().toISOString();
+  return parsed.toISOString();
 }
 
-export function buildBlogPostSchema(post: Post) {
+function blogPostUrl(slug: string): string {
+  return absoluteUrl(`/blog/${slug}`);
+}
+
+function schemaImageUrl(imagePath?: string): string {
+  if (!imagePath) return absoluteUrl(DEFAULT_OG_IMAGE);
+  if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) return imagePath;
+  return absoluteUrl(imagePath);
+}
+
+export function buildBlogIndexSchema(posts: Post[]) {
   return {
     '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
-    headline: post.title,
-    description: post.excerpt,
-    url: `${SITE_URL}/blog/${post.slug}`,
-    datePublished: post.date,
-    dateModified: post.date,
-    author: {
-      '@type': 'Person',
-      name: 'Ranbeer Makin',
-      url: 'https://www.linkedin.com/in/ranbeer/',
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'Approachable',
-      url: SITE_URL,
-      logo: {
-        '@type': 'ImageObject',
-        url: `${SITE_URL}/logo.png`,
+    '@graph': [
+      {
+        '@type': 'Organization',
+        '@id': ORGANIZATION_ID,
+        name: SITE_NAME,
+        url: SITE_URL,
+        logo: absoluteUrl('/logo.png'),
       },
-    },
-    ...(post.coverImage && { image: absoluteUrl(post.coverImage) }),
+      {
+        '@type': 'WebSite',
+        '@id': WEBSITE_ID,
+        url: SITE_URL,
+        name: SITE_NAME,
+        publisher: { '@id': ORGANIZATION_ID },
+      },
+      {
+        '@type': 'Blog',
+        '@id': BLOG_ID,
+        url: absoluteUrl(BLOG_PATH),
+        name: `${SITE_NAME} Blog`,
+        description: 'Insights on AI, learning, and making the most of tools like Claude.',
+        inLanguage: 'en',
+        publisher: { '@id': ORGANIZATION_ID },
+        isPartOf: { '@id': WEBSITE_ID },
+        blogPost: posts.map((post) => ({ '@id': `${blogPostUrl(post.slug)}#blogposting` })),
+      },
+    ],
   };
 }
 
-export function buildBlogIndexSchema(posts: { slug: string; title: string }[]) {
+export function buildBlogPostSchema(post: Post) {
+  const postUrl = blogPostUrl(post.slug);
+  const datePublished = normalizeSchemaDate(post.date);
+
   return {
     '@context': 'https://schema.org',
-    '@type': 'Blog',
-    name: 'Approachable Blog',
-    url: `${SITE_URL}/blog`,
-    publisher: {
-      '@type': 'Organization',
-      name: 'Approachable',
-      url: SITE_URL,
-    },
-    blogPost: posts.map((post) => ({
-      '@type': 'BlogPosting',
-      headline: post.title,
-      url: `${SITE_URL}/blog/${post.slug}`,
-    })),
+    '@graph': [
+      {
+        '@type': 'Organization',
+        '@id': ORGANIZATION_ID,
+        name: SITE_NAME,
+        url: SITE_URL,
+        logo: absoluteUrl('/logo.png'),
+      },
+      {
+        '@type': 'BlogPosting',
+        '@id': `${postUrl}#blogposting`,
+        headline: post.title,
+        description: post.excerpt,
+        image: schemaImageUrl(post.coverImage),
+        datePublished,
+        dateModified: datePublished,
+        inLanguage: 'en',
+        keywords: post.tags,
+        mainEntityOfPage: postUrl,
+        author: {
+          '@type': 'Person',
+          name: AUTHOR_NAME,
+          url: AUTHOR_URL,
+        },
+        publisher: { '@id': ORGANIZATION_ID },
+      },
+    ],
   };
 }

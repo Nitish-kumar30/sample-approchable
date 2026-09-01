@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import Banner from '@/components/Banner';
 import Header from '@/components/Header';
 import { getPostsGroupedByMonth } from '@/lib/posts';
 import { buildPageMetadata } from '@/lib/seo/metadata';
@@ -22,7 +21,6 @@ export default function ArchivePage() {
 
   return (
     <>
-      <Banner />
       <Header navVariant="blog" />
       <main style={{ backgroundColor: 'var(--bg)', minHeight: '100vh' }}>
         <div className="mx-auto max-w-[800px] px-6 py-20">
