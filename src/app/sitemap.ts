@@ -45,6 +45,37 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.6,
     },
+    {
+      url: absoluteUrl('/privacy'),
+      lastModified,
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+    {
+      url: absoluteUrl('/terms'),
+      lastModified,
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+    {
+      url: absoluteUrl('/data-security'),
+      lastModified,
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+
+    {
+      url: absoluteUrl('/help'),
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.4,
+    },
+    {
+      url: absoluteUrl('/case-studies'),
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.5,
+    },
   ];
 
   const courseRoutes: MetadataRoute.Sitemap = ALL_CATALOG_SLUGS.map((slug) => ({
