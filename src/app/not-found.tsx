@@ -12,7 +12,7 @@ export default function NotFound() {
     <>
       <Header navVariant="course" />
       <main>
-        <section className="courses-page" style={{ textAlign: 'center', padding: '80px 24px' }}>
+        <section className="courses-page" style={{ textAlign: 'center', paddingTop: 80, paddingBottom: 80 }}>
           <div className="container-max" style={{ maxWidth: 560 }}>
             <h1 className="section-title">Page not found</h1>
             <p className="section-sub" style={{ margin: '0 auto 24px' }}>

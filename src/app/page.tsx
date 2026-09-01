@@ -158,7 +158,7 @@ export default function HomePage() {
       <Header hideNav />
       <main>
         {/* HERO */}
-        <section style={{ padding: '64px 24px 0', borderBottom: '1px solid var(--border)' }}>
+        <section className="page-section" style={{ paddingTop: 64, paddingBottom: 0, borderBottom: '1px solid var(--border)' }}>
           <div className="hero" style={{ padding: '0 0 48px' }}>
             <div className="hero-label">Cohort 7 · {COHORT.dateShort} · 20 seats max</div>
             <h1>
@@ -207,7 +207,7 @@ export default function HomePage() {
         <hr className="divider" />
 
         {/* VIDEO */}
-        <section style={{ background: 'var(--bg-warm)', padding: '56px 24px' }}>
+        <section style={{ background: 'var(--bg-warm)', padding: '56px 0' }}>
           <div className="container-max" style={{ maxWidth: 780 }}>
             <div className="section-label" style={{ textAlign: 'center' }}>Cohort overview</div>
             <h2 className="section-title" style={{ textAlign: 'center', marginBottom: 32 }}>See what you&apos;re signing up for</h2>

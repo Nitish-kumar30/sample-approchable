@@ -13,6 +13,7 @@ import {
 } from 'react';
 import CorporateTrainingForm from '@/components/corporate-training/CorporateTrainingForm';
 import Logo from '@/components/Logo';
+import MobileMenuButton from '@/components/MobileMenuButton';
 import pageStyles from '@/app/team-ai-training/team-ai-training.module.css';
 import styles from './enquiry-modal.module.css';
 
@@ -112,21 +113,71 @@ function EnquiryModalDialog({ titleId, onClose }: { titleId: string; onClose: ()
 
 export function TeamAiTrainingNav() {
   const { open } = useEnquiryModal();
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const navItems = [
+    { label: 'Program', href: '#program' },
+    { label: 'What we build', href: '#work' },
+    { label: 'Proof', href: '#proof' },
+    { label: 'Pricing', href: '#pricing' },
+    { label: 'Questions', href: '#faq' },
+  ] as const;
+
+  useEffect(() => {
+    document.body.classList.toggle('mobile-nav-open', menuOpen);
+    return () => document.body.classList.remove('mobile-nav-open');
+  }, [menuOpen]);
+
+  function handleNavClick() {
+    setMenuOpen(false);
+  }
+
+  function handleBookClick() {
+    setMenuOpen(false);
+    open();
+  }
 
   return (
-    <nav className={pageStyles.nav}>
+    <nav className={`${pageStyles.nav}${menuOpen ? ` ${pageStyles.navMenuOpen}` : ''}`}>
       <div className={`${pageStyles.container} ${pageStyles.navInner}`}>
         <Logo />
         <div className={pageStyles.navLinks}>
-          <a href="#program">Program</a>
-          <a href="#work">What we build</a>
-          <a href="#proof">Proof</a>
-          <a href="#pricing">Pricing</a>
-          <a href="#faq">Questions</a>
+          {navItems.map(({ label, href }) => (
+            <a key={href} href={href}>
+              {label}
+            </a>
+          ))}
         </div>
-        <button type="button" className={`${pageStyles.btn} ${pageStyles.btnDark}`} onClick={open}>
+        <button
+          type="button"
+          className={`${pageStyles.btn} ${pageStyles.btnDark} ${pageStyles.navCtaDesktop}`}
+          onClick={open}
+        >
           Book an AI assessment
         </button>
+        <MobileMenuButton
+          open={menuOpen}
+          onClick={() => setMenuOpen((isOpen) => !isOpen)}
+          controlsId="team-ai-training-mobile-nav"
+          className={pageStyles.navMenuBtn}
+        />
+      </div>
+
+      <div
+        id="team-ai-training-mobile-nav"
+        className={`${pageStyles.navMobilePanel}${menuOpen ? ` ${pageStyles.navMobilePanelOpen}` : ''}`}
+        aria-hidden={!menuOpen}
+      >
+        <div className={pageStyles.navMobilePanelInner}>
+          {navItems.map(({ label, href }) => (
+            <a key={href} href={href} className={pageStyles.navMobileLink} onClick={handleNavClick}>
+              {label}
+            </a>
+          ))}
+          <button type="button" className={pageStyles.navMobileAction} onClick={handleBookClick}>
+            Book an AI assessment
+          </button>
+        </div>
       </div>
     </nav>
   );

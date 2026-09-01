@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Logo from '@/components/Logo';
+import MobileMenuButton from '@/components/MobileMenuButton';
 
 interface HeaderProps {
   coursePage?: boolean;
@@ -135,20 +136,11 @@ export default function Header({
 
         <div className="header-actions">
           {showMainNav && (
-            <button
-              type="button"
-              className="header-menu-btn"
-              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-              aria-expanded={menuOpen}
-              aria-controls="header-mobile-nav"
+            <MobileMenuButton
+              open={menuOpen}
               onClick={() => setMenuOpen((open) => !open)}
-            >
-              <span className="header-menu-icon" aria-hidden="true">
-                <span />
-                <span />
-                <span />
-              </span>
-            </button>
+              controlsId="header-mobile-nav"
+            />
           )}
 
           {showBackToCourses ? (
@@ -183,6 +175,20 @@ export default function Header({
           aria-hidden={!menuOpen}
         >
           <div className="container-max header-mobile-nav-inner">
+            {showBackToCourses && (
+              <Link href="/courses" className="header-mobile-nav-link" onClick={() => setMenuOpen(false)}>
+                Back to Courses
+              </Link>
+            )}
+            {showBackToCorporate && (
+              <Link
+                href="/team-ai-training"
+                className="header-mobile-nav-link"
+                onClick={() => setMenuOpen(false)}
+              >
+                Back to Corporate Training
+              </Link>
+            )}
             {links ? (
               <NavLinks links={links} className="header-mobile-nav-link" onNavigate={() => setMenuOpen(false)} />
             ) : (

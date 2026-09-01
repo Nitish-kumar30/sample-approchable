@@ -42,7 +42,7 @@ export default async function TagPage({ params }: Props) {
     <>
       <Header navVariant="blog" />
       <main style={{ backgroundColor: 'var(--bg)', minHeight: '100vh' }}>
-        <div className="mx-auto max-w-[1100px] px-6 py-20">
+        <div className="mx-auto max-w-[1100px] px-4 md:px-6 py-8 md:py-12 lg:py-16">
           <div className="flex flex-col lg:flex-row gap-12">
             <div className="flex-1 min-w-0">
               <Link
