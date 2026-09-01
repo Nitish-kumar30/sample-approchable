@@ -29,7 +29,10 @@ const footerColumns: { heading: string; links: FooterLink[] }[] = [
   },
   {
     heading: 'Resources',
-    links: [{ label: 'Blog', href: '/blog' }],
+    links: [
+      { label: 'Blog', href: '/blog' },
+      { label: 'AI Glossary', href: '/glossary' },
+    ],
   },
   {
     heading: 'Support',

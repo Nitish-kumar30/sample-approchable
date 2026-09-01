@@ -1,0 +1,514 @@
+[
+  {
+    "t": "AI Agent",
+    "c": "Agents",
+    "a": "agent, autonomous agent",
+    "d": "Software that takes a goal, decides its own steps, and uses tools to get there - instead of following a fixed script. It loops: think, act, check the result, try again.",
+    "w": "This is the shift everyone's talking about. A chatbot answers you; an agent goes and does the thing.",
+    "s": ["Agentic Workflow", "Tool Use", "Orchestration"]
+  },
+  {
+    "t": "Agentic Workflow",
+    "c": "Agents",
+    "a": "agentic",
+    "d": "A process where an AI model runs several steps on its own, with checkpoints where a human or another system can step in.",
+    "w": "Most real business automation lands here - not full autonomy, not a single prompt.",
+    "s": ["AI Agent", "Human in the Loop", "n8n"]
+  },
+  {
+    "t": "Alignment",
+    "c": "Risks",
+    "a": "",
+    "d": "The work of making a model behave the way people actually intend, including when nobody wrote a rule for the situation.",
+    "w": "It's why two models with similar raw ability can feel very different to work with.",
+    "s": ["RLHF", "Guardrails"]
+  },
+  {
+    "t": "API",
+    "c": "Building",
+    "a": "application programming interface",
+    "d": "A way for your code to talk to a service. You send a request, you get a structured response back.",
+    "w": "Anything beyond copy-pasting into a chat window goes through an API.",
+    "s": ["API Key", "Rate Limit"]
+  },
+  {
+    "t": "API Key",
+    "c": "Building",
+    "a": "secret key",
+    "d": "A private string that identifies your account when you call an API. Treat it like a password.",
+    "w": "Leaked keys get scraped from public repos within minutes and run up real bills.",
+    "s": ["API"]
+  },
+  {
+    "t": "Artificial General Intelligence",
+    "c": "Foundations",
+    "a": "AGI",
+    "d": "A hypothetical system that can handle any intellectual task a person can, rather than being good at a narrow set.",
+    "w": "Nothing shipping today is AGI. When a vendor implies otherwise, that's marketing.",
+    "s": ["Artificial Intelligence"]
+  },
+  {
+    "t": "Artificial Intelligence",
+    "c": "Foundations",
+    "a": "AI",
+    "d": "The broad field of getting machines to do things we'd call intelligent - recognising, predicting, reasoning, generating.",
+    "w": "It's an umbrella, not a product. Ask what's underneath when someone says a tool is \"AI-powered\".",
+    "s": ["Machine Learning", "Generative AI"]
+  },
+  {
+    "t": "Attention",
+    "c": "Models",
+    "a": "self-attention",
+    "d": "The mechanism that lets a model weigh which earlier words matter most when producing the next one.",
+    "w": "It's the idea that made transformers work, and the reason models track context across long passages.",
+    "s": ["Transformer", "Context Window"]
+  },
+  {
+    "t": "Benchmark",
+    "c": "Models",
+    "a": "eval, leaderboard",
+    "d": "A fixed set of tasks used to score models against each other. MMLU, SWE-bench, GPQA and friends.",
+    "w": "Useful for rough ranking. A benchmark win rarely predicts whether a model is good at your job.",
+    "s": ["Evals"]
+  },
+  {
+    "t": "Bias",
+    "c": "Risks",
+    "a": "",
+    "d": "Skew in a model's output that traces back to skew in its training data or design choices.",
+    "w": "It shows up quietly - in who gets shortlisted, whose accent transcribes badly, which photo it picks.",
+    "s": ["Alignment", "Explainability"]
+  },
+  {
+    "t": "Chain of Thought",
+    "c": "Prompting",
+    "a": "CoT, step by step",
+    "d": "Getting a model to write out its intermediate reasoning before answering, rather than jumping to a conclusion.",
+    "w": "Cheapest accuracy upgrade there is on multi-step problems. Just ask it to work through the steps.",
+    "s": ["Reasoning Model", "Prompt Engineering"]
+  },
+  {
+    "t": "Chunking",
+    "c": "Data",
+    "a": "splitting, segmentation",
+    "d": "Cutting documents into smaller passages before storing them for retrieval.",
+    "w": "Bad chunking is the number one reason a RAG system returns nonsense. Split on meaning, not character count.",
+    "s": ["RAG", "Embedding"]
+  },
+  {
+    "t": "Claude Code",
+    "c": "Agents",
+    "a": "coding agent, CLI agent",
+    "d": "A coding agent that works in your terminal or editor - it reads your repo, edits files, runs commands, and opens pull requests.",
+    "w": "Different from autocomplete. You hand it a task, not a line.",
+    "s": ["AI Agent", "Vibe Coding", "MCP"]
+  },
+  {
+    "t": "Context Window",
+    "c": "Models",
+    "a": "context length",
+    "d": "The maximum amount of text a model can hold in view at once - your prompt, the conversation so far, and its reply, all counted in tokens.",
+    "w": "Run past it and the earliest content silently drops. It's usually the reason a long chat \"forgets\".",
+    "s": ["Token", "Prompt Caching"]
+  },
+  {
+    "t": "Deep Learning",
+    "c": "Foundations",
+    "a": "",
+    "d": "Machine learning using neural networks with many layers, trained on large datasets.",
+    "w": "Every model you've heard of in the last decade sits in this category.",
+    "s": ["Neural Network", "Machine Learning"]
+  },
+  {
+    "t": "Distillation",
+    "c": "Models",
+    "a": "model distillation",
+    "d": "Training a small model to copy the behaviour of a big one.",
+    "w": "How you get near-frontier quality at a fraction of the cost and latency.",
+    "s": ["Quantization", "Open-Weights Model"]
+  },
+  {
+    "t": "Embedding",
+    "c": "Data",
+    "a": "vector, embeddings",
+    "d": "A list of numbers representing a piece of text, image or audio, arranged so similar things sit close together.",
+    "w": "The trick behind semantic search - it finds meaning, not keyword matches.",
+    "s": ["Vector Database", "Semantic Search"]
+  },
+  {
+    "t": "Evals",
+    "c": "Building",
+    "a": "evaluation, test suite",
+    "d": "Your own test set for checking whether a prompt, model or agent does the job on your data.",
+    "w": "Without evals you're guessing. This is what separates a demo from something you can ship.",
+    "s": ["Benchmark", "Hallucination"]
+  },
+  {
+    "t": "Explainability",
+    "c": "Risks",
+    "a": "interpretability",
+    "d": "How well you can tell why a model produced a particular output.",
+    "w": "Regulated industries will ask. \"The model said so\" isn't an answer in a lending or hiring decision.",
+    "s": ["Bias", "Alignment"]
+  },
+  {
+    "t": "Few-Shot Prompting",
+    "c": "Prompting",
+    "a": "examples, one-shot",
+    "d": "Including a handful of worked examples in your prompt so the model matches the pattern.",
+    "w": "Faster and cheaper than fine-tuning, and it fixes most format problems on its own.",
+    "s": ["Zero-Shot Prompting", "Prompt Engineering"]
+  },
+  {
+    "t": "Fine-Tuning",
+    "c": "Models",
+    "a": "SFT, supervised fine-tuning",
+    "d": "Further training a pre-trained model on your own examples so it picks up a specific style, format or domain.",
+    "w": "Reach for it when prompting plateaus - and after you've tried retrieval first.",
+    "s": ["Pre-training", "RAG", "LoRA"]
+  },
+  {
+    "t": "Foundation Model",
+    "c": "Models",
+    "a": "base model, frontier model",
+    "d": "A large model trained on broad data that gets adapted to many downstream tasks.",
+    "w": "You rent these rather than build them. Training one costs more than most companies are worth.",
+    "s": ["Large Language Model", "Pre-training"]
+  },
+  {
+    "t": "Function Calling",
+    "c": "Agents",
+    "a": "tool calling",
+    "d": "Letting a model return a structured request to run one of your functions, with arguments filled in.",
+    "w": "The bridge between text generation and doing something real - booking, querying, sending.",
+    "s": ["Tool Use", "Structured Output", "MCP"]
+  },
+  {
+    "t": "Generative AI",
+    "c": "Foundations",
+    "a": "GenAI",
+    "d": "Models that produce new content - text, images, code, audio - instead of only classifying or predicting.",
+    "w": "The part of AI that got everyone's attention in 2022 and hasn't let go.",
+    "s": ["Large Language Model", "Multimodal"]
+  },
+  {
+    "t": "Grounding",
+    "c": "Data",
+    "a": "",
+    "d": "Tying a model's answer to specific source material it was given, so claims trace back to something real.",
+    "w": "An ungrounded answer sounds identical to a grounded one. That's the whole problem.",
+    "s": ["RAG", "Hallucination"]
+  },
+  {
+    "t": "Guardrails",
+    "c": "Risks",
+    "a": "safety filters",
+    "d": "Checks around a model that block bad inputs or outputs - policy filters, schema validation, spend limits.",
+    "w": "Agents especially need them. Anything that can act can act wrongly.",
+    "s": ["Human in the Loop", "Prompt Injection"]
+  },
+  {
+    "t": "Hallucination",
+    "c": "Risks",
+    "a": "confabulation, made up",
+    "d": "When a model states something false with complete confidence - an invented citation, a plausible wrong number.",
+    "w": "It's not a bug they'll patch out. Design your process to verify anything that matters.",
+    "s": ["Grounding", "RAG"]
+  },
+  {
+    "t": "Human in the Loop",
+    "c": "Agents",
+    "a": "HITL, approval step",
+    "d": "A checkpoint where a person reviews or approves before the automation continues.",
+    "w": "The difference between an agent that drafts the email and one that sends it to 4,000 customers.",
+    "s": ["Guardrails", "Agentic Workflow"]
+  },
+  {
+    "t": "Inference",
+    "c": "Foundations",
+    "a": "",
+    "d": "Running a trained model to get an answer. The everyday act of using AI.",
+    "w": "Training is a one-off cost. Inference is the bill that arrives every month.",
+    "s": ["Latency", "Pre-training"]
+  },
+  {
+    "t": "Jailbreak",
+    "c": "Risks",
+    "a": "",
+    "d": "A prompt crafted to get a model to ignore its own rules.",
+    "w": "Assume anything user-facing will be probed. Filter what comes out, not just what goes in.",
+    "s": ["Prompt Injection", "Guardrails"]
+  },
+  {
+    "t": "Knowledge Cutoff",
+    "c": "Models",
+    "a": "training cutoff",
+    "d": "The date after which a model has no built-in knowledge of world events.",
+    "w": "Ask about last week and you'll get confident nonsense unless the model can search.",
+    "s": ["RAG", "Hallucination"]
+  },
+  {
+    "t": "Large Language Model",
+    "c": "Models",
+    "a": "LLM",
+    "d": "A model trained on enormous amounts of text to predict what comes next, which turns out to be enough to write, summarise, translate and reason.",
+    "w": "GPT, Claude, Gemini, Llama, Qwen - all LLMs. Everything else is packaging around them.",
+    "s": ["Foundation Model", "Token", "Transformer"]
+  },
+  {
+    "t": "Latency",
+    "c": "Building",
+    "a": "speed, time to first token",
+    "d": "How long a model takes to respond - often measured as time to the first token, then tokens per second.",
+    "w": "A model that's 5% smarter but three times slower loses in most real products.",
+    "s": ["Inference", "Streaming"]
+  },
+  {
+    "t": "LoRA",
+    "c": "Models",
+    "a": "low-rank adaptation, adapter, PEFT",
+    "d": "A cheap fine-tuning method that trains a small set of extra weights instead of the whole model.",
+    "w": "Puts custom models within reach of a laptop budget rather than a data centre one.",
+    "s": ["Fine-Tuning", "Open-Weights Model"]
+  },
+  {
+    "t": "Machine Learning",
+    "c": "Foundations",
+    "a": "ML",
+    "d": "Getting a system to learn patterns from data instead of being programmed with explicit rules.",
+    "w": "The engine under almost everything labelled AI, including the boring, useful stuff.",
+    "s": ["Deep Learning", "Training Data"]
+  },
+  {
+    "t": "MCP",
+    "c": "Agents",
+    "a": "Model Context Protocol, connectors",
+    "d": "An open standard for connecting models to tools and data sources, so one integration works across different apps and models.",
+    "w": "Stops every AI tool needing its own bespoke plug for your Gmail, Notion or database.",
+    "s": ["Tool Use", "Function Calling"]
+  },
+  {
+    "t": "Multimodal",
+    "c": "Foundations",
+    "a": "vision, image input",
+    "d": "A model that handles more than one kind of input or output - text plus images, audio or video.",
+    "w": "Screenshots, whiteboards, PDFs and invoices become usable input.",
+    "s": ["Generative AI"]
+  },
+  {
+    "t": "n8n",
+    "c": "Agents",
+    "a": "workflow automation, no-code",
+    "d": "An open-source workflow tool where you wire together triggers, apps and AI steps visually, then self-host it.",
+    "w": "The fastest route from 'we should automate this' to something running, without writing a backend.",
+    "s": ["Orchestration", "Agentic Workflow"]
+  },
+  {
+    "t": "Neural Network",
+    "c": "Foundations",
+    "a": "neural net",
+    "d": "Layers of simple maths units with adjustable weights, tuned by training until the whole thing maps inputs to useful outputs.",
+    "w": "You don't need the maths to use one - but knowing it's statistics, not magic, sets your expectations right.",
+    "s": ["Deep Learning", "Parameters"]
+  },
+  {
+    "t": "Open-Weights Model",
+    "c": "Models",
+    "a": "open source LLM, local model",
+    "d": "A model whose trained weights you can download and run yourself. Llama, Mistral, Qwen, DeepSeek.",
+    "w": "You control the data, the cost and the uptime. You also own the ops.",
+    "s": ["Quantization", "Distillation"]
+  },
+  {
+    "t": "Orchestration",
+    "c": "Agents",
+    "a": "pipeline, chaining",
+    "d": "Coordinating several models, tools and steps into one reliable process, with retries and error handling.",
+    "w": "Where most agent projects actually succeed or fail. The model is the easy part.",
+    "s": ["n8n", "Agentic Workflow"]
+  },
+  {
+    "t": "Parameters",
+    "c": "Models",
+    "a": "weights, 7B, 70B",
+    "d": "The learned numbers inside a model. '70B' means 70 billion of them.",
+    "w": "More parameters usually means more capable and more expensive - but training quality matters more than raw size.",
+    "s": ["Neural Network", "Quantization"]
+  },
+  {
+    "t": "Pre-training",
+    "c": "Models",
+    "a": "base training",
+    "d": "The first, giant training run where a model learns general patterns from a broad dataset.",
+    "w": "Months of compute and a nine-figure bill. Everything after this is comparatively cheap.",
+    "s": ["Fine-Tuning", "Foundation Model"]
+  },
+  {
+    "t": "Prompt",
+    "c": "Prompting",
+    "a": "",
+    "d": "Everything you send the model - instructions, context, examples, the actual question.",
+    "w": "The single biggest lever on output quality, and the only one that's free.",
+    "s": ["System Prompt", "Prompt Engineering"]
+  },
+  {
+    "t": "Prompt Caching",
+    "c": "Building",
+    "a": "caching",
+    "d": "Reusing the processed form of a repeated chunk of prompt instead of paying to process it again.",
+    "w": "Long system prompts and big documents get much cheaper and faster on repeat calls.",
+    "s": ["Token", "Context Window"]
+  },
+  {
+    "t": "Prompt Engineering",
+    "c": "Prompting",
+    "a": "",
+    "d": "Writing and refining prompts systematically - clear instructions, examples, structure, constraints - until output is reliable.",
+    "w": "Less mystical than it sounds. It's mostly being specific and testing.",
+    "s": ["Few-Shot Prompting", "Chain of Thought", "Evals"]
+  },
+  {
+    "t": "Prompt Injection",
+    "c": "Risks",
+    "a": "indirect injection",
+    "d": "Hiding instructions inside content a model will read - a webpage, an email, a PDF - to hijack what it does next.",
+    "w": "The top security risk for agents. If your agent reads untrusted text, assume it can be talked into things.",
+    "s": ["Guardrails", "Jailbreak"]
+  },
+  {
+    "t": "Quantization",
+    "c": "Models",
+    "a": "4-bit, GGUF",
+    "d": "Storing a model's numbers at lower precision so it needs less memory and runs faster.",
+    "w": "How a 70B model ends up running on a decent laptop with only a small quality hit.",
+    "s": ["Open-Weights Model", "Distillation"]
+  },
+  {
+    "t": "RAG",
+    "c": "Data",
+    "a": "retrieval augmented generation",
+    "d": "Fetching relevant documents at question time and handing them to the model so it answers from your material.",
+    "w": "The standard way to make a general model useful on private, current company data.",
+    "s": ["Embedding", "Chunking", "Grounding"]
+  },
+  {
+    "t": "Rate Limit",
+    "c": "Building",
+    "a": "throttling, quota",
+    "d": "A cap on how many requests or tokens you can send in a window.",
+    "w": "Hits hardest at demo time. Build in retries with backoff before you need them.",
+    "s": ["API", "Latency"]
+  },
+  {
+    "t": "Reasoning Model",
+    "c": "Models",
+    "a": "thinking model, extended thinking",
+    "d": "A model trained to spend extra compute working through a problem internally before answering.",
+    "w": "Worth the extra seconds and cost on hard problems. Overkill for summarising an email.",
+    "s": ["Chain of Thought", "Latency"]
+  },
+  {
+    "t": "RLHF",
+    "c": "Models",
+    "a": "reinforcement learning from human feedback",
+    "d": "Training a model on human preferences between candidate answers, so it learns which responses people actually want.",
+    "w": "The step that turned raw text predictors into assistants worth talking to.",
+    "s": ["Alignment", "Fine-Tuning"]
+  },
+  {
+    "t": "Semantic Search",
+    "c": "Data",
+    "a": "vector search",
+    "d": "Searching by meaning rather than exact words, using embeddings.",
+    "w": "Finds the doc about 'staff leave policy' when someone searched 'time off'.",
+    "s": ["Embedding", "Vector Database"]
+  },
+  {
+    "t": "Streaming",
+    "c": "Building",
+    "a": "",
+    "d": "Sending the response token by token as it's generated instead of waiting for the whole thing.",
+    "w": "Same total time, far better experience. Users watch progress rather than a spinner.",
+    "s": ["Latency", "Token"]
+  },
+  {
+    "t": "Structured Output",
+    "c": "Prompting",
+    "a": "JSON mode, schema",
+    "d": "Forcing a model to reply in a fixed shape - valid JSON matching a schema you define.",
+    "w": "Turns text into something your code can use without brittle parsing.",
+    "s": ["Function Calling", "Tool Use"]
+  },
+  {
+    "t": "System Prompt",
+    "c": "Prompting",
+    "a": "system message",
+    "d": "Standing instructions that sit above the conversation - role, tone, rules, what to refuse.",
+    "w": "Where you encode your product's behaviour. Users see the results, never the text.",
+    "s": ["Prompt", "Prompt Injection"]
+  },
+  {
+    "t": "Temperature",
+    "c": "Prompting",
+    "a": "sampling, top-p",
+    "d": "A setting for randomness. Low temperature gives consistent, predictable text; high gives varied, surprising text.",
+    "w": "Near zero for extraction and classification. Higher for brainstorming and copy.",
+    "s": ["Inference"]
+  },
+  {
+    "t": "Token",
+    "c": "Models",
+    "a": "tokens, tokenization",
+    "d": "The chunks a model reads and writes - roughly three-quarters of a word each in English.",
+    "w": "You're billed per token and limited by tokens. It's the unit of everything.",
+    "s": ["Context Window", "Prompt Caching"]
+  },
+  {
+    "t": "Tool Use",
+    "c": "Agents",
+    "a": "tools, actions",
+    "d": "Giving a model access to real capabilities - search, a database query, a calculator, an API call - that it can invoke when needed.",
+    "w": "Turns a model that talks about your data into one that reads it.",
+    "s": ["Function Calling", "MCP", "AI Agent"]
+  },
+  {
+    "t": "Training Data",
+    "c": "Foundations",
+    "a": "dataset, corpus",
+    "d": "The material a model learns from.",
+    "w": "Its blind spots, biases and cutoff date all trace back here.",
+    "s": ["Pre-training", "Bias", "Knowledge Cutoff"]
+  },
+  {
+    "t": "Transformer",
+    "c": "Models",
+    "a": "",
+    "d": "The neural network architecture, introduced in 2017, behind nearly every modern language model.",
+    "w": "The 'T' in GPT. It's why progress accelerated so sharply.",
+    "s": ["Attention", "Large Language Model"]
+  },
+  {
+    "t": "Vector Database",
+    "c": "Data",
+    "a": "vector store, pgvector, Pinecone",
+    "d": "A database built to store embeddings and find the nearest matches fast.",
+    "w": "The memory layer for retrieval. Start with pgvector before buying anything.",
+    "s": ["Embedding", "RAG", "Semantic Search"]
+  },
+  {
+    "t": "Vibe Coding",
+    "c": "Building",
+    "a": "",
+    "d": "Building software by describing what you want to a coding agent and steering the result, rather than writing most lines yourself.",
+    "w": "Great for prototypes. Still needs review before anything touches production.",
+    "s": ["Claude Code", "AI Agent"]
+  },
+  {
+    "t": "Zero-Shot Prompting",
+    "c": "Prompting",
+    "a": "",
+    "d": "Asking a model to do a task with no examples, just instructions.",
+    "w": "Try this first. Modern models handle far more zero-shot than people expect.",
+    "s": ["Few-Shot Prompting", "Prompt"]
+  }
+]
