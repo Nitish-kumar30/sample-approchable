@@ -20,6 +20,7 @@ const NAV_LINKS = {
     { label: 'Live AI Cohort', href: '/' },
     { label: 'Team Training', href: '/team-ai-training' },
     { label: 'Blog', href: '/blog' },
+    { label: 'AI Glossary', href: '/glossary' },
     { label: 'Contact Us', href: '/contact' },
   ],
   contact: [
@@ -27,11 +28,13 @@ const NAV_LINKS = {
     { label: 'Courses', href: '/courses' },
     { label: 'Team Training', href: '/team-ai-training' },
     { label: 'Blog', href: '/blog' },
+    { label: 'AI Glossary', href: '/glossary' },
   ],
   blog: [
     { label: 'Live AI Cohort', href: '/' },
     { label: 'Courses', href: '/courses' },
     { label: 'Team Training', href: '/team-ai-training' },
+    { label: 'AI Glossary', href: '/glossary' },
     { label: 'Contact Us', href: '/contact' },
   ],
 } as const;

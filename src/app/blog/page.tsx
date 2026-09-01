@@ -136,6 +136,17 @@ export default function BlogIndexPage() {
             </div>
 
             <aside className="lg:w-72 shrink-0 flex flex-col gap-6">
+              <div className="rounded-xl border p-5" style={{ borderColor: 'var(--border)', backgroundColor: 'var(--bg-warm)' }}>
+                <h2 className="text-base font-semibold mb-2" style={{ color: 'var(--text-primary)' }}>
+                  New to AI terms?
+                </h2>
+                <p className="text-sm mb-3" style={{ color: 'var(--text-secondary)' }}>
+                  Use our plain-English glossary for quick definitions while you read.
+                </p>
+                <Link href="/glossary" className="text-sm font-medium" style={{ color: 'var(--accent)' }}>
+                  Open AI Glossary →
+                </Link>
+              </div>
               <SubscribeForm />
               <LatestPosts />
               <TagCounts />

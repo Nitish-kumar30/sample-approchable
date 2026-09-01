@@ -34,11 +34,17 @@ export function slugify(term: string): string {
     .replace(/^-|-$/g, '');
 }
 
+const GLOSSARY_ENTRIES: GlossaryEntry[] = (glossaryData as GlossaryEntryRaw[])
+  .map((entry) => ({
+    ...entry,
+    slug: slugify(entry.t),
+  }))
+  .sort((a, b) => a.t.localeCompare(b.t));
+
 export function getGlossaryEntries(): GlossaryEntry[] {
-  return (glossaryData as GlossaryEntryRaw[])
-    .map((entry) => ({
-      ...entry,
-      slug: slugify(entry.t),
-    }))
-    .sort((a, b) => a.t.localeCompare(b.t));
+  return GLOSSARY_ENTRIES;
+}
+
+export function getGlossaryEntryBySlug(slug: string): GlossaryEntry | undefined {
+  return GLOSSARY_ENTRIES.find((entry) => entry.slug === slug);
 }

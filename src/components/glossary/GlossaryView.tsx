@@ -27,10 +27,6 @@ function matches(entry: GlossaryEntry, query: string, category: GlossaryCategory
   return haystack.includes(query.toLowerCase());
 }
 
-function slugSet(entries: GlossaryEntry[]): Set<string> {
-  return new Set(entries.map((entry) => entry.slug));
-}
-
 interface GlossaryViewProps {
   entries: GlossaryEntry[];
 }
@@ -38,14 +34,11 @@ interface GlossaryViewProps {
 export default function GlossaryView({ entries }: GlossaryViewProps) {
   const [query, setQuery] = useState('');
   const [category, setCategory] = useState<GlossaryCategory | null>(null);
-  const [toastMessage, setToastMessage] = useState('');
 
   const filteredEntries = useMemo(
     () => entries.filter((entry) => matches(entry, query, category)),
     [entries, query, category]
   );
-  const entrySlugs = useMemo(() => slugSet(entries), [entries]);
-
   const groupedEntries = useMemo(() => {
     return filteredEntries.reduce<Map<string, GlossaryEntry[]>>((groups, entry) => {
       const letter = entry.t.charAt(0).toUpperCase();
@@ -57,11 +50,6 @@ export default function GlossaryView({ entries }: GlossaryViewProps) {
   }, [filteredEntries]);
 
   const activeLetters = useMemo(() => new Set(groupedEntries.keys()), [groupedEntries]);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setToastMessage(''), 1600);
-    return () => clearTimeout(timer);
-  }, [toastMessage]);
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -79,27 +67,7 @@ export default function GlossaryView({ entries }: GlossaryViewProps) {
     return () => document.removeEventListener('keydown', onKeyDown);
   }, []);
 
-  useEffect(() => {
-    if (!window.location.hash) return;
-    const id = window.location.hash.slice(1);
-    if (!entrySlugs.has(id)) return;
-    const element = document.getElementById(id);
-    if (element) window.setTimeout(() => element.scrollIntoView(), 60);
-  }, [entrySlugs]);
-
   const showClear = Boolean(query || category);
-
-  const copyDeepLink = async (slug: string) => {
-    const url = `${window.location.origin}${window.location.pathname}#${slug}`;
-    window.history.replaceState(null, '', `#${slug}`);
-    try {
-      await navigator.clipboard.writeText(url);
-      setToastMessage('Link copied');
-    } catch {
-      setToastMessage('Link ready in URL bar');
-    }
-    document.getElementById(slug)?.scrollIntoView();
-  };
 
   return (
     <>
@@ -215,13 +183,7 @@ export default function GlossaryView({ entries }: GlossaryViewProps) {
                   <article className="gl-card" id={entry.slug} key={entry.slug}>
                     <div className="gl-card-head">
                       <h3 className="gl-term">
-                        <Link
-                          href={`#${entry.slug}`}
-                          onClick={(event) => {
-                            event.preventDefault();
-                            void copyDeepLink(entry.slug);
-                          }}
-                        >
+                        <Link href={`/glossary/${entry.slug}`}>
                           {highlight(entry.t, query)}
                         </Link>
                       </h3>
@@ -238,7 +200,7 @@ export default function GlossaryView({ entries }: GlossaryViewProps) {
                         See also{' '}
                         {entry.s.map((term, index) => (
                           <span key={term}>
-                            <Link href={`#${slugify(term)}`}>{term}</Link>
+                            <Link href={`/glossary/${slugify(term)}`}>{term}</Link>
                             {index < entry.s.length - 1 ? ', ' : ''}
                           </span>
                         ))}
@@ -260,9 +222,6 @@ export default function GlossaryView({ entries }: GlossaryViewProps) {
         </section>
       </div>
 
-      <div id="gl-toast" role="status" className={toastMessage ? 'on' : ''}>
-        {toastMessage}
-      </div>
     </>
   );
 }
