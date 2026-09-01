@@ -100,20 +100,21 @@
   margin: 0 calc(-1 * var(--page-gutter, 1rem));
   padding: 12px var(--page-gutter, 1rem);
   border: none;
-  background: transparent;
+  background: var(--black);
   font-family: inherit;
   font-size: 13px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: #5d5a54;
+  color: white;
   text-align: left;
   cursor: pointer;
   transition: background 0.15s ease, color 0.15s ease;
 }
 .navMobileAction:hover,
-.navMobileAction:focus-visible {
-  background: var(--black);
+.navMobileAction:focus-visible,
+.navMobileAction:active {
+  background: var(--accent);
   color: white;
   outline: none;
 }

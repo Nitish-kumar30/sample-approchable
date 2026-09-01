@@ -263,19 +263,6 @@ body:not(:has(#topBanner)) .site-header {
   width: 20px;
   height: 20px;
 }
-.header-menu-btn-line {
-  transition: transform 0.2s ease, opacity 0.2s ease;
-  transform-origin: center;
-}
-.header-menu-btn--open .header-menu-btn-line-top {
-  transform: translateY(6px) rotate(45deg);
-}
-.header-menu-btn--open .header-menu-btn-line-mid {
-  opacity: 0;
-}
-.header-menu-btn--open .header-menu-btn-line-bot {
-  transform: translateY(-6px) rotate(-45deg);
-}
 .header-mobile-nav {
   display: none;
   border-top: 1px solid var(--border);
