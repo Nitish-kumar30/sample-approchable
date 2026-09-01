@@ -1,5 +1,5 @@
-import Image from 'next/image';
 import Link from 'next/link';
+import Logo from '@/components/Logo';
 
 interface HeaderProps {
   coursePage?: boolean;
@@ -65,13 +65,7 @@ export default function Header({
   return (
     <header className="site-header">
       <div className="container-max header-inner">
-        <Link href="/" className="logo-wrap">
-          <Image src="/logo.png" alt="Approachable" width={43} height={43} priority />
-          <div>
-            <div className="logo-name">Approachable</div>
-            <div className="logo-sub">making AI approachable for everyone</div>
-          </div>
-        </Link>
+        <Logo />
 
         {links ? (
           <nav className="header-nav">

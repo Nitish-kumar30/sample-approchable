@@ -12,6 +12,7 @@ import {
   type ReactNode,
 } from 'react';
 import CorporateTrainingForm from '@/components/corporate-training/CorporateTrainingForm';
+import Logo from '@/components/Logo';
 import pageStyles from '@/app/team-ai-training/team-ai-training.module.css';
 import styles from './enquiry-modal.module.css';
 
@@ -115,10 +116,7 @@ export function TeamAiTrainingNav() {
   return (
     <nav className={pageStyles.nav}>
       <div className={`${pageStyles.container} ${pageStyles.navInner}`}>
-        <a className={pageStyles.brand} href="#">
-          <span className={pageStyles.brandDot}></span>
-          Approachable
-        </a>
+        <Logo />
         <div className={pageStyles.navLinks}>
           <a href="#program">Program</a>
           <a href="#work">What we build</a>

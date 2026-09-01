@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import Header from '@/components/Header';
-import Banner from '@/components/Banner';
 import LatestPosts from '@/components/LatestPosts';
 import TagCounts from '@/components/TagCounts';
 import ArchiveWidget from '@/components/ArchiveWidget';
@@ -31,7 +30,6 @@ export default function BlogIndexPage() {
   return (
     <>
       <JsonLd data={blogSchema} />
-      <Banner />
       <Header navVariant="blog" />
       <main style={{ backgroundColor: 'var(--bg)', minHeight: '100vh' }}>
         <div className="mx-auto max-w-[1100px] px-6 py-20">

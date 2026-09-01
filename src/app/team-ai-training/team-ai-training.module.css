@@ -50,8 +50,6 @@
   backdrop-filter: blur(12px);
 }
 .navInner { display: flex; align-items: center; justify-content: space-between; gap: 30px; }
-.brand { font-size: 20px; font-weight: 650; display: flex; align-items: center; gap: 10px; }
-.brandDot { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); }
 .navLinks { display: flex; align-items: center; gap: 34px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.14em; color: #5d5a54; }
 .navLinks a:hover { color: var(--ink); }
 .btn {

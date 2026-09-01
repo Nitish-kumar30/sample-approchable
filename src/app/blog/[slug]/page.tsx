@@ -3,7 +3,6 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { marked } from 'marked';
-import Banner from '@/components/Banner';
 import Header from '@/components/Header';
 import LatestPosts from '@/components/LatestPosts';
 import TagCounts from '@/components/TagCounts';
@@ -49,7 +48,6 @@ export default async function BlogPostPage({ params }: Props) {
   return (
     <>
       <JsonLd data={blogPostSchema} />
-    <Banner />
       <Header navVariant="blog" />
       <main style={{ backgroundColor: 'var(--bg)', minHeight: '100vh' }}>
         <div className="mx-auto max-w-[1100px] px-6 py-20">

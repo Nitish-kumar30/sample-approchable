@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import Banner from '@/components/Banner';
 import Header from '@/components/Header';
 import LatestPosts from '@/components/LatestPosts';
 import TagCounts from '@/components/TagCounts';
@@ -41,7 +40,6 @@ export default async function TagPage({ params }: Props) {
 
   return (
     <>
-      <Banner />
       <Header navVariant="blog" />
       <main style={{ backgroundColor: 'var(--bg)', minHeight: '100vh' }}>
         <div className="mx-auto max-w-[1100px] px-6 py-20">
