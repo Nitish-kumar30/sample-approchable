@@ -1,7 +1,11 @@
 import Link from 'next/link';
 import FooterSubscribe from './FooterSubscribe';
 
-const footerColumns = [
+type FooterLink =
+  | { label: string; href: string }
+  | { label: string; static: true };
+
+const footerColumns: { heading: string; links: FooterLink[] }[] = [
   {
     heading: 'Company',
     links: [
@@ -12,7 +16,7 @@ const footerColumns = [
   {
     heading: 'Programs',
     links: [
-      { label: 'AI Cohort', href: '/#pricing' },
+      { label: 'AI Cohort', href: '/' },
       { label: 'AI Mastery for Working Professionals', href: '/courses/ai-mastery-for-working-professionals' },
       {
         label: 'No Code AI Agents Mastery for Working Professionals',
@@ -34,12 +38,23 @@ const footerColumns = [
   {
     heading: 'Legal',
     links: [
-      { label: 'Privacy Policy', href: '/privacy' },
-      { label: 'Terms of Service', href: '/terms' },
-      { label: 'Data Security', href: '/data-security' },
+      { label: 'Privacy Policy', static: true },
+      { label: 'Terms of Service', static: true },
     ],
   },
-] as const;
+];
+
+function FooterLinkItem({ link }: { link: FooterLink }) {
+  if ('static' in link) {
+    return <span className="footer-static-link">{link.label}</span>;
+  }
+
+  if (link.href.startsWith('mailto:')) {
+    return <a href={link.href}>{link.label}</a>;
+  }
+
+  return <Link href={link.href}>{link.label}</Link>;
+}
 
 export default function Footer() {
   return (
@@ -52,11 +67,7 @@ export default function Footer() {
               <ul className="footer-col-links">
                 {col.links.map((link) => (
                   <li key={link.label}>
-                    {link.href.startsWith('mailto:') ? (
-                      <a href={link.href}>{link.label}</a>
-                    ) : (
-                      <Link href={link.href}>{link.label}</Link>
-                    )}
+                    <FooterLinkItem link={link} />
                   </li>
                 ))}
               </ul>

@@ -803,6 +803,13 @@ section { padding: 64px 24px; }
 }
 .site-footer a { color: #78716C; font-size: 13px; text-decoration: none; transition: color 0.15s; }
 .site-footer a:hover { color: white; }
+.footer-static-link {
+  color: #78716C;
+  font-size: 13px;
+  cursor: default;
+  transition: color 0.15s;
+}
+.footer-static-link:hover { color: white; }
 
 /* Footer subscribe */
 .footer-subscribe { grid-column: span 1; }
@@ -853,7 +860,7 @@ section { padding: 64px 24px; }
   .footer-subscribe { grid-column: span 3; max-width: 360px; }
 }
 @media (min-width: 1024px) {
-  .footer-columns { grid-template-columns: repeat(6, 1fr); }
+  .footer-columns { grid-template-columns: 1fr 2fr 1fr 1fr 1fr 1.5fr; }
   .footer-subscribe { grid-column: span 1; max-width: none; }
 }
 
