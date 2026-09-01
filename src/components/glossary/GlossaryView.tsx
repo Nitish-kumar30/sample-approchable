@@ -73,88 +73,96 @@ export default function GlossaryView({ entries }: GlossaryViewProps) {
     <>
       <div className="gl-toolbar" id="glossary">
         <div className="container-max">
-          <div className="gl-search">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
-              <circle cx="11" cy="11" r="7" />
-              <path d="m20 20-3.5-3.5" />
-            </svg>
-            <input
-              id="gl-search-input"
-              className="gl-search-input"
-              type="search"
-              autoComplete="off"
-              placeholder='Search a term - try "agent" or "token"'
-              aria-label="Search the glossary"
-              aria-describedby="gl-count"
-              value={query}
-              onChange={(event) => setQuery(event.target.value.trimStart())}
-              onKeyDown={(event) => {
-                if (event.key === 'Escape') {
+          <div className="gl-toolbar-sticky">
+            <p className="gl-count" id="gl-count" role="status" aria-live="polite">
+              {filteredEntries.length === entries.length
+                ? `Showing all ${entries.length} terms`
+                : `${filteredEntries.length} of ${entries.length} terms`}
+            </p>
+
+            <div className="gl-search">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
+                <circle cx="11" cy="11" r="7" />
+                <path d="m20 20-3.5-3.5" />
+              </svg>
+              <input
+                id="gl-search-input"
+                className="gl-search-input"
+                type="search"
+                autoComplete="off"
+                placeholder='Search a term - try "agent" or "token"'
+                aria-label="Search the glossary"
+                aria-describedby="gl-count"
+                value={query}
+                onChange={(event) => setQuery(event.target.value.trimStart())}
+                onKeyDown={(event) => {
+                  if (event.key === 'Escape') {
+                    setQuery('');
+                    setCategory(null);
+                  }
+                }}
+              />
+              <button
+                type="button"
+                className={`gl-clear${showClear ? ' on' : ''}`}
+                onClick={() => {
                   setQuery('');
                   setCategory(null);
-                }
-              }}
-            />
-            <button
-              type="button"
-              className={`gl-clear${showClear ? ' on' : ''}`}
-              onClick={() => {
-                setQuery('');
-                setCategory(null);
-              }}
-            >
-              Clear
-            </button>
-            <span className="gl-kbd">/</span>
-          </div>
-
-          <div className="gl-chips" role="group" aria-label="Filter by category">
-            <button
-              type="button"
-              className="gl-chip"
-              data-cat="all"
-              aria-pressed={category === null}
-              onClick={() => setCategory(null)}
-            >
-              All terms
-            </button>
-            {CATEGORIES.map((item) => (
-              <button
-                key={item}
-                type="button"
-                className="gl-chip"
-                data-cat={item}
-                aria-pressed={category === item}
-                onClick={() => setCategory(item)}
+                }}
               >
-                {CATEGORY_LABELS[item]}
+                Clear
               </button>
-            ))}
+              <span className="gl-kbd">/</span>
+            </div>
           </div>
 
-          <div className="gl-az" aria-label="Jump to letter">
-            {LETTERS.map((letter) =>
-              activeLetters.has(letter) ? (
-                <Link key={letter} href={`#letter-${letter}`}>
-                  {letter}
-                </Link>
-              ) : (
-                <span key={letter} aria-hidden="true">
-                  {letter}
-                </span>
-              )
-            )}
+          <div className="gl-toolbar-scroll">
+            <div className="gl-chips-scroll">
+              <div className="gl-chips" role="group" aria-label="Filter by category">
+                <button
+                  type="button"
+                  className="gl-chip"
+                  data-cat="all"
+                  aria-pressed={category === null}
+                  onClick={() => setCategory(null)}
+                >
+                  All terms
+                </button>
+                {CATEGORIES.map((item) => (
+                  <button
+                    key={item}
+                    type="button"
+                    className="gl-chip"
+                    data-cat={item}
+                    aria-pressed={category === item}
+                    onClick={() => setCategory(item)}
+                  >
+                    {CATEGORY_LABELS[item]}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="gl-az-scroll">
+              <div className="gl-az" aria-label="Jump to letter">
+                {LETTERS.map((letter) =>
+                  activeLetters.has(letter) ? (
+                    <Link key={letter} href={`#letter-${letter}`}>
+                      {letter}
+                    </Link>
+                  ) : (
+                    <span key={letter} aria-hidden="true">
+                      {letter}
+                    </span>
+                  )
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
       <div className="container-max">
-        <p className="gl-count" id="gl-count" role="status" aria-live="polite">
-          {filteredEntries.length === entries.length
-            ? `Showing all ${entries.length} terms`
-            : `${filteredEntries.length} of ${entries.length} terms`}
-        </p>
-
         {filteredEntries.length === 0 ? (
           <div className="gl-empty">
             <h2>Nothing here for "{query}"</h2>

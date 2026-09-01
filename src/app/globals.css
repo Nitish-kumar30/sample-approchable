@@ -43,6 +43,8 @@ body {
   flex-direction: column;
   overflow-x: clip;
   max-width: 100%;
+  --header-offset: 0px;
+  --header-height: 63px;
 }
 body.mobile-nav-open {
   overflow: hidden;
@@ -107,13 +109,14 @@ main {
   border-bottom: 1px solid var(--border);
   background: var(--bg);
   position: sticky;
-  top: 36px;
+  top: var(--header-offset);
   z-index: 90;
   overflow-x: hidden;
 }
-/* Pages without the top promo banner (e.g. /courses) */
-body:not(:has(#topBanner)) .site-header {
-  top: 0;
+/* Keep header below promo banner when it exists */
+#topBanner + .site-header {
+  --header-offset: 36px;
+  top: 36px;
 }
 .header-inner {
   display: grid;
@@ -1839,11 +1842,14 @@ section {
 }
 .gl-toolbar {
   position: sticky;
-  top: 63px;
+  top: var(--header-height);
   z-index: 80;
   background: var(--bg);
   border-bottom: 1px solid var(--border);
   padding-top: 16px;
+}
+.gl-toolbar-sticky {
+  background: var(--bg);
 }
 .gl-search {
   position: relative;
@@ -1972,7 +1978,7 @@ section {
   font-size: 13px;
   font-weight: 600;
   color: var(--text-muted);
-  padding: 24px 0 0;
+  padding: 0 0 12px;
   margin: 0;
 }
 .gl-letter {
@@ -2188,14 +2194,69 @@ section {
   opacity: 1;
 }
 @media (max-width: 767px) {
+  body {
+    --header-height: 53px;
+  }
   .gl-toolbar {
-    top: 63px;
+    position: static;
+    border-bottom: 0;
+    padding-top: 10px;
+  }
+  .gl-toolbar-sticky {
+    position: sticky;
+    top: var(--header-height);
+    z-index: 80;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 10px;
   }
   .glossary-page .gl-page-hero {
-    padding-top: 40px;
+    padding: 28px var(--page-gutter) 20px;
   }
   .gl-kbd {
     display: none;
+  }
+  .gl-count {
+    padding-bottom: 8px;
+  }
+  .gl-toolbar-scroll {
+    padding-top: 10px;
+  }
+  .gl-chips-scroll,
+  .gl-az-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .gl-chips-scroll::-webkit-scrollbar,
+  .gl-az-scroll::-webkit-scrollbar {
+    display: none;
+  }
+  .gl-chips {
+    flex-wrap: nowrap;
+    width: max-content;
+    gap: 8px;
+    padding: 0 0 8px;
+  }
+  .gl-chip {
+    padding: 5px 12px;
+    white-space: nowrap;
+  }
+  .gl-az {
+    flex-wrap: nowrap;
+    width: max-content;
+    gap: 1px;
+    padding: 8px 0 10px;
+    margin-top: 8px;
+  }
+  .gl-az a,
+  .gl-az span {
+    width: 22px;
+    height: 22px;
+    font-size: 12px;
+  }
+  .gl-card {
+    scroll-margin-top: 110px;
   }
   .gl-grid {
     grid-template-columns: 1fr;
