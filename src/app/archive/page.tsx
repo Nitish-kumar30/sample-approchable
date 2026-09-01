@@ -1,34 +1,35 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import Banner from '@/components/Banner';
 import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import { getPostsGroupedByMonth } from '@/lib/posts';
+import { buildPageMetadata } from '@/lib/seo/metadata';
 
 export const revalidate = 60;
 
-export const metadata: Metadata = {
-  title: 'Archives — Approachable',
-  description: 'Browse all blog posts by month and year.',
-  openGraph: {
-    title: 'Archives — Approachable',
-    description: 'Browse all blog posts by month and year.',
-    url: 'https://approachable.dev/archive',
-  },
-};
+const ARCHIVE_DESCRIPTION =
+  'Browse all Approachable blog posts organized by month and year — AI tips, Claude guides, and learning insights.';
+
+export const metadata: Metadata = buildPageMetadata({
+  title: 'Archives',
+  description: ARCHIVE_DESCRIPTION,
+  path: '/archive',
+  ogImageAlt: 'Approachable blog archives',
+});
 
 export default function ArchivePage() {
   const groups = getPostsGroupedByMonth();
 
   return (
     <>
-      <Banner />
-      <Header hideNav coursePage />
+      <Header navVariant="blog" />
       <main style={{ backgroundColor: 'var(--bg)', minHeight: '100vh' }}>
-        <div className="mx-auto max-w-[800px] px-6 py-20">
-          <h1 className="text-4xl font-bold mb-10" style={{ color: 'var(--text-primary)' }}>
+        <div className="mx-auto max-w-[800px] px-4 md:px-6 py-8 md:py-12 lg:py-16">
+          <h1 className="text-4xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
             Archives
           </h1>
+          <p className="mb-10 text-lg" style={{ color: 'var(--text-secondary)' }}>
+            Every post from the Approachable blog, sorted by date.
+          </p>
 
           {groups.length === 0 ? (
             <p style={{ color: 'var(--text-muted)' }}>No posts yet. Check back soon.</p>

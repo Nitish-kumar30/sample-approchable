@@ -1,6 +1,8 @@
 {
   "name": "Approachable",
   "short_name": "Approachable",
+  "description": "Making AI approachable for everyone — cohorts, courses, and team training on the Claude ecosystem.",
+  "start_url": "/",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",

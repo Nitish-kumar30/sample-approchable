@@ -1,0 +1,233 @@
+.formRoot {
+  --form-ink: #171715;
+  --form-ink-soft: #4b5563;
+  --form-label: #171715;
+  --form-line: #64748b;
+  --form-line-focus: #c96243;
+  --form-bg: #ffffff;
+  --form-accent: #df7958;
+  --form-accent-dark: #c96243;
+  --form-radius: 10px;
+}
+
+.inquiryForm {
+  width: 100%;
+  background: var(--form-bg);
+  border: 1px solid #cbd5e1;
+  border-radius: var(--form-radius);
+  padding: 28px 30px;
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.08);
+}
+
+@media (max-width: 640px) {
+  .inquiryForm {
+    padding: 20px 16px;
+  }
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 14px 24px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.btnAccent {
+  background: var(--form-accent);
+  color: #fff;
+  margin-top: 4px;
+}
+
+.btnAccent:hover:not(:disabled) {
+  transform: translateY(-1px);
+  background: var(--form-accent-dark);
+}
+
+.btnAccent:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.btnGhost {
+  background: transparent;
+  color: var(--form-ink);
+  border: 2px solid #94a3b8;
+}
+
+.btnGhost:hover {
+  border-color: var(--form-ink);
+}
+
+.btn:focus-visible {
+  outline: 3px solid var(--form-accent-dark);
+  outline-offset: 2px;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+@media (min-width: 600px) {
+  .formRow {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.formField {
+  margin-bottom: 18px;
+}
+
+.formField:last-of-type {
+  margin-bottom: 22px;
+}
+
+.formField label,
+.formLabel {
+  display: block;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--form-label);
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.formField input,
+.formField select,
+.formField textarea {
+  display: block;
+  width: 100%;
+  min-height: 48px;
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--form-ink);
+  background-color: var(--form-bg);
+  border: 2px solid var(--form-line);
+  border-radius: var(--form-radius);
+  padding: 12px 14px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.formField input::placeholder,
+.formField textarea::placeholder {
+  color: var(--form-ink-soft);
+  opacity: 1;
+}
+
+.formField select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%234b5563' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 42px;
+}
+
+.formField select:invalid {
+  color: var(--form-ink-soft);
+}
+
+.formField select option {
+  color: var(--form-ink);
+}
+
+.formField input:focus,
+.formField select:focus,
+.formField textarea:focus {
+  outline: none;
+  border-color: var(--form-line-focus);
+  box-shadow: 0 0 0 4px rgba(223, 121, 88, 0.18);
+}
+
+.formField textarea {
+  resize: vertical;
+  min-height: 140px;
+  line-height: 1.55;
+}
+
+.formError {
+  font-size: 14px;
+  color: #b45309;
+  font-weight: 600;
+  margin-top: 6px;
+  margin-bottom: 0;
+}
+
+.formSubmitError {
+  font-size: 15px;
+  color: #92400e;
+  font-weight: 600;
+  background: #fef3c7;
+  border: 1px solid #fcd34d;
+  border-radius: var(--form-radius);
+  padding: 12px 14px;
+  margin-bottom: 18px;
+}
+
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.formSuccess {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: var(--form-radius);
+  padding: 32px 30px;
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.08);
+}
+
+.formSuccess h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #171715;
+  margin: 0 0 10px;
+}
+
+.formSuccess p {
+  color: #4b5563;
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0 0 20px;
+}
+
+.formSuccess a {
+  color: #c96243;
+  font-weight: 600;
+}
+
+.formSuccess .btnGhost {
+  color: #171715;
+  border-color: #64748b;
+  background: #ffffff;
+}
+
+.formSuccess .btnGhost:hover {
+  border-color: #171715;
+  background: #f8fafc;
+}
+
+.formSuccess a:hover {
+  text-decoration: underline;
+}

@@ -13,6 +13,7 @@ export interface CurriculumItem {
   type: 'video' | 'quiz' | 'reading' | 'project';
   locked: boolean;
   previewUrl?: string;
+  isNew?: boolean;
 }
 
 export interface CourseSession {

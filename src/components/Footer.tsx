@@ -1,14 +1,83 @@
+import Link from 'next/link';
+import FooterSubscribe from './FooterSubscribe';
+
+type FooterLink =
+  | { label: string; href: string }
+  | { label: string; static: true };
+
+const footerColumns: { heading: string; links: FooterLink[] }[] = [
+  {
+    heading: 'Company',
+    links: [
+      { label: 'About Us', href: '/about' },
+      { label: 'Contact Us', href: '/contact' },
+    ],
+  },
+  {
+    heading: 'Programs',
+    links: [
+      { label: 'Live AI Cohort', href: '/' },
+      { label: 'AI Mastery for Working Professionals', href: '/courses/ai-mastery-for-working-professionals' },
+      {
+        label: 'No Code AI Agents Mastery for Working Professionals',
+        href: '/courses/no-code-ai-agents-mastery-for-working-professionals',
+      },
+      { label: 'Vibe Coding Mastery for Working Professionals', href: '/courses/vibe-coding-mastery-for-working-professionals' },
+      { label: 'Free Courses', href: '/courses' },
+      { label: 'Team Training', href: '/team-ai-training' },
+    ],
+  },
+  {
+    heading: 'Resources',
+    links: [{ label: 'Blog', href: '/blog' }],
+  },
+  {
+    heading: 'Support',
+    links: [{ label: 'Contact Us', href: '/contact' }],
+  },
+  {
+    heading: 'Legal',
+    links: [
+      { label: 'Privacy Policy', static: true },
+      { label: 'Terms of Service', static: true },
+    ],
+  },
+];
+
+function FooterLinkItem({ link }: { link: FooterLink }) {
+  if ('static' in link) {
+    return <span className="footer-static-link">{link.label}</span>;
+  }
+
+  if (link.href.startsWith('mailto:')) {
+    return <a href={link.href}>{link.label}</a>;
+  }
+
+  return <Link href={link.href}>{link.label}</Link>;
+}
+
 export default function Footer() {
   return (
     <footer className="site-footer">
-      <div className="footer-inner">
-        <div style={{ fontSize: 13 }}>© 2026 Approachable · making AI approachable for everyone</div>
-        <div style={{ display: 'flex', gap: 20 }}>
-          <a href="https://www.linkedin.com/in/ranbeer/" target="_blank" rel="noopener noreferrer">
-            LinkedIn
-          </a>
+      <div className="footer-main">
+        <div className="footer-columns">
+          {footerColumns.map((col) => (
+            <div key={col.heading} className="footer-col">
+              <h4 className="footer-col-heading">{col.heading}</h4>
+              <ul className="footer-col-links">
+                {col.links.map((link) => (
+                  <li key={link.label}>
+                    <FooterLinkItem link={link} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+          <FooterSubscribe />
         </div>
       </div>
+
+      <p className="footer-copyright">© 2026 Approachable · making AI approachable for everyone</p>
     </footer>
   );
 }

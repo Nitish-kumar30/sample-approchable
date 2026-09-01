@@ -1,11 +1,14 @@
 import type { Metadata } from 'next';
-import { redirect } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import { getCourseContent, getCourseSections, getSectionIcon, ALL_CATALOG_SLUGS } from '@/lib/course-content';
 import CurriculumSection from '@/components/course/CurriculumSection';
 import CourseInfoPanel from '@/components/course/CourseInfoPanel';
 import CourseStickyBar from '@/components/course/CourseStickyBar';
 import Header from '@/components/Header';
 import FAQSection from '@/components/course/FAQSection';
+import JsonLd from '@/components/JsonLd';
+import { buildCourseSchema } from '@/lib/seo/course-schema';
+import { buildPageMetadata } from '@/lib/seo/metadata';
 import styles from './course.module.css';
 
 const COURSE_SLUGS = ALL_CATALOG_SLUGS;
@@ -18,36 +21,28 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const course = await getCourseContent(slug);
   if (!course) return {};
-  return {
-    title: `${course.title} — Approachable`,
+  const title = course.title;
+  return buildPageMetadata({
+    title,
     description: course.ogDescription,
-    openGraph: {
-      type: 'website',
-      title: `${course.title} — Approachable`,
-      description: course.ogDescription,
-      url: `/courses/${course.slug}`,
-      siteName: 'Approachable',
-      images: [{ url: course.ogImage, alt: 'Approachable — your AI journey starts here' }],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: `${course.title} — Approachable`,
-      description: course.ogDescription,
-      images: [course.ogImage],
-    },
-  };
+    path: `/courses/${course.slug}`,
+    ogImage: course.ogImage,
+    ogImageAlt: `${course.title} — Approachable`,
+  });
 }
 
 export default async function CourseDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const course = await getCourseContent(slug);
-  if (!course) redirect('/');
+  if (!course) notFound();
 
   const sections = getCourseSections(course.description);
+  const courseSchema = buildCourseSchema(course);
 
   return (
     <>
-      <Header coursePage showBackToCourses />
+      <JsonLd data={courseSchema} />
+      <Header navVariant="course" showBackToCourses />
       <div className={`${styles.page}${course.isFree ? ` ${styles.pageNoSticky}` : ''}`}>
       {course.discountLabel && !course.isFree && (
         <div className={styles.discountBanner}>{course.discountLabel}</div>

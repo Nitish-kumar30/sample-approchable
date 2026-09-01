@@ -66,6 +66,7 @@ export default function CurriculumSection({ sessions }: CurriculumSectionProps) 
                       <span className="row-num">{item.number ?? ''}</span>
                       {getItemIcon(item.type, item.locked)}
                       <span className="truncate">{item.title}</span>
+                      {item.isNew && <span className="curriculum-new-badge">New</span>}
                     </div>
                     {isClickable && (
                       <button

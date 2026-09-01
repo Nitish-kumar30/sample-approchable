@@ -2,35 +2,61 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import Header from '@/components/Header';
-import Banner from '@/components/Banner';
 import LatestPosts from '@/components/LatestPosts';
 import TagCounts from '@/components/TagCounts';
 import ArchiveWidget from '@/components/ArchiveWidget';
 import SubscribeForm from '@/components/SubscribeForm';
+import JsonLd from '@/components/JsonLd';
 import { getAllPosts } from '@/lib/posts';
+import { buildBlogIndexSchema } from '@/lib/seo/blog-schema';
+import { DEFAULT_OG_IMAGE, SITE_NAME } from '@/lib/seo/site';
 
 // revalidate every 60 s so new CMS posts appear without a full redeploy
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: 'Blog — Approachable',
-  description: 'Insights on AI, learning, and making the most of tools like Claude.',
+  title: { absolute: `Blog | ${SITE_NAME} — AI & Claude Insights` },
+  description: 'The Approachable blog with insights on AI, Claude, learning, and practical workflows.',
+  keywords: ['Approachable blog', 'AI blog', 'Claude AI', 'approachable.dev'],
+  alternates: {
+    canonical: '/blog',
+    types: {
+      'application/rss+xml': '/feed.xml',
+    },
+  },
   openGraph: {
-    title: 'Blog — Approachable',
-    description: 'Insights on AI, learning, and making the most of tools like Claude.',
-    url: 'https://approachable.dev/blog',
+    type: 'website',
+    title: `Blog | ${SITE_NAME} — AI & Claude Insights`,
+    description: 'Insights on AI, Claude, learning, and practical workflows from Approachable.',
+    url: '/blog',
+    siteName: SITE_NAME,
+    images: [
+      {
+        url: DEFAULT_OG_IMAGE,
+        width: 1200,
+        height: 630,
+        alt: `${SITE_NAME} blog`,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `Blog | ${SITE_NAME} — AI & Claude Insights`,
+    description: 'Insights on AI, Claude, learning, and practical workflows from Approachable.',
+    images: [DEFAULT_OG_IMAGE],
   },
 };
 
 export default function BlogIndexPage() {
   const posts = getAllPosts();
+  const blogSchema = buildBlogIndexSchema(posts);
 
   return (
     <>
-      <Banner />
-      <Header hideNav coursePage/>
+      <JsonLd data={blogSchema} />
+      <Header navVariant="blog" />
       <main style={{ backgroundColor: 'var(--bg)', minHeight: '100vh' }}>
-        <div className="mx-auto max-w-[1100px] px-6 py-20">
+        <div className="mx-auto max-w-[1100px] px-4 md:px-6 py-8 md:py-12 lg:py-16">
           <div className="flex flex-col lg:flex-row gap-12">
             <div className="flex-1 min-w-0">
               <h1

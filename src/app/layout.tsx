@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import Script from 'next/script';
 import Footer from '@/components/Footer';
+import { DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from '@/lib/seo/site';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -9,28 +10,24 @@ const inter = Inter({ subsets: ['latin'] });
 const defaultTitle = 'Approachable — Making AI Approachable for Everyone';
 const defaultDescription =
   'A small-group, mentor-led cohort on the full Claude ecosystem — Claude Chat, Claude Code, Claude Cowork, and the API. 20 seats. Live sessions. Real projects.';
-const defaultOgImage = '/img/og-image.png';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://approachable.dev'),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: defaultTitle,
     template: '%s — Approachable',
   },
   description: defaultDescription,
   keywords: ['Claude AI', 'Claude Code', 'AI cohort', 'Claude ecosystem', 'AI learning', 'mentor-led', 'Anthropic', 'approachable'],
-  alternates: {
-    canonical: '/',
-  },
   openGraph: {
     type: 'website',
     url: '/',
-    siteName: 'Approachable',
+    siteName: SITE_NAME,
     title: defaultTitle,
     description: defaultDescription,
     images: [
       {
-        url: defaultOgImage,
+        url: DEFAULT_OG_IMAGE,
         width: 1200,
         height: 630,
         alt: 'Approachable — Claude AI cohort for working professionals',
@@ -41,7 +38,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: defaultTitle,
     description: defaultDescription,
-    images: [defaultOgImage],
+    images: [DEFAULT_OG_IMAGE],
   },
   icons: {
     icon: [
@@ -52,6 +49,11 @@ export const metadata: Metadata = {
     shortcut: '/favicon.ico',
   },
   manifest: '/site.webmanifest',
+};
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
