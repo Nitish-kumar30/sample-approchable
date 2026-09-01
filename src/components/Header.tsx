@@ -1,4 +1,8 @@
+'use client';
+
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import Logo from '@/components/Logo';
 
 interface HeaderProps {
@@ -31,6 +35,12 @@ const NAV_LINKS = {
   ],
 } as const;
 
+const DEFAULT_LINKS = [
+  { label: 'Courses', href: '/courses' },
+  { label: 'Corporate Training', href: '/team-ai-training' },
+  { label: 'Contact Us', href: '/contact' },
+] as const;
+
 function BackLink({ href, ariaLabel, fullLabel }: { href: string; ariaLabel: string; fullLabel: string }) {
   return (
     <Link href={href} className="header-back-link" aria-label={ariaLabel}>
@@ -52,6 +62,26 @@ function BackLink({ href, ariaLabel, fullLabel }: { href: string; ariaLabel: str
   );
 }
 
+function NavLinks({
+  links,
+  className,
+  onNavigate,
+}: {
+  links: readonly { label: string; href: string }[];
+  className: string;
+  onNavigate?: () => void;
+}) {
+  return (
+    <>
+      {links.map(({ label, href }) => (
+        <Link key={label} href={href} className={className} onClick={onNavigate}>
+          {label}
+        </Link>
+      ))}
+    </>
+  );
+}
+
 export default function Header({
   coursePage = false,
   showBackToCourses = false,
@@ -60,44 +90,67 @@ export default function Header({
   hideNav = false,
   navVariant,
 }: HeaderProps) {
+  const pathname = usePathname();
+  const [menuOpen, setMenuOpen] = useState(false);
+
   const links = navVariant ? NAV_LINKS[navVariant] : null;
+  const showMainNav = !hideNav && (links || (!coursePage && !navVariant));
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    document.body.classList.toggle('mobile-nav-open', menuOpen);
+    return () => document.body.classList.remove('mobile-nav-open');
+  }, [menuOpen]);
+
+  const mobileCta = showCorporateEnquiry ? (
+    <a href="#book" className="header-mobile-cta" onClick={() => setMenuOpen(false)}>
+      Send enquiry →
+    </a>
+  ) : !coursePage && !hideNav && !navVariant && !showBackToCourses && !showBackToCorporate ? (
+    <Link href="/#pricing" className="header-mobile-cta" onClick={() => setMenuOpen(false)}>
+      Join the Cohort →
+    </Link>
+  ) : null;
 
   return (
-    <header className="site-header">
+    <header className={`site-header${menuOpen ? ' site-header--menu-open' : ''}`}>
       <div className="container-max header-inner">
         <Logo />
 
         {links ? (
-          <nav className="header-nav">
-            {links.map(({ label, href }) =>
-              href ? (
-                <Link key={label} href={href} className="header-nav-link">
-                  {label}
-                </Link>
-              ) : (
-                <span key={label} className="header-nav-link header-nav-link-static" aria-disabled="true">
-                  {label}
-                </span>
-              )
-            )}
+          <nav className="header-nav" aria-label="Main navigation">
+            <NavLinks links={links} className="header-nav-link" />
           </nav>
         ) : (
-          !coursePage && !hideNav && (
-          <nav className="header-nav">
-            <Link href="/courses" className="header-nav-link">
-              Courses
-            </Link>
-            <Link href="/team-ai-training" className="header-nav-link">
-              Corporate Training
-            </Link>
-            <Link href="/contact" className="header-nav-link">
-              Contact Us
-            </Link>
-          </nav>
+          !coursePage &&
+          !hideNav && (
+            <nav className="header-nav" aria-label="Main navigation">
+              <NavLinks links={DEFAULT_LINKS} className="header-nav-link" />
+            </nav>
           )
         )}
 
         <div className="header-actions">
+          {showMainNav && (
+            <button
+              type="button"
+              className="header-menu-btn"
+              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={menuOpen}
+              aria-controls="header-mobile-nav"
+              onClick={() => setMenuOpen((open) => !open)}
+            >
+              <span className="header-menu-icon" aria-hidden="true">
+                <span />
+                <span />
+                <span />
+              </span>
+            </button>
+          )}
+
           {showBackToCourses ? (
             <BackLink href="/courses" ariaLabel="Back to courses" fullLabel="Back to Courses" />
           ) : showBackToCorporate ? (
@@ -111,7 +164,9 @@ export default function Header({
               Send enquiry →
             </a>
           ) : (
-            !coursePage && !hideNav && !navVariant && (
+            !coursePage &&
+            !hideNav &&
+            !navVariant && (
               <Link href="/#pricing" className="header-cta">
                 Join the Cohort →
               </Link>
@@ -119,6 +174,24 @@ export default function Header({
           )}
         </div>
       </div>
+
+      {showMainNav && (
+        <nav
+          id="header-mobile-nav"
+          className={`header-mobile-nav${menuOpen ? ' header-mobile-nav--open' : ''}`}
+          aria-label="Mobile navigation"
+          aria-hidden={!menuOpen}
+        >
+          <div className="container-max header-mobile-nav-inner">
+            {links ? (
+              <NavLinks links={links} className="header-mobile-nav-link" onNavigate={() => setMenuOpen(false)} />
+            ) : (
+              <NavLinks links={DEFAULT_LINKS} className="header-mobile-nav-link" onNavigate={() => setMenuOpen(false)} />
+            )}
+            {mobileCta}
+          </div>
+        </nav>
+      )}
     </header>
   );
 }

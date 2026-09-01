@@ -16,7 +16,7 @@ const footerColumns: { heading: string; links: FooterLink[] }[] = [
   {
     heading: 'Programs',
     links: [
-      { label: 'AI Cohort', href: '/' },
+      { label: 'Live AI Cohort', href: '/' },
       { label: 'AI Mastery for Working Professionals', href: '/courses/ai-mastery-for-working-professionals' },
       {
         label: 'No Code AI Agents Mastery for Working Professionals',
