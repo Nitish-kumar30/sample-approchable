@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { ALL_CATALOG_SLUGS } from '@/lib/course-content';
+import { getGlossaryEntries } from '@/lib/glossary';
 import { getAllPosts, getAllTags } from '@/lib/posts';
 import { absoluteUrl } from '@/lib/seo/site';
 
@@ -7,6 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
   const posts = getAllPosts();
   const tags = getAllTags();
+  const glossaryEntries = getGlossaryEntries();
 
   const staticRoutes: MetadataRoute.Sitemap = [
     {
@@ -44,6 +46,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: 'weekly',
       priority: 0.9,
+    },
+    {
+      url: absoluteUrl('/glossary'),
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.7,
     },
     {
       url: absoluteUrl('/archive'),
@@ -110,5 +118,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.5,
     }));
 
-  return [...staticRoutes, ...courseRoutes, ...blogRoutes, ...blogTagRoutes];
+  const glossaryTermRoutes: MetadataRoute.Sitemap = glossaryEntries.map((entry) => ({
+    url: absoluteUrl(`/glossary/${entry.slug}`),
+    lastModified,
+    changeFrequency: 'monthly',
+    priority: 0.65,
+  }));
+
+  return [...staticRoutes, ...courseRoutes, ...blogRoutes, ...blogTagRoutes, ...glossaryTermRoutes];
 }

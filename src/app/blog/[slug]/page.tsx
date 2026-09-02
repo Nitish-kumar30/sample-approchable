@@ -138,10 +138,36 @@ export default async function BlogPostPage({ params }: Props) {
                 dangerouslySetInnerHTML={{ __html: html }}
               />
 
+              <div
+                className="rounded-xl border p-5 mt-10"
+                style={{ borderColor: 'var(--border)', backgroundColor: 'var(--bg-warm)' }}
+              >
+                <h2 className="text-base font-semibold mb-2" style={{ color: 'var(--text-primary)' }}>
+                  Need a quick definition?
+                </h2>
+                <p className="text-sm mb-3" style={{ color: 'var(--text-secondary)' }}>
+                  Browse the AI Glossary for plain-English explanations of common terms in this post.
+                </p>
+                <Link href="/glossary" className="text-sm font-medium" style={{ color: 'var(--accent)' }}>
+                  Open AI Glossary →
+                </Link>
+              </div>
+
               <ShareButtons title={post.title} url={`${SITE_URL}/blog/${slug}`} variant="full" />
             </article>
 
             <aside className="lg:w-72 shrink-0 flex flex-col gap-6">
+              <div className="rounded-xl border p-5" style={{ borderColor: 'var(--border)', backgroundColor: 'var(--bg-warm)' }}>
+                <h2 className="text-base font-semibold mb-2" style={{ color: 'var(--text-primary)' }}>
+                  AI Glossary
+                </h2>
+                <p className="text-sm mb-3" style={{ color: 'var(--text-secondary)' }}>
+                  Definitions for terms like tokens, RAG, MCP, agents, and more.
+                </p>
+                <Link href="/glossary" className="text-sm font-medium" style={{ color: 'var(--accent)' }}>
+                  Browse glossary →
+                </Link>
+              </div>
               <SubscribeForm />
               <LatestPosts />
               <TagCounts />
