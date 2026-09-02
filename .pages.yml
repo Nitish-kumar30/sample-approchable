@@ -1,0 +1,42 @@
+media:
+  input: public/images/posts
+  output: /images/posts
+content:
+  - name: posts
+    label: Blog Posts
+    type: collection
+    path: content/posts
+    filename: "{primary}.md"
+    format: yaml-frontmatter
+    view:
+      primary: title
+      sort: date
+      order: desc
+    fields:
+      - name: title
+        type: string
+        required: true
+      - name: date
+        type: date
+        required: true
+      - name: excerpt
+        type: text
+        required: true
+      - name: coverImage
+        type: image
+        options:
+          path: public/images/posts
+      - name: tags
+        type: select
+        multiple: true
+        options:
+          values:
+            - ai
+            - nextjs
+            - cms
+            - prompting
+            - productivity
+            - learning
+      - name: body
+        type: rich-text
+        required: true

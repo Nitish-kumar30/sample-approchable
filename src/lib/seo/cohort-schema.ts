@@ -1,6 +1,5 @@
 import { COHORT } from '@/lib/cohort-config';
-
-const SITE_URL = 'https://approachable.dev';
+import { SITE_NAME, SITE_URL, absoluteUrl } from '@/lib/seo/site';
 
 export interface FaqItem {
   q: string;
@@ -20,9 +19,9 @@ export function buildCohortSchema(faq: FaqItem[]) {
       {
         '@type': 'Organization',
         '@id': `${SITE_URL}/#organization`,
-        name: 'Approachable',
+        name: SITE_NAME,
         url: SITE_URL,
-        logo: `${SITE_URL}/logo.png`,
+        logo: absoluteUrl('/logo.png'),
       },
       {
         '@type': 'Course',

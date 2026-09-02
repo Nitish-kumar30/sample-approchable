@@ -1,39 +1,64 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
+import {
+  EnquiryModalProvider,
+  OpenEnquiryButton,
+  TeamAiTrainingNav,
+} from '@/components/corporate-training/EnquiryModal';
+import JsonLd from '@/components/JsonLd';
+import { buildPageMetadata } from '@/lib/seo/metadata';
+import { buildTeamTrainingSchema } from '@/lib/seo/team-training-schema';
 import styles from './team-ai-training.module.css';
 
-export const metadata: Metadata = {
-  title: 'Approachable — Practical AI Implementation for Teams',
-  description:
-    'A four-week, hands-on AI implementation program for teams. Build practical AI workflows, automate one real task, and ship a working prototype.',
-  openGraph: {
-    title: 'Approachable — Practical AI Implementation for Teams',
+const TEAM_TRAINING_DESCRIPTION =
+  'A four-week, hands-on AI implementation program for teams. Build practical AI workflows, automate one real task, and ship a working prototype.';
+
+export const metadata: Metadata = buildPageMetadata({
+  title: 'Practical AI Implementation for Teams',
+  description: TEAM_TRAINING_DESCRIPTION,
+  path: '/team-ai-training',
+  ogImageAlt: 'Approachable — practical AI implementation for teams',
+});
+
+const caseStudies = [
+  {
+    image: '/images/team-ai-case-01.png',
+    alt: 'Messy manual inputs turned into a structured AI workflow with a prompt library and reusable templates, producing consistent dashboards and reports',
+    label: 'CASE STUDY 01',
+    title: 'From repeated work to a shared AI workflow',
     description:
-      'A four-week, hands-on AI implementation program for teams. Build practical AI workflows, automate one real task, and ship a working prototype.',
-    url: 'https://approachable.dev/team-ai-training',
+      'We took the manual back-and-forth the team was doing by hand and turned it into a repeatable AI workflow, complete with a prompt library and templates anyone can reuse.',
   },
-};
+  {
+    image: '/images/team-ai-case-02.png',
+    alt: 'AI automation engine that triages, routes, and completes business requests',
+    label: 'CASE STUDY 02',
+    title: 'One real task automated',
+    description:
+      'We found the task eating the most hours every week and built the automation that now handles it end to end — sorting, routing, and completing it without manual input.',
+  },
+  {
+    image: '/images/team-ai-case-03.png',
+    alt: 'Working internal AI prototype dashboard your team can use every day',
+    label: 'CASE STUDY 03',
+    title: 'A useful internal AI prototype',
+    description:
+      'By the end of the program the team has an actual working tool, not a slide deck — something people open and use to get real work done.',
+  },
+] as const;
+
+const testimonials = [
+  { image: '/images/testimonial-01.png', alt: 'David Anderson, CEO of Lumea, on going from idea to a working AI agent in three weeks' },
+  { image: '/images/testimonial-02.png', alt: 'Shivam Kumar, Head of Customer Support at Solvix, on 45% faster response times and 20+ hours saved weekly' },
+  { image: '/images/testimonial-03.png', alt: 'Daniel Mitchell, Director of Analytics at Nexora, on cutting monthly reporting time from 3 days to 2 hours' },
+] as const;
 
 export default function TeamAiTrainingPage() {
   return (
-    <div className={styles.page}>
-      <nav className={styles.nav}>
-        <div className={`${styles.container} ${styles.navInner}`}>
-          <a className={styles.brand} href="#">
-            <span className={styles.brandDot}></span>
-            Approachable
-          </a>
-          <div className={styles.navLinks}>
-            <a href="#program">Program</a>
-            <a href="#work">What we build</a>
-            <a href="#proof">Proof</a>
-            <a href="#pricing">Pricing</a>
-            <a href="#faq">Questions</a>
-          </div>
-          <a className={`${styles.btn} ${styles.btnDark}`} href="#book">
-            Book an AI assessment
-          </a>
-        </div>
-      </nav>
+    <EnquiryModalProvider>
+      <JsonLd data={buildTeamTrainingSchema()} />
+      <div className={styles.page}>
+        <TeamAiTrainingNav />
 
       <main>
         {/* HERO */}
@@ -51,9 +76,9 @@ export default function TeamAiTrainingPage() {
                 workflows, one automated process, and a working prototype.
               </p>
               <div className={styles.heroActions}>
-                <a className={`${styles.btn} ${styles.btnPrimary}`} href="#book">
+                <OpenEnquiryButton className={`${styles.btn} ${styles.btnPrimary}`}>
                   Book a 20-min AI team assessment →
-                </a>
+                </OpenEnquiryButton>
                 <a className={`${styles.btn} ${styles.btnGhost}`} href="#program">
                   See what you get
                 </a>
@@ -212,69 +237,30 @@ export default function TeamAiTrainingPage() {
               <div className={styles.eyebrow}>Show, don&apos;t tell</div>
               <h2>Here&apos;s what we actually build.</h2>
               <p>
-                Replace these placeholders with your strongest real examples. The goal is to let a buyer see the
-                transformation before asking them to book a call.
+                Real workflows, automations and prototypes teams walk away with — not slides about what AI could
+                theoretically do.
               </p>
             </div>
 
             <div className={styles.workGrid}>
-              <article className={styles.case}>
-                <div className={styles.placeholder}>
-                  <span>
-                    IMAGE PLACEHOLDER
-                    <br />
-                    <br />
-                    Screenshot of a real AI workflow / prompt library
-                  </span>
-                </div>
-                <div className={styles.caseBody}>
-                  <div className={styles.mono}>CASE STUDY 01</div>
-                  <h3>From repeated work to a shared AI workflow</h3>
-                  <p>Show the original manual process, the AI workflow, and what the team can now reuse.</p>
-                  <div className={styles.caseResult}>
-                    RESULT PLACEHOLDER — e.g. &ldquo;Cut first-draft time from 2 hours to 20 minutes.&rdquo;
+              {caseStudies.map((study) => (
+                <article key={study.label} className={styles.case}>
+                  <div className={styles.caseMedia}>
+                    <Image
+                      src={study.image}
+                      alt={study.alt}
+                      width={1200}
+                      height={750}
+                      className={styles.caseImage}
+                    />
                   </div>
-                </div>
-              </article>
-
-              <article className={styles.case}>
-                <div className={styles.placeholder}>
-                  <span>
-                    IMAGE PLACEHOLDER
-                    <br />
-                    <br />
-                    Screenshot / diagram of an automation
-                  </span>
-                </div>
-                <div className={styles.caseBody}>
-                  <div className={styles.mono}>CASE STUDY 02</div>
-                  <h3>One real task automated</h3>
-                  <p>
-                    Show a repetitive task the team used to do manually and the working automation that replaced
-                    it.
-                  </p>
-                  <div className={styles.caseResult}>
-                    RESULT PLACEHOLDER — add a measurable time / cost / quality outcome.
+                  <div className={styles.caseBody}>
+                    <div className={styles.mono}>{study.label}</div>
+                    <h3>{study.title}</h3>
+                    <p>{study.description}</p>
                   </div>
-                </div>
-              </article>
-
-              <article className={styles.case}>
-                <div className={styles.placeholder}>
-                  <span>
-                    IMAGE PLACEHOLDER
-                    <br />
-                    <br />
-                    Screenshot of the working internal prototype
-                  </span>
-                </div>
-                <div className={styles.caseBody}>
-                  <div className={styles.mono}>CASE STUDY 03</div>
-                  <h3>A useful internal AI prototype</h3>
-                  <p>Show the actual tool, not a conceptual diagram. Let buyers see what &ldquo;ship a prototype&rdquo; means.</p>
-                  <div className={styles.caseResult}>RESULT PLACEHOLDER — describe the business problem it solved.</div>
-                </div>
-              </article>
+                </article>
+              ))}
             </div>
           </div>
         </section>
@@ -352,31 +338,17 @@ export default function TeamAiTrainingPage() {
             </div>
 
             <div className={styles.testimonialGrid}>
-              <article className={styles.testimonial}>
-                <div className={styles.quote}>
-                  &ldquo;Built a working AI agent by week three — something I expected would take months, and we
-                  don&apos;t have an IT team to lean on.&rdquo;
-                </div>
-                <div className={styles.person}>Owner · 12-person e-commerce business</div>
-              </article>
-
-              <article className={styles.testimonial}>
-                <div className={styles.quote}>
-                  &ldquo;TESTIMONIAL PLACEHOLDER — replace with a quote about a specific business result from a
-                  real team.&rdquo;
-                </div>
-                <div className={styles.person}>NAME · ROLE · COMPANY</div>
-                <div className={styles.proofPlaceholder}>Best version: include a measurable outcome.</div>
-              </article>
-
-              <article className={styles.testimonial}>
-                <div className={styles.quote}>
-                  &ldquo;TESTIMONIAL PLACEHOLDER — use a quote showing what changed after the team implemented
-                  AI.&rdquo;
-                </div>
-                <div className={styles.person}>NAME · ROLE · COMPANY</div>
-                <div className={styles.proofPlaceholder}>Best version: include team size + result.</div>
-              </article>
+              {testimonials.map((testimonial) => (
+                <article key={testimonial.image} className={styles.testimonial}>
+                  <Image
+                    src={testimonial.image}
+                    alt={testimonial.alt}
+                    width={1536}
+                    height={1024}
+                    className={styles.testimonialImage}
+                  />
+                </article>
+              ))}
             </div>
           </div>
         </section>
@@ -477,9 +449,9 @@ export default function TeamAiTrainingPage() {
                   <li>Recordings</li>
                   <li>30-day check-in</li>
                 </ul>
-                <a href="#book" className={`${styles.btn} ${styles.btnPrimary}`} style={{ marginTop: 25 }}>
+                <OpenEnquiryButton className={`${styles.btn} ${styles.btnPrimary}`} style={{ marginTop: 25 }}>
                   Get your exact number →
-                </a>
+                </OpenEnquiryButton>
                 <div className={styles.pricingNote}>No per-seat pricing. No enterprise contract.</div>
               </div>
             </div>
@@ -519,7 +491,7 @@ export default function TeamAiTrainingPage() {
               </details>
               <details>
                 <summary>Virtual, on-site, or hybrid?</summary>
-                <p>PLACEHOLDER — specify the formats you currently offer.</p>
+                <p>Virtual preferred. Open to travel, based on initial call.</p>
               </details>
               <details>
                 <summary>What if it doesn&apos;t work for us?</summary>
@@ -544,14 +516,15 @@ export default function TeamAiTrainingPage() {
               </p>
             </div>
             <div className={styles.ctaCard}>
-              <a className={`${styles.btn} ${styles.btnPrimary}`} href="#">
+              <OpenEnquiryButton className={`${styles.btn} ${styles.btnPrimary}`}>
                 Book a free 20-min AI team assessment →
-              </a>
+              </OpenEnquiryButton>
               <div className={styles.ctaMicro}>20 minutes · no pitch · honest answer on fit</div>
             </div>
           </div>
         </section>
       </main>
-    </div>
+      </div>
+    </EnquiryModalProvider>
   );
 }

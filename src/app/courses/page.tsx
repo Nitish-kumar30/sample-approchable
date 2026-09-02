@@ -1,41 +1,22 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Header from '@/components/Header';
+import ExploreMoreCard from '@/components/ExploreMoreCard';
+import JsonLd from '@/components/JsonLd';
 import { getFreeCourses, getPaidCourses } from '@/lib/course-content';
+import { buildCoursesListSchema } from '@/lib/seo/course-schema';
+import { buildPageMetadata } from '@/lib/seo/metadata';
 import styles from './courses.module.css';
 
-const COURSES_OG_IMAGE = '/img/og-image.png';
 const COURSES_DESCRIPTION =
   'Free Claude 101 courses and recorded AI training on Mastery, No-Code Agents, and Vibe Coding. Hands-on learning for working professionals.';
-const COURSES_OG_DESCRIPTION =
-  'Free Claude 101 and recorded AI courses for professionals. Start free, then go deeper with hands-on projects.';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: 'Free & Recorded AI Courses',
   description: COURSES_DESCRIPTION,
-  alternates: { canonical: '/courses' },
-  openGraph: {
-    type: 'website',
-    title: 'AI Courses — Approachable',
-    description: COURSES_OG_DESCRIPTION,
-    url: '/courses',
-    siteName: 'Approachable',
-    images: [
-      {
-        url: COURSES_OG_IMAGE,
-        width: 1200,
-        height: 630,
-        alt: 'Approachable AI courses for working professionals',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'AI Courses — Approachable',
-    description: COURSES_OG_DESCRIPTION,
-    images: [COURSES_OG_IMAGE],
-  },
-};
+  path: '/courses',
+  ogImageAlt: 'Approachable AI courses for working professionals',
+});
 
 // Category label + goal-tile copy for the fixed paid catalog. These are
 // presentational groupings, not part of the course data itself.
@@ -62,9 +43,14 @@ const PAID_CATEGORIES: Record<string, { tag: string; goalNumber: string; goalTit
 
 export default async function CoursesPage() {
   const [freeCourses, paidCourses] = await Promise.all([getFreeCourses(), getPaidCourses()]);
+  const allCourses = [...freeCourses, ...paidCourses];
+  const coursesListSchema = buildCoursesListSchema(
+    allCourses.map((course) => ({ slug: course.slug, title: course.title })),
+  );
 
   return (
     <>
+      <JsonLd data={coursesListSchema} />
       <Header navVariant="course" />
       <main className={styles.page}>
         <section className={styles.hero}>
@@ -141,6 +127,7 @@ export default async function CoursesPage() {
                   </div>
                 </article>
               ))}
+              <ExploreMoreCard variant="paid" />
             </div>
           </div>
         </section>
@@ -167,6 +154,7 @@ export default async function CoursesPage() {
                   </Link>
                 </article>
               ))}
+              <ExploreMoreCard variant="free" />
             </div>
           </div>
         </section>
