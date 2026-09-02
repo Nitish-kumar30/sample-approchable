@@ -244,34 +244,19 @@
   font-weight: 800;
 }
 
-.cardWithReveal {
-  position: relative;
+.exploreLink {
+  display: block;
+  width: max-content;
+  margin: 22px auto 0;
+  color: var(--accent-dark);
+  font-size: 13px;
+  font-weight: 700;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
 }
 
-.revealBtn {
-  position: absolute;
-  top: 50%;
-  right: -18px;
-  transform: translateY(-50%);
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: 1px solid var(--line);
-  background: var(--ink);
-  color: white;
-  font-size: 15px;
-  line-height: 1;
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(43, 36, 31, 0.2);
-  transition: transform 0.2s, background 0.2s;
-  z-index: 1;
-}
-
-.revealBtn:hover {
-  background: var(--accent);
-  transform: translateY(-50%) scale(1.08);
+.exploreLink:hover {
+  border-bottom-color: var(--accent-dark);
 }
 
 .free {
