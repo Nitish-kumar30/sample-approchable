@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Header from '@/components/Header';
-import ExploreMoreCard from '@/components/ExploreMoreCard';
 import JsonLd from '@/components/JsonLd';
+import PaidCourseGrid from '@/components/courses/PaidCourseGrid';
+import FreeCourseGrid from '@/components/courses/FreeCourseGrid';
 import { getFreeCourses, getPaidCourses } from '@/lib/course-content';
 import { buildCoursesListSchema } from '@/lib/seo/course-schema';
 import { buildPageMetadata } from '@/lib/seo/metadata';
@@ -18,27 +19,44 @@ export const metadata: Metadata = buildPageMetadata({
   ogImageAlt: 'Approachable AI courses for working professionals',
 });
 
-// Category label + goal-tile copy for the fixed paid catalog. These are
-// presentational groupings, not part of the course data itself.
-const PAID_CATEGORIES: Record<string, { tag: string; goalNumber: string; goalTitle: string; goalDescription: string }> = {
+// Category label, goal-tile copy and the display title used on the courses
+// page for the fixed paid catalog. These are presentational overrides, not
+// part of the course data itself — display names match the approved page
+// mockup, which is shorter than the full course title used elsewhere (SEO,
+// course detail page, footer).
+const PAID_CATEGORIES: Record<
+  string,
+  { tag: string; displayTitle: string; goalNumber: string; goalTitle: string; goalDescription: string }
+> = {
   'ai-mastery-for-working-professionals': {
     tag: 'Work with AI',
+    displayTitle: 'AI Mastery for Working Professionals',
     goalNumber: '01',
     goalTitle: 'Work with AI',
     goalDescription: 'Use AI effectively for writing, research, analysis and everyday professional work.',
   },
   'no-code-ai-agents-mastery-for-working-professionals': {
     tag: 'Automate',
+    displayTitle: 'No-Code AI Agents Mastery',
     goalNumber: '02',
     goalTitle: 'Automate',
     goalDescription: 'Turn repetitive tasks into AI-powered workflows and agents without coding.',
   },
   'vibe-coding-mastery-for-working-professionals': {
     tag: 'Build',
+    displayTitle: 'Vibe Coding Mastery',
     goalNumber: '03',
     goalTitle: 'Build',
     goalDescription: 'Turn an idea into a working prototype using modern AI building tools.',
   },
+};
+
+// Display title override for the free catalog, matching the mockup.
+const FREE_DISPLAY_TITLES: Record<string, string> = {
+  'introduction-to-ai-agents': 'Introduction to AI Agents',
+  'claude-ecosystem---chat-code-cowork': 'Claude Ecosystem',
+  'claude-101-sub-agents-hooks-and-claude-md': 'Claude 101: Build Your Harness',
+  'claude-101-skills-connectors-and-more': 'Claude 101: Extend Claude',
 };
 
 export default async function CoursesPage() {
@@ -47,6 +65,17 @@ export default async function CoursesPage() {
   const coursesListSchema = buildCoursesListSchema(
     allCourses.map((course) => ({ slug: course.slug, title: course.title })),
   );
+
+  const paidCoursesWithMeta = paidCourses.map((course) => ({
+    ...course,
+    tag: PAID_CATEGORIES[course.slug]?.tag ?? 'Course',
+    displayTitle: PAID_CATEGORIES[course.slug]?.displayTitle ?? course.title,
+  }));
+
+  const freeCoursesWithMeta = freeCourses.map((course) => ({
+    ...course,
+    displayTitle: FREE_DISPLAY_TITLES[course.slug] ?? course.title,
+  }));
 
   return (
     <>
@@ -111,24 +140,7 @@ export default async function CoursesPage() {
               <p>Self-paced courses with lifetime access, hands-on projects and practical examples.</p>
             </div>
 
-            <div className={styles.cards}>
-              {paidCourses.map((course) => (
-                <article className={styles.card} key={course.slug}>
-                  <div className={styles.cardImage}>
-                    {course.heroImage && <img src={course.heroImage} alt={course.title} />}
-                  </div>
-                  <div className={styles.cardBody}>
-                    <span className={styles.tag}>{PAID_CATEGORIES[course.slug]?.tag ?? 'Course'}</span>
-                    <h3>{course.title}</h3>
-                    <p>{course.shortDescription}</p>
-                    <Link className={styles.cardLink} href={`/courses/${course.slug}`}>
-                      View course →
-                    </Link>
-                  </div>
-                </article>
-              ))}
-              <ExploreMoreCard variant="paid" />
-            </div>
+            <PaidCourseGrid courses={paidCoursesWithMeta} />
           </div>
         </section>
 
@@ -140,22 +152,7 @@ export default async function CoursesPage() {
               <p>Short, practical courses to help you get comfortable with AI.</p>
             </div>
 
-            <div className={styles.freeGrid}>
-              {freeCourses.map((course) => (
-                <article className={styles.freeCard} key={course.slug}>
-                  <div className={styles.freeImage}>
-                    {course.heroImage && <img src={course.heroImage} alt={course.title} />}
-                  </div>
-                  <span className={styles.tag}>Free</span>
-                  <h3>{course.title}</h3>
-                  <p>{course.shortDescription}</p>
-                  <Link className={styles.cardLink} href={`/courses/${course.slug}`}>
-                    Start learning →
-                  </Link>
-                </article>
-              ))}
-              <ExploreMoreCard variant="free" />
-            </div>
+            <FreeCourseGrid courses={freeCoursesWithMeta} />
           </div>
         </section>
 
