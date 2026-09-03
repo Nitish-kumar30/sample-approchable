@@ -31,7 +31,7 @@ const footerColumns: { heading: string; links: FooterLink[] }[] = [
     heading: 'Resources',
     links: [
       { label: 'Blog', href: '/blog' },
-      { label: 'AI Glossary', href: '/glossary' },
+      { label: 'AI Glossary', href: '/ai-glossary' },
     ],
   },
   {
