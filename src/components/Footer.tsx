@@ -35,10 +35,6 @@ const footerColumns: { heading: string; links: FooterLink[] }[] = [
     ],
   },
   {
-    heading: 'Support',
-    links: [{ label: 'Contact Us', href: '/contact' }],
-  },
-  {
     heading: 'Legal',
     links: [
       { label: 'Privacy Policy', static: true },
