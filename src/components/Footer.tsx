@@ -47,7 +47,7 @@ export default function Footer() {
         },
         { label: 'Vibe Coding Mastery for Working Professionals', href: '/courses/vibe-coding-mastery-for-working-professionals' },
         { label: 'Free Courses', href: '/courses' },
-        { label: 'Team Training', href: '/team-ai-training' },
+        { label: 'Team AI Training', href: '/team-ai-training' },
       ],
     },
     {
