@@ -1,6 +1,12 @@
 import { del, list } from '@vercel/blob';
 import { blobOptions } from '@/lib/blob-client';
-import { BLOB_FOLDERS, submissionBlobPath, type SubmissionFolder } from '@/lib/blob-paths';
+import {
+  BLOB_FOLDERS,
+  contactDeleteCandidates,
+  corporateDeleteCandidates,
+  isLegacyFlatBlobPath,
+  LEGACY_CONTACT_FOLDER,
+} from '@/lib/blob-paths';
 
 export const CONTACT_FORM_TYPE = 'contact-inquiry';
 export const CORPORATE_FORM_TYPE = 'corporate-training-inquiry';
@@ -24,14 +30,17 @@ export function isDeletableFormType(formType: string): formType is DeletableForm
   return formType === CONTACT_FORM_TYPE || formType === CORPORATE_FORM_TYPE;
 }
 
-function folderForFormType(formType: DeletableFormType): SubmissionFolder {
-  return formType === CONTACT_FORM_TYPE ? 'contact' : 'corporate';
+export function submissionDeleteCandidates(id: string, formType: DeletableFormType): string[] {
+  return formType === CONTACT_FORM_TYPE
+    ? contactDeleteCandidates(id)
+    : corporateDeleteCandidates(id);
 }
 
-export function submissionDeleteCandidates(id: string, formType: DeletableFormType): string[] {
-  const primary = submissionBlobPath(folderForFormType(formType), id);
-  const legacy = submissionBlobPath('legacy', id);
-  return primary === legacy ? [primary] : [primary, legacy];
+function searchPrefixesForFormType(formType: DeletableFormType): string[] {
+  if (formType === CONTACT_FORM_TYPE) {
+    return [`${BLOB_FOLDERS.contact}/`, `${LEGACY_CONTACT_FOLDER}/`];
+  }
+  return [`${BLOB_FOLDERS.corporate}/`, `${BLOB_FOLDERS.legacy}/`];
 }
 
 async function listBlobsWithPrefix(prefix: string): Promise<ListedBlob[]> {
@@ -53,14 +62,17 @@ async function findSubmissionBlob(
   formType: DeletableFormType,
 ): Promise<ListedBlob | null> {
   const candidates = new Set(submissionDeleteCandidates(id, formType));
-  const searchPrefixes = [
-    `${BLOB_FOLDERS[folderForFormType(formType)]}/`,
-    `${BLOB_FOLDERS.legacy}/`,
-  ];
+  const searchPrefixes = searchPrefixesForFormType(formType);
 
   for (const prefix of searchPrefixes) {
     const blobs = await listBlobsWithPrefix(prefix);
-    const match = blobs.find((blob) => candidates.has(blob.pathname));
+    const match = blobs.find((blob) => {
+      if (!candidates.has(blob.pathname)) return false;
+      if (formType === CORPORATE_FORM_TYPE && prefix === `${BLOB_FOLDERS.legacy}/`) {
+        return isLegacyFlatBlobPath(blob.pathname);
+      }
+      return true;
+    });
     if (match) return match;
   }
 
