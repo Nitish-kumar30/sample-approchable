@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import FooterSubscribe from './FooterSubscribe';
+import Link from "next/link";
+import FooterSubscribe from "./FooterSubscribe";
 
 type FooterLink =
   | { label: string; href: string }
@@ -7,52 +7,59 @@ type FooterLink =
 
 const footerColumns: { heading: string; links: FooterLink[] }[] = [
   {
-    heading: 'Company',
+    heading: "Company",
     links: [
-      { label: 'About Us', href: '/about' },
-      { label: 'Contact Us', href: '/contact' },
+      { label: "About Us", href: "/about" },
+      { label: "Contact Us", href: "/contact" },
     ],
   },
   {
-    heading: 'Programs',
+    heading: "Programs",
     links: [
-      { label: 'Live AI Cohort', href: '/' },
-      { label: 'AI Mastery for Working Professionals', href: '/courses/ai-mastery-for-working-professionals' },
+      { label: "Live AI Cohort", href: "/" },
       {
-        label: 'No Code AI Agents Mastery for Working Professionals',
-        href: '/courses/no-code-ai-agents-mastery-for-working-professionals',
+        label: "AI Mastery for Working Professionals",
+        href: "/courses/ai-mastery-for-working-professionals",
       },
-      { label: 'Vibe Coding Mastery for Working Professionals', href: '/courses/vibe-coding-mastery-for-working-professionals' },
-      { label: 'Free Courses', href: '/courses' },
-      { label: 'Team Training', href: '/team-ai-training' },
+      {
+        label: "No Code AI Agents Mastery for Working Professionals",
+        href: "/courses/no-code-ai-agents-mastery-for-working-professionals",
+      },
+      {
+        label: "Vibe Coding Mastery for Working Professionals",
+        href: "/courses/vibe-coding-mastery-for-working-professionals",
+      },
+      { label: "Free Courses", href: "/courses" },
+      { label: "Team Training", href: "/team-ai-training" },
     ],
   },
   {
-    heading: 'Resources',
+    heading: "Resources",
     links: [
-      { label: 'Blog', href: '/blog' },
-      { label: 'AI Glossary', href: '/glossary' },
+      { label: "Blog", href: "/blog" },
+      { label: "AI Glossary", href: "/glossary" },
+      { label: "AI Assessments", href: "/assessment" },
     ],
   },
   {
-    heading: 'Support',
-    links: [{ label: 'Contact Us', href: '/contact' }],
+    heading: "Support",
+    links: [{ label: "Contact Us", href: "/contact" }],
   },
   {
-    heading: 'Legal',
+    heading: "Legal",
     links: [
-      { label: 'Privacy Policy', static: true },
-      { label: 'Terms of Service', static: true },
+      { label: "Privacy Policy", static: true },
+      { label: "Terms of Service", static: true },
     ],
   },
 ];
 
 function FooterLinkItem({ link }: { link: FooterLink }) {
-  if ('static' in link) {
+  if ("static" in link) {
     return <span className="footer-static-link">{link.label}</span>;
   }
 
-  if (link.href.startsWith('mailto:')) {
+  if (link.href.startsWith("mailto:")) {
     return <a href={link.href}>{link.label}</a>;
   }
 
@@ -80,7 +87,9 @@ export default function Footer() {
         </div>
       </div>
 
-      <p className="footer-copyright">© 2026 Approachable · making AI approachable for everyone</p>
+      <p className="footer-copyright">
+        © 2026 Approachable · making AI approachable for everyone
+      </p>
     </footer>
   );
 }

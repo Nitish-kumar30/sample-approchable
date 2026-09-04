@@ -1,0 +1,110 @@
+{
+  "slug": "vibe-coding",
+  "topic": "Build",
+  "title": "Vibe Coding",
+  "lede": "Building software you can't write by hand. A few questions on scoping an idea, steering the tool and telling a working prototype from a convincing one.",
+  "level": "Beginner to intermediate",
+  "minutes": 5,
+  "description": "Building software you can't write by hand. Test how you scope an idea, steer the tool and tell a working prototype from a convincing one.",
+  "questions": [
+    {
+      "q": "What's the most common reason a vibe-coded prototype falls apart halfway through?",
+      "options": [
+        "The wrong programming language",
+        "The scope was never defined, so every prompt quietly changes the goal",
+        "Not enough prompts",
+        "The model's training cutoff"
+      ],
+      "answer": 1,
+      "why": "Drifting scope is the usual killer. Decide what the thing does before you start asking for it."
+    },
+    {
+      "q": "Your app looks right but one button does nothing. What's the best next move?",
+      "options": [
+        "Ask for a full rewrite",
+        "Describe exactly what you clicked, what happened and what you expected",
+        "Start a brand new chat",
+        "Add more features and come back to it later"
+      ],
+      "answer": 1,
+      "why": "A specific bug report gets a specific fix. Rewrites throw away the parts that already work."
+    },
+    {
+      "q": "Before showing a prototype to someone else, what matters most?",
+      "options": [
+        "That the code is well commented",
+        "That the main path a real person would take works end to end",
+        "That it uses the newest framework",
+        "That it has a dark mode"
+      ],
+      "answer": 1,
+      "why": "A prototype earns its keep by proving one path works. Polish everything else later, or never."
+    },
+    {
+      "q": "You're starting a new vibe-coded project. What should you define first?",
+      "options": [
+        "The color palette",
+        "One user flow: who does what, in what order, and what 'done' looks like",
+        "Which AI tool to use",
+        "The database schema"
+      ],
+      "answer": 1,
+      "why": "A single clear flow keeps prompts aligned. Without it, each request nudges the build in a different direction."
+    },
+    {
+      "q": "The generated UI looks polished but data doesn't persist after refresh. What does that usually mean?",
+      "options": [
+        "The prototype is production-ready",
+        "You have a convincing shell — backend or storage still needs to be built or wired up",
+        "You need a different font",
+        "The model made a mistake you can't fix"
+      ],
+      "answer": 1,
+      "why": "Front-end demos often fake persistence. Knowing the difference saves you from demoing something that isn't real yet."
+    }
+  ],
+  "recs": {
+    "low": [
+      {
+        "tag": "Free course",
+        "title": "Claude Ecosystem",
+        "desc": "Start by understanding the tools you'll be building with.",
+        "url": "/courses/claude-ecosystem---chat-code-cowork"
+      },
+      {
+        "tag": "Live cohort",
+        "title": "Live AI Cohort",
+        "desc": "Build your first real thing with a mentor rather than alone at midnight.",
+        "url": "/"
+      }
+    ],
+    "mid": [
+      {
+        "tag": "Self-paced",
+        "title": "Vibe Coding Mastery",
+        "desc": "Claude Artifacts, Copilot in Excel and Lovable — turn ideas into working prototypes.",
+        "url": "/courses/vibe-coding-mastery-for-working-professionals"
+      },
+      {
+        "tag": "Live cohort",
+        "title": "Live AI Cohort",
+        "desc": "Structure and feedback while you build something real.",
+        "url": "/"
+      }
+    ],
+    "high": [
+      {
+        "tag": "Live cohort",
+        "title": "Live AI Cohort",
+        "desc": "Bring the idea you keep putting off and ship it with a group around you.",
+        "url": "/"
+      },
+      {
+        "tag": "Self-paced",
+        "title": "No-Code AI Agents Mastery",
+        "desc": "Make what you build run on its own.",
+        "url": "/courses/no-code-ai-agents-mastery-for-working-professionals"
+      }
+    ]
+  }
+}

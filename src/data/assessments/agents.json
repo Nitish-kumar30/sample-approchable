@@ -1,0 +1,110 @@
+{
+  "slug": "agents",
+  "topic": "Automate",
+  "title": "AI Agents",
+  "lede": "Where a workflow ends and an agent begins. A few questions on tools, memory, loops and the failure modes nobody warns you about.",
+  "level": "Intermediate",
+  "minutes": 5,
+  "description": "Where a workflow ends and an agent begins. Test what you know about tools, memory, loops and the failure modes nobody warns you about.",
+  "questions": [
+    {
+      "q": "What most clearly separates an AI agent from a workflow?",
+      "options": [
+        "The agent uses a bigger model",
+        "The agent decides its own next step; a workflow follows a path you fixed in advance",
+        "The agent runs in the cloud",
+        "The agent costs more to run"
+      ],
+      "answer": 1,
+      "why": "Control flow is the dividing line. If you decided the sequence up front, it's a workflow — however clever the steps are."
+    },
+    {
+      "q": "An agent keeps repeating the same failing tool call. What's the most likely cause?",
+      "options": [
+        "The model is too small",
+        "It can't see the result of its own action clearly enough to change course",
+        "The internet connection is slow",
+        "Too many tools are connected"
+      ],
+      "answer": 1,
+      "why": "Loops usually come from weak feedback. If the tool result doesn't clearly say what went wrong, the agent has no reason to try something different."
+    },
+    {
+      "q": "When is a plain workflow the better choice over an agent?",
+      "options": [
+        "When the steps are known, repeatable and must work the same way every time",
+        "Whenever the task involves text",
+        "When you have a small budget",
+        "When you don't have coding skills"
+      ],
+      "answer": 0,
+      "why": "Predictable work deserves a predictable system. Save agents for tasks where the path genuinely varies."
+    },
+    {
+      "q": "An agent needs to remember what happened in earlier steps of a long task. What usually helps most?",
+      "options": [
+        "A bigger context window alone",
+        "A structured memory or state the agent can read and update between steps",
+        "Asking the user to repeat context each time",
+        "Running the same prompt twice"
+      ],
+      "answer": 1,
+      "why": "Long tasks need explicit state. Raw context fills up; a scratchpad or memory object gives the agent something stable to build on."
+    },
+    {
+      "q": "You're connecting five tools to an agent. What's the main risk?",
+      "options": [
+        "The UI gets cluttered",
+        "The model may pick the wrong tool or chain calls in a fragile order",
+        "Tools always slow the model down",
+        "You need five API keys"
+      ],
+      "answer": 1,
+      "why": "More tools mean more ways to mis-route. Clear descriptions, fewer tools where possible, and guardrails on when each runs reduce failure."
+    }
+  ],
+  "recs": {
+    "low": [
+      {
+        "tag": "Free course",
+        "title": "Introduction to AI Agents",
+        "desc": "The fundamentals — how agents differ from LLMs, and workflows versus agents.",
+        "url": "/courses/introduction-to-ai-agents"
+      },
+      {
+        "tag": "Live cohort",
+        "title": "Live AI Cohort",
+        "desc": "Learn it with a mentor and a group instead of piecing it together alone.",
+        "url": "/"
+      }
+    ],
+    "mid": [
+      {
+        "tag": "Self-paced",
+        "title": "No-Code AI Agents Mastery",
+        "desc": "Build real no-code agents in n8n, from a first LLM call to a customer retention agent.",
+        "url": "/courses/no-code-ai-agents-mastery-for-working-professionals"
+      },
+      {
+        "tag": "Free course",
+        "title": "Introduction to AI Agents",
+        "desc": "A quick refresher on the fundamentals before you build.",
+        "url": "/courses/introduction-to-ai-agents"
+      }
+    ],
+    "high": [
+      {
+        "tag": "Live cohort",
+        "title": "Live AI Cohort",
+        "desc": "You know the theory. Come build an agent for your own work with a mentor watching.",
+        "url": "/"
+      },
+      {
+        "tag": "Self-paced",
+        "title": "Vibe Coding Mastery",
+        "desc": "Add building to automating and you can ship the whole thing yourself.",
+        "url": "/courses/vibe-coding-mastery-for-working-professionals"
+      }
+    ]
+  }
+}

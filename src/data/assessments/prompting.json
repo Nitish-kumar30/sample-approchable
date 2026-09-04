@@ -1,0 +1,110 @@
+{
+  "slug": "prompting",
+  "topic": "Work with AI",
+  "title": "Prompting",
+  "lede": "How you ask decides what you get back. A few questions on context, structure, examples and knowing when the model is guessing.",
+  "level": "Beginner to intermediate",
+  "minutes": 4,
+  "description": "How you ask decides what you get. Test your grip on context, structure, examples and knowing when the model is guessing.",
+  "questions": [
+    {
+      "q": "You ask AI to rewrite a report and the result is bland and generic. What usually fixes it fastest?",
+      "options": [
+        "Ask again and add the word 'better'",
+        "Give it the audience, the purpose and an example of the tone you want",
+        "Switch to a bigger model",
+        "Break the report into smaller pieces"
+      ],
+      "answer": 1,
+      "why": "Generic output almost always means missing context. Audience, purpose and a sample of the voice you want give the model something to aim at."
+    },
+    {
+      "q": "Which is the strongest signal that a model is guessing rather than knowing?",
+      "options": [
+        "The answer is long",
+        "It uses confident language with specific-sounding but unverifiable details",
+        "It asks you a clarifying question",
+        "It formats the answer as a list"
+      ],
+      "answer": 1,
+      "why": "Confidence isn't a reliability signal. Precise details you can't trace back to a source are the thing to check."
+    },
+    {
+      "q": "You need output in a fixed structure every single time. What works best?",
+      "options": [
+        "Ask politely",
+        "Describe the structure and show one filled-in example",
+        "Repeat the instruction three times",
+        "Write the instruction in capitals"
+      ],
+      "answer": 1,
+      "why": "One worked example does more than any amount of description. Show the shape you want rather than explaining it."
+    },
+    {
+      "q": "You're drafting an email to a client and want AI to match your usual voice. What's the most reliable approach?",
+      "options": [
+        "Tell it to 'sound professional'",
+        "Paste two or three emails you've actually sent and ask it to match that style",
+        "Use a longer system prompt with adjectives like 'warm' and 'concise'",
+        "Ask for three versions and pick the best"
+      ],
+      "answer": 1,
+      "why": "Real samples beat adjectives. The model can mirror patterns it sees — vague labels leave too much room to guess."
+    },
+    {
+      "q": "A model gives you a statistic you plan to use in a presentation. What should you do before citing it?",
+      "options": [
+        "Trust it if it sounds reasonable",
+        "Verify it against a primary source or ask the model where it came from",
+        "Rephrase it so it sounds less definitive",
+        "Switch models and see if they agree"
+      ],
+      "answer": 1,
+      "why": "Models can invent plausible numbers. Always trace claims back to something you can point to in the room."
+    }
+  ],
+  "recs": {
+    "low": [
+      {
+        "tag": "Free course",
+        "title": "Claude Ecosystem",
+        "desc": "Get the lay of the land first — Chat, Code, Cowork and Design, and when to use each.",
+        "url": "/courses/claude-ecosystem---chat-code-cowork"
+      },
+      {
+        "tag": "Live cohort",
+        "title": "Live AI Cohort",
+        "desc": "Mentor-led, small group, real projects. Best if you want accountability rather than another tab of notes.",
+        "url": "/"
+      }
+    ],
+    "mid": [
+      {
+        "tag": "Self-paced",
+        "title": "AI Mastery for Working Professionals",
+        "desc": "Hands-on practice applying AI to the writing, research and analysis you already do at work.",
+        "url": "/courses/ai-mastery-for-working-professionals"
+      },
+      {
+        "tag": "Live cohort",
+        "title": "Live AI Cohort",
+        "desc": "Add structure and a mentor if you want to move faster than self-study allows.",
+        "url": "/"
+      }
+    ],
+    "high": [
+      {
+        "tag": "Self-paced",
+        "title": "No-Code AI Agents Mastery",
+        "desc": "You can prompt well. The next step is making the work happen without you in the loop.",
+        "url": "/courses/no-code-ai-agents-mastery-for-working-professionals"
+      },
+      {
+        "tag": "Live cohort",
+        "title": "Live AI Cohort",
+        "desc": "Bring a real project and build it alongside a mentor and a small group.",
+        "url": "/"
+      }
+    ]
+  }
+}
