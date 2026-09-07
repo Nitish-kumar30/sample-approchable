@@ -58,6 +58,7 @@ export default function Footer() {
         ...latestPosts,
         { label: 'AI Glossary', href: '/ai-glossary' },
         { label: 'Prompting Guide', href: '/prompting-guide' },
+        { label: 'AI Assessments', href: '/assessment' },
       ],
     },
     {

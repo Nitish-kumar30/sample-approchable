@@ -26,7 +26,7 @@ function getNextIntro(): string {
 
 function RecCard({ rec, primary }: { rec: QuizRec; primary: boolean }) {
   const cohort = isCohortRec(rec);
-  const href = cohort ? COHORT.formUrl : rec.url;
+  const href = cohort ? (COHORT.state === 'soldout' ? '/' : COHORT.formUrl) : rec.url;
   const external = href.startsWith('http');
   const cta = cohort
     ? COHORT.state === 'soldout'
