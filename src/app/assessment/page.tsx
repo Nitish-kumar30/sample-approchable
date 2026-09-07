@@ -4,12 +4,13 @@ import AssessmentCard from '@/components/assessment/AssessmentCard';
 import Header from '@/components/Header';
 import JsonLd from '@/components/JsonLd';
 import { getAllAssessments } from '@/lib/assessments';
+import { COHORT } from '@/lib/cohort-config';
 import { buildPageMetadata } from '@/lib/seo/metadata';
 import { absoluteUrl } from '@/lib/seo/site';
 import styles from './assessment.module.css';
 
 const DESCRIPTION =
-  'Three short free AI assessments on prompting, agents, and vibe coding. See where the gaps are and get pointed to the course that closes them.';
+  'Four seven-question AI skill checks for working professionals: AI Foundation, Prompt Engineering, Agentic AI, and Vibe Coding. See where you lose time, then get a recommended next step.';
 
 export const metadata: Metadata = buildPageMetadata({
   title: 'AI Assessments',
@@ -41,37 +42,42 @@ export default function AssessmentPage() {
       <main className={styles.page}>
         <section className={styles.hero}>
           <div className={styles.container}>
-            <div className={styles.eyebrow}>Free AI assessments</div>
+            <div className={styles.eyebrow}>Seven-question skill check</div>
             <h1>
-              Find out what you <em>actually know.</em>
+              See which AI skill is costing you <em>time at work.</em>
             </h1>
             <p>
-              Three short checks on the skills that matter most at work right now. Answer honestly,
-              see where the gaps are, and get pointed to the course that closes them.
+              Not a certification — a short check on foundations, prompt engineering, agentic AI, and
+              building with AI. You get a score, a review of your answers, and one recommended
+              program.
             </p>
             <div className={styles.buttons}>
-              <a className={`${styles.btn} ${styles.btnPrimary}`} href="#assessments">
-                Choose an assessment ↓
-              </a>
               <Link
-                className={`${styles.btn} ${styles.btnSecondary}`}
-                href="/assessment/quiz/prompting"
+                className={`${styles.btn} ${styles.btnPrimary}`}
+                href="/assessment/quiz/ai-foundation"
               >
-                Start with Prompting
+                Start with AI Foundation
               </Link>
+              <a className={`${styles.btn} ${styles.btnSecondary}`} href="#assessments">
+                See all four
+              </a>
             </div>
+            <p className={styles.heroProof}>
+              Built for working professionals. {COHORT.studentsTotal} have already gone through
+              Approachable programs.
+            </p>
 
             <div className={styles.heroStats}>
               <div className={styles.heroStat}>
-                <b>3</b>
-                <span>assessments</span>
+                <b>4</b>
+                <span>skill checks</span>
               </div>
               <div className={styles.heroStat}>
-                <b>5</b>
+                <b>7</b>
                 <span>questions each</span>
               </div>
               <div className={styles.heroStat}>
-                <b>~5 min</b>
+                <b>~7 min</b>
                 <span>to finish one</span>
               </div>
               <div className={styles.heroStat}>
@@ -87,7 +93,7 @@ export default function AssessmentPage() {
             <div className={styles.sectionHead}>
               <div className={styles.sectionLabel}>Pick a skill</div>
               <h2>Which one do you want to test?</h2>
-              <p>Each assessment stands alone. Start anywhere, take them in any order.</p>
+              <p>Each check stands alone. Start anywhere — most people begin with AI Foundation.</p>
             </div>
 
             <div className={styles.quizGrid}>
@@ -107,84 +113,30 @@ export default function AssessmentPage() {
           </div>
         </section>
 
-        <section className={styles.pathSection}>
-          <div className={styles.container}>
-            <div className={styles.sectionHead}>
-              <div className={styles.sectionLabel}>How scoring works</div>
-              <h2>A starting point, not a grade.</h2>
-              <p>
-                However you land, you get a specific next step rather than a number to feel bad
-                about.
-              </p>
-            </div>
-
-            <div className={styles.bands}>
-              <div className={styles.band}>
-                <div className={styles.bandScore}>0–49%</div>
-                <div className={styles.bandBar}>
-                  <i style={{ width: '33%' }} />
-                </div>
-                <h3>Start with the fundamentals</h3>
-                <p>
-                  You&apos;ve seen the tools but the mental model isn&apos;t there yet. Begin with a
-                  free course, then join the live cohort for structure.
-                </p>
-              </div>
-              <div className={styles.band}>
-                <div className={styles.bandScore}>50–79%</div>
-                <div className={styles.bandBar}>
-                  <i style={{ width: '66%' }} />
-                </div>
-                <h3>Turn knowledge into practice</h3>
-                <p>
-                  The basics are solid. What&apos;s missing is reps on real work — the self-paced
-                  course for that skill is built exactly for this.
-                </p>
-              </div>
-              <div className={styles.band}>
-                <div className={styles.bandScore}>80–100%</div>
-                <div className={styles.bandBar}>
-                  <i style={{ width: '100%' }} />
-                </div>
-                <h3>Go deeper, or go build</h3>
-                <p>
-                  You know this well. Push into harder material, or bring a real project to the
-                  mentor-led cohort and ship it.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
         <section className={styles.journey}>
           <div className={styles.container}>
             <div className={styles.sectionHead}>
-              <div className={styles.sectionLabel}>What to expect</div>
-              <h2>By the end, you&apos;ll know where you stand.</h2>
-              <p>No sign-up, no timer, nothing saved. Just an honest read on where you are.</p>
+              <div className={styles.sectionLabel}>What you walk away with</div>
+              <h2>A score, a review, and a next program.</h2>
+              <p>No timer. Nothing is saved on this page.</p>
             </div>
 
             <div className={styles.steps}>
               <div className={styles.step}>
-                <span className={styles.num}>01 — ANSWER</span>
-                <h3>One at a time</h3>
-                <p>
-                  Multiple choice, one correct answer each. Pick with your mouse or the number keys.
-                </p>
+                <span className={styles.num}>01 — SCORE</span>
+                <h3>Where you stand</h3>
+                <p>Seven work-context questions. Honest read, not a grade to feel bad about.</p>
               </div>
               <div className={styles.step}>
-                <span className={styles.num}>02 — LEARN</span>
+                <span className={styles.num}>02 — REVIEW</span>
                 <h3>See why</h3>
-                <p>
-                  After you finish, open any answer in the review to see what was correct and why.
-                </p>
+                <p>Open any answer to see what was correct and the reasoning behind it.</p>
               </div>
               <div className={styles.step}>
-                <span className={styles.num}>03 — DECIDE</span>
-                <h3>Get your next step</h3>
+                <span className={styles.num}>03 — NEXT STEP</span>
+                <h3>A recommended program</h3>
                 <p>
-                  Your score maps to a specific course or the live cohort — no guessing what to do
-                  next.
+                  Your score maps to the live cohort or a focused course — not a generic catalog.
                 </p>
               </div>
             </div>
@@ -194,17 +146,17 @@ export default function AssessmentPage() {
         <section className={styles.final}>
           <div className={styles.container}>
             <div className={styles.sectionLabel}>Not sure where to begin?</div>
-            <h2>Start with Prompting.</h2>
+            <h2>Start with AI Foundation.</h2>
             <p>
-              It&apos;s the shortest of the three, and it&apos;s the skill everything else at
-              Approachable builds on. Five minutes, and you&apos;ll know what to learn next.
+              It&apos;s the base everything else at Approachable builds on. Seven questions, then a
+              clear next step.
             </p>
             <div className={styles.buttons}>
               <Link
                 className={`${styles.btn} ${styles.btnPrimary}`}
-                href="/assessment/quiz/prompting"
+                href="/assessment/quiz/ai-foundation"
               >
-                Take the Prompting check →
+                Take the AI Foundation check →
               </Link>
               <Link className={`${styles.btn} ${styles.btnSecondary}`} href="/courses">
                 Browse courses

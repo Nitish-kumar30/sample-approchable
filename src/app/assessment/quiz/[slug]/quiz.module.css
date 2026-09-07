@@ -552,6 +552,47 @@
   box-shadow: 0 12px 28px rgba(43, 36, 31, 0.07);
 }
 
+.recPrimary {
+  border-color: var(--ink);
+  box-shadow: 0 8px 24px rgba(43, 36, 31, 0.08);
+}
+
+.recPrimary:hover {
+  border-color: var(--accent-dark);
+}
+
+.recMeta {
+  list-style: none;
+  margin: 0 0 20px;
+  padding: 0;
+  font-size: 13px;
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.recMeta li {
+  margin: 0 0 6px;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.recCta {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 16px;
+  border-radius: 8px;
+  background: var(--ink);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.recPrimary:hover .recCta {
+  background: var(--accent-dark);
+}
+
 .tag {
   display: inline-block;
   width: max-content;

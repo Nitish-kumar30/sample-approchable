@@ -74,6 +74,13 @@
   font-size: 18px;
 }
 
+.hero .heroProof {
+  max-width: 520px;
+  margin: 18px auto 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
 .buttons {
   display: flex;
   justify-content: center;
@@ -183,7 +190,7 @@
 
 .quizGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 18px;
 }
 
@@ -270,63 +277,6 @@
   background: var(--accent-dark);
 }
 
-.pathSection {
-  background: var(--cream);
-}
-
-.bands {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  overflow: hidden;
-  background: white;
-}
-
-.band {
-  padding: 30px 26px 32px;
-  border-right: 1px solid var(--line);
-}
-
-.band:last-child {
-  border-right: 0;
-}
-
-.bandScore {
-  font-family: Georgia, serif;
-  font-weight: 500;
-  font-size: 30px;
-  letter-spacing: -0.02em;
-  color: var(--accent);
-  line-height: 1.1;
-}
-
-.bandBar {
-  height: 4px;
-  border-radius: 999px;
-  background: var(--soft);
-  margin: 14px 0 16px;
-  overflow: hidden;
-}
-
-.bandBar i {
-  display: block;
-  height: 100%;
-  background: var(--accent);
-  border-radius: 999px;
-}
-
-.band h3 {
-  margin: 0 0 8px;
-  font-size: 18px;
-}
-
-.band p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 14px;
-}
-
 .journey {
   background: var(--ink);
   color: white;
@@ -387,19 +337,6 @@
 }
 
 @media (max-width: 850px) {
-  .bands {
-    grid-template-columns: 1fr;
-  }
-
-  .band {
-    border-right: 0;
-    border-bottom: 1px solid var(--line);
-  }
-
-  .band:last-child {
-    border-bottom: 0;
-  }
-
   .steps {
     grid-template-columns: 1fr;
   }

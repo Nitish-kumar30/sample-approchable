@@ -2,8 +2,9 @@
 
 import Link from 'next/link';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import type { Assessment, AssessmentConfig, ScoreBandKey } from '@/lib/assessments';
+import type { Assessment, AssessmentConfig, QuizRec } from '@/lib/assessments';
 import { getScoreBand } from '@/lib/assessments';
+import { COHORT } from '@/lib/cohort-config';
 import styles from '@/app/assessment/quiz/[slug]/quiz.module.css';
 
 const LETTERS = ['A', 'B', 'C', 'D', 'E', 'F'];
@@ -12,15 +13,64 @@ const RING = 2 * Math.PI * 66;
 interface QuizRunnerProps {
   assessment: Assessment;
   config: AssessmentConfig;
+  relatedCourse: QuizRec | null;
 }
 
-function getNextIntro(bandKey: ScoreBandKey): string {
-  if (bandKey === 'low') return 'Based on your score, start here.';
-  if (bandKey === 'mid') return 'Based on your score, this is the fastest way forward.';
-  return "Based on your score, here's where the next gain is.";
+function isCohortRec(rec: QuizRec): boolean {
+  return rec.tag.toLowerCase().includes('cohort') || rec.url === COHORT.formUrl || rec.url === '/';
 }
 
-export default function QuizRunner({ assessment, config }: QuizRunnerProps) {
+function getNextIntro(): string {
+  return 'Recommended: live cohort — close the gap with a mentor and a small group.';
+}
+
+function RecCard({ rec, primary }: { rec: QuizRec; primary: boolean }) {
+  const cohort = isCohortRec(rec);
+  const href = cohort ? COHORT.formUrl : rec.url;
+  const external = href.startsWith('http');
+  const cta = cohort
+    ? COHORT.state === 'soldout'
+      ? 'See the cohort →'
+      : 'Reserve a seat →'
+    : rec.tag.toLowerCase().includes('free')
+      ? 'View free course →'
+      : 'View course →';
+
+  const className = `${styles.rec} ${primary ? styles.recPrimary : ''}`;
+  const inner = (
+    <>
+      <span className={styles.tag}>{rec.tag}</span>
+      <h3>{rec.title}</h3>
+      <p>{rec.desc}</p>
+      {cohort && (
+        <ul className={styles.recMeta}>
+          <li>{COHORT.priceIndia} · {COHORT.priceTaglineIndia}</li>
+          <li>
+            Next session {COHORT.dateShort}
+            {COHORT.state === 'soldout' ? ' · currently waitlist' : ` · ${COHORT.seatsLeft} seats left`}
+          </li>
+        </ul>
+      )}
+      <span className={primary ? styles.recCta : styles.recLink}>{cta}</span>
+    </>
+  );
+
+  if (external) {
+    return (
+      <a className={className} href={href} target="_blank" rel="noopener noreferrer">
+        {inner}
+      </a>
+    );
+  }
+
+  return (
+    <Link className={className} href={href}>
+      {inner}
+    </Link>
+  );
+}
+
+export default function QuizRunner({ assessment, config, relatedCourse }: QuizRunnerProps) {
   const total = assessment.questions.length;
   const [questionIndex, setQuestionIndex] = useState(0);
   const [picked, setPicked] = useState<number | null>(null);
@@ -214,16 +264,13 @@ export default function QuizRunner({ assessment, config }: QuizRunnerProps) {
 
                 <div className={styles.resultBlock}>
                   <h2>What to do next</h2>
-                  <p className={styles.sub}>{getNextIntro(results.band.key)}</p>
+                  <p className={styles.sub}>{getNextIntro()}</p>
                   <div className={styles.recs}>
-                    {(assessment.recs[results.band.key] ?? []).map((rec) => (
-                      <Link key={rec.url} className={styles.rec} href={rec.url}>
-                        <span className={styles.tag}>{rec.tag}</span>
-                        <h3>{rec.title}</h3>
-                        <p>{rec.desc}</p>
-                        <span className={styles.recLink}>View course →</span>
-                      </Link>
-                    ))}
+                    {[assessment.recs[results.band.key]?.[0], relatedCourse]
+                      .filter((rec): rec is QuizRec => Boolean(rec))
+                      .map((rec, index) => (
+                        <RecCard key={rec.url} rec={rec} primary={index === 0} />
+                      ))}
                   </div>
                 </div>
 

@@ -3,108 +3,100 @@
   "topic": "Build",
   "title": "Vibe Coding",
   "lede": "Building software you can't write by hand. A few questions on scoping an idea, steering the tool and telling a working prototype from a convincing one.",
-  "level": "Beginner to intermediate",
-  "minutes": 5,
+  "level": "No coding required",
+  "minutes": 7,
   "description": "Building software you can't write by hand. Test how you scope an idea, steer the tool and tell a working prototype from a convincing one.",
   "questions": [
     {
-      "q": "What's the most common reason a vibe-coded prototype falls apart halfway through?",
+      "q": "The term 'vibe coding' has become widely used to describe a new way of building software with AI. Who is credited with coining the term?",
       "options": [
-        "The wrong programming language",
-        "The scope was never defined, so every prompt quietly changes the goal",
-        "Not enough prompts",
-        "The model's training cutoff"
+        "Andrew Ng",
+        "Andrej Karpathy",
+        "Satya Nadella",
+        "Sundar Pichai"
       ],
       "answer": 1,
-      "why": "Drifting scope is the usual killer. Decide what the thing does before you start asking for it."
+      "why": "Andrej Karpathy popularised the term to describe building software by describing intent and iterating with an AI, rather than writing every line by hand."
     },
     {
-      "q": "Your app looks right but one button does nothing. What's the best next move?",
+      "q": "You have an idea for an internal business application and want to use Claude Code to turn it into a working prototype. Which workflow is most effective?",
       "options": [
-        "Ask for a full rewrite",
-        "Describe exactly what you clicked, what happened and what you expected",
-        "Start a brand new chat",
-        "Add more features and come back to it later"
+        "Code → Test → Deploy → Monitor",
+        "Explore → Plan → Code → Commit",
+        "Write → Review → Merge → Ship",
+        "Prompt → Accept → Push → Repeat"
       ],
       "answer": 1,
-      "why": "A specific bug report gets a specific fix. Rewrites throw away the parts that already work."
+      "why": "Exploring the problem and planning before generating code keeps the AI aligned with what you actually want, instead of producing code first and figuring out the plan after."
     },
     {
-      "q": "Before showing a prototype to someone else, what matters most?",
+      "q": "You ask Claude Code to build a simple internal dashboard. You want the AI to understand what the application should achieve, what information it will use, what it should produce, and how it should be structured visually. Which set of information provides the strongest foundation for the prompt?",
       "options": [
-        "That the code is well commented",
-        "That the main path a real person would take works end to end",
-        "That it uses the newest framework",
-        "That it has a dark mode"
+        "Goals, inputs, outputs, and layout",
+        "Pricing model",
+        "Deployment strategy",
+        "Database indexing rules"
       ],
-      "answer": 1,
-      "why": "A prototype earns its keep by proving one path works. Polish everything else later, or never."
+      "answer": 0,
+      "why": "Goals, inputs, outputs, and layout cover the essentials of what the app needs to do and look like — everything else can be figured out or adjusted later."
     },
     {
-      "q": "You're starting a new vibe-coded project. What should you define first?",
+      "q": "Your team is considering using vibe coding for several initiatives. Which project is generally the best fit for vibe coding today?",
       "options": [
-        "The color palette",
-        "One user flow: who does what, in what order, and what 'done' looks like",
-        "Which AI tool to use",
-        "The database schema"
+        "MVP and experimental projects",
+        "Large-scale enterprise ERP systems",
+        "Highly regulated financial systems",
+        "Mission-critical infrastructure software"
       ],
-      "answer": 1,
-      "why": "A single clear flow keeps prompts aligned. Without it, each request nudges the build in a different direction."
+      "answer": 0,
+      "why": "Vibe coding is strongest for fast prototyping and validating ideas. Complex, regulated, or mission-critical systems need the rigor of traditional engineering practice."
     },
     {
-      "q": "The generated UI looks polished but data doesn't persist after refresh. What does that usually mean?",
+      "q": "You are working on a large project with Claude Code. Your team has specific coding conventions, architecture decisions, and instructions about how the AI should modify the codebase. What is the primary purpose of a CLAUDE.md or similar instructions file?",
       "options": [
-        "The prototype is production-ready",
-        "You have a convincing shell — backend or storage still needs to be built or wired up",
-        "You need a different font",
-        "The model made a mistake you can't fix"
+        "To store your API keys and passwords securely",
+        "To provide context and guidelines to the AI about your project, coding preferences, and conventions",
+        "To automatically deploy your code to production",
+        "To track version history of your files"
       ],
       "answer": 1,
-      "why": "Front-end demos often fake persistence. Knowing the difference saves you from demoing something that isn't real yet."
+      "why": "A persistent instructions file saves you from re-explaining conventions in every new session and keeps output consistent as the project grows."
+    },
+    {
+      "q": "Your finance team wants a vibe-coded tool that automatically calculates and files statutory tax payments for the company. Why is this a poor fit for vibe coding today?",
+      "options": [
+        "Vibe coding tools can't generate any financial calculations",
+        "It touches compliance and real money with no room for silent errors — exactly the profile vibe coding is weakest on",
+        "Tax rules never change, so there's nothing to prototype",
+        "It would take too many prompts to describe"
+      ],
+      "answer": 1,
+      "why": "Vibe coding shines for MVPs and internal tools where a bug is inconvenient. Regulated, high-stakes work — money, compliance, safety — needs the rigor, testing and accountability of a proper engineering process, not a fast prototype."
+    },
+    {
+      "q": "You've been vibe coding an internal tool for a few hours and just asked for a big change that broke something that used to work. What habit would have saved you the most time?",
+      "options": [
+        "Avoiding version control since it slows down fast iteration",
+        "Committing or saving a working checkpoint before each significant change, so you can roll back",
+        "Only ever making one change per day",
+        "Rewriting the entire app from scratch every time something breaks"
+      ],
+      "answer": 1,
+      "why": "Frequent checkpoints — a commit, a saved copy, a version snapshot — turn 'something broke and I don't know what' into a quick rollback instead of a rebuild. This matters more with AI-generated code, since changes can be large and hard to review line by line."
     }
   ],
   "recs": {
     "low": [
-      {
-        "tag": "Free course",
-        "title": "Claude Ecosystem",
-        "desc": "Start by understanding the tools you'll be building with.",
-        "url": "/courses/claude-ecosystem---chat-code-cowork"
-      },
-      {
-        "tag": "Live cohort",
-        "title": "Live AI Cohort",
-        "desc": "Build your first real thing with a mentor rather than alone at midnight.",
-        "url": "/"
-      }
+      { "tag": "Live cohort", "title": "Live AI Cohort", "desc": "Build your first real thing with a mentor rather than alone at midnight.", "url": "https://learn.approachable.dev/registration" },
+      { "tag": "Free course", "title": "Claude Ecosystem", "desc": "Start by understanding the tools you'll be building with.", "url": "/courses/claude-ecosystem---chat-code-cowork" }
     ],
     "mid": [
-      {
-        "tag": "Self-paced",
-        "title": "Vibe Coding Mastery",
-        "desc": "Claude Artifacts, Copilot in Excel and Lovable — turn ideas into working prototypes.",
-        "url": "/courses/vibe-coding-mastery-for-working-professionals"
-      },
-      {
-        "tag": "Live cohort",
-        "title": "Live AI Cohort",
-        "desc": "Structure and feedback while you build something real.",
-        "url": "/"
-      }
+      { "tag": "Live cohort", "title": "Live AI Cohort", "desc": "Structure and feedback while you build something real.", "url": "https://learn.approachable.dev/registration" },
+      { "tag": "Self-paced", "title": "Vibe Coding Mastery", "desc": "Claude Artifacts, Copilot in Excel and Lovable — turn ideas into working prototypes.", "url": "/courses/vibe-coding-mastery-for-working-professionals" }
     ],
     "high": [
-      {
-        "tag": "Live cohort",
-        "title": "Live AI Cohort",
-        "desc": "Bring the idea you keep putting off and ship it with a group around you.",
-        "url": "/"
-      },
-      {
-        "tag": "Self-paced",
-        "title": "No-Code AI Agents Mastery",
-        "desc": "Make what you build run on its own.",
-        "url": "/courses/no-code-ai-agents-mastery-for-working-professionals"
-      }
+      { "tag": "Live cohort", "title": "Live AI Cohort", "desc": "Bring the idea you keep putting off and ship it with a group around you.", "url": "https://learn.approachable.dev/registration" },
+      { "tag": "Self-paced", "title": "No-Code AI Agents Mastery", "desc": "Make what you build run on its own.", "url": "/courses/no-code-ai-agents-mastery-for-working-professionals" }
     ]
   }
 }
