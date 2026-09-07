@@ -2267,6 +2267,10 @@ section {
 }
 
 /* Prompting guide */
+.prompting-guide-page section {
+  padding-top: 0;
+  padding-bottom: 0;
+}
 .prompting-guide-page .pg-page-hero {
   padding: 56px var(--page-gutter) 32px;
   max-width: 840px;
@@ -2305,6 +2309,7 @@ section {
   margin: 0 auto 18px;
 }
 .prompting-guide-page .pg-page-content {
+  padding-top: 0;
   padding-bottom: 80px;
 }
 .pg-hero-stats {
