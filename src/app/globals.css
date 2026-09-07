@@ -1565,21 +1565,34 @@ section {
   border: 1px solid var(--border);
   border-radius: 14px;
   overflow: hidden;
+  transition: border-color 0.15s ease;
+}
+.admin-submission-card.is-expanded {
+  border-color: rgba(223, 121, 88, 0.35);
 }
 .admin-submission-header {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 14px;
-  padding: 20px 24px;
+  padding: 16px 20px;
+  background: var(--bg);
+  border-bottom: none;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.admin-submission-header:hover {
   background: var(--bg-warm);
+}
+.admin-submission-card.is-expanded .admin-submission-header {
   border-bottom: 1px solid var(--border);
+  background: var(--bg-warm);
 }
 .admin-submission-num {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: var(--accent);
-  color: white;
+  background: var(--bg-section, #f4f4f0);
+  color: var(--text-secondary);
   font-size: 13px;
   font-weight: 700;
   display: flex;
@@ -1587,8 +1600,18 @@ section {
   justify-content: center;
   flex-shrink: 0;
 }
+.admin-submission-summary {
+  min-width: 0;
+  flex: 1;
+}
+.admin-submission-title-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
 .admin-submission-company {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
   color: var(--text-primary);
 }
@@ -1621,17 +1644,53 @@ section {
   text-decoration: underline;
 }
 .admin-submission-date {
-  margin-left: auto;
   font-size: 12px;
   color: var(--text-muted);
   white-space: nowrap;
   flex-shrink: 0;
 }
+.admin-submission-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+.admin-submission-chevron {
+  color: var(--text-muted);
+  flex-shrink: 0;
+  transition: transform 0.15s ease;
+}
+.admin-submission-chevron.is-expanded {
+  transform: rotate(180deg);
+}
+.admin-delete-btn {
+  border: 1px solid rgba(220, 38, 38, 0.35);
+  background: rgba(220, 38, 38, 0.08);
+  color: #b91c1c;
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.admin-delete-btn:hover:not(:disabled) {
+  background: rgba(220, 38, 38, 0.14);
+  border-color: rgba(220, 38, 38, 0.5);
+}
+.admin-delete-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.admin-submission-details {
+  padding: 0 20px 20px;
+}
 .admin-submission-body {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px 24px;
-  padding: 20px 24px 0;
+  padding: 16px 0 0;
   margin: 0;
 }
 .admin-field {
@@ -1657,7 +1716,7 @@ section {
   padding: 16px 24px 0;
 }
 .admin-submission-requirements {
-  padding: 16px 24px 20px;
+  padding: 16px 0 0;
 }
 .admin-submission-requirements p {
   margin: 6px 0 0;
@@ -1734,19 +1793,20 @@ section {
 @media (max-width: 640px) {
   .admin-submission-header {
     flex-wrap: wrap;
-    padding: 16px 20px;
+    padding: 14px 16px;
+    gap: 12px;
   }
-  .admin-submission-date {
+  .admin-submission-actions {
+    width: 100%;
     margin-left: 46px;
+    justify-content: flex-end;
+  }
+  .admin-submission-details {
+    padding: 0 16px 16px;
   }
   .admin-submission-body {
     grid-template-columns: 1fr;
-    padding: 16px 20px 0;
-  }
-  .admin-submission-tags,
-  .admin-submission-requirements {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-top: 12px;
   }
 }
 

@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { ALL_CATALOG_SLUGS } from '@/lib/course-content';
+import { ASSESSMENT_SLUGS } from '@/lib/assessments';
 import { getGlossaryEntries } from '@/lib/glossary';
 import { getAllPosts, getAllTags } from '@/lib/posts';
 import { absoluteUrl } from '@/lib/seo/site';
@@ -58,6 +59,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: 'monthly',
       priority: 0.7,
+    },
+    {
+      url: absoluteUrl('/assessment'),
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.75,
     },
     {
       url: absoluteUrl('/archive'),
@@ -131,5 +138,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.65,
   }));
 
-  return [...staticRoutes, ...courseRoutes, ...blogRoutes, ...blogTagRoutes, ...glossaryTermRoutes];
+  const assessmentRoutes: MetadataRoute.Sitemap = ASSESSMENT_SLUGS.map((slug) => ({
+    url: absoluteUrl(`/assessment/quiz/${slug}`),
+    lastModified,
+    changeFrequency: 'monthly',
+    priority: 0.75,
+  }));
+
+  return [
+    ...staticRoutes,
+    ...courseRoutes,
+    ...blogRoutes,
+    ...blogTagRoutes,
+    ...glossaryTermRoutes,
+    ...assessmentRoutes,
+  ];
 }
