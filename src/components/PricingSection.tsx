@@ -63,7 +63,7 @@ export default function PricingSection() {
               className={`price-tagline${isLate ? ' price-tagline--expired' : ''}`}
               style={{ display: 'inline-block' }}
             >
-              🚀 DISCOUNTED price — 50% off
+              🚀 EARLY BIRD price — save 20%
             </span>
           </div>
 
@@ -104,13 +104,13 @@ export default function PricingSection() {
           </div>
 
           <ul className="pricing-includes">
-            <li><span className="check">✓</span> 4 live 60-90-min mentor-led sessions</li>
+            <li><span className="check">✓</span> 3 live 60-90-min mentor-led sessions</li>
             <li><span className="check">✓</span> Pre-session reading &amp; video materials</li>
             <li><span className="check">✓</span> Access to the Approachable learning platform</li>
             <li><span className="check">✓</span> Quizzes, progress tracking, prompting guide</li>
             <li><span className="check">✓</span> Session recordings shared after each class</li>
             <li><span className="check">✓</span> WhatsApp community + mentor access between sessions</li>
-            <li><span className="check">✓</span> 2 capstone project slots (demo to the group)</li>
+            <li><span className="check">✓</span> Capstone project submitted for mentor review</li>
           </ul>
 
           <a
