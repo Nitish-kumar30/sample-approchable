@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import type { ReactNode } from 'react';
+import { Sora, Manrope } from 'next/font/google';
 import { COHORT } from '@/lib/cohort-config';
 import { buildCohortSchema } from '@/lib/seo/cohort-schema';
 import Banner from '@/components/Banner';
@@ -8,6 +9,11 @@ import Header from '@/components/Header';
 import FloatingCta from '@/components/FloatingCta';
 import MentorSection from '@/components/MentorSection';
 import PricingSection from '@/components/PricingSection';
+
+// Type treatment for this landing page only — see the "Confident Technical" sample.
+// Scoped via the .cohort-page class + globals.css; no other page is affected.
+const sora = Sora({ subsets: ['latin'], weight: ['400', '600', '700', '800'], variable: '--font-sora' });
+const manrope = Manrope({ subsets: ['latin'], weight: ['400', '500', '600', '700'], variable: '--font-manrope' });
 
 const COHORT_DESCRIPTION =
   'A small-group, mentor-led cohort on AI Foundations, Claude Chat, Agentic AI with Claude Cowork, and Vibe Coding. 20 seats. Live sessions. Real projects.';
@@ -152,7 +158,7 @@ export default function HomePage() {
       />
       <Banner />
       <Header hideNav />
-      <main>
+      <main className={`cohort-page ${sora.variable} ${manrope.variable}`}>
         {/* HERO */}
         <section className="page-section" style={{ paddingTop: 64, paddingBottom: 0, borderBottom: '1px solid var(--border)' }}>
           <div className="hero" style={{ padding: '0 0 48px' }}>
