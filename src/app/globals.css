@@ -2845,3 +2845,34 @@ section {
     box-shadow: none;
   }
 }
+
+/* ============================================================
+   Cohort landing page ("/") — Sora + Manrope type treatment.
+   Scoped to main.cohort-page so no other page is affected.
+   Font objects are loaded via next/font/google in src/app/page.tsx,
+   which exposes them as the --font-sora / --font-manrope variables.
+   ============================================================ */
+main.cohort-page {
+  font-family: var(--font-manrope), Inter, system-ui, sans-serif;
+}
+main.cohort-page h1,
+main.cohort-page h2,
+main.cohort-page h3,
+main.cohort-page .hero-label,
+main.cohort-page .section-label,
+main.cohort-page .curriculum-num,
+main.cohort-page .curriculum-session-label,
+main.cohort-page .btn-primary,
+main.cohort-page .btn-secondary,
+main.cohort-page .pricing-cta,
+main.cohort-page .price-main,
+main.cohort-page .cohort-badge,
+main.cohort-page .step-num {
+  font-family: var(--font-sora), system-ui, sans-serif;
+}
+main.cohort-page h1 { letter-spacing: -0.03em; }
+main.cohort-page h2 { letter-spacing: -0.02em; }
+main.cohort-page .hero-label,
+main.cohort-page .section-label {
+  font-weight: 700;
+}
