@@ -206,7 +206,6 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* VIDEO — commented out until the new cohort overview video is recorded (expected: day after campaign launch).
         <hr className="divider" />
 
         <section style={{ background: 'var(--bg-warm)', padding: '56px 0' }}>
@@ -215,7 +214,7 @@ export default function HomePage() {
             <h2 className="section-title" style={{ textAlign: 'center', marginBottom: 32 }}>See what you&apos;re signing up for</h2>
             <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, borderRadius: 14, overflow: 'hidden', border: '1px solid var(--border)', boxShadow: '0 4px 24px rgba(0,0,0,0.08)' }}>
               <iframe
-                src="https://player.vimeo.com/video/1208021044?badge=0&autopause=0&player_id=0&app_id=58479"
+                src="https://player.vimeo.com/video/1225208449?badge=0&autopause=0&player_id=0&app_id=58479"
                 frameBorder="0"
                 allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
                 style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
@@ -224,7 +223,6 @@ export default function HomePage() {
             </div>
           </div>
         </section>
-        */}
 
         <hr className="divider" />
 
