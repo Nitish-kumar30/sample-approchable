@@ -440,6 +440,13 @@ export default function HomePage() {
         </section>
       </main>
 
+      <footer style={{ textAlign: 'center', padding: '32px 16px', fontSize: 13, color: 'var(--text-muted)' }}>
+        <p style={{ margin: 0 }}>
+          © 2026 Approachable · making AI approachable for everyone ·{' '}
+          <a href="mailto:ranbeer@gmail.com">ranbeer@gmail.com</a>
+        </p>
+      </footer>
+
       <FloatingCta />
     </>
   );
