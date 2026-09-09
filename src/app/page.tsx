@@ -440,10 +440,10 @@ export default function HomePage() {
         </section>
       </main>
 
-      <footer style={{ textAlign: 'center', padding: '32px 16px', fontSize: 13, color: 'var(--text-muted)' }}>
+      <footer style={{ textAlign: 'center', padding: '32px 16px', fontSize: 13, color: '#A8A29E', background: 'var(--dark)' }}>
         <p style={{ margin: 0 }}>
           © 2026 Approachable · making AI approachable for everyone ·{' '}
-          <a href="mailto:ranbeer@gmail.com">ranbeer@gmail.com</a>
+          <a href="mailto:ranbeer@gmail.com" style={{ color: '#78716C' }}>ranbeer@gmail.com</a>
         </p>
       </footer>
 
