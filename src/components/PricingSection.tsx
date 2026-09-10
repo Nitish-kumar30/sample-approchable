@@ -103,15 +103,42 @@ export default function PricingSection() {
             </div>
           </div>
 
-          <ul className="pricing-includes">
-            <li><span className="check">✓</span> 3 live 60-90-min mentor-led sessions</li>
-            <li><span className="check">✓</span> Pre-session reading &amp; video materials</li>
-            <li><span className="check">✓</span> Access to the Approachable learning platform</li>
-            <li><span className="check">✓</span> Quizzes, progress tracking, prompting guide</li>
-            <li><span className="check">✓</span> Session recordings shared after each class</li>
-            <li><span className="check">✓</span> WhatsApp community + mentor access between sessions</li>
-            <li><span className="check">✓</span> Capstone project submitted for mentor review</li>
+          <div className="pricing-divider" />
+
+          <div className="pricing-also-included-label" style={{ marginBottom: 10 }}>What you&rsquo;ll walk away with</div>
+          <ul className="pricing-benefits">
+            <li className="pricing-benefit">
+              <span className="pricing-benefit-check">✓</span>
+              <div className="pricing-benefit-title">AI workflows for your actual work</div>
+            </li>
+            <li className="pricing-benefit">
+              <span className="pricing-benefit-check">✓</span>
+              <div className="pricing-benefit-title">A real project built with mentor guidance</div>
+            </li>
+            <li className="pricing-benefit">
+              <span className="pricing-benefit-check">✓</span>
+              <div className="pricing-benefit-title">Practical Claude skills you can use immediately</div>
+            </li>
           </ul>
+
+          <div className="pricing-callout">
+            <span className="pricing-callout-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="2" y="7" width="20" height="14" rx="2" />
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                <path d="M2 13h20" />
+              </svg>
+            </span>
+            <div>
+              <div className="pricing-callout-title">Bring your own use case</div>
+              <div className="pricing-callout-desc">Your work becomes your classroom. We&rsquo;ll help you turn it into an AI workflow.</div>
+            </div>
+          </div>
+
+          <div className="pricing-also-included-label">Also included</div>
+          <p className="pricing-also-included">
+            Session recordings &nbsp;·&nbsp; Templates &amp; guides &nbsp;·&nbsp; Learning platform &nbsp;·&nbsp; WhatsApp community &nbsp;·&nbsp; Mentor access
+          </p>
 
           <a
             href={COHORT.formUrl}
