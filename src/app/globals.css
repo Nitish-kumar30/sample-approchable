@@ -887,6 +887,33 @@ section {
 .pricing-callout-title { font-size: 15px; font-weight: 700; color: var(--text-primary); margin-bottom: 3px; }
 .pricing-callout-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.4; }
 
+.pricing-bonus {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: #F0FBF6;
+  border: 1px dashed #A9DFC4;
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+}
+.pricing-bonus-icon { flex-shrink: 0; margin-top: 1px; line-height: 1; font-size: 20px; }
+.pricing-bonus-label {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  color: #1E8A5F;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: #DDF5E8;
+  border-radius: 5px;
+  padding: 2px 7px;
+  margin-bottom: 5px;
+}
+.pricing-bonus-title { font-size: 15px; font-weight: 700; color: var(--text-primary); margin-bottom: 3px; }
+.pricing-bonus-title .pricing-bonus-strike { color: var(--text-muted); text-decoration: line-through; font-weight: 600; margin-right: 6px; }
+.pricing-bonus-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.4; }
+
 .pricing-also-included-label {
   font-size: 12px;
   font-weight: 600;
