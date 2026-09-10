@@ -4,6 +4,7 @@ export const ENQUIRY_TYPES = [
   { value: 'team-training', label: 'Team Training' },
   { value: 'cohort', label: 'Live AI Cohort' },
   { value: 'courses', label: 'Courses' },
+  { value: 'one-on-one', label: '1-1 AI Training' },
   { value: 'general', label: 'General Enquiry' },
 ] as const;
 

@@ -1,0 +1,637 @@
+.page {
+  --ink: #2b241f;
+  --muted: #6e655e;
+  --cream: #f8f5ef;
+  --paper: #fffdf9;
+  --line: #e6dfd5;
+  --accent: #9a5b35;
+  --accent-dark: #744126;
+  --soft: #efe5d9;
+  --max: 1120px;
+
+  color: var(--ink);
+  background: var(--paper);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  line-height: 1.55;
+}
+
+:where(.page) a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.page :focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.container {
+  width: min(var(--max), calc(100% - 40px));
+  margin: auto;
+}
+
+.page .hero {
+  padding: 92px 0 80px;
+  background:
+    radial-gradient(circle at 85% 20%, rgba(154, 91, 53, 0.12), transparent 30%),
+    var(--cream);
+  text-align: center;
+}
+
+.eyebrow {
+  display: inline-block;
+  padding: 6px 11px;
+  border: 1px solid #d9cabb;
+  border-radius: 999px;
+  color: var(--accent-dark);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.page h1 {
+  max-width: 820px;
+  margin: 0 auto 20px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 500;
+  font-size: clamp(42px, 6.4vw, 74px);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+}
+
+.hero h1 em {
+  color: var(--accent);
+  font-style: normal;
+}
+
+.hero p {
+  max-width: 660px;
+  margin: 0 auto 30px;
+  color: var(--muted);
+  font-size: 18px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  border: 1px solid var(--ink);
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+.btnPrimary {
+  background: var(--ink);
+  color: white;
+}
+
+.btnPrimary:hover {
+  background: var(--accent-dark);
+  border-color: var(--accent-dark);
+}
+
+.btnSecondary {
+  background: transparent;
+}
+
+.btnSecondary:hover {
+  background: var(--ink);
+  color: #fff;
+}
+
+.heroStats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 720px;
+  margin: 40px auto 0;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  background: white;
+}
+
+.heroStat {
+  padding: 20px 14px;
+  border-right: 1px solid var(--line);
+}
+
+.heroStat:last-child {
+  border-right: 0;
+}
+
+.heroStat b {
+  display: block;
+  font-family: Georgia, serif;
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.heroStat span {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.page section {
+  padding: 76px 0;
+}
+
+.sectionHead {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 42px;
+}
+
+.sectionLabel {
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 11px;
+  font-weight: 800;
+  margin-bottom: 9px;
+}
+
+.page h2 {
+  margin: 0 0 12px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(32px, 5vw, 48px);
+  line-height: 1.08;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+.sectionHead p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.calendarSection {
+  background: var(--paper);
+}
+
+.calendarBoard {
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.sampleBanner {
+  margin: 0 0 22px;
+  padding: 12px 16px;
+  border: 1px solid #d9cabb;
+  border-radius: 10px;
+  background: var(--soft);
+  color: var(--accent-dark);
+  font-size: 13px;
+  text-align: center;
+}
+
+.weekNav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.weekArrow {
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: white;
+  color: var(--ink);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.weekArrow:hover:not(:disabled) {
+  border-color: var(--ink);
+}
+
+.weekArrow:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.weekTabs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  flex: 1;
+  padding-bottom: 2px;
+}
+
+.weekTab {
+  flex: 1 0 auto;
+  min-width: 84px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: white;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.weekTabActive {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: white;
+}
+
+.weekPanel {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 28px 26px 22px;
+}
+
+.weekIntro {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.weekKicker {
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 11px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.weekTitle {
+  margin: 0 0 8px;
+  font-family: Georgia, serif;
+  font-weight: 500;
+  font-size: 32px;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.weekTheme {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.dayStrip {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.dayCell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 4px 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--paper);
+  color: var(--muted);
+  cursor: default;
+  font-family: inherit;
+}
+
+.dayCell:disabled {
+  opacity: 1;
+}
+
+.dayHasEvents {
+  cursor: pointer;
+  background: white;
+  color: var(--ink);
+}
+
+.dayHasEvents:hover {
+  border-color: #d9cabb;
+}
+
+.daySelected {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: white;
+}
+
+.daySelected .dayDot {
+  background: #dcae8e;
+}
+
+.dayWeekday {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.dayNumber {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Georgia, serif;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.dayMonth {
+  font-family: Inter, sans-serif;
+  font-size: 10px;
+  margin-top: 4px;
+  font-weight: 600;
+}
+
+.dayDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-top: 2px;
+}
+
+.clearDay {
+  display: block;
+  margin: 0 auto 16px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--accent-dark);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.eventList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.eventCard {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--paper);
+  overflow: hidden;
+}
+
+.eventFeatured {
+  border-color: #d9cabb;
+  background: white;
+}
+
+.eventToggle {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 20px 22px 16px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  color: inherit;
+  font-family: inherit;
+}
+
+.eventMeta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.typeTag,
+.featuredTag,
+.tag {
+  display: inline-block;
+  width: max-content;
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.typeLive,
+.featuredTag {
+  background: var(--soft);
+  color: var(--accent-dark);
+}
+
+.typeOffice {
+  background: #ece7e0;
+  color: #4d463f;
+}
+
+.typeAssignment {
+  background: #efe8dc;
+  color: #744126;
+}
+
+.typeCapstone {
+  background: var(--ink);
+  color: #fff;
+}
+
+.eventTitle {
+  margin: 0 0 8px;
+  font-family: Georgia, serif;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.eventWhen {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.eventHint {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent-dark);
+}
+
+.eventBody {
+  padding: 0 22px 20px;
+  border-top: 1px solid var(--line);
+}
+
+.eventBody p {
+  margin: 14px 0 12px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.topicList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.topic {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 5px 10px;
+  font-size: 12px;
+  color: var(--ink);
+}
+
+.rhythmGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+.rhythmCard {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 28px 26px 26px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.rhythmCard:hover {
+  transform: translateY(-3px);
+  border-color: #d9cabb;
+  box-shadow: 0 12px 28px rgba(43, 36, 31, 0.07);
+}
+
+.rhythmCard h3 {
+  margin: 16px 0 8px;
+  font-family: Georgia, serif;
+  font-weight: 500;
+  font-size: 27px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.rhythmCard > p {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 0;
+}
+
+.mentorWrap {
+  padding: 0 !important;
+}
+
+.mentorWrap :global(section) {
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+
+.page .final {
+  background: var(--cream);
+  text-align: center;
+  padding: 90px 0;
+}
+
+.final p {
+  max-width: 600px;
+  margin: 0 auto 25px;
+  color: var(--muted);
+}
+
+@media (max-width: 850px) {
+  .heroStats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .heroStat:nth-child(2) {
+    border-right: 0;
+  }
+
+  .heroStat:nth-child(-n + 2) {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .weekTitle {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 640px) {
+  .dayStrip {
+    gap: 6px;
+  }
+
+  .dayNumber {
+    font-size: 16px;
+  }
+
+  .dayMonth {
+    display: none;
+  }
+
+  .weekPanel {
+    padding: 20px 16px 16px;
+  }
+
+  .eventToggle {
+    padding: 16px;
+  }
+
+  .eventBody {
+    padding: 0 16px 16px;
+  }
+}
+
+@media (max-width: 560px) {
+  .container {
+    width: min(var(--max), calc(100% - 28px));
+  }
+
+  .page .hero {
+    padding: 65px 0 55px;
+  }
+
+  .page section {
+    padding: 58px 0;
+  }
+
+  .weekArrow {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page *,
+  .page *::before {
+    transition: none !important;
+    animation: none !important;
+  }
+}

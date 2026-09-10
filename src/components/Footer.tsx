@@ -34,6 +34,7 @@ export default function Footer() {
       links: [
         { label: 'About Us', href: '/about' },
         { label: 'Contact Us', href: '/contact' },
+        { label: 'Mentor Calendar', href: '/mentor-calendar' },
       ],
     },
     {
@@ -59,6 +60,7 @@ export default function Footer() {
         { label: 'AI Glossary', href: '/ai-glossary' },
         { label: 'Prompting Guide', href: '/prompting-guide' },
         { label: 'AI Assessments', href: '/assessment' },
+        { label: '1-1 AI Training', href: '/one-on-one-ai-training' },
       ],
     },
     {
