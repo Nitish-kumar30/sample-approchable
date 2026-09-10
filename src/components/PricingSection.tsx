@@ -108,7 +108,7 @@ export default function PricingSection() {
             <div>
               <span className="pricing-bonus-label">Free bonus</span>
               <div className="pricing-bonus-title">
-                <span className="pricing-bonus-strike">₹1,500</span>AI Mastery for Working Professionals
+                <span className="pricing-bonus-strike">₹1,500 / $70</span>AI Mastery for Working Professionals
               </div>
               <div className="pricing-bonus-desc">
                 A self-paced course on weaving AI into your daily work &mdash; included free with this cohort, yours to keep even after it ends.
