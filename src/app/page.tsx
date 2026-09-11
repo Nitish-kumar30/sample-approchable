@@ -20,12 +20,12 @@ const COHORT_DESCRIPTION =
 const COHORT_OG_IMAGE = '/img/og-image.png';
 
 export const metadata: Metadata = {
-  title: { absolute: 'Claude AI Cohort — Master AI Foundations & the Claude Ecosystem in 3 Weeks' },
+  title: { absolute: 'Claude AI Cohort — Master AI Foundations & the Claude Ecosystem in 6 Weeks' },
   description: COHORT_DESCRIPTION,
   alternates: { canonical: '/' },
   openGraph: {
     type: 'website',
-    title: 'Claude AI Cohort — Master AI Foundations & the Claude Ecosystem in 3 Weeks',
+    title: 'Claude AI Cohort — Master AI Foundations & the Claude Ecosystem in 6 Weeks',
     description: 'Small-group, mentor-led cohort on Claude Chat, Agentic AI with Cowork, and Vibe Coding. 20 seats max.',
     url: '/',
     siteName: 'Approachable',
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Claude AI Cohort — Master AI Foundations & the Claude Ecosystem in 3 Weeks',
+    title: 'Claude AI Cohort — Master AI Foundations & the Claude Ecosystem in 6 Weeks',
     description: 'Small-group, mentor-led cohort on Claude Chat, Agentic AI with Cowork, and Vibe Coding. 20 seats max.',
     images: [COHORT_OG_IMAGE],
   },
@@ -131,7 +131,7 @@ type HomeFaqItem = {
 const FAQ: HomeFaqItem[] = [
   { q: 'Who is this cohort for?', a: 'Anyone who uses or wants to use AI & Claude seriously — developers, PMs, founders, consultants, and tech professionals who want to go beyond chat prompts and actually build with the Claude ecosystem.' },
   { q: 'Do I need to know how to code?', a: "Not at all. This cohort is fully accessible to non-developers — AI Foundations, Claude Chat, and Cowork need no coding, and the Vibe Coding week uses AI to write the code for you. No prior experience required." },
-  { q: 'How long is the program?', a: '3 live sessions (90 mins each), one per week — Session 1: Sep 30, Session 2: Oct 7, Session 3: Oct 14 — followed by a short capstone build period submitted for mentor review. Roughly 3–4 weeks start to finish.' },
+  { q: 'How long is the program?', a: '3 live sessions (90 mins each), one per week — Session 1: Sep 30, Session 2: Oct 7, Session 3: Oct 14 — followed by a 3 week capstone build period submitted for mentor review. Roughly 6 weeks start to finish.' },
   { q: 'Why is the fee non-refundable?', a: "We cap at 20 seats. When someone takes a seat and doesn't show, it costs another learner their spot. The commitment fee protects the group experience — it's the same reason the cohort model works." },
   {
     q: "What's the Approachable learning platform?",
@@ -167,7 +167,7 @@ export default function HomePage() {
               Master the AI fundamentals <br />
               with <span>Claude Ecosystem</span>
               <br />
-              in 3 Weeks
+              in 6 Weeks
             </h1>
             <p style={{ fontSize: 13, color: 'var(--text-muted)', margin: '0 auto 12px', fontWeight: 500 }}>
               Mentor: Ranbeer Makin (Claude Certified &amp; Claude Partner)
@@ -186,7 +186,7 @@ export default function HomePage() {
               <div className="cohort-meta">
                 <div className="cohort-meta-item">📅 <strong>Starts {COHORT.date}</strong> &nbsp;·&nbsp; {COHORT.time}</div>
                 <div className="cohort-meta-item">👥 <strong>Max 20 seats</strong> &nbsp;·&nbsp; Small group, discussion-driven</div>
-                <div className="cohort-meta-item">⏱ <strong>3 live sessions</strong> &nbsp;·&nbsp; Sep 30, Oct 7, Oct 14 &nbsp;·&nbsp; 60-90 min each + capstone build</div>
+                <div className="cohort-meta-item">⏱ <strong>3 live sessions</strong> &nbsp;·&nbsp; Sep 30, Oct 7, Oct 14 &nbsp;·&nbsp; 60-90 min each + 3 weeks capstone build</div>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8, alignItems: 'flex-end' }}>
                 <span className="cohort-badge">{COHORT.seatsLeft} seats left</span>
@@ -437,13 +437,6 @@ export default function HomePage() {
           </div>
         </section>
       </main>
-
-      <footer style={{ textAlign: 'center', padding: '32px 16px', fontSize: 13, color: '#A8A29E', background: 'var(--dark)' }}>
-        <p style={{ margin: 0 }}>
-          © 2026 Approachable · making AI approachable for everyone ·{' '}
-          <a href="mailto:ranbeer@gmail.com" style={{ color: '#78716C' }}>ranbeer@gmail.com</a>
-        </p>
-      </footer>
 
       <FloatingCta />
     </>
