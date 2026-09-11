@@ -16,7 +16,11 @@ function FooterLinkItem({ link }: { link: FooterLink }) {
   }
 
   if (link.href.startsWith('http://') || link.href.startsWith('https://')) {
-    return <a href={link.href}>{link.label}</a>;
+    return (
+      <a href={link.href} target="_blank" rel="noopener noreferrer">
+        {link.label}
+      </a>
+    );
   }
 
   return <Link href={link.href}>{link.label}</Link>;
@@ -59,6 +63,7 @@ export default function Footer() {
         { label: 'AI Glossary', href: '/ai-glossary' },
         { label: 'Prompting Guide', href: '/prompting-guide' },
         { label: 'AI Assessments', href: '/assessment' },
+        { label: 'Claude Code Setup Guide', href: 'https://github.com/ranmax123/claude-code-guide' },
       ],
     },
     {
