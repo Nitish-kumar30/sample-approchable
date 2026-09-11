@@ -1,130 +1,159 @@
 'use client';
 
-import { useEffect, useMemo, useRef, useState, type KeyboardEvent } from 'react';
+import { useMemo, useState, type KeyboardEvent } from 'react';
+import Link from 'next/link';
 import {
-  EVENT_TYPE_LABELS,
-  MENTOR_CALENDAR_NOTE,
-  MENTOR_WEEKS,
-  formatEventDate,
-  formatWeekRange,
-  getEventsForWeek,
-  getFeaturedEventId,
-  getWeekByNumber,
-  getWeekDays,
-  type MentorEventType,
+  OFFERING_FILTERS,
+  OFFERING_LABELS,
+  STATUS_LABELS,
+  STATUS_LEGEND,
+  WEEKDAY_SHORT,
+  deriveWindowStatus,
+  formatMonthTitle,
+  formatWindowDates,
+  getDefaultMonthKey,
+  getFeaturedWindowId,
+  getMonthBounds,
+  getMonthGrid,
+  getOffering,
+  getWindowsForFilter,
+  getWindowsForMonth,
+  shiftMonth,
+  type OfferingFilter,
+  type OfferingId,
+  type WindowStatus,
 } from '@/data/mentor-calendar';
 import styles from '@/app/mentor-calendar/mentor-calendar.module.css';
 
-const WEEK_COUNT = MENTOR_WEEKS.length;
+function offeringClass(id: OfferingId): string {
+  if (id === 'team-training') return styles.typeTeam;
+  if (id === 'one-on-one') return styles.typeOne;
+  return styles.typeCohort;
+}
 
-function typeClass(type: MentorEventType): string {
-  if (type === 'live') return styles.typeLive;
-  if (type === 'office-hours') return styles.typeOffice;
-  if (type === 'assignment') return styles.typeAssignment;
-  return styles.typeCapstone;
+function statusClass(status: WindowStatus): string {
+  if (status === 'open') return styles.statusOpen;
+  if (status === 'limited') return styles.statusLimited;
+  if (status === 'waitlist') return styles.statusWaitlist;
+  if (status === 'full') return styles.statusFull;
+  return styles.statusClosed;
+}
+
+function dotClass(id: OfferingId): string {
+  if (id === 'team-training') return styles.dotTeam;
+  if (id === 'one-on-one') return styles.dotOne;
+  return styles.dotCohort;
 }
 
 export default function MentorCalendar() {
-  const [weekNumber, setWeekNumber] = useState(1);
+  const [filter, setFilter] = useState<OfferingFilter>('all');
+  const [monthKey, setMonthKey] = useState(() => getDefaultMonthKey());
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
-  const [expandedId, setExpandedId] = useState<string | null>(() => getFeaturedEventId(1));
-  const tabsRef = useRef<HTMLDivElement>(null);
-  const skipTabFocus = useRef(true);
+  const [expandedId, setExpandedId] = useState<string | null>(null);
 
-  useEffect(() => {
-    if (skipTabFocus.current) {
-      skipTabFocus.current = false;
-      return;
-    }
-    const selected = tabsRef.current?.querySelector<HTMLButtonElement>('[aria-selected="true"]');
-    selected?.focus();
-  }, [weekNumber]);
+  const bounds = useMemo(() => getMonthBounds(), []);
+  const filterWindows = useMemo(() => getWindowsForFilter(filter), [filter]);
+  const monthWindows = useMemo(
+    () => getWindowsForMonth(filterWindows, monthKey, selectedDate),
+    [filterWindows, monthKey, selectedDate],
+  );
+  const gridCells = useMemo(() => getMonthGrid(monthKey, filterWindows), [monthKey, filterWindows]);
 
-  const week = getWeekByNumber(weekNumber) ?? MENTOR_WEEKS[0];
-  const days = useMemo(() => getWeekDays(week.week), [week.week]);
-  const weekEvents = useMemo(() => getEventsForWeek(week.week), [week.week]);
-  const visibleEvents = selectedDate
-    ? weekEvents.filter((event) => event.date === selectedDate)
-    : weekEvents;
+  const featuredId = getFeaturedWindowId(monthWindows);
+  const activeExpanded = expandedId && monthWindows.some((window) => window.id === expandedId)
+    ? expandedId
+    : featuredId;
 
-  const goToWeek = (nextWeek: number) => {
-    const clamped = Math.min(WEEK_COUNT, Math.max(1, nextWeek));
-    if (clamped === weekNumber) return;
-    setWeekNumber(clamped);
+  const goToMonth = (nextKey: string) => {
+    if (nextKey < bounds.min || nextKey > bounds.max) return;
+    setMonthKey(nextKey);
     setSelectedDate(null);
-    setExpandedId(getFeaturedEventId(clamped));
+    setExpandedId(null);
   };
 
-  const onWeekTabKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+  const onFilterChange = (next: OfferingFilter) => {
+    setFilter(next);
+    setSelectedDate(null);
+    const windows = getWindowsForFilter(next);
+    const stillInMonth = getWindowsForMonth(windows, monthKey);
+    if (stillInMonth.length === 0 && windows[0]) {
+      setMonthKey(windows[0].startDate.slice(0, 7));
+    }
+    setExpandedId(null);
+  };
+
+  const onFilterKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    const index = OFFERING_FILTERS.findIndex((item) => item.id === filter);
     if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
       event.preventDefault();
-      goToWeek(weekNumber + 1);
+      onFilterChange(OFFERING_FILTERS[Math.min(OFFERING_FILTERS.length - 1, index + 1)].id);
     }
     if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
       event.preventDefault();
-      goToWeek(weekNumber - 1);
+      onFilterChange(OFFERING_FILTERS[Math.max(0, index - 1)].id);
     }
     if (event.key === 'Home') {
       event.preventDefault();
-      goToWeek(1);
+      onFilterChange(OFFERING_FILTERS[0].id);
     }
     if (event.key === 'End') {
       event.preventDefault();
-      goToWeek(WEEK_COUNT);
+      onFilterChange(OFFERING_FILTERS[OFFERING_FILTERS.length - 1].id);
     }
   };
 
-  const onDayClick = (date: string, hasEvents: boolean) => {
-    if (!hasEvents) return;
+  const onDayClick = (date: string, hasWindows: boolean) => {
+    if (!hasWindows) return;
     const next = selectedDate === date ? null : date;
-    const source = next ? weekEvents.filter((event) => event.date === next) : weekEvents;
     setSelectedDate(next);
-    setExpandedId(source[0]?.id ?? getFeaturedEventId(weekNumber));
+    const source = getWindowsForMonth(filterWindows, monthKey, next);
+    setExpandedId(getFeaturedWindowId(source));
   };
 
-  const toggleEvent = (id: string) => {
-    setExpandedId((current) => (current === id ? null : id));
-  };
+  const emptyOffering = filter === 'all' ? null : getOffering(filter);
 
   return (
     <div className={styles.calendarBoard}>
-      <p className={styles.sampleBanner} role="note">
-        {MENTOR_CALENDAR_NOTE}
-      </p>
+      <div className={styles.legend} role="note">
+        {STATUS_LEGEND.map((status) => (
+          <span key={status} className={`${styles.statusTag} ${statusClass(status)}`}>
+            {STATUS_LABELS[status]}
+          </span>
+        ))}
+      </div>
 
-      <div className={styles.weekNav}>
+      <div className={styles.filterNav}>
         <button
           type="button"
           className={styles.weekArrow}
-          onClick={() => goToWeek(weekNumber - 1)}
-          disabled={weekNumber === 1}
-          aria-label="Previous week"
+          onClick={() => goToMonth(shiftMonth(monthKey, -1))}
+          disabled={monthKey <= bounds.min}
+          aria-label="Previous month"
         >
           ‹
         </button>
 
         <div
-          className={styles.weekTabs}
-          ref={tabsRef}
+          className={styles.filterTabs}
           role="tablist"
-          aria-label="Cohort weeks"
-          onKeyDown={onWeekTabKeyDown}
+          aria-label="Offering type"
+          onKeyDown={onFilterKeyDown}
         >
-          {MENTOR_WEEKS.map((item) => {
-            const selected = item.week === weekNumber;
+          {OFFERING_FILTERS.map((item) => {
+            const selected = item.id === filter;
             return (
               <button
-                key={item.week}
+                key={item.id}
                 type="button"
                 role="tab"
-                id={`week-tab-${item.week}`}
+                id={`offering-tab-${item.id}`}
                 aria-selected={selected}
-                aria-controls="week-panel"
+                aria-controls="availability-panel"
                 tabIndex={selected ? 0 : -1}
-                className={`${styles.weekTab} ${selected ? styles.weekTabActive : ''}`}
-                onClick={() => goToWeek(item.week)}
+                className={`${styles.filterTab} ${selected ? styles.filterTabActive : ''}`}
+                onClick={() => onFilterChange(item.id)}
               >
-                Week {item.week}
+                {item.label}
               </button>
             );
           })}
@@ -133,48 +162,59 @@ export default function MentorCalendar() {
         <button
           type="button"
           className={styles.weekArrow}
-          onClick={() => goToWeek(weekNumber + 1)}
-          disabled={weekNumber === WEEK_COUNT}
-          aria-label="Next week"
+          onClick={() => goToMonth(shiftMonth(monthKey, 1))}
+          disabled={monthKey >= bounds.max}
+          aria-label="Next month"
         >
           ›
         </button>
       </div>
 
       <div
-        id="week-panel"
+        id="availability-panel"
         role="tabpanel"
-        aria-labelledby={`week-tab-${week.week}`}
+        aria-labelledby={`offering-tab-${filter}`}
         className={styles.weekPanel}
       >
         <div className={styles.weekIntro}>
-          <div className={styles.weekKicker}>
-            Week {week.week} · {formatWeekRange(week)}
-          </div>
-          <h3 className={styles.weekTitle}>{week.title}</h3>
-          <p className={styles.weekTheme}>{week.theme}</p>
+          <div className={styles.weekKicker}>Availability</div>
+          <h3 className={styles.weekTitle}>{formatMonthTitle(monthKey)}</h3>
+          <p className={styles.weekTheme}>
+            {filter === 'all'
+              ? 'Team training, 1-1, and the live cohort — click a day with a dot to filter.'
+              : `${OFFERING_LABELS[filter]} windows this month. Request a window and dates are confirmed after the enquiry.`}
+          </p>
         </div>
 
-        <div className={styles.dayStrip} role="list" aria-label={`Days in week ${week.week}`}>
-          {days.map((day) => {
-            const selected = selectedDate === day.date;
+        <div className={styles.monthWeekdays} aria-hidden="true">
+          {WEEKDAY_SHORT.map((day) => (
+            <span key={day}>{day}</span>
+          ))}
+        </div>
+
+        <div className={styles.monthGrid} role="list" aria-label={`Days in ${formatMonthTitle(monthKey)}`}>
+          {gridCells.map((cell) => {
+            const hasWindows = cell.offerings.length > 0;
+            const selected = selectedDate === cell.date;
             return (
               <button
-                key={day.date}
+                key={cell.date}
                 type="button"
                 role="listitem"
-                className={`${styles.dayCell} ${day.hasEvents ? styles.dayHasEvents : ''} ${selected ? styles.daySelected : ''}`}
-                onClick={() => onDayClick(day.date, day.hasEvents)}
+                className={`${styles.dayCell} ${cell.inMonth ? '' : styles.dayOutside} ${hasWindows ? styles.dayHasEvents : ''} ${selected ? styles.daySelected : ''}`}
+                onClick={() => onDayClick(cell.date, hasWindows)}
                 aria-pressed={selected}
-                aria-disabled={!day.hasEvents}
-                disabled={!day.hasEvents}
+                aria-disabled={!hasWindows}
+                disabled={!hasWindows}
               >
-                <span className={styles.dayWeekday}>{day.weekday}</span>
-                <span className={styles.dayNumber}>
-                  {day.dayNumber}
-                  <span className={styles.dayMonth}>{day.monthShort}</span>
-                </span>
-                {day.hasEvents && <span className={styles.dayDot} aria-hidden="true" />}
+                <span className={styles.dayNumber}>{cell.dayNumber}</span>
+                {hasWindows && (
+                  <span className={styles.dayDots}>
+                    {cell.offerings.map((offering) => (
+                      <span key={offering} className={`${styles.dayDot} ${dotClass(offering)}`} />
+                    ))}
+                  </span>
+                )}
               </button>
             );
           })}
@@ -182,53 +222,74 @@ export default function MentorCalendar() {
 
         {selectedDate && (
           <button type="button" className={styles.clearDay} onClick={() => setSelectedDate(null)}>
-            Show all of week {week.week}
+            Show all of {formatMonthTitle(monthKey)}
           </button>
         )}
 
-        <ul className={styles.eventList}>
-          {visibleEvents.map((event) => {
-            const expanded = expandedId === event.id;
-            const panelId = `event-panel-${event.id}`;
-            return (
-              <li key={event.id}>
-                <article className={`${styles.eventCard} ${event.featured ? styles.eventFeatured : ''}`}>
-                  <button
-                    type="button"
-                    className={styles.eventToggle}
-                    aria-expanded={expanded}
-                    aria-controls={panelId}
-                    onClick={() => toggleEvent(event.id)}
-                  >
-                    <div className={styles.eventMeta}>
-                      <span className={`${styles.typeTag} ${typeClass(event.type)}`}>
-                        {EVENT_TYPE_LABELS[event.type]}
-                      </span>
-                      {event.featured && <span className={styles.featuredTag}>Featured</span>}
-                    </div>
-                    <h4 className={styles.eventTitle}>{event.title}</h4>
-                    <p className={styles.eventWhen}>
-                      {formatEventDate(event.date)} · {event.time} · {event.duration}
-                    </p>
-                    <span className={styles.eventHint}>{expanded ? 'Hide details' : 'Show details'}</span>
-                  </button>
-                  {expanded && (
-                    <div id={panelId} className={styles.eventBody}>
-                      <p>{event.summary}</p>
-                      <div className={styles.topicList}>
-                        {event.topics.map((topic) => (
-                          <span key={topic} className={styles.topic}>
-                            {topic}
-                          </span>
-                        ))}
+        {monthWindows.length === 0 ? (
+          <div className={styles.emptyState}>
+            <p>
+              {emptyOffering
+                ? emptyOffering.emptyMessage
+                : `No open windows in ${formatMonthTitle(monthKey)}. Try another month.`}
+            </p>
+            {emptyOffering && (
+              <Link className={`${styles.btn} ${styles.btnSecondary}`} href={emptyOffering.href}>
+                {emptyOffering.ctaLabel}
+              </Link>
+            )}
+          </div>
+        ) : (
+          <ul className={styles.eventList}>
+            {monthWindows.map((window) => {
+              const expanded = activeExpanded === window.id;
+              const panelId = `window-panel-${window.id}`;
+              const status = deriveWindowStatus(window);
+              const offering = getOffering(window.offering);
+              return (
+                <li key={window.id}>
+                  <article className={`${styles.eventCard} ${window.featured ? styles.eventFeatured : ''}`}>
+                    <button
+                      type="button"
+                      className={styles.eventToggle}
+                      aria-expanded={expanded}
+                      aria-controls={panelId}
+                      onClick={() => setExpandedId(expanded ? null : window.id)}
+                    >
+                      <div className={styles.eventMeta}>
+                        <span className={`${styles.typeTag} ${offeringClass(window.offering)}`}>
+                          {OFFERING_LABELS[window.offering]}
+                        </span>
+                        <span className={`${styles.statusTag} ${statusClass(status)}`}>
+                          {STATUS_LABELS[status]}
+                        </span>
                       </div>
-                    </div>
-                  )}
-                </article>
-              </li>
-            );
-          })}
-        </ul>
+                      <h4 className={styles.eventTitle}>{window.title}</h4>
+                      <p className={styles.eventWhen}>
+                        {formatWindowDates(window)}
+                        {window.seatsNote ? ` · ${window.seatsNote}` : ''}
+                      </p>
+                      <span className={styles.eventHint}>{expanded ? 'Hide details' : 'Show details'}</span>
+                    </button>
+                    {expanded && (
+                      <div id={panelId} className={styles.eventBody}>
+                        <p>{window.summary}</p>
+                        {window.timezone && (
+                          <div className={styles.topicList}>
+                            <span className={styles.topic}>{window.timezone}</span>
+                          </div>
+                        )}
+                        <Link className={`${styles.btn} ${styles.btnPrimary} ${styles.windowCta}`} href={offering.href}>
+                          Request this window
+                        </Link>
+                      </div>
+                    )}
+                  </article>
+                </li>
+              );
+            })}
+          </ul>
+        )}
       </div>
     </div>
   );

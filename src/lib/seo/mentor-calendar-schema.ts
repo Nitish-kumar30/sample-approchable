@@ -1,26 +1,27 @@
 import {
-  EVENT_TYPE_LABELS,
-  MENTOR_EVENTS,
-  type MentorEvent,
+  OFFERING_LABELS,
+  STATUS_LABELS,
+  deriveWindowStatus,
+  getVisibleWindows,
+  type AvailabilityWindow,
 } from '@/data/mentor-calendar';
 import { SITE_NAME, absoluteUrl } from '@/lib/seo/site';
 
 const MENTOR_CALENDAR_PATH = '/mentor-calendar';
 
-function eventStartDate(event: MentorEvent): string {
-  if (event.type === 'assignment') {
-    return `${event.date}T23:59:00+05:30`;
-  }
-  if (event.time.startsWith('7:30 PM')) {
-    return `${event.date}T19:30:00+05:30`;
-  }
-  if (event.time.startsWith('10:00 AM')) {
-    return `${event.date}T10:00:00+05:30`;
-  }
-  return `${event.date}T19:30:00+05:30`;
+function windowStartDate(window: AvailabilityWindow): string {
+  return `${window.startDate}T09:00:00+05:30`;
+}
+
+function eventStatus(window: AvailabilityWindow): string {
+  const status = deriveWindowStatus(window);
+  if (status === 'closed') return 'https://schema.org/EventCancelled';
+  return 'https://schema.org/EventScheduled';
 }
 
 export function buildMentorCalendarSchema() {
+  const windows = getVisibleWindows();
+
   return {
     '@context': 'https://schema.org',
     '@graph': [
@@ -30,7 +31,7 @@ export function buildMentorCalendarSchema() {
         url: absoluteUrl(MENTOR_CALENDAR_PATH),
         name: `Mentor Calendar | ${SITE_NAME}`,
         description:
-          'A sample week-by-week mentor calendar for the Approachable live AI cohort: live sessions, office hours, and assignments.',
+          'Mentor availability for Approachable team training, 1-1 training, and live AI cohorts. Request an open window — dates are confirmed after the enquiry.',
         isPartOf: {
           '@type': 'WebSite',
           '@id': absoluteUrl('/#website'),
@@ -41,34 +42,38 @@ export function buildMentorCalendarSchema() {
       {
         '@type': 'ItemList',
         '@id': absoluteUrl(`${MENTOR_CALENDAR_PATH}#itemlist`),
-        name: 'Sample mentor calendar',
-        numberOfItems: MENTOR_EVENTS.length,
-        itemListElement: MENTOR_EVENTS.map((event, index) => ({
-          '@type': 'ListItem',
-          position: index + 1,
-          item: {
-            '@type': 'Event',
-            name: event.title,
-            description: event.summary,
-            startDate: eventStartDate(event),
-            eventAttendanceMode: 'https://schema.org/OnlineEventAttendanceMode',
-            eventStatus: 'https://schema.org/EventScheduled',
-            location: {
-              '@type': 'VirtualLocation',
-              url: absoluteUrl(MENTOR_CALENDAR_PATH),
+        name: 'Mentor availability windows',
+        numberOfItems: windows.length,
+        itemListElement: windows.map((window, index) => {
+          const status = deriveWindowStatus(window);
+          return {
+            '@type': 'ListItem',
+            position: index + 1,
+            item: {
+              '@type': 'Event',
+              name: window.title,
+              description: window.summary,
+              startDate: windowStartDate(window),
+              ...(window.endDate ? { endDate: `${window.endDate}T18:00:00+05:30` } : {}),
+              eventAttendanceMode: 'https://schema.org/OnlineEventAttendanceMode',
+              eventStatus: eventStatus(window),
+              location: {
+                '@type': 'VirtualLocation',
+                url: absoluteUrl(MENTOR_CALENDAR_PATH),
+              },
+              organizer: {
+                '@type': 'Organization',
+                name: SITE_NAME,
+                url: absoluteUrl('/'),
+              },
+              performer: {
+                '@type': 'Person',
+                name: 'Ranbeer Makin',
+              },
+              additionalType: `${OFFERING_LABELS[window.offering]} · ${STATUS_LABELS[status]}`,
             },
-            organizer: {
-              '@type': 'Organization',
-              name: SITE_NAME,
-              url: absoluteUrl('/'),
-            },
-            performer: {
-              '@type': 'Person',
-              name: 'Ranbeer Makin',
-            },
-            additionalType: EVENT_TYPE_LABELS[event.type],
-          },
-        })),
+          };
+        }),
       },
       {
         '@type': 'BreadcrumbList',

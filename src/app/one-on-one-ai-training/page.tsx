@@ -129,8 +129,9 @@ export default function OneOnOneAiTrainingPage() {
             <div className={styles.sectionLabel}>Ready to book a pair of sessions?</div>
             <h2>Tell us which package, and what you want to build.</h2>
             <p>
-              There is no public calendar for 1-1 — dates are set once we know Custom or Standard,
-              and what you need the two weeks to cover.
+              Current 1-1 windows live on the{' '}
+              <Link href="/mentor-calendar">mentor calendar</Link>. Exact days are set once we know
+              Custom or Standard, and what you need the two weeks to cover.
             </p>
             <div className={styles.buttons}>
               <Link className={`${styles.btn} ${styles.btnPrimary}`} href={CONTACT_HREF}>

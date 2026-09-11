@@ -4,22 +4,39 @@ import Header from '@/components/Header';
 import JsonLd from '@/components/JsonLd';
 import MentorSection from '@/components/MentorSection';
 import MentorCalendar from '@/components/mentor-calendar/MentorCalendar';
+import {
+  OFFERING_LABELS,
+  STATUS_LABELS,
+  getHeroStats,
+  getOfferingSnapshots,
+} from '@/data/mentor-calendar';
 import { COHORT } from '@/lib/cohort-config';
 import { buildPageMetadata } from '@/lib/seo/metadata';
 import { buildMentorCalendarSchema } from '@/lib/seo/mentor-calendar-schema';
 import styles from './mentor-calendar.module.css';
 
 const DESCRIPTION =
-  'See how a mentor-led AI cohort week actually runs: live sessions, office hours, and assignments, laid out week by week. Sample dates until the next cohort calendar is confirmed.';
+  'See when Ranbeer can take on team training, 1-1 training, and live AI cohorts. Request an open window — dates are confirmed after the enquiry.';
 
 export const metadata: Metadata = buildPageMetadata({
   title: 'Mentor Calendar',
   description: DESCRIPTION,
   path: '/mentor-calendar',
-  ogImageAlt: 'Approachable mentor calendar — a sample week-by-week cohort schedule',
+  ogImageAlt: 'Approachable mentor calendar — availability for team training, 1-1, and AI cohorts',
 });
 
+function snapshotStatusClass(status: string): string {
+  if (status === 'open') return styles.statusOpen;
+  if (status === 'limited') return styles.statusLimited;
+  if (status === 'waitlist') return styles.statusWaitlist;
+  if (status === 'full') return styles.statusFull;
+  return styles.statusClosed;
+}
+
 export default function MentorCalendarPage() {
+  const stats = getHeroStats();
+  const snapshots = getOfferingSnapshots();
+
   return (
     <>
       <JsonLd data={buildMentorCalendarSchema()} />
@@ -29,39 +46,70 @@ export default function MentorCalendarPage() {
           <div className={styles.container}>
             <div className={styles.eyebrow}>Mentor calendar</div>
             <h1>
-              Six weeks with your mentor, <em>mapped week by week.</em>
+              When your mentor can take on <em>team, 1-1, and cohort work.</em>
             </h1>
             <p>
-              Live sessions on Thursdays, office hours when you get stuck, and one assignment that
-              turns the session into something you can use at work. This is a sample calendar —
-              click a week to see how it unfolds.
+              This is availability, not a booking grid. Pick an open window for team training, 1-1
+              training, or the next live AI cohort, then request it through the usual enquiry path.
             </p>
             <div className={styles.buttons}>
               <a className={`${styles.btn} ${styles.btnPrimary}`} href="#calendar">
-                Browse the weeks
+                See open windows
               </a>
-              <Link className={`${styles.btn} ${styles.btnSecondary}`} href="/">
-                Live AI Cohort
+              <Link className={`${styles.btn} ${styles.btnSecondary}`} href="/contact">
+                Contact us
               </Link>
             </div>
 
             <div className={styles.heroStats}>
               <div className={styles.heroStat}>
-                <b>6</b>
-                <span>weeks</span>
+                <b>{stats.nextOpenLabel}</b>
+                <span>next open window</span>
               </div>
               <div className={styles.heroStat}>
-                <b>Live + OH</b>
-                <span>with your mentor</span>
+                <b>{stats.openOfferingCount}</b>
+                <span>offerings taking work</span>
               </div>
               <div className={styles.heroStat}>
-                <b>90 min</b>
-                <span>live sessions</span>
+                <b>{stats.timezone}</b>
+                <span>session timezones</span>
               </div>
               <div className={styles.heroStat}>
-                <b>Sample</b>
-                <span>placeholder dates</span>
+                <b>{stats.updatedAtLabel}</b>
+                <span>calendar updated</span>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <div className={styles.container}>
+            <div className={styles.sectionHead}>
+              <div className={styles.sectionLabel}>What is open</div>
+              <h2>Three ways to work with your mentor.</h2>
+              <p>
+                Status and next dates come from the same availability file that drives the calendar
+                below — they update together.
+              </p>
+            </div>
+
+            <div className={styles.rhythmGrid}>
+              {snapshots.map(({ offering, status, nextWindow }) => (
+                <article key={offering.id} className={styles.rhythmCard}>
+                  <span className={`${styles.statusTag} ${snapshotStatusClass(status)}`}>
+                    {STATUS_LABELS[status]}
+                  </span>
+                  <h3>{OFFERING_LABELS[offering.id]}</h3>
+                  <p>
+                    {nextWindow
+                      ? nextWindow.title
+                      : offering.emptyMessage}
+                  </p>
+                  <Link className={`${styles.btn} ${styles.btnSecondary} ${styles.snapshotCta}`} href={offering.href}>
+                    {offering.ctaLabel}
+                  </Link>
+                </article>
+              ))}
             </div>
           </div>
         </section>
@@ -69,11 +117,11 @@ export default function MentorCalendarPage() {
         <section id="calendar" className={styles.calendarSection}>
           <div className={styles.container}>
             <div className={styles.sectionHead}>
-              <div className={styles.sectionLabel}>Week by week</div>
-              <h2>Pick a week. See what happens.</h2>
+              <div className={styles.sectionLabel}>Open windows</div>
+              <h2>Filter by offering. Pick a month.</h2>
               <p>
-                Tabs move you through the cohort. Days with a dot have a session — click one to
-                filter, then open a card for the details.
+                Dots mark days inside an open window. Click a day to filter, then request the window
+                that fits — no public booking, just a request.
               </p>
             </div>
             <MentorCalendar />
@@ -83,36 +131,29 @@ export default function MentorCalendarPage() {
         <section>
           <div className={styles.container}>
             <div className={styles.sectionHead}>
-              <div className={styles.sectionLabel}>How weeks run</div>
-              <h2>One live session. Time to practise. A way to get unstuck.</h2>
-              <p>The same rhythm most weeks, so you always know what to expect.</p>
+              <div className={styles.sectionLabel}>How to request</div>
+              <h2>Ask for the window. Dates get confirmed after.</h2>
+              <p>Each offering already has a path. The calendar just shows when there is room.</p>
             </div>
 
             <div className={styles.rhythmGrid}>
-              <article className={styles.rhythmCard}>
-                <span className={styles.tag}>Live session</span>
-                <h3>Show up live</h3>
-                <p>
-                  Thursday, 7:30 PM IST / 10 AM US Eastern. A 90-minute study group — not a lecture —
-                  on the week&apos;s Claude skill.
-                </p>
-              </article>
-              <article className={styles.rhythmCard}>
-                <span className={styles.tag}>Office hours</span>
-                <h3>Get unstuck</h3>
-                <p>
-                  Optional drop-in time with Ranbeer. Bring the thing that broke, the prompt that
-                  went sideways, or the capstone that needs a second pair of eyes.
-                </p>
-              </article>
-              <article className={styles.rhythmCard}>
-                <span className={styles.tag}>Assignment</span>
-                <h3>Use it at work</h3>
-                <p>
-                  One concrete task due Sunday. A prompt library, an agent, a prototype — something
-                  you can point to on Monday.
-                </p>
-              </article>
+              {snapshots.map(({ offering }) => (
+                <article key={offering.id} className={styles.rhythmCard}>
+                  <span className={styles.tag}>{offering.shortLabel}</span>
+                  <h3>{offering.label}</h3>
+                  <p>
+                    {offering.id === 'team-training' &&
+                      'Company teams enquire on the team training page. Timing is confirmed after headcount and timezone.'}
+                    {offering.id === 'one-on-one' &&
+                      '1-1 requests go to Contact with the topic pre-filled. Custom vs Standard is chosen there, then dates lock in.'}
+                    {offering.id === 'cohort' &&
+                      'Cohort seats and start dates live on the Live AI Cohort page. Use that page to register or join the waitlist.'}
+                  </p>
+                  <Link className={`${styles.btn} ${styles.btnSecondary} ${styles.snapshotCta}`} href={offering.href}>
+                    {offering.ctaLabel}
+                  </Link>
+                </article>
+              ))}
             </div>
           </div>
         </section>
@@ -120,23 +161,23 @@ export default function MentorCalendarPage() {
         <div className={styles.mentorWrap}>
           <MentorSection
             label="Your mentor"
-            title="The person on the other side of the calendar"
+            title="The person whose calendar this is"
             footnote={`${COHORT.studentsTotal} professionals have already gone through Approachable programs.`}
           />
         </div>
 
         <section className={styles.final}>
           <div className={styles.container}>
-            <div className={styles.sectionLabel}>Ready for a real cohort date?</div>
-            <h2>Join the next live group.</h2>
+            <div className={styles.sectionLabel}>Ready to request a window?</div>
+            <h2>Tell us which offering, and when you need it.</h2>
             <p>
-              This page is a sample so you can see the shape of six weeks. Seats, timing, and the
-              next start date live on the cohort page.
+              Open windows are current availability to take on team training, 1-1, and the next
+              cohort. Request one and we confirm dates after the enquiry.
             </p>
             <div className={styles.buttons}>
-              <Link className={`${styles.btn} ${styles.btnPrimary}`} href="/">
-                See the Live AI Cohort →
-              </Link>
+              <a className={`${styles.btn} ${styles.btnPrimary}`} href="#calendar">
+                See open windows →
+              </a>
               <Link className={`${styles.btn} ${styles.btnSecondary}`} href="/contact">
                 Contact us
               </Link>
