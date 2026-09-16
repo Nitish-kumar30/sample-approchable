@@ -5,7 +5,7 @@ export const COHORT = {
   day: 'Wednesday',
   time: '7:00 PM IST / 9:30 AM US Eastern',
   seatsTotal: 20,
-  seatsLeft: 15,
+  seatsLeft: 10,
   prevCohortDate: 'Aug 27',
   studentsTotal: '250+',
   priceIndia: '₹7,999',
