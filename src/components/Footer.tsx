@@ -44,6 +44,7 @@ export default function Footer() {
       heading: 'Programs',
       links: [
         { label: 'Live AI Cohort', href: '/' },
+        { label: 'Team AI Training', href: '/team-ai-training' },
         { label: 'All Courses', href: '/courses' },
         { label: 'AI Mastery for Working Professionals', href: '/courses/ai-mastery-for-working-professionals' },
         {
@@ -52,7 +53,6 @@ export default function Footer() {
         },
         { label: 'Vibe Coding Mastery for Working Professionals', href: '/courses/vibe-coding-mastery-for-working-professionals' },
         { label: 'Free Courses', href: '/courses' },
-        { label: 'Team AI Training', href: '/team-ai-training' },
       ],
     },
     {
