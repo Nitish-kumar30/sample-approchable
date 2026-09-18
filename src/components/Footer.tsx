@@ -38,6 +38,8 @@ export default function Footer() {
       links: [
         { label: 'About Us', href: '/about' },
         { label: 'Contact Us', href: '/contact' },
+        { label: 'Sanskaar Box', href: 'https://sanskaarbox.com' },
+        { label: 'Let Us Home School', href: 'https://letushomeschool.com' },
       ],
     },
     {
