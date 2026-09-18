@@ -66,13 +66,6 @@ export default function Footer() {
         { label: 'Claude Code Setup Guide', href: 'https://github.com/ranmax123/claude-code-guide' },
       ],
     },
-    {
-      heading: 'Legal',
-      links: [
-        { label: 'Privacy Policy', static: true },
-        { label: 'Terms of Service', static: true },
-      ],
-    },
   ];
 
   return (
