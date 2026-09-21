@@ -116,6 +116,19 @@ export default function PricingSection() {
             </div>
           </div>
 
+          <div className="pricing-bonus">
+            <span className="pricing-bonus-icon" aria-hidden="true">🎁</span>
+            <div>
+              <span className="pricing-bonus-label">Free bonus live session</span>
+              <div className="pricing-bonus-title">
+                <span className="pricing-bonus-strike">₹3,000 / $99</span>Build AI Apps & AI Agents with n8n
+              </div>
+              <div className="pricing-bonus-desc">
+                A live session on adding intelligence to your applications, and building AI agents with n8n&mdash; included free with this cohort.
+              </div>
+            </div>
+          </div>
+
           <div className="pricing-divider" />
 
           <div className="pricing-also-included-label" style={{ marginBottom: 10 }}>What you&rsquo;ll walk away with</div>
@@ -160,7 +173,7 @@ export default function PricingSection() {
             className="pricing-cta"
             onClick={() => trackCTA('Pricing CTA', 'Pricing')}
           >
-            Claim My Seat + Free Bonus Course →
+            Claim My Seat + Free Bonus Courses →
           </a>
           <p className="pricing-note">
             Only {COHORT.seatsLeft} seats · Starts {COHORT.date} · {COHORT.time}
