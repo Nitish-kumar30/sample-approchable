@@ -1022,6 +1022,9 @@ section {
   flex-direction: column;
   gap: 10px;
 }
+.footer-col-section + .footer-col-section {
+  margin-top: 24px;
+}
 .site-footer a {
   color: #A8A29E;
   font-size: 13px;
