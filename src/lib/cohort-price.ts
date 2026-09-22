@@ -20,9 +20,8 @@ export function getCohortDisplay(currency: PricingCurrency, isLate = isCohortLat
       ? intl
         ? COHORT.priceTaglineIntlLate
         : COHORT.priceTaglineIndiaLate
-      : intl
+        : intl
         ? COHORT.priceTaglineIntl
         : COHORT.priceTaglineIndia,
-    regionLabel: intl ? 'International' : 'India',
   };
 }

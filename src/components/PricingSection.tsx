@@ -74,7 +74,6 @@ export default function PricingSection() {
           </div>
 
           <div className="pricing-head">
-            <div className="pricing-region">{display.regionLabel}</div>
             <div>
               <span className="price-original">{display.original}</span>
               <span className="price-main">{display.current}</span>
