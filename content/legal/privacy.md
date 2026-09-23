@@ -14,8 +14,8 @@ For the purposes of India's Digital Personal Data Protection Act, 2023 ("DPDP Ac
 
 ### 2.1 Information you give us
 
-- Registration details: full name, email address, phone / WhatsApp number, country and city.
-- Professional details: job title or role, company or organisation, years of experience, LinkedIn profile URL.
+- Registration details: full name, email address, phone / WhatsApp number, country and state.
+- Professional details: company or organisation.
 - Learning goals: what you want to build or learn, your use cases, and any other answers you give in our registration or feedback forms.
 - Payment details: billing name, email, phone, amount, currency, transaction ID and payment status. Card, UPI, net-banking and wallet details are entered directly on Razorpay's secure checkout. We never see or store your full card number, CVV or banking credentials.
 - Tax details (optional): GSTIN and billing address, if you request a GST invoice.
@@ -25,7 +25,7 @@ For the purposes of India's Digital Personal Data Protection Act, 2023 ("DPDP Ac
 
 ### 2.2 Information collected during live sessions
 
-Live sessions are held on Microsoft Teams/Zoom and are recorded. If you turn on your camera or microphone, or type in the chat, your name, image, voice and chat messages may appear in the recording. You can take part with your camera off and use a display name of your choice. We tell you when recording starts.
+Live sessions are held on Microsoft Teams/Zoom/or equivalent and are recorded. If you turn on your camera or microphone, or type in the chat, your name, image, voice and chat messages may appear in the recording. You can take part with your camera off and use a display name of your choice. We tell you when recording starts.
 
 ### 2.3 Information collected automatically
 
@@ -66,10 +66,11 @@ We do not sell your personal data. We share it only as described below.
 We use trusted providers who process data on our behalf and under our instructions:
 
 - Razorpay Software Pvt. Ltd. - payment processing.
-- Microsoft Teams/Zoom - hosting live sessions.
-- Vimeo - hosting course videos and recordings.
-- Lovable.dev - website and learning platform hosting.
-- Microsoft Office 365 - emails and newsletter.
+- Microsoft Teams/Zoom/or equivalent - hosting live sessions.
+- Vimeo/Gumlet - hosting course videos and recordings.
+- Lovable.dev - learning platform hosting.
+- Vercel - public website hosting
+- Microsoft Office 365/Gmail/or equivalent - emails and newsletter.
 
 ### 5.2 Other learners
 
@@ -151,4 +152,4 @@ In line with the Information Technology Act, 2000, the rules under it, and the D
 - Address: BIGINT Solutions, Block 15, Flat 805, My Home Vihanga, Gachibowli, Hyderabad, 500032, Telangana, India
 - Hours: Monday to Friday, 10:00 AM to 6:00 PM IST
 
-We'll acknowledge your complaint within 24 hours and aim to resolve it within 15 days of receipt.
+We'll acknowledge your complaint within 24-72 hours and aim to resolve it within 30 days of receipt.

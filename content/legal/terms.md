@@ -24,7 +24,7 @@ Registering through our form is an application, not a confirmed booking. We'll c
 
 Your seat is confirmed only after we receive full payment. Until then, we may offer the seat to someone else.
 
-Each cohort has limited seats (currently up to 20). Seats are allotted on a first-paid, first-served basis.
+Each cohort has limited seats. Seats are allotted on a first-paid, first-served basis.
 
 We may decline any registration at our discretion. If we decline after you've paid, we'll refund the full amount.
 
@@ -115,7 +115,7 @@ You own the capstone projects, prompts, workflows and other work you create. You
 
 ### 10.3 Trademarks
 
-Claude, Claude Code and Claude Cowork are trademarks of Anthropic PBC. Lovable, n8n and other third-party names belong to their respective owners. Approachable is an independent education provider. Except where expressly stated, our Services are not provided or endorsed by these companies.
+Claude, Claude Code and Claude Cowork are trademarks of Anthropic. Lovable, n8n and other third-party names belong to their respective owners. Approachable is an independent education provider. Except where expressly stated, our Services are not provided or endorsed by these companies.
 
 ## 11. Suspension and termination
 
@@ -175,4 +175,4 @@ We may update these Terms from time to time. The updated version will be posted 
 - Address: BIGINT Solutions, Block 15, Flat 805, My Home Vihanga, Gachibowli, Hyderabad - 50032, Telangana, India
 - Website: [www.approachable.dev](https://www.approachable.dev)
 
-We'll acknowledge complaints within 24 hours and aim to resolve them within 15 days.
+We'll acknowledge complaints within 24-72 hours and aim to resolve them within 30 days.
