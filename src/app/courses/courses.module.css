@@ -472,6 +472,15 @@
     grid-template-columns: 1fr;
     gap: 30px;
   }
+  .arrow {
+    top: calc((100vw - 40px) * 3 / 16);
+  }
+  .arrowPrev {
+    left: calc(4px - (100vw - 100%) / 2);
+  }
+  .arrowNext {
+    right: calc(4px - (100vw - 100%) / 2);
+  }
 }
 
 @media (max-width: 560px) {
@@ -495,10 +504,7 @@
   .goal:last-child {
     border-bottom: 0;
   }
-  .arrowPrev {
-    left: 8px;
-  }
-  .arrowNext {
-    right: 8px;
+  .arrow {
+    top: calc((100vw - 28px) * 3 / 16);
   }
 }
