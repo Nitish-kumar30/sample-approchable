@@ -195,11 +195,11 @@
 }
 
 .arrowPrev {
-  left: calc(-1 * (2.5rem + 10px));
+  left: max(calc(-1 * (2.5rem + 10px)), calc(4px - (100vw - 100%) / 2));
 }
 
 .arrowNext {
-  right: calc(-1 * (2.5rem + 10px));
+  right: max(calc(-1 * (2.5rem + 10px)), calc(4px - (100vw - 100%) / 2));
 }
 
 .arrow:disabled {
