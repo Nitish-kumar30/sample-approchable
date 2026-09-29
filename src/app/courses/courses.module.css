@@ -175,13 +175,14 @@
 }
 
 .scroller {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  position: relative;
 }
 
 .arrow {
-  flex: 0 0 2.5rem;
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  transform: translateY(-50%);
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 999px;
@@ -193,14 +194,21 @@
   cursor: pointer;
 }
 
+.arrowPrev {
+  left: calc(-1 * (2.5rem + 10px));
+}
+
+.arrowNext {
+  right: calc(-1 * (2.5rem + 10px));
+}
+
 .arrow:disabled {
   opacity: 0.35;
   cursor: default;
 }
 
 .viewport {
-  flex: 1;
-  min-width: 0;
+  width: 100%;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
@@ -486,5 +494,11 @@
   }
   .goal:last-child {
     border-bottom: 0;
+  }
+  .arrowPrev {
+    left: 8px;
+  }
+  .arrowNext {
+    right: 8px;
   }
 }

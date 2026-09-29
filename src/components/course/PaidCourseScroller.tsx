@@ -41,7 +41,7 @@ export default function PaidCourseScroller({ children }: { children: ReactNode }
     <div className={styles.scroller}>
       <button
         type="button"
-        className={styles.arrow}
+        className={`${styles.arrow} ${styles.arrowPrev}`}
         aria-label="Previous courses"
         disabled={atStart}
         onClick={() => scrollByCard(-1)}
@@ -53,7 +53,7 @@ export default function PaidCourseScroller({ children }: { children: ReactNode }
       </div>
       <button
         type="button"
-        className={styles.arrow}
+        className={`${styles.arrow} ${styles.arrowNext}`}
         aria-label="Next courses"
         disabled={atEnd}
         onClick={() => scrollByCard(1)}
