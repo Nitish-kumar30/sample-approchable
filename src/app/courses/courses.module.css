@@ -242,6 +242,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 }
 
 .cardImage {
@@ -296,10 +297,25 @@
 }
 
 .cardLink {
+  display: inline-block;
+  width: max-content;
   margin-top: auto;
   color: var(--accent-dark);
   font-size: 13px;
   font-weight: 800;
+  border-bottom: 1px solid transparent;
+  transition: color 0.15s, border-color 0.15s, transform 0.15s;
+}
+
+.card:hover .cardLink,
+.freeCard:hover .cardLink {
+  border-bottom-color: var(--accent-dark);
+}
+
+.card:active .cardLink,
+.freeCard:active .cardLink {
+  color: var(--ink);
+  transform: translateY(1px);
 }
 
 .exploreLink {
@@ -328,11 +344,13 @@
 }
 
 .freeCard {
+  display: block;
   border: 1px solid var(--line);
   padding: 0 22px 22px;
   border-radius: 12px;
   background: white;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .freeImage {

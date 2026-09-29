@@ -148,7 +148,7 @@ export default async function CoursesPage() {
 
             <PaidCourseScroller>
               {paidCoursesWithMeta.map((course) => (
-                <article className={styles.card} key={course.slug}>
+                <Link className={styles.card} href={`/courses/${course.slug}`} key={course.slug}>
                   <div className={styles.cardImage}>
                     {course.heroImage && <img src={course.heroImage} alt={course.displayTitle} />}
                   </div>
@@ -156,11 +156,9 @@ export default async function CoursesPage() {
                     <span className={styles.tag}>{course.tag}</span>
                     <h3>{course.displayTitle}</h3>
                     <p>{course.shortDescription}</p>
-                    <Link className={styles.cardLink} href={`/courses/${course.slug}`}>
-                      View course →
-                    </Link>
+                    <span className={styles.cardLink}>View course →</span>
                   </div>
-                </article>
+                </Link>
               ))}
             </PaidCourseScroller>
 
@@ -180,17 +178,15 @@ export default async function CoursesPage() {
 
             <div className={styles.freeGrid}>
               {freeCoursesWithMeta.map((course) => (
-                <article className={styles.freeCard} key={course.slug}>
+                <Link className={styles.freeCard} href={`/courses/${course.slug}`} key={course.slug}>
                   <div className={styles.freeImage}>
                     {course.heroImage && <img src={course.heroImage} alt={course.displayTitle} />}
                   </div>
                   <span className={styles.tag}>Free</span>
                   <h3>{course.displayTitle}</h3>
                   <p>{course.shortDescription}</p>
-                  <Link className={styles.cardLink} href={`/courses/${course.slug}`}>
-                    Start learning →
-                  </Link>
-                </article>
+                  <span className={styles.cardLink}>Start learning →</span>
+                </Link>
               ))}
             </div>
 
