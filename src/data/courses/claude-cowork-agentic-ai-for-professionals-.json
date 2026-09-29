@@ -36,7 +36,7 @@
       "title": "Understanding AI Agents",
       "defaultOpen": true,
       "items": [
-        { "number": 1, "title": "Beyond chatbots: LLM → AI agent → agentic AI", "type": "video", "locked": true },
+        { "number": 1, "title": "Beyond chatbots: LLM → AI agent → Agentic AI", "type": "video", "locked": true },
         { "number": 2, "title": "Degrees of autonomy (less, semi, highly autonomous)", "type": "video", "locked": true },
         { "number": 3, "title": "Agentic systems in the real world (support, coding, research agents)", "type": "video", "locked": true }
       ]
