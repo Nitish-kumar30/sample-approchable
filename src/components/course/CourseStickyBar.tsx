@@ -1,7 +1,8 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import type { CourseContent } from '@/lib/course-content';
+import { getCoursePrice, type CourseContent } from '@/lib/course-content';
+import { usePricingCurrency } from '@/components/PricingCurrencyProvider';
 
 interface CourseStickyBarProps {
   course: CourseContent;
@@ -25,7 +26,8 @@ export default function CourseStickyBar({ course }: CourseStickyBarProps) {
     return () => observer.disconnect();
   }, []);
 
-  const price = course.pricing.inr;
+  const { currency } = usePricingCurrency();
+  const price = getCoursePrice(course.pricing, currency);
   const isFree = course.isFree ?? false;
 
   return (

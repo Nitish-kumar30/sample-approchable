@@ -1,3 +1,4 @@
+import type { PricingCurrency } from '@/lib/currency';
 import introToAi from '@/data/courses/intro-to-ai-for-professionals.json';
 import claude101SubAgents from '@/data/courses/claude-101-sub-agents-hooks-and-claude-md.json';
 import claude101Skills from '@/data/courses/claude-101-skills-connectors-and-more.json';
@@ -33,6 +34,10 @@ export interface CoursePricing {
   inr: { original: string; current: string };
   usd: { original: string; current: string };
   discountPercent: number;
+}
+
+export function getCoursePrice(pricing: CoursePricing, currency: PricingCurrency) {
+  return currency === 'USD' ? pricing.usd : pricing.inr;
 }
 
 export interface CourseContent {

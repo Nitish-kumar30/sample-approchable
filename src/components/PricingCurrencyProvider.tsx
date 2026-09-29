@@ -42,6 +42,14 @@ function writeCache(currency: PricingCurrency) {
   }
 }
 
+function clearCache() {
+  try {
+    window.sessionStorage.removeItem(CACHE_KEY);
+  } catch {
+    // ignore storage write errors (privacy mode / quota)
+  }
+}
+
 function currencyFromCountryCode(countryCode: string | null | undefined): PricingCurrency {
   return countryCode?.toUpperCase() === 'IN' ? 'INR' : countryCode ? 'USD' : 'INR';
 }
@@ -81,7 +89,9 @@ export function PricingCurrencyProvider({ children }: { children: ReactNode }) {
         setCurrency(resolved);
       } catch {
         if (cancelled) return;
-        setCurrency(cached ?? FALLBACK_CURRENCY);
+        // Lookup failed: show the INR price only, and drop any cached currency.
+        clearCache();
+        setCurrency(FALLBACK_CURRENCY);
       } finally {
         if (!cancelled) setIsLoading(false);
       }

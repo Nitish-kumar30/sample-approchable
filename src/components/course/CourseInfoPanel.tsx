@@ -1,13 +1,15 @@
 'use client';
 
-import type { CourseContent } from '@/lib/course-content';
+import { getCoursePrice, type CourseContent } from '@/lib/course-content';
+import { usePricingCurrency } from '@/components/PricingCurrencyProvider';
 
 interface CourseInfoPanelProps {
   course: CourseContent;
 }
 
 export default function CourseInfoPanel({ course }: CourseInfoPanelProps) {
-  const price = course.pricing.inr;
+  const { currency } = usePricingCurrency();
+  const price = getCoursePrice(course.pricing, currency);
   const isFree = course.isFree ?? false;
 
   return (
