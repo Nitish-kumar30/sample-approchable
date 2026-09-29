@@ -149,11 +149,11 @@ export const PAID_CATALOG_SLUGS = [
   'ai-mastery-for-working-professionals',
   'no-code-ai-agents-mastery-for-working-professionals',
   'vibe-coding-mastery-for-working-professionals',
-  'advanced-ai-techniques-for-everyday-work',
-  'ai-fluency-the-foundation',
   'claude-code-for-professionals',
   'claude-cowork-agentic-ai-for-professionals-',
   'loop-engineering-101',
+  'advanced-ai-techniques-for-everyday-work',
+  'ai-fluency-the-foundation',
 ];
 
 export const ALL_CATALOG_SLUGS = [...FREE_CATALOG_SLUGS, ...PAID_CATALOG_SLUGS];

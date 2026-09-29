@@ -159,11 +159,13 @@ export default async function CoursesPage() {
                   </div>
                 </Link>
               ))}
+              <a className={styles.exploreCard} href={EXPLORE_MORE_URLS.paid} target="_blank" rel="noopener noreferrer">
+                <span className={styles.exploreIcon} aria-hidden="true">
+                  →
+                </span>
+                <span className={styles.exploreLabel}>Explore more courses</span>
+              </a>
             </div>
-
-            <a className={styles.exploreLink} href={EXPLORE_MORE_URLS.paid} target="_blank" rel="noopener noreferrer">
-              Explore more courses →
-            </a>
           </div>
         </section>
 
