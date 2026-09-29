@@ -8,8 +8,8 @@
     "email": "ranbeer@gmail.com"
   },
   "pricing": {
-    "inr": { "original": "₹299", "current": "₹299" },
-    "usd": { "original": "$12", "current": "$12" },
+    "inr": { "original": "₹399", "current": "₹399" },
+    "usd": { "original": "$15", "current": "$15" },
     "discountPercent": 0
   },
   "discountLabel": "",
