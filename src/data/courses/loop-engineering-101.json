@@ -1,0 +1,75 @@
+{
+  "slug": "loop-engineering-101",
+  "title": "Loop Engineering 101",
+  "heroImage": "https://wgkuqcwgbokzfxtimklr.supabase.co/storage/v1/object/public/course-images/courses/0a7e66f5-7eb1-4b8e-b946-61f8c15b2018.png",
+  "isFree": false,
+  "instructor": {
+    "name": "Ranbeer Makin",
+    "email": "ranbeer@gmail.com"
+  },
+  "pricing": {
+    "inr": { "original": "₹99", "current": "₹99" },
+    "usd": { "original": "$5", "current": "$5" },
+    "discountPercent": 0
+  },
+  "discountLabel": "",
+  "metadata": {
+    "type": "Recorded",
+    "skillLevel": "Beginner & Intermediate",
+    "language": "English",
+    "certificateAvailable": true,
+    "sampleCertificateUrl": "https://learn.approachable.dev/sample-certificate",
+    "videoCount": 3,
+    "duration": ""
+  },
+  "description": "<p>Learn how to design <strong>AI-powered loops that continuously execute, evaluate, and improve work</strong>—moving beyond one-off prompts toward systems that can operate with increasing autonomy.</p>\n<p>This course introduces the fundamentals of loop engineering, from simple turn-based and goal-based loops to time-based and proactive loops. You'll see how these patterns can be applied to automate recurring work, respond to changing conditions, and build AI systems that take action with minimal intervention.</p>\n<p>I use Claude Code for demos.</p>\n<hr>\n<h1>What You'll Learn</h1>\n<ul>\n<li>Understand the fundamentals of <strong>AI loops</strong> and how they differ from one-off AI interactions</li>\n<li>Design <strong>turn-based and goal-based loops</strong> for structured AI workflows</li>\n<li>Build <strong>time-based loops</strong> that execute work on a recurring schedule</li>\n<li>Design <strong>issue-fixing loops</strong> that detect and resolve problems iteratively</li>\n<li>Use <strong>routines</strong> to automate recurring professional workflows</li>\n</ul>\n<hr>\n<h2>Sessions</h2>\n<p>Learn what AI loops are and how turn-based and goal-based loops work.</p>\n<p>Explore time-based automation and see how recurring AI workflows can be designed and implemented through a live demo.</p>\n<p>Go beyond scheduled automation with issue-fixing loops, routines, and proactive loops that can detect conditions and initiate action.</p>\n<hr>\n<h1>Who Is This Course For?</h1>\n<p>This course is for <strong>professionals, developers, and AI practitioners</strong> who want to move from prompting to loop engineering.</p>",
+  "instructorBio": "Ranbeer Makin is passionate about helping working professionals confidently adopt AI. He has already trained 250+ learners through hands-on workshops and practical courses. As a software entrepreneur with 18+ years of experience, he now focuses on helping professionals move from AI Curious to AI Capable by teaching practical workflows, automation, and real-world AI applications.",
+  "inclusions": [
+    "3 recorded videos",
+    "1 quiz",
+    "Live demo of a time-based loop"
+  ],
+  "tools": ["Claude Code"],
+  "sessions": [
+    {
+      "id": "bf01baaa-e8ff-441e-a5bc-a5eb34d30857",
+      "number": 1,
+      "title": "Loop Engineering",
+      "defaultOpen": true,
+      "items": [
+        { "number": 1, "title": "What loops are, and turn-based and goal-based loops", "type": "video", "locked": true },
+        { "number": 2, "title": "Time-based loops with a live demo", "type": "video", "locked": true },
+        { "number": 3, "title": "The issue-fixing loop, routines and proactive loops", "type": "video", "locked": true }
+      ]
+    },
+    {
+      "id": "422bba22-98e4-495c-8ee0-992cc44091b4",
+      "number": 2,
+      "title": "Loop Engineering Quiz",
+      "items": [
+        { "title": "Loop Engineering 101", "type": "quiz", "locked": true }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "question": "What is loop engineering?",
+      "answer": "Designing AI-powered loops that keep executing, evaluating, and improving work, instead of one-off prompts."
+    },
+    {
+      "question": "Who is it for?",
+      "answer": "Professionals, developers, and AI practitioners moving from prompting to loop engineering."
+    },
+    {
+      "question": "What tool is used in the demos?",
+      "answer": "Claude Code."
+    },
+    {
+      "question": "What is included?",
+      "answer": "3 recorded videos and a quiz. Topics are turn-based and goal-based loops, time-based loops, and issue-fixing, routines, and proactive loops."
+    }
+  ],
+  "purchaseUrl": "https://learn.approachable.dev/courses/loop-engineering-101",
+  "ogImage": "https://wgkuqcwgbokzfxtimklr.supabase.co/storage/v1/object/public/course-images/courses/0a7e66f5-7eb1-4b8e-b946-61f8c15b2018.png",
+  "ogDescription": "Learn to design AI loops that execute, evaluate, and improve work, from turn-based and goal-based loops to time-based and proactive loops."
+}

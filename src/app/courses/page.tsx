@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Header from '@/components/Header';
+import PaidCourseScroller from '@/components/course/PaidCourseScroller';
 import JsonLd from '@/components/JsonLd';
 import { getFreeCourses, getPaidCourses } from '@/lib/course-content';
 import { buildCoursesListSchema } from '@/lib/seo/course-schema';
@@ -145,7 +146,7 @@ export default async function CoursesPage() {
               <p>Self-paced courses with lifetime access, hands-on projects and practical examples.</p>
             </div>
 
-            <div className={styles.cards}>
+            <PaidCourseScroller>
               {paidCoursesWithMeta.map((course) => (
                 <article className={styles.card} key={course.slug}>
                   <div className={styles.cardImage}>
@@ -161,7 +162,7 @@ export default async function CoursesPage() {
                   </div>
                 </article>
               ))}
-            </div>
+            </PaidCourseScroller>
 
             <a className={styles.exploreLink} href={EXPLORE_MORE_URLS.paid} target="_blank" rel="noopener noreferrer">
               Explore more courses →

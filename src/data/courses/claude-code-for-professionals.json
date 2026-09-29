@@ -1,0 +1,114 @@
+{
+  "slug": "claude-code-for-professionals",
+  "title": "Claude Code for Professionals",
+  "heroImage": "https://wgkuqcwgbokzfxtimklr.supabase.co/storage/v1/object/public/course-images/courses/c461c2a2-afaf-4ff5-ba25-5b40d177ce56.png",
+  "isFree": false,
+  "instructor": {
+    "name": "Ranbeer Makin",
+    "email": "ranbeer@gmail.com"
+  },
+  "pricing": {
+    "inr": { "original": "₹299", "current": "₹299" },
+    "usd": { "original": "$12", "current": "$12" },
+    "discountPercent": 0
+  },
+  "discountLabel": "",
+  "metadata": {
+    "type": "Recorded",
+    "skillLevel": "Intermediate",
+    "language": "English",
+    "certificateAvailable": true,
+    "sampleCertificateUrl": "https://learn.approachable.dev/sample-certificate",
+    "videoCount": 13,
+    "duration": ""
+  },
+  "description": "<p>Learn how to use <strong>Claude Code as an AI-powered software development partner</strong>—from understanding an existing codebase and planning changes to writing, testing, reviewing, and shipping code.</p>\n<p>This course goes beyond basic prompting. You'll learn how to work with <strong>skills, subagents, MCP servers, plugins, hooks, and project instructions</strong> to build reliable development workflows while keeping humans firmly in the loop.</p>\n<p>Through hands-on examples and a live build, you'll learn how to integrate Claude Code into real-world software development—from working in large codebases to using guardrails, automated testing, code review, and GitHub workflows.</p>\n<hr>\n<h1>What You'll Learn</h1>\n<ul>\n<li>Understand the <strong>Claude Code harness</strong> and how skills, plugins, subagents, <code>CLAUDE.md</code>, and hooks extend its capabilities</li>\n<li>Use the three core workflows: <strong>explore → plan → code, TDD, and screenshot → iterate</strong></li>\n<li>Work with Claude Code <strong>inside the Claude app or directly from the terminal</strong></li>\n<li>Configure models, effort levels, permissions, authentication, and development environments</li>\n<li>Give Claude Code the right <strong>context and instructions</strong> for your codebase</li>\n<li>Extend Claude Code with <strong>MCP servers, subagents, plugins, and shortcuts</strong></li>\n<li>Build features using <strong>plan mode, reusable skills, and persistent plans</strong></li>\n<li>Use Claude Code for <strong>testing, code review, and GitHub issues</strong></li>\n<li>Add <strong>hooks as guardrails</strong> to control what Claude Code can access and automate repetitive checks</li>\n<li>Develop an effective <strong>human + AI software development approach</strong></li>\n<li>Optimize <strong>token usage, workflows, and the human role</strong> when working with coding agents</li>\n<li>Apply these practices to <strong>large and complex codebases</strong></li>\n</ul>\n<hr>\n<h1>Who Is This Course For?</h1>\n<p>This course is for <strong>software professionals, developers, engineering leaders, and AI practitioners</strong> who want to move beyond using AI for code generation and learn how to <strong>build reliable, AI-assisted software development workflows with Claude Code</strong>.</p>\n<hr>\n<h2>Course Outcome</h2>\n<p>You'll be able to move beyond using AI to simply generate code and instead <strong>design a development workflow where Claude Code can explore, reason, implement, test, review, and iterate—with the right human oversight and guardrails.</strong></p>",
+  "instructorBio": "Ranbeer Makin is passionate about helping working professionals confidently adopt AI. He has already trained 250+ learners through hands-on workshops and practical courses. As a software entrepreneur with 18+ years of experience, he now focuses on helping professionals move from AI Curious to AI Capable by teaching practical workflows, automation, and real-world AI applications.",
+  "inclusions": [
+    "13 recorded videos",
+    "1 quiz",
+    "1 reading (Claude Code Guide)"
+  ],
+  "tools": ["Claude Code", "MCP servers", "GitHub"],
+  "sessions": [
+    {
+      "id": "87a21318-5baa-4ace-b1b7-cb585b6ed472",
+      "number": 1,
+      "title": "Claude Code Foundations",
+      "defaultOpen": true,
+      "items": [
+        { "number": 1, "title": "Claude Code harness: skills, plugins, subagents, CLAUDE.md, hooks", "type": "video", "locked": true },
+        { "number": 2, "title": "The three core Claude Code workflows (explore-plan-code, TDD, screenshot iterate)", "type": "video", "locked": true },
+        { "number": 3, "title": "Claude Code inside the Claude app (no IDE needed)", "type": "video", "locked": true },
+        { "number": 4, "title": "Claude Code in the terminal: install, models, effort, permission modes, login", "type": "video", "locked": true }
+      ]
+    },
+    {
+      "id": "bdfae80f-894c-4fd8-adb7-878b7eb9cbfb",
+      "number": 2,
+      "title": "Working with Your Codebase",
+      "items": [
+        { "number": 1, "title": "CLAUDE.md and asking questions about your code", "type": "video", "locked": true },
+        { "number": 2, "title": "MCP servers, subagents, plugins and shortcuts", "type": "video", "locked": true }
+      ]
+    },
+    {
+      "id": "e6b59d45-6244-495b-80ac-b51b4374e2ae",
+      "number": 3,
+      "title": "Building with Claude Code",
+      "items": [
+        { "number": 1, "title": "Live build, part 1: skills, plan mode and writing the plan to a file", "type": "video", "locked": true },
+        { "number": 2, "title": "Testing, Code Review and GitHub Issues with Claude Code", "type": "video", "locked": true },
+        { "number": 3, "title": "Hooks as guardrails (block .env reads, auto-run Prettier)", "type": "video", "locked": true }
+      ]
+    },
+    {
+      "id": "cc4bc1a6-e8b6-451d-b02b-b2c8f786e6c8",
+      "number": 4,
+      "title": "Human + AI Software Development",
+      "items": [
+        { "number": 1, "title": "Development approach and the advisor strategy", "type": "video", "locked": true },
+        { "number": 2, "title": "Best practices, token optimization and the human role", "type": "video", "locked": true }
+      ]
+    },
+    {
+      "id": "41da1c8e-7f13-4e90-b5a9-eca4d1d1a0fc",
+      "number": 5,
+      "title": "Appendix",
+      "items": [
+        { "number": 1, "title": "Large codebase resource", "type": "video", "locked": true },
+        { "number": 2, "title": "Your Claude Code Setup", "type": "video", "locked": true },
+        { "title": "Claude Code Guide", "type": "reading", "locked": true }
+      ]
+    },
+    {
+      "id": "93a668cf-dca7-496e-8064-41817bac05f9",
+      "number": 6,
+      "title": "Quiz",
+      "items": [
+        { "title": "Session 4: Quiz 1: Claude Code", "type": "quiz", "locked": true }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Who is this course for?",
+      "answer": "Software professionals, developers, engineering leaders, and AI practitioners who want reliable AI-assisted development workflows, not only code generation."
+    },
+    {
+      "question": "What will I learn?",
+      "answer": "The Claude Code harness (skills, plugins, subagents, CLAUDE.md, hooks), the explore-plan-code, TDD, and screenshot-iterate workflows, plus testing, code review, and GitHub issues."
+    },
+    {
+      "question": "Do I need an IDE?",
+      "answer": "No. One lesson covers Claude Code inside the Claude app. Another covers the terminal: install, models, effort, permission modes, and login."
+    },
+    {
+      "question": "Which tools does it use?",
+      "answer": "Claude Code, MCP servers, and GitHub."
+    }
+  ],
+  "purchaseUrl": "https://learn.approachable.dev/courses/claude-code-for-professionals",
+  "ogImage": "https://wgkuqcwgbokzfxtimklr.supabase.co/storage/v1/object/public/course-images/courses/c461c2a2-afaf-4ff5-ba25-5b40d177ce56.png",
+  "ogDescription": "Learn to use Claude Code as an AI software development partner, from exploring a codebase through planning, testing, review, and shipping."
+}

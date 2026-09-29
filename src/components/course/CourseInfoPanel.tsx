@@ -57,6 +57,11 @@ export default function CourseInfoPanel({ course }: CourseInfoPanelProps) {
             <span className="panel-label">Type</span>
             <strong className="panel-value">{course.metadata.type}</strong>
           </li>
+          {course.sessions.length > 0 && (
+            <li className="panel-content-row">
+              <a className="panel-content-link" href="#course-content">View course content</a>
+            </li>
+          )}
         </ul>
         <div className="panel-summary">
           <h3 className="panel-summary-title">What&apos;s Included</h3>
@@ -66,14 +71,19 @@ export default function CourseInfoPanel({ course }: CourseInfoPanelProps) {
             ))}
           </ul>
         </div>
-        <div className="panel-summary">
-          <h3 className="panel-summary-title">Tools we will use in this course</h3>
-          <ul className="panel-summary-list">
-            {course.tools.map((tool, i) => (
-              <li key={i}>{tool}</li>
-            ))}
-          </ul>
-        </div>
+        {course.tools.length > 0 && (
+          <div className="panel-summary">
+            <h3 className="panel-summary-title">Tools we will use in this course</h3>
+            <ul className="panel-tools-list">
+              {course.tools.map((tool) => (
+                <li key={tool}>
+                  <span aria-hidden="true">•</span>
+                  <span>{tool}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </aside>
   );

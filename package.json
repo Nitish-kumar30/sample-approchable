@@ -10,9 +10,9 @@
     "start": "next start",
     "lint": "next lint",
     "build:courses-ui": "node scripts/generate-courses-ui-html.mjs",
-    "push:dev": "git push origin corporate-page",
-    "push:deploy": "git push deploy corporate-page:main",
-    "push:all": "git push origin corporate-page && git push deploy corporate-page:main"
+    "push:dev": "git push origin update-course",
+    "push:deploy": "git push deploy update-course:main",
+    "push:all": "git push origin update-course && git push deploy update-course:main"
   },
   "dependencies": {
     "@types/marked": "^5.0.2",

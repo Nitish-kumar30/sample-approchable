@@ -45,7 +45,7 @@ export default function CurriculumSection({ sessions }: CurriculumSectionProps) 
   const [preview, setPreview] = useState<{ title: string; src: string } | null>(null);
 
   return (
-    <section className='curriculum-section'>
+    <section id="course-content" className="curriculum-section">
       <h2 className="section-title">
         <span className="section-icon" aria-hidden="true">📚</span>
         Course Content

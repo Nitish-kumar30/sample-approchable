@@ -1,0 +1,93 @@
+{
+  "slug": "claude-cowork-agentic-ai-for-professionals-",
+  "title": "Claude Cowork: Agentic AI for Professionals",
+  "heroImage": "https://wgkuqcwgbokzfxtimklr.supabase.co/storage/v1/object/public/course-images/courses/94890813-21dd-4570-9008-70224ae0765b.png",
+  "isFree": false,
+  "instructor": {
+    "name": "Ranbeer Makin",
+    "email": "ranbeer@gmail.com"
+  },
+  "pricing": {
+    "inr": { "original": "₹399", "current": "₹399" },
+    "usd": { "original": "$15", "current": "$15" },
+    "discountPercent": 0
+  },
+  "discountLabel": "",
+  "metadata": {
+    "type": "Recorded",
+    "skillLevel": "Beginner & Intermediate",
+    "language": "English",
+    "certificateAvailable": true,
+    "sampleCertificateUrl": "https://learn.approachable.dev/sample-certificate",
+    "videoCount": 13,
+    "duration": ""
+  },
+  "description": "<p>Learn how to use <strong>Claude Cowork to build and operate AI-powered workflows that can execute multi-step work on your behalf</strong>—moving beyond chatbots and prompts toward practical agentic systems.</p>\n<p>This course introduces the fundamentals of <strong>AI agents and agentic workflows</strong>, then shows you how to use Cowork to work with local files, tools, permissions, skills, plugins, and browser-based tasks. You'll learn how to design an <strong>AI employee</strong> that can plan, execute, check its work, and improve its output with the right level of human oversight.</p>\n<p>Through hands-on demos and a live build, you'll learn how to turn real professional workflows into <strong>repeatable, delegated AI workflows</strong>—while understanding when to use autonomy, where to add guardrails, and when not to delegate a task to AI.</p>\n<hr>\n<h1>What You'll Learn</h1>\n<ul>\n<li>Understand the evolution from <strong>LLMs → AI agents → agentic AI systems</strong></li>\n<li>Understand different <strong>degrees of autonomy</strong> and when each is appropriate</li>\n<li>Explore real-world agentic systems across <strong>support, coding, research, and business workflows</strong></li>\n<li>Get started with <strong>Claude Cowork</strong>, including plans, folders, permissions, and setup</li>\n<li>Use Cowork to work with <strong>local files and folders</strong> and complete multi-step tasks</li>\n<li>Improve results using <strong>global instructions, projects, skills, and plugins</strong></li>\n<li>Use <strong>Claude in Chrome</strong> when a dedicated connector isn't available</li>\n<li>Apply the <strong>agentic workflow model</strong> to define, design, run, and review AI-powered work</li>\n<li>Design an <strong>AI employee</strong> by thinking through steps, tools, permissions, skills, and quality assurance</li>\n<li>Build reusable <strong>skills</strong> for professional workflows</li>\n<li>Delegate complex work to Cowork using <strong>QA sub-agents</strong> and review loops</li>\n<li>Apply best practices for <strong>responsible agentic AI</strong>, including when <em>not</em> to use Cowork</li>\n<li>Understand <strong>Scheduling and Dispatch</strong> for recurring and proactive workflows</li>\n</ul>\n<hr>\n<h1>Who Is This Course For?</h1>\n<p>This course is for <strong>professionals, business leaders, operators, developers, and AI practitioners</strong> who want to move beyond prompting and learn how to <strong>design, delegate, and operate AI-powered workflows with Claude Cowork</strong>.</p>\n<hr>\n<h2>Course Outcome</h2>\n<p>You'll be able to identify tasks that are suitable for agentic automation, design the workflow and guardrails around them, and use <strong>Claude Cowork to execute, review, and improve multi-step work with the right level of human oversight</strong>.</p>",
+  "instructorBio": "Ranbeer Makin is passionate about helping working professionals confidently adopt AI. He has already trained 300+ learners through hands-on workshops and practical courses. As a software entrepreneur with 19+ years of experience, he now focuses on helping professionals move from AI Curious to AI Capable by teaching practical workflows, automation, and real-world AI applications.",
+  "inclusions": [
+    "13 recorded videos",
+    "Hands-on demos and a live build"
+  ],
+  "tools": ["Claude Cowork", "Claude in Chrome"],
+  "sessions": [
+    {
+      "id": "9be18c23-eb65-484f-860f-e98248acb60a",
+      "number": 1,
+      "title": "Understanding AI Agents",
+      "defaultOpen": true,
+      "items": [
+        { "number": 1, "title": "Beyond chatbots: LLM → AI agent → agentic AI", "type": "video", "locked": true },
+        { "number": 2, "title": "Degrees of autonomy (less, semi, highly autonomous)", "type": "video", "locked": true },
+        { "number": 3, "title": "Agentic systems in the real world (support, coding, research agents)", "type": "video", "locked": true }
+      ]
+    },
+    {
+      "id": "f1a5aa3e-07ec-46ba-bcfd-c922526de50b",
+      "number": 2,
+      "title": "Getting started with Claude Cowork",
+      "items": [
+        { "number": 1, "title": "Claude Cowork basics: setup, plans, folders, permissions", "type": "video", "locked": true },
+        { "number": 2, "title": "Demo: Cowork on a local folder (resume-to-CSV)", "type": "video", "locked": true },
+        { "number": 3, "title": "Getting better results: global instructions, projects, skills, plugins", "type": "video", "locked": true },
+        { "number": 4, "title": "Claude in Chrome (when there is no connector; login caveat)", "type": "video", "locked": true }
+      ]
+    },
+    {
+      "id": "eee448bf-59e7-4c55-8519-20bf706c520e",
+      "number": 3,
+      "title": "Building Agentic Workflows",
+      "items": [
+        { "number": 1, "title": "The agentic workflow model: 3 pillars (define, design, run and review)", "type": "video", "locked": true },
+        { "number": 2, "title": "Designing an AI employee: the thinking process (steps, tools, permissions, skills, QA)", "type": "video", "locked": true },
+        { "number": 3, "title": "Building the AI employee, part 1: brainstorm in chat and create skills", "type": "video", "locked": true },
+        { "number": 4, "title": "Building the AI employee, part 2: delegate to Cowork with a QA sub-agent", "type": "video", "locked": true }
+      ]
+    },
+    {
+      "id": "72d65543-ffbc-4d49-a966-5edf6024a9f3",
+      "number": 4,
+      "title": "Operating Agentic AI Responsibly",
+      "items": [
+        { "number": 1, "title": "Best practices and when not to use Cowork", "type": "video", "locked": true },
+        { "number": 2, "title": "Scheduling and Dispatch", "type": "video", "locked": true }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Who is this course for?",
+      "answer": "Professionals, business leaders, operators, developers, and AI practitioners who want to design and delegate work with Claude Cowork."
+    },
+    {
+      "question": "What will I be able to do?",
+      "answer": "Tell which tasks suit agentic automation, design the workflow and guardrails, and use Claude Cowork to execute, review, and improve multi-step work."
+    },
+    {
+      "question": "Which tools does it use?",
+      "answer": "Claude Cowork and Claude in Chrome, including folders, permissions, skills, plugins, and a QA sub-agent."
+    }
+  ],
+  "purchaseUrl": "https://learn.approachable.dev/courses/claude-cowork-agentic-ai-for-professionals-",
+  "ogImage": "https://wgkuqcwgbokzfxtimklr.supabase.co/storage/v1/object/public/course-images/courses/94890813-21dd-4570-9008-70224ae0765b.png",
+  "ogDescription": "Learn to use Claude Cowork to run multi-step AI workflows, with local files, skills, plugins, and human oversight."
+}

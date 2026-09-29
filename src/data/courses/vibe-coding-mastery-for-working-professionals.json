@@ -1,18 +1,18 @@
 {
   "slug": "vibe-coding-mastery-for-working-professionals",
   "title": "Vibe Coding Mastery for Working Professionals",
-  "heroImage": "https://wgkuqcwgbokzfxtimklr.supabase.co/storage/v1/object/public/course-images/courses/4dee3195-2b6b-4a18-bce3-4b458a4ebbaa.png",
+  "heroImage": "https://wgkuqcwgbokzfxtimklr.supabase.co/storage/v1/object/public/course-images/courses/22a90edc-31d4-4c60-a759-b67047e55381.png",
   "isFree": false,
   "instructor": {
     "name": "Ranbeer Makin",
     "email": "ranbeer@gmail.com"
   },
   "pricing": {
-    "inr": { "original": "₹598", "current": "₹299" },
-    "usd": { "original": "$38", "current": "$19" },
-    "discountPercent": 50
+    "inr": { "original": "₹299", "current": "₹299" },
+    "usd": { "original": "$12", "current": "$12" },
+    "discountPercent": 0
   },
-  "discountLabel": "🎉 Launch Offer — 50% OFF for early learners. Limited time.",
+  "discountLabel": "",
   "metadata": {
     "type": "Recorded",
     "skillLevel": "Beginner Friendly",

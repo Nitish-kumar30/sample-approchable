@@ -1,18 +1,18 @@
 {
   "slug": "no-code-ai-agents-mastery-for-working-professionals",
   "title": "No Code AI Agents Mastery for Working Professionals",
-  "heroImage": "https://wgkuqcwgbokzfxtimklr.supabase.co/storage/v1/object/public/course-images/courses/0d1a0d9b-bf54-4455-ab8b-15fc0c217e8b.png",
+  "heroImage": "https://wgkuqcwgbokzfxtimklr.supabase.co/storage/v1/object/public/course-images/courses/87620897-99b8-4848-bb5a-64e2e9bfab76.png",
   "isFree": false,
   "instructor": {
     "name": "Ranbeer Makin",
     "email": "ranbeer@gmail.com"
   },
   "pricing": {
-    "inr": { "original": "₹1,598", "current": "₹799" },
-    "usd": { "original": "$78", "current": "$39" },
-    "discountPercent": 50
+    "inr": { "original": "₹499", "current": "₹499" },
+    "usd": { "original": "$19", "current": "$19" },
+    "discountPercent": 0
   },
-  "discountLabel": "🎉 Launch Offer — 50% OFF for early learners. Limited time.",
+  "discountLabel": "",
   "metadata": {
     "type": "Recorded",
     "skillLevel": "Beginner Friendly (No-Code)",

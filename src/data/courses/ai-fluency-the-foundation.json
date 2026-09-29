@@ -1,0 +1,68 @@
+{
+  "slug": "ai-fluency-the-foundation",
+  "title": "AI Fluency: The Foundation",
+  "heroImage": "https://wgkuqcwgbokzfxtimklr.supabase.co/storage/v1/object/public/course-images/courses/3a3bc380-8d0d-47a3-8061-874ecfbd16b7.png",
+  "isFree": false,
+  "instructor": {
+    "name": "Ranbeer Makin",
+    "email": "ranbeer@gmail.com"
+  },
+  "pricing": {
+    "inr": { "original": "₹99", "current": "₹99" },
+    "usd": { "original": "$5", "current": "$5" },
+    "discountPercent": 0
+  },
+  "discountLabel": "",
+  "metadata": {
+    "type": "Recorded",
+    "skillLevel": "Beginner Friendly",
+    "language": "English",
+    "certificateAvailable": true,
+    "sampleCertificateUrl": "https://learn.approachable.dev/sample-certificate",
+    "videoCount": 1,
+    "duration": ""
+  },
+  "description": "<p>In this short course we will answer the four fundamental questions:</p>\n<ul>\n<li>Where do AI answers come from?</li>\n<li>What does the model actually know?</li>\n<li>What is it paying attention to right now, and what falls off the edge?</li>\n<li>How much control do your instructions really give you?</li>\n</ul>",
+  "instructorBio": "Ranbeer Makin is passionate about helping working professionals confidently adopt AI. He has already trained 250+ learners through hands-on workshops and practical courses. As a software entrepreneur with 18+ years of experience, he now focuses on helping professionals move from AI Curious to AI Capable by teaching practical workflows, automation, and real-world AI applications.",
+  "inclusions": [
+    "1 recorded video",
+    "1 quiz"
+  ],
+  "tools": [],
+  "sessions": [
+    {
+      "id": "4788b68a-9a0c-4a30-b558-37e0d2418ab9",
+      "number": 1,
+      "title": "4 Questions Answered",
+      "defaultOpen": true,
+      "items": [
+        { "number": 1, "title": "4 questions answered", "type": "video", "locked": true }
+      ]
+    },
+    {
+      "id": "4f01c793-e616-45ee-8a94-0de9966b6991",
+      "number": 2,
+      "title": "Quiz: AI Fluency",
+      "items": [
+        { "title": "AI Fluency", "type": "quiz", "locked": true }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "question": "What does this course cover?",
+      "answer": "Four questions: where AI answers come from, what the model knows, what it is paying attention to, and how much control your instructions give you."
+    },
+    {
+      "question": "Who is it for?",
+      "answer": "Anyone starting out who wants the foundation before using AI tools at work."
+    },
+    {
+      "question": "Is there a quiz?",
+      "answer": "Yes. The course is one video plus the AI Fluency quiz."
+    }
+  ],
+  "purchaseUrl": "https://learn.approachable.dev/courses/ai-fluency-the-foundation",
+  "ogImage": "https://wgkuqcwgbokzfxtimklr.supabase.co/storage/v1/object/public/course-images/courses/3a3bc380-8d0d-47a3-8061-874ecfbd16b7.png",
+  "ogDescription": "A short course on where AI answers come from, what the model knows, what it pays attention to, and how much control your instructions give you."
+}

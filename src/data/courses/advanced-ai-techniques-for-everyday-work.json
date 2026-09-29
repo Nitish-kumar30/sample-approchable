@@ -1,0 +1,93 @@
+{
+  "slug": "advanced-ai-techniques-for-everyday-work",
+  "title": "Advanced AI Techniques for Everyday Work",
+  "heroImage": "https://wgkuqcwgbokzfxtimklr.supabase.co/storage/v1/object/public/course-images/courses/58dd9b1e-beae-446f-8635-0ae64e6129da.png",
+  "isFree": false,
+  "instructor": {
+    "name": "Ranbeer Makin",
+    "email": "ranbeer@gmail.com"
+  },
+  "pricing": {
+    "inr": { "original": "₹99", "current": "₹99" },
+    "usd": { "original": "$5", "current": "$5" },
+    "discountPercent": 0
+  },
+  "discountLabel": "",
+  "metadata": {
+    "type": "Recorded",
+    "skillLevel": "Intermediate",
+    "language": "English",
+    "certificateAvailable": true,
+    "sampleCertificateUrl": "https://learn.approachable.dev/sample-certificate",
+    "videoCount": 4,
+    "duration": "7 min"
+  },
+  "description": "<p>Advanced techniques to write clearer prompts and get more accurate AI responses.</p>",
+  "instructorBio": "Ranbeer Makin is passionate about helping working professionals confidently adopt AI. He has already trained 250+ learners through hands-on workshops and practical courses. As a software entrepreneur with 18+ years of experience, he now focuses on helping professionals move from AI Curious to AI Capable by teaching practical workflows, automation, and real-world AI applications.",
+  "inclusions": [
+    "4 recorded videos",
+    "1 quiz",
+    "About 7 minutes of video"
+  ],
+  "tools": [],
+  "sessions": [
+    {
+      "id": "a3031192-3bac-4982-ade5-edfa7bcbe595",
+      "number": 1,
+      "title": "Reflection",
+      "defaultOpen": true,
+      "items": [
+        { "number": 1, "title": "Reflection", "type": "video", "locked": true }
+      ]
+    },
+    {
+      "id": "32425599-bbcf-4610-94f7-949d92abe065",
+      "number": 2,
+      "title": "Neutral framing",
+      "items": [
+        { "number": 1, "title": "Neutral framing", "type": "video", "locked": true }
+      ]
+    },
+    {
+      "id": "e5600836-3a47-4e07-99ec-add3fcd9d27d",
+      "number": 3,
+      "title": "Organizing your prompts",
+      "items": [
+        { "number": 1, "title": "prompts", "type": "video", "locked": true }
+      ]
+    },
+    {
+      "id": "645c97cc-57f4-4e2a-a2d4-976bea89c264",
+      "number": 4,
+      "title": "Ram Baan",
+      "items": [
+        { "number": 1, "title": "Ram Baan", "type": "video", "locked": true }
+      ]
+    },
+    {
+      "id": "9908afce-0bca-43e4-86a0-d896adcf8d28",
+      "number": 5,
+      "title": "Quiz",
+      "items": [
+        { "title": "Advanced AI Techniques for Everyday Work", "type": "quiz", "locked": true }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "question": "What is this course?",
+      "answer": "A short recorded course on writing clearer prompts. Lessons cover reflection, neutral framing, organizing your prompts, and Ram Baan."
+    },
+    {
+      "question": "How long is it?",
+      "answer": "The course is about 7 minutes: 4 videos plus a quiz."
+    },
+    {
+      "question": "Do I need coding experience?",
+      "answer": "No. The lessons are about prompting technique, not building software."
+    }
+  ],
+  "purchaseUrl": "https://learn.approachable.dev/courses/advanced-ai-techniques-for-everyday-work",
+  "ogImage": "https://wgkuqcwgbokzfxtimklr.supabase.co/storage/v1/object/public/course-images/courses/58dd9b1e-beae-446f-8635-0ae64e6129da.png",
+  "ogDescription": "Advanced techniques to write clearer prompts and get more accurate AI responses."
+}

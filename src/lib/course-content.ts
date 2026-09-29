@@ -6,6 +6,11 @@ import introductionToAiAgents from '@/data/courses/introduction-to-ai-agents.jso
 import aiMastery from '@/data/courses/ai-mastery-for-working-professionals.json';
 import noCodeAiAgents from '@/data/courses/no-code-ai-agents-mastery-for-working-professionals.json';
 import vibeCoding from '@/data/courses/vibe-coding-mastery-for-working-professionals.json';
+import advancedAiTechniques from '@/data/courses/advanced-ai-techniques-for-everyday-work.json';
+import aiFluencyFoundation from '@/data/courses/ai-fluency-the-foundation.json';
+import claudeCode from '@/data/courses/claude-code-for-professionals.json';
+import claudeCowork from '@/data/courses/claude-cowork-agentic-ai-for-professionals-.json';
+import loopEngineering from '@/data/courses/loop-engineering-101.json';
 
 export interface CurriculumItem {
   number?: number;
@@ -110,6 +115,11 @@ const COURSE_REGISTRY: Record<string, CourseContent> = {
   'ai-mastery-for-working-professionals': aiMastery as CourseContent,
   'no-code-ai-agents-mastery-for-working-professionals': noCodeAiAgents as CourseContent,
   'vibe-coding-mastery-for-working-professionals': vibeCoding as CourseContent,
+  'advanced-ai-techniques-for-everyday-work': advancedAiTechniques as CourseContent,
+  'ai-fluency-the-foundation': aiFluencyFoundation as CourseContent,
+  'claude-code-for-professionals': claudeCode as CourseContent,
+  'claude-cowork-agentic-ai-for-professionals-': claudeCowork as CourseContent,
+  'loop-engineering-101': loopEngineering as CourseContent,
 };
 
 export async function getCourseContent(slug: string): Promise<CourseContent | null> {
@@ -139,6 +149,11 @@ export const PAID_CATALOG_SLUGS = [
   'ai-mastery-for-working-professionals',
   'no-code-ai-agents-mastery-for-working-professionals',
   'vibe-coding-mastery-for-working-professionals',
+  'advanced-ai-techniques-for-everyday-work',
+  'ai-fluency-the-foundation',
+  'claude-code-for-professionals',
+  'claude-cowork-agentic-ai-for-professionals-',
+  'loop-engineering-101',
 ];
 
 export const ALL_CATALOG_SLUGS = [...FREE_CATALOG_SLUGS, ...PAID_CATALOG_SLUGS];
