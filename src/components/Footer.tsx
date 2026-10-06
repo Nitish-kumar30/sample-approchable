@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import { getAllPosts } from '@/lib/posts';
-import FooterSubscribe from './FooterSubscribe';
+import Link from "next/link";
+import { getAllPosts } from "@/lib/posts";
+import FooterSubscribe from "./FooterSubscribe";
 
 type FooterLink =
   | { label: string; href: string }
@@ -16,15 +16,15 @@ type FooterColumn = {
 };
 
 function FooterLinkItem({ link }: { link: FooterLink }) {
-  if ('static' in link) {
+  if ("static" in link) {
     return <span className="footer-static-link">{link.label}</span>;
   }
 
-  if (link.href.startsWith('mailto:')) {
+  if (link.href.startsWith("mailto:")) {
     return <a href={link.href}>{link.label}</a>;
   }
 
-  if (link.href.startsWith('http://') || link.href.startsWith('https://')) {
+  if (link.href.startsWith("http://") || link.href.startsWith("https://")) {
     return (
       <a href={link.href} target="_blank" rel="noopener noreferrer">
         {link.label}
@@ -36,54 +36,69 @@ function FooterLinkItem({ link }: { link: FooterLink }) {
 }
 
 export default function Footer() {
-  const latestPosts = getAllPosts().slice(0, 2).map((post) => ({
-    label: post.title,
-    href: `/blog/${post.slug}`,
-  }));
+  const latestPosts = getAllPosts()
+    .slice(0, 2)
+    .map((post) => ({
+      label: post.title,
+      href: `/blog/${post.slug}`,
+    }));
 
   const footerColumns: FooterColumn[] = [
     {
-      heading: 'Company',
+      heading: "Company",
       sections: [
         {
           links: [
-            { label: 'About Us', href: '/about' },
-            { label: 'Contact Us', href: '/contact' },
+            { label: "About Us", href: "/about" },
+            { label: "Contact Us", href: "/contact" },
           ],
         },
         {
-          subheading: 'Sister Company',
+          subheading: "Sister Company",
           links: [
-            { label: 'Sanskaar Box', href: 'https://sanskaarbox.com' },
-            { label: 'Let Us Home School', href: 'https://letushomeschool.com' },
+            { label: "Sanskaar Box", href: "https://sanskaarbox.com" },
+            {
+              label: "Let Us Home School",
+              href: "https://letushomeschool.com",
+            },
           ],
         },
       ],
     },
     {
-      heading: 'Programs',
+      heading: "Programs",
       links: [
-        { label: 'Live AI Cohort', href: '/' },
-        { label: 'Team AI Training', href: '/team-ai-training' },
-        { label: 'All Courses', href: '/courses' },
-        { label: 'AI Mastery for Working Professionals', href: '/courses/ai-mastery-for-working-professionals' },
+        { label: "Live AI Cohort", href: "/" },
+        { label: "Team AI Training", href: "/team-ai-training" },
+        { label: "Live Events", href: "/events" },
+        { label: "All Courses", href: "/courses" },
         {
-          label: 'No Code AI Agents Mastery for Working Professionals',
-          href: '/courses/no-code-ai-agents-mastery-for-working-professionals',
+          label: "AI Mastery for Working Professionals",
+          href: "/courses/ai-mastery-for-working-professionals",
         },
-        { label: 'Vibe Coding Mastery for Working Professionals', href: '/courses/vibe-coding-mastery-for-working-professionals' },
-        { label: 'Free Courses', href: '/courses' },
+        {
+          label: "No Code AI Agents Mastery for Working Professionals",
+          href: "/courses/no-code-ai-agents-mastery-for-working-professionals",
+        },
+        {
+          label: "Vibe Coding Mastery for Working Professionals",
+          href: "/courses/vibe-coding-mastery-for-working-professionals",
+        },
+        { label: "Free Courses", href: "/courses" },
       ],
     },
     {
-      heading: 'Resources',
+      heading: "Resources",
       links: [
-        { label: 'Blog', href: '/blog' },
+        { label: "Blog", href: "/blog" },
         ...latestPosts,
-        { label: 'AI Glossary', href: '/ai-glossary' },
-        { label: 'Prompting Guide', href: '/prompting-guide' },
-        { label: 'AI Assessments', href: '/assessment' },
-        { label: 'Claude Code Setup Guide', href: 'https://github.com/ranmax123/claude-code-guide' },
+        { label: "AI Glossary", href: "/ai-glossary" },
+        { label: "Prompting Guide", href: "/prompting-guide" },
+        { label: "AI Assessments", href: "/assessment" },
+        {
+          label: "Claude Code Setup Guide",
+          href: "https://github.com/ranmax123/claude-code-guide",
+        },
       ],
     },
   ];
@@ -95,34 +110,45 @@ export default function Footer() {
           {footerColumns.map((col) => (
             <div key={col.heading} className="footer-col">
               <h4 className="footer-col-heading">{col.heading}</h4>
-              {(col.sections ?? [{ links: col.links ?? [] }]).map((section, sectionIndex) => (
-                <div
-                  key={section.subheading ?? `section-${col.heading}-${sectionIndex}`}
-                  className="footer-col-section"
-                >
-                  {section.subheading && <h4 className="footer-col-heading">{section.subheading}</h4>}
-                  <ul className="footer-col-links">
-                    {section.links.map((link) => (
-                      <li
-                        key={
-                          'href' in link
-                            ? `${sectionIndex}-${link.label}-${link.href}`
-                            : `${sectionIndex}-${link.label}`
-                        }
-                      >
-                        <FooterLinkItem link={link} />
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
+              {(col.sections ?? [{ links: col.links ?? [] }]).map(
+                (section, sectionIndex) => (
+                  <div
+                    key={
+                      section.subheading ??
+                      `section-${col.heading}-${sectionIndex}`
+                    }
+                    className="footer-col-section"
+                  >
+                    {section.subheading && (
+                      <h4 className="footer-col-heading">
+                        {section.subheading}
+                      </h4>
+                    )}
+                    <ul className="footer-col-links">
+                      {section.links.map((link) => (
+                        <li
+                          key={
+                            "href" in link
+                              ? `${sectionIndex}-${link.label}-${link.href}`
+                              : `${sectionIndex}-${link.label}`
+                          }
+                        >
+                          <FooterLinkItem link={link} />
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ),
+              )}
             </div>
           ))}
           <FooterSubscribe />
         </div>
       </div>
 
-      <p className="footer-copyright">© 2026 Approachable · making AI approachable for everyone</p>
+      <p className="footer-copyright">
+        © 2026 Approachable · making AI approachable for everyone
+      </p>
     </footer>
   );
 }
