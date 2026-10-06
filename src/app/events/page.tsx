@@ -46,7 +46,7 @@ function EventCard({ event, upcoming }: { event: PublicEvent; upcoming: boolean 
         <div className={styles.meta}>
           {event.host_name ? <span>{event.host_name}</span> : null}
           <time dateTime={event.start_at}>{formatEventDateTime(event.start_at)}</time>
-          <span>{event.rsvp_count} participants</span>
+          <span>{event.rsvp_count > 0 ? event.rsvp_count : "20+"} participants</span>
         </div>
         <span className={catalog.cardLink}>View details →</span>
       </div>

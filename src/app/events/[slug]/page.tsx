@@ -4,7 +4,7 @@ import { marked } from "marked";
 import Header from "@/components/Header";
 import JsonLd from "@/components/JsonLd";
 import { eventDescriptionExcerpt } from "@/lib/events/eventDescriptionExcerpt";
-import { formatEventDateTime, formatEventDuration } from "@/lib/events/formatEventDateTime";
+import { formatEventDate, formatEventDuration, formatEventTime } from "@/lib/events/formatEventDateTime";
 import { getPublicEventBySlug, getPublicEvents, isEventPast, learnerEventUrl } from "@/lib/events/publicEvents";
 import type { PublicEvent } from "@/lib/events/types";
 import { buildEventSchema } from "@/lib/seo/event-schema";
@@ -76,10 +76,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 function EventPanel({ event, past }: { event: PublicEvent; past: boolean }) {
   const registerUrl = learnerEventUrl(event.slug);
   const facts = [
-    { label: "Time", value: formatEventDateTime(event.start_at) },
+    { label: "Date", value: formatEventDate(event.start_at) },
+    { label: "Time", value: formatEventTime(event.start_at) },
     { label: "Duration", value: formatEventDuration(event.duration_minutes) },
+    { label: "Venue", value: "Teams" },
     { label: "Host", value: event.host_name || "Approachable" },
-    { label: "Participants", value: String(event.rsvp_count) },
+    { label: "Participants", value: event.rsvp_count > 0 ? String(event.rsvp_count) : "20+" },
   ];
 
   return (
@@ -109,11 +111,6 @@ function EventPanel({ event, past }: { event: PublicEvent; past: boolean }) {
             </li>
           ))}
         </ul>
-        {!past ? (
-          <p className={styles.note}>
-            Sign in on the learning platform to RSVP. The meeting link is shared there.
-          </p>
-        ) : null}
         {past && !event.has_recording ? <p className={styles.note}>Recording coming soon</p> : null}
       </div>
     </aside>

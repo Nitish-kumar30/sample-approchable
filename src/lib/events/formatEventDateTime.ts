@@ -4,10 +4,8 @@ function part(parts: Intl.DateTimeFormatPart[], type: Intl.DateTimeFormatPartTyp
   return parts.find((item) => item.type === type)?.value ?? "";
 }
 
-/** Formats a UTC ISO timestamp in India time, e.g. "Tue, 6 Oct, 2:00 AM IST". */
-export function formatEventDateTime(isoUtc: string): string {
-  const date = new Date(isoUtc);
-  const parts = new Intl.DateTimeFormat("en-IN", {
+function eventParts(isoUtc: string): Intl.DateTimeFormatPart[] {
+  return new Intl.DateTimeFormat("en-IN", {
     timeZone: IST_TIME_ZONE,
     weekday: "short",
     day: "numeric",
@@ -15,16 +13,27 @@ export function formatEventDateTime(isoUtc: string): string {
     hour: "numeric",
     minute: "2-digit",
     hour12: true,
-  }).formatToParts(date);
+  }).formatToParts(new Date(isoUtc));
+}
 
-  const weekday = part(parts, "weekday");
-  const day = part(parts, "day");
-  const month = part(parts, "month");
+/** Date only in India time, e.g. "Thu, 15 Oct". */
+export function formatEventDate(isoUtc: string): string {
+  const parts = eventParts(isoUtc);
+  return `${part(parts, "weekday")}, ${part(parts, "day")} ${part(parts, "month")}`;
+}
+
+/** Clock time only in India time, e.g. "7:00 PM IST". */
+export function formatEventTime(isoUtc: string): string {
+  const parts = eventParts(isoUtc);
   const hour = part(parts, "hour");
   const minute = part(parts, "minute");
   const dayPeriod = part(parts, "dayPeriod").toUpperCase();
+  return `${hour}:${minute} ${dayPeriod} IST`;
+}
 
-  return `${weekday}, ${day} ${month}, ${hour}:${minute} ${dayPeriod} IST`;
+/** Formats a UTC ISO timestamp in India time, e.g. "Tue, 6 Oct, 2:00 AM IST". */
+export function formatEventDateTime(isoUtc: string): string {
+  return `${formatEventDate(isoUtc)}, ${formatEventTime(isoUtc)}`;
 }
 
 /** Compact label for a duration stored as minutes, e.g. "90m" or "1h 30m". */
