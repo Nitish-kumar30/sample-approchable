@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import Logo from '@/components/Logo';
-import MobileMenuButton from '@/components/MobileMenuButton';
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import Logo from "@/components/Logo";
+import MobileMenuButton from "@/components/MobileMenuButton";
 
 interface HeaderProps {
   coursePage?: boolean;
@@ -12,37 +12,57 @@ interface HeaderProps {
   showBackToCorporate?: boolean;
   showCorporateEnquiry?: boolean;
   hideNav?: boolean;
-  navVariant?: 'course' | 'blog' | 'contact';
+  showBackToEvents?: boolean;
+  navVariant?: "course" | "blog" | "contact" | "events";
 }
 
 const NAV_LINKS = {
   course: [
-    { label: 'Live AI Cohort', href: '/' },
-    { label: 'Team Training', href: '/team-ai-training' },
-    { label: 'Blog', href: '/blog' },
-    { label: 'Contact Us', href: '/contact' },
+    { label: "Live AI Cohort", href: "/" },
+    { label: "Team Training", href: "/team-ai-training" },
+    { label: "Live Events", href: "/events" },
+    { label: "Blog", href: "/blog" },
+    { label: "Contact Us", href: "/contact" },
   ],
   contact: [
-    { label: 'Live AI Cohort', href: '/' },
-    { label: 'Courses', href: '/courses' },
-    { label: 'Team Training', href: '/team-ai-training' },
-    { label: 'Blog', href: '/blog' },
+    { label: "Live AI Cohort", href: "/" },
+    { label: "Courses", href: "/courses" },
+    { label: "Team Training", href: "/team-ai-training" },
+    { label: "Live Events", href: "/events" },
+    { label: "Blog", href: "/blog" },
   ],
   blog: [
-    { label: 'Live AI Cohort', href: '/' },
-    { label: 'Courses', href: '/courses' },
-    { label: 'Team Training', href: '/team-ai-training' },
-    { label: 'Contact Us', href: '/contact' },
+    { label: "Live AI Cohort", href: "/" },
+    { label: "Courses", href: "/courses" },
+    { label: "Team Training", href: "/team-ai-training" },
+    { label: "Live Events", href: "/events" },
+    { label: "Contact Us", href: "/contact" },
+  ],
+  events: [
+    { label: "Live AI Cohort", href: "/" },
+    { label: "Courses", href: "/courses" },
+    { label: "Team Training", href: "/team-ai-training" },
+    { label: "Blog", href: "/blog" },
+    { label: "Contact Us", href: "/contact" },
   ],
 } as const;
 
 const DEFAULT_LINKS = [
-  { label: 'Courses', href: '/courses' },
-  { label: 'Corporate Training', href: '/team-ai-training' },
-  { label: 'Contact Us', href: '/contact' },
+  { label: "Courses", href: "/courses" },
+  { label: "Live Events", href: "/events" },
+  { label: "Corporate Training", href: "/team-ai-training" },
+  { label: "Contact Us", href: "/contact" },
 ] as const;
 
-function BackLink({ href, ariaLabel, fullLabel }: { href: string; ariaLabel: string; fullLabel: string }) {
+function BackLink({
+  href,
+  ariaLabel,
+  fullLabel,
+}: {
+  href: string;
+  ariaLabel: string;
+  fullLabel: string;
+}) {
   return (
     <Link href={href} className="header-back-link" aria-label={ariaLabel}>
       <svg
@@ -75,7 +95,12 @@ function NavLinks({
   return (
     <>
       {links.map(({ label, href }) => (
-        <Link key={label} href={href} className={className} onClick={onNavigate}>
+        <Link
+          key={label}
+          href={href}
+          className={className}
+          onClick={onNavigate}
+        >
           {label}
         </Link>
       ))}
@@ -87,6 +112,7 @@ export default function Header({
   coursePage = false,
   showBackToCourses = false,
   showBackToCorporate = false,
+  showBackToEvents = false,
   showCorporateEnquiry = false,
   hideNav = false,
   navVariant,
@@ -102,22 +128,37 @@ export default function Header({
   }, [pathname]);
 
   useEffect(() => {
-    document.body.classList.toggle('mobile-nav-open', menuOpen);
-    return () => document.body.classList.remove('mobile-nav-open');
+    document.body.classList.toggle("mobile-nav-open", menuOpen);
+    return () => document.body.classList.remove("mobile-nav-open");
   }, [menuOpen]);
 
   const mobileCta = showCorporateEnquiry ? (
-    <a href="#book" className="header-mobile-cta" onClick={() => setMenuOpen(false)}>
+    <a
+      href="#book"
+      className="header-mobile-cta"
+      onClick={() => setMenuOpen(false)}
+    >
       Send enquiry →
     </a>
-  ) : !coursePage && !hideNav && !navVariant && !showBackToCourses && !showBackToCorporate ? (
-    <Link href="/#pricing" className="header-mobile-cta" onClick={() => setMenuOpen(false)}>
+  ) : !coursePage &&
+    !hideNav &&
+    !navVariant &&
+    !showBackToCourses &&
+    !showBackToCorporate &&
+    !showBackToEvents ? (
+    <Link
+      href="/#pricing"
+      className="header-mobile-cta"
+      onClick={() => setMenuOpen(false)}
+    >
       Join the Cohort →
     </Link>
   ) : null;
 
   return (
-    <header className={`site-header${menuOpen ? ' site-header--menu-open' : ''}`}>
+    <header
+      className={`site-header${menuOpen ? " site-header--menu-open" : ""}`}
+    >
       <div className="container-max header-inner">
         <Logo />
 
@@ -144,13 +185,19 @@ export default function Header({
           )}
 
           {showBackToCourses ? (
-            <BackLink href="/courses" ariaLabel="Back to courses" fullLabel="Back to Courses" />
+            <BackLink
+              href="/courses"
+              ariaLabel="Back to courses"
+              fullLabel="Back to Courses"
+            />
           ) : showBackToCorporate ? (
             <BackLink
               href="/team-ai-training"
               ariaLabel="Back to corporate training"
               fullLabel="Back to Corporate Training"
             />
+          ) : showBackToEvents ? (
+            <BackLink href="/events" ariaLabel="Back to live events" fullLabel="Back to Live Events" />
           ) : showCorporateEnquiry ? (
             <a href="#book" className="header-cta header-cta-corporate">
               Send enquiry →
@@ -170,13 +217,17 @@ export default function Header({
       {showMainNav && (
         <nav
           id="header-mobile-nav"
-          className={`header-mobile-nav${menuOpen ? ' header-mobile-nav--open' : ''}`}
+          className={`header-mobile-nav${menuOpen ? " header-mobile-nav--open" : ""}`}
           aria-label="Mobile navigation"
           aria-hidden={!menuOpen}
         >
           <div className="container-max header-mobile-nav-inner">
             {showBackToCourses && (
-              <Link href="/courses" className="header-mobile-nav-link" onClick={() => setMenuOpen(false)}>
+              <Link
+                href="/courses"
+                className="header-mobile-nav-link"
+                onClick={() => setMenuOpen(false)}
+              >
                 Back to Courses
               </Link>
             )}
@@ -189,10 +240,23 @@ export default function Header({
                 Back to Corporate Training
               </Link>
             )}
+            {showBackToEvents && (
+              <Link href="/events" className="header-mobile-nav-link" onClick={() => setMenuOpen(false)}>
+                Back to Live Events
+              </Link>
+            )}
             {links ? (
-              <NavLinks links={links} className="header-mobile-nav-link" onNavigate={() => setMenuOpen(false)} />
+              <NavLinks
+                links={links}
+                className="header-mobile-nav-link"
+                onNavigate={() => setMenuOpen(false)}
+              />
             ) : (
-              <NavLinks links={DEFAULT_LINKS} className="header-mobile-nav-link" onNavigate={() => setMenuOpen(false)} />
+              <NavLinks
+                links={DEFAULT_LINKS}
+                className="header-mobile-nav-link"
+                onNavigate={() => setMenuOpen(false)}
+              />
             )}
             {mobileCta}
           </div>

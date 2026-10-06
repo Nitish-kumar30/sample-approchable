@@ -7,6 +7,8 @@ const nextConfig: NextConfig = {
   outputFileTracingIncludes: {
     '/blog': ['./content/posts/**/*'],
     '/blog/[slug]': ['./content/posts/**/*'],
+    '/events': ['./content/events/**/*'],
+    '/events/[slug]': ['./content/events/**/*'],
   },
   async redirects() {
     return [

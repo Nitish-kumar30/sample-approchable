@@ -1,9 +1,10 @@
-import type { MetadataRoute } from 'next';
-import { ALL_CATALOG_SLUGS } from '@/lib/course-content';
-import { ASSESSMENT_SLUGS } from '@/lib/assessments';
-import { getGlossaryEntries } from '@/lib/glossary';
-import { getAllPosts, getAllTags } from '@/lib/posts';
-import { absoluteUrl } from '@/lib/seo/site';
+import type { MetadataRoute } from "next";
+import { ALL_CATALOG_SLUGS } from "@/lib/course-content";
+import { ASSESSMENT_SLUGS } from "@/lib/assessments";
+import { getGlossaryEntries } from "@/lib/glossary";
+import { getPublicEvents } from "@/lib/events/publicEvents";
+import { getAllPosts, getAllTags } from "@/lib/posts";
+import { absoluteUrl } from "@/lib/seo/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
@@ -13,94 +14,100 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticRoutes: MetadataRoute.Sitemap = [
     {
-      url: absoluteUrl('/'),
+      url: absoluteUrl("/"),
       lastModified,
-      changeFrequency: 'weekly',
+      changeFrequency: "weekly",
       priority: 1,
     },
     {
-      url: absoluteUrl('/courses'),
+      url: absoluteUrl("/courses"),
       lastModified,
-      changeFrequency: 'weekly',
+      changeFrequency: "weekly",
       priority: 0.9,
     },
     {
-      url: absoluteUrl('/team-ai-training'),
+      url: absoluteUrl("/team-ai-training"),
       lastModified,
-      changeFrequency: 'monthly',
+      changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: absoluteUrl('/contact'),
+      url: absoluteUrl("/contact"),
       lastModified,
-      changeFrequency: 'monthly',
+      changeFrequency: "monthly",
       priority: 0.7,
     },
     {
-      url: absoluteUrl('/about'),
+      url: absoluteUrl("/about"),
       lastModified,
-      changeFrequency: 'monthly',
+      changeFrequency: "monthly",
       priority: 0.7,
     },
     {
-      url: absoluteUrl('/blog'),
+      url: absoluteUrl("/events"),
       lastModified,
-      changeFrequency: 'weekly',
+      changeFrequency: "daily",
+      priority: 0.8,
+    },
+    {
+      url: absoluteUrl("/blog"),
+      lastModified,
+      changeFrequency: "weekly",
       priority: 0.9,
     },
     {
-      url: absoluteUrl('/ai-glossary'),
+      url: absoluteUrl("/ai-glossary"),
       lastModified,
-      changeFrequency: 'monthly',
+      changeFrequency: "monthly",
       priority: 0.7,
     },
     {
-      url: absoluteUrl('/prompting-guide'),
+      url: absoluteUrl("/prompting-guide"),
       lastModified,
-      changeFrequency: 'monthly',
+      changeFrequency: "monthly",
       priority: 0.7,
     },
     {
-      url: absoluteUrl('/assessment'),
+      url: absoluteUrl("/assessment"),
       lastModified,
-      changeFrequency: 'monthly',
+      changeFrequency: "monthly",
       priority: 0.75,
     },
     {
-      url: absoluteUrl('/archive'),
+      url: absoluteUrl("/archive"),
       lastModified,
-      changeFrequency: 'weekly',
+      changeFrequency: "weekly",
       priority: 0.6,
     },
     {
-      url: absoluteUrl('/privacy'),
+      url: absoluteUrl("/privacy"),
       lastModified,
-      changeFrequency: 'yearly',
+      changeFrequency: "yearly",
       priority: 0.3,
     },
     {
-      url: absoluteUrl('/terms'),
+      url: absoluteUrl("/terms"),
       lastModified,
-      changeFrequency: 'yearly',
+      changeFrequency: "yearly",
       priority: 0.3,
     },
     {
-      url: absoluteUrl('/data-security'),
+      url: absoluteUrl("/data-security"),
       lastModified,
-      changeFrequency: 'yearly',
+      changeFrequency: "yearly",
       priority: 0.3,
     },
 
     {
-      url: absoluteUrl('/help'),
+      url: absoluteUrl("/help"),
       lastModified,
-      changeFrequency: 'monthly',
+      changeFrequency: "monthly",
       priority: 0.4,
     },
     {
-      url: absoluteUrl('/case-studies'),
+      url: absoluteUrl("/case-studies"),
       lastModified,
-      changeFrequency: 'monthly',
+      changeFrequency: "monthly",
       priority: 0.5,
     },
   ];
@@ -108,7 +115,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const courseRoutes: MetadataRoute.Sitemap = ALL_CATALOG_SLUGS.map((slug) => ({
     url: absoluteUrl(`/courses/${slug}`),
     lastModified,
-    changeFrequency: 'monthly',
+    changeFrequency: "monthly",
     priority: 0.8,
   }));
 
@@ -117,7 +124,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     return {
       url: absoluteUrl(`/blog/${post.slug}`),
       lastModified: Number.isNaN(postDate.getTime()) ? lastModified : postDate,
-      changeFrequency: 'monthly',
+      changeFrequency: "monthly",
       priority: 0.7,
     };
   });
@@ -127,27 +134,39 @@ export default function sitemap(): MetadataRoute.Sitemap {
     .map(({ tag }) => ({
       url: absoluteUrl(`/blog/tag/${encodeURIComponent(tag)}`),
       lastModified,
-      changeFrequency: 'weekly',
+      changeFrequency: "weekly",
       priority: 0.5,
     }));
 
-  const glossaryTermRoutes: MetadataRoute.Sitemap = glossaryEntries.map((entry) => ({
-    url: absoluteUrl(`/ai-glossary/${entry.slug}`),
-    lastModified,
-    changeFrequency: 'monthly',
-    priority: 0.65,
-  }));
+  const glossaryTermRoutes: MetadataRoute.Sitemap = glossaryEntries.map(
+    (entry) => ({
+      url: absoluteUrl(`/ai-glossary/${entry.slug}`),
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.65,
+    }),
+  );
 
-  const assessmentRoutes: MetadataRoute.Sitemap = ASSESSMENT_SLUGS.map((slug) => ({
-    url: absoluteUrl(`/assessment/quiz/${slug}`),
+  const assessmentRoutes: MetadataRoute.Sitemap = ASSESSMENT_SLUGS.map(
+    (slug) => ({
+      url: absoluteUrl(`/assessment/quiz/${slug}`),
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.75,
+    }),
+  );
+
+  const eventRoutes: MetadataRoute.Sitemap = getPublicEvents().map((event) => ({
+    url: absoluteUrl(`/events/${event.slug}`),
     lastModified,
-    changeFrequency: 'monthly',
-    priority: 0.75,
+    changeFrequency: "weekly",
+    priority: 0.7,
   }));
 
   return [
     ...staticRoutes,
     ...courseRoutes,
+    ...eventRoutes,
     ...blogRoutes,
     ...blogTagRoutes,
     ...glossaryTermRoutes,
