@@ -24,6 +24,7 @@ export default function PricingSection({ offer }: { offer: LandingCohort }) {
   const intl = currency === 'USD';
   const price = intl ? offer.priceUsd : offer.priceInr;
   const original = intl ? offer.originalUsd : offer.originalInr;
+  const discountLabel = intl ? offer.discountLabelUsd : offer.discountLabel;
   const masteryBonus = intl ? offer.bonusMasteryUsd : offer.bonusMasteryInr;
   const n8nBonus = intl ? offer.bonusN8nUsd : offer.bonusN8nInr;
 
@@ -51,7 +52,7 @@ export default function PricingSection({ offer }: { offer: LandingCohort }) {
               className="price-tagline"
               style={{ display: 'inline-block' }}
             >
-              🚀 EARLY BIRD price{offer.discountLabel ? ` — ${offer.discountLabel}` : ''}
+              🚀 EARLY BIRD price{discountLabel ? ` — ${discountLabel}` : ''}
             </span>
           </div>
 
@@ -70,14 +71,8 @@ export default function PricingSection({ offer }: { offer: LandingCohort }) {
 
           <div className="pricing-head">
             <div>
-              {offer.waitlist ? (
-                <span className="price-main">Free waitlist</span>
-              ) : (
-                <>
-                  {original ? <span className="price-original">{original}</span> : null}
-                  <span className="price-main">{price}</span>
-                </>
-              )}
+              {original ? <span className="price-original">{original}</span> : null}
+              <span className="price-main">{price}</span>
             </div>
           </div>
 
@@ -154,7 +149,7 @@ export default function PricingSection({ offer }: { offer: LandingCohort }) {
             Claim My Seat + Free Bonus Courses →
           </a>
           <p className="pricing-note">
-            Only {offer.seatsLeft} seats · Starts {offer.startLabel} · {COHORT.time}
+            {offer.soldOut ? 'Cohort is full' : `Only ${offer.seatsLeft} seats`} · Starts {offer.startLabel} · {COHORT.time}
           </p>
         </div>
       </div>

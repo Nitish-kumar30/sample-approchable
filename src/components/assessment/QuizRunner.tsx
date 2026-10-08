@@ -55,7 +55,7 @@ function RecCard({ rec, primary, offer }: { rec: QuizRec; primary: boolean; offe
       <p>{rec.desc}</p>
       {cohort && (
         <ul className={styles.recMeta}>
-          <li>{offer.waitlist ? 'Free waitlist' : offer.priceInr}{offer.discountLabel ? ` · ${offer.discountLabel}` : ''}</li>
+          <li>{offer.priceInr}{offer.discountLabel ? ` · ${offer.discountLabel}` : ''}</li>
           <li>
             Next session {offer.startLabel}
             {offer.soldOut ? ' · currently waitlist' : ` · ${offer.seatsLeft} seats left`}

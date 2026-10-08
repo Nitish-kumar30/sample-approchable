@@ -12,6 +12,7 @@ export type LandingCohort = {
   originalInr: string;
   originalUsd: string;
   discountLabel: string;
+  discountLabelUsd: string;
   seatsLeft: number;
   maxSeats: number;
   startLabel: string;
@@ -35,6 +36,7 @@ const FALLBACK: LandingCohort = {
   originalInr: COHORT.originalPriceIndia,
   originalUsd: COHORT.originalPriceIntl,
   discountLabel: 'save 50%',
+  discountLabelUsd: 'save 44%',
   seatsLeft: COHORT.seatsLeft,
   maxSeats: COHORT.seatsTotal,
   startLabel: COHORT.dateShort,
@@ -55,7 +57,6 @@ type OfferRow = {
   start_label?: string | null;
   original_price_inr_paise?: number | null;
   original_price_usd_cents?: number | null;
-  discount_label?: string | null;
   bonus_mastery_inr_paise?: number | null;
   bonus_mastery_usd_cents?: number | null;
   bonus_n8n_inr_paise?: number | null;
@@ -86,7 +87,6 @@ function discountFromPrices(current: number | null | undefined, original: number
 
 function toLandingCohort(row: OfferRow): LandingCohort {
   const cohortName = row.cohort_name?.trim() || FALLBACK.cohortName;
-  const customDiscount = row.discount_label?.trim();
   return {
     cohortName,
     waitlist: /waitlist/i.test(cohortName),
@@ -97,7 +97,8 @@ function toLandingCohort(row: OfferRow): LandingCohort {
     priceUsdAmount: amount(row.price_usd_cents, FALLBACK.priceUsdAmount),
     originalInr: formatInr(row.original_price_inr_paise, ''),
     originalUsd: formatUsd(row.original_price_usd_cents, ''),
-    discountLabel: customDiscount || discountFromPrices(row.price_inr_paise, row.original_price_inr_paise),
+    discountLabel: discountFromPrices(row.price_inr_paise, row.original_price_inr_paise),
+    discountLabelUsd: discountFromPrices(row.price_usd_cents, row.original_price_usd_cents),
     seatsLeft: row.seats_left ?? FALLBACK.seatsLeft,
     maxSeats: row.max_seats ?? FALLBACK.maxSeats,
     startLabel: row.start_label?.trim() || FALLBACK.startLabel,
@@ -128,7 +129,6 @@ async function loadOfferRow(): Promise<LandingCohort> {
       'start_label',
       'original_price_inr_paise',
       'original_price_usd_cents',
-      'discount_label',
       'bonus_mastery_inr_paise',
       'bonus_mastery_usd_cents',
       'bonus_n8n_inr_paise',
