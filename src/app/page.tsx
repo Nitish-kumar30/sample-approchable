@@ -3,6 +3,7 @@ import Link from 'next/link';
 import type { ReactNode } from 'react';
 import { Sora, Manrope } from 'next/font/google';
 import { COHORT } from '@/lib/cohort-config';
+import { getLandingCohort } from '@/lib/current-cohort-offer';
 import { buildCohortSchema } from '@/lib/seo/cohort-schema';
 import Banner from '@/components/Banner';
 import Header from '@/components/Header';
@@ -164,8 +165,9 @@ const FAQ: HomeFaqItem[] = [
   { q: 'How do I contact you?', a: 'Contact us at BIGINT Solutions. www.bigintsolutions.com' },
 ];
 
-export default function HomePage() {
-  const cohortSchema = buildCohortSchema(FAQ.map(({ q, a }) => ({ q, a })));
+export default async function HomePage() {
+  const offer = await getLandingCohort();
+  const cohortSchema = buildCohortSchema(FAQ.map(({ q, a }) => ({ q, a })), offer);
 
   return (
     <>
@@ -173,13 +175,13 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(cohortSchema) }}
       />
-      <Banner />
+      <Banner offer={offer} />
       <Header hideNav />
       <main className={`cohort-page ${sora.variable} ${manrope.variable}`}>
         {/* HERO */}
         <section className="page-section" style={{ paddingTop: 64, paddingBottom: 0, borderBottom: '1px solid var(--border)' }}>
           <div className="hero" style={{ padding: '0 0 48px' }}>
-            <div className="hero-label">Cohort 8 · {COHORT.dateShort} · 20 seats max</div>
+            <div className="hero-label">{offer.cohortLabel} · {offer.startLabel} · {offer.maxSeats} seats max</div>
             <h1>
               Master the AI fundamentals <br />
               with <span>Claude Ecosystem</span>
@@ -201,13 +203,13 @@ export default function HomePage() {
           <div className="cohort-box">
             <div className="cohort-box-row">
               <div className="cohort-meta">
-                <div className="cohort-meta-item">📅 <strong>Starts {COHORT.date}</strong> &nbsp;·&nbsp; {COHORT.time}</div>
-                <div className="cohort-meta-item">👥 <strong>Max 20 seats</strong> &nbsp;·&nbsp; Small group, discussion-driven</div>
+                <div className="cohort-meta-item">📅 <strong>Starts {offer.startLabel}</strong> &nbsp;·&nbsp; {COHORT.time}</div>
+                <div className="cohort-meta-item">👥 <strong>Max {offer.maxSeats} seats</strong> &nbsp;·&nbsp; Small group, discussion-driven</div>
                 <div className="cohort-meta-item">⏱ <strong>3 live sessions</strong> &nbsp;·&nbsp; Sep 30, Oct 7, Oct 14 &nbsp;·&nbsp; 60-90 min each + 3 weeks capstone build</div>
                 <div className="cohort-meta-item">⏱ <strong>1 BONUS live session</strong> &nbsp;·&nbsp; Build AI Apps & AI Agents with n8n &nbsp;·&nbsp; 60-90 min</div>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8, alignItems: 'flex-end' }}>
-                <span className="cohort-badge">{COHORT.seatsLeft} seats left</span>
+                <span className="cohort-badge">{offer.seatsLeft} seats left</span>
               </div>
             </div>
           </div>
@@ -381,7 +383,7 @@ export default function HomePage() {
         <hr className="divider" />
 
         {/* PRICING */}
-        <PricingSection />
+        <PricingSection offer={offer} />
 
         <hr className="divider" />
 
@@ -409,7 +411,7 @@ export default function HomePage() {
               <div className="signup-step">
                 <div className="step-num">3</div>
                 <div>
-                  <div className="step-title">Start learning {COHORT.dateShort}</div>
+                  <div className="step-title">Start learning {offer.startLabel}</div>
                   <div className="step-desc">Cohort workspace + Week 1 materials arrive before your first session.</div>
                 </div>
               </div>
@@ -420,7 +422,7 @@ export default function HomePage() {
                 Start Building with Claude →
               </a>
               <p style={{ fontSize: 13, color: 'var(--text-muted)', marginTop: 12 }}>
-                Only {COHORT.seatsLeft} seats remaining · {COHORT.date}
+                Only {offer.seatsLeft} seats remaining · {offer.startLabel}
               </p>
             </div>
 
@@ -456,7 +458,7 @@ export default function HomePage() {
         </section>
       </main>
 
-      <FloatingCta />
+      <FloatingCta offer={offer} />
     </>
   );
 }

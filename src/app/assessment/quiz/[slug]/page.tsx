@@ -11,6 +11,7 @@ import {
   type QuizRec,
 } from '@/lib/assessments';
 import { getCourseContent } from '@/lib/course-content';
+import { getLandingCohort } from '@/lib/current-cohort-offer';
 import { buildPageMetadata } from '@/lib/seo/metadata';
 
 interface QuizPageProps {
@@ -55,7 +56,7 @@ export default async function QuizPage({ params }: QuizPageProps) {
   if (!assessment) notFound();
 
   const config = getAssessmentConfig();
-  const relatedCourse = await getRelatedCourse(slug);
+  const [relatedCourse, offer] = await Promise.all([getRelatedCourse(slug), getLandingCohort()]);
 
   return (
     <>
@@ -65,6 +66,7 @@ export default async function QuizPage({ params }: QuizPageProps) {
         assessment={assessment}
         config={config}
         relatedCourse={relatedCourse}
+        offer={offer}
       />
     </>
   );

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { COHORT } from '@/lib/cohort-config';
-import { getCohortDisplay } from '@/lib/cohort-price';
+import type { LandingCohort } from '@/lib/current-cohort-offer';
 import { trackCTA } from '@/lib/analytics';
 import { usePricingCurrency } from '@/components/PricingCurrencyProvider';
 
@@ -17,26 +17,21 @@ function getTimeLeft(target: number) {
   };
 }
 
-const BONUS_STRIKES = {
-  mastery: { INR: '₹1,500', USD: '$70' },
-  n8n: { INR: '₹3,000', USD: '$99' },
-} as const;
-
-export default function PricingSection() {
+export default function PricingSection({ offer }: { offer: LandingCohort }) {
   const { currency } = usePricingCurrency();
   const target = new Date(COHORT.priceIncreaseAt).getTime();
-  const [isLate, setIsLate] = useState(() => Date.now() >= target);
   const [timeLeft, setTimeLeft] = useState(() => getTimeLeft(target));
-  const display = getCohortDisplay(currency, isLate);
+  const intl = currency === 'USD';
+  const price = intl ? offer.priceUsd : offer.priceInr;
+  const original = intl ? offer.originalUsd : offer.originalInr;
+  const masteryBonus = intl ? offer.bonusMasteryUsd : offer.bonusMasteryInr;
+  const n8nBonus = intl ? offer.bonusN8nUsd : offer.bonusN8nInr;
 
   useEffect(() => {
     const timer = setInterval(() => {
       const tl = getTimeLeft(target);
       setTimeLeft(tl);
-      if (!tl) {
-        setIsLate(true);
-        clearInterval(timer);
-      }
+      if (!tl) clearInterval(timer);
     }, 1000);
     return () => clearInterval(timer);
   }, [target]);
@@ -53,10 +48,10 @@ export default function PricingSection() {
         <div className="pricing-card">
           <div style={{ textAlign: 'center', marginBottom: 20 }}>
             <span
-              className={`price-tagline${isLate ? ' price-tagline--expired' : ''}`}
+              className="price-tagline"
               style={{ display: 'inline-block' }}
             >
-              🚀 EARLY BIRD price — save 50%
+              🚀 EARLY BIRD price{offer.discountLabel ? ` — ${offer.discountLabel}` : ''}
             </span>
           </div>
 
@@ -75,10 +70,15 @@ export default function PricingSection() {
 
           <div className="pricing-head">
             <div>
-              <span className="price-original">{display.original}</span>
-              <span className="price-main">{display.current}</span>
+              {offer.waitlist ? (
+                <span className="price-main">Free waitlist</span>
+              ) : (
+                <>
+                  {original ? <span className="price-original">{original}</span> : null}
+                  <span className="price-main">{price}</span>
+                </>
+              )}
             </div>
-            {display.tagline ? <div className="price-sub">{display.tagline}</div> : null}
           </div>
 
           <div className="pricing-bonus">
@@ -86,7 +86,7 @@ export default function PricingSection() {
             <div>
               <span className="pricing-bonus-label">Free bonus</span>
               <div className="pricing-bonus-title">
-                <span className="pricing-bonus-strike">{BONUS_STRIKES.mastery[currency]}</span>AI Mastery for Working Professionals
+                <span className="pricing-bonus-strike">{masteryBonus}</span>AI Mastery for Working Professionals
               </div>
               <div className="pricing-bonus-desc">
                 A self-paced course on weaving AI into your daily work &mdash; included free with this cohort, yours to keep even after it ends.
@@ -99,7 +99,7 @@ export default function PricingSection() {
             <div>
               <span className="pricing-bonus-label">Free bonus live session</span>
               <div className="pricing-bonus-title">
-                <span className="pricing-bonus-strike">{BONUS_STRIKES.n8n[currency]}</span>Build AI Apps & AI Agents with n8n
+                <span className="pricing-bonus-strike">{n8nBonus}</span>Build AI Apps & AI Agents with n8n
               </div>
               <div className="pricing-bonus-desc">
                 A live session on adding intelligence to your applications, and building AI agents with n8n&mdash; included free with this cohort.
@@ -154,7 +154,7 @@ export default function PricingSection() {
             Claim My Seat + Free Bonus Courses →
           </a>
           <p className="pricing-note">
-            Only {COHORT.seatsLeft} seats · Starts {COHORT.date} · {COHORT.time}
+            Only {offer.seatsLeft} seats · Starts {offer.startLabel} · {COHORT.time}
           </p>
         </div>
       </div>

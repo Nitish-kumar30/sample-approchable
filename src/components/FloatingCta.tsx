@@ -3,10 +3,10 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { COHORT } from '@/lib/cohort-config';
+import type { LandingCohort } from '@/lib/current-cohort-offer';
 import { trackCTA } from '@/lib/analytics';
 
-export default function FloatingCta() {
+export default function FloatingCta({ offer }: { offer: LandingCohort }) {
   const pathname = usePathname();
   const [visible, setVisible] = useState(false);
   const [dismissed, setDismissed] = useState(false);
@@ -27,7 +27,7 @@ export default function FloatingCta() {
     <div id="floatingCta" className={visible ? 'visible' : ''}>
       <div className="floating-inner">
         <div className="floating-text">
-          🔥 Only {COHORT.seatsLeft} seats left · Cohort 8 starts {COHORT.dateShort}
+          🔥 Only {offer.seatsLeft} seats left · {offer.cohortLabel} starts {offer.startLabel}
         </div>
         <div className="floating-actions">
           <Link
@@ -35,7 +35,7 @@ export default function FloatingCta() {
             className="floating-cta-btn"
             onClick={() => trackCTA('Floating CTA', 'Float')}
           >
-            Get One of {COHORT.seatsLeft} Seats →
+            Get One of {offer.seatsLeft} Seats →
           </Link>
           <button className="floating-close" onClick={() => setDismissed(true)}>
             ×

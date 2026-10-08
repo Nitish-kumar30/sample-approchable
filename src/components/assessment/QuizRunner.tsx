@@ -5,6 +5,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { Assessment, AssessmentConfig, QuizRec } from '@/lib/assessments';
 import { getScoreBand } from '@/lib/assessments';
 import { COHORT } from '@/lib/cohort-config';
+import type { LandingCohort } from '@/lib/current-cohort-offer';
 import {
   clearAnswersFromUrl,
   clearQuiz,
@@ -23,6 +24,7 @@ interface QuizRunnerProps {
   assessment: Assessment;
   config: AssessmentConfig;
   relatedCourse: QuizRec | null;
+  offer: LandingCohort;
 }
 
 function isCohortRec(rec: QuizRec): boolean {
@@ -33,12 +35,12 @@ function getNextIntro(): string {
   return 'Recommended: live cohort — close the gap with a mentor and a small group.';
 }
 
-function RecCard({ rec, primary }: { rec: QuizRec; primary: boolean }) {
+function RecCard({ rec, primary, offer }: { rec: QuizRec; primary: boolean; offer: LandingCohort }) {
   const cohort = isCohortRec(rec);
-  const href = cohort ? (COHORT.state === 'soldout' ? '/' : COHORT.formUrl) : rec.url;
+  const href = cohort ? (offer.soldOut ? '/' : COHORT.formUrl) : rec.url;
   const external = href.startsWith('http');
   const cta = cohort
-    ? COHORT.state === 'soldout'
+    ? offer.soldOut
       ? 'See the cohort →'
       : 'Reserve a seat →'
     : rec.tag.toLowerCase().includes('free')
@@ -53,10 +55,10 @@ function RecCard({ rec, primary }: { rec: QuizRec; primary: boolean }) {
       <p>{rec.desc}</p>
       {cohort && (
         <ul className={styles.recMeta}>
-          <li>{COHORT.priceIndia} · {COHORT.priceTaglineIndia}</li>
+          <li>{offer.waitlist ? 'Free waitlist' : offer.priceInr}{offer.discountLabel ? ` · ${offer.discountLabel}` : ''}</li>
           <li>
-            Next session {COHORT.dateShort}
-            {COHORT.state === 'soldout' ? ' · currently waitlist' : ` · ${COHORT.seatsLeft} seats left`}
+            Next session {offer.startLabel}
+            {offer.soldOut ? ' · currently waitlist' : ` · ${offer.seatsLeft} seats left`}
           </li>
         </ul>
       )}
@@ -79,7 +81,7 @@ function RecCard({ rec, primary }: { rec: QuizRec; primary: boolean }) {
   );
 }
 
-export default function QuizRunner({ assessment, config, relatedCourse }: QuizRunnerProps) {
+export default function QuizRunner({ assessment, config, relatedCourse, offer }: QuizRunnerProps) {
   const total = assessment.questions.length;
   const [ready, setReady] = useState(false);
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -319,7 +321,7 @@ export default function QuizRunner({ assessment, config, relatedCourse }: QuizRu
                     {[assessment.recs[results.band.key]?.[0], relatedCourse]
                       .filter((rec): rec is QuizRec => Boolean(rec))
                       .map((rec, index) => (
-                        <RecCard key={rec.url} rec={rec} primary={index === 0} />
+                        <RecCard key={rec.url} rec={rec} primary={index === 0} offer={offer} />
                       ))}
                   </div>
                 </div>
