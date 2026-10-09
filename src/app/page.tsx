@@ -209,7 +209,7 @@ export default async function HomePage() {
                 <div className="cohort-meta-item">⏱ <strong>1 BONUS live session</strong> &nbsp;·&nbsp; Build AI Apps & AI Agents with n8n &nbsp;·&nbsp; 60-90 min</div>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8, alignItems: 'flex-end' }}>
-                <span className="cohort-badge">{offer.soldOut ? 'Cohort is full' : `${offer.seatsLeft} seats left`}</span>
+                <span className="cohort-badge">{offer.seatsLeft} seats left</span>
               </div>
             </div>
           </div>
@@ -422,7 +422,7 @@ export default async function HomePage() {
                 Start Building with Claude →
               </a>
               <p style={{ fontSize: 13, color: 'var(--text-muted)', marginTop: 12 }}>
-                {offer.soldOut ? 'Cohort is full' : `Only ${offer.seatsLeft} seats remaining`} · {offer.startLabel}
+                Only {offer.seatsLeft} seats remaining · {offer.startLabel}
               </p>
             </div>
 

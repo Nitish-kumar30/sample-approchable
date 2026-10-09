@@ -20,7 +20,8 @@ function getTimeLeft(target: number) {
 export default function PricingSection({ offer }: { offer: LandingCohort }) {
   const { currency } = usePricingCurrency();
   const target = new Date(COHORT.priceIncreaseAt).getTime();
-  const [timeLeft, setTimeLeft] = useState(() => getTimeLeft(target));
+  const [isLate, setIsLate] = useState(() => Date.now() >= target);
+  const [timeLeft, setTimeLeft] = useState(() => (offer.soldOut ? null : getTimeLeft(target)));
   const intl = currency === 'USD';
   const price = intl ? offer.priceUsd : offer.priceInr;
   const original = intl ? offer.originalUsd : offer.originalInr;
@@ -29,13 +30,17 @@ export default function PricingSection({ offer }: { offer: LandingCohort }) {
   const n8nBonus = intl ? offer.bonusN8nUsd : offer.bonusN8nInr;
 
   useEffect(() => {
+    if (offer.soldOut) return;
     const timer = setInterval(() => {
       const tl = getTimeLeft(target);
       setTimeLeft(tl);
-      if (!tl) clearInterval(timer);
+      if (!tl) {
+        setIsLate(true);
+        clearInterval(timer);
+      }
     }, 1000);
     return () => clearInterval(timer);
-  }, [target]);
+  }, [offer.soldOut, target]);
 
   return (
     <section id="pricing">
@@ -49,25 +54,21 @@ export default function PricingSection({ offer }: { offer: LandingCohort }) {
         <div className="pricing-card">
           <div style={{ textAlign: 'center', marginBottom: 20 }}>
             <span
-              className="price-tagline"
+              className={`price-tagline${isLate ? ' price-tagline--expired' : ''}`}
               style={{ display: 'inline-block' }}
             >
               🚀 EARLY BIRD price{discountLabel ? ` — ${discountLabel}` : ''}
             </span>
           </div>
 
-          <div className="price-countdown">
-            {timeLeft ? (
-              <>
-                Price goes up on {COHORT.priceIncreaseDateShort} in{' '}
-                <strong>
-                  {timeLeft.days}d {timeLeft.hours}h {timeLeft.mins}m {timeLeft.secs}s
-                </strong>
-              </>
-            ) : (
-             ''
-            )}
-          </div>
+          {!offer.soldOut && timeLeft ? (
+            <div className="price-countdown">
+              Price goes up on {COHORT.priceIncreaseDateShort} in{' '}
+              <strong>
+                {timeLeft.days}d {timeLeft.hours}h {timeLeft.mins}m {timeLeft.secs}s
+              </strong>
+            </div>
+          ) : null}
 
           <div className="pricing-head">
             <div>
@@ -149,7 +150,7 @@ export default function PricingSection({ offer }: { offer: LandingCohort }) {
             Claim My Seat + Free Bonus Courses →
           </a>
           <p className="pricing-note">
-            {offer.soldOut ? 'Cohort is full' : `Only ${offer.seatsLeft} seats`} · Starts {offer.startLabel} · {COHORT.time}
+            Only {offer.seatsLeft} seats · Starts {offer.startLabel} · {COHORT.time}
           </p>
         </div>
       </div>
