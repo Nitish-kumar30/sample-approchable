@@ -71,16 +71,19 @@ type OfferRow = {
 
 function formatInr(paise: number | null | undefined, fallback: string): string {
   if (paise == null || Number.isNaN(paise)) return fallback;
+  if (paise === 0) return '';
   return `₹${Math.round(paise / 100).toLocaleString('en-IN')}`;
 }
 
 function formatUsd(cents: number | null | undefined, fallback: string): string {
   if (cents == null || Number.isNaN(cents)) return fallback;
+  if (cents === 0) return '';
   return `$${Math.round(cents / 100).toLocaleString('en-US')}`;
 }
 
 function amount(minor: number | null | undefined, fallback: string): string {
   if (minor == null || Number.isNaN(minor)) return fallback;
+  if (minor === 0) return '';
   return String(Math.round(minor / 100));
 }
 
