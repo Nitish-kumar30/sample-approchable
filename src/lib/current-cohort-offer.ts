@@ -70,17 +70,17 @@ type OfferRow = {
 };
 
 function formatInr(paise: number | null | undefined, fallback: string): string {
-  if (!paise || paise <= 0) return fallback;
+  if (paise == null || Number.isNaN(paise)) return fallback;
   return `₹${Math.round(paise / 100).toLocaleString('en-IN')}`;
 }
 
 function formatUsd(cents: number | null | undefined, fallback: string): string {
-  if (!cents || cents <= 0) return fallback;
+  if (cents == null || Number.isNaN(cents)) return fallback;
   return `$${Math.round(cents / 100).toLocaleString('en-US')}`;
 }
 
 function amount(minor: number | null | undefined, fallback: string): string {
-  if (!minor || minor <= 0) return fallback;
+  if (minor == null || Number.isNaN(minor)) return fallback;
   return String(Math.round(minor / 100));
 }
 
@@ -98,7 +98,7 @@ function priceIncreaseFromRow(value: string | null | undefined): { at: string; s
 }
 
 function discountFromPrices(current: number | null | undefined, original: number | null | undefined): string {
-  if (!current || !original || original <= current) return '';
+  if (current == null || original == null || original <= 0 || original <= current) return '';
   const percent = Math.round((1 - current / original) * 100);
   return percent > 0 ? `save ${percent}%` : '';
 }
