@@ -21,6 +21,8 @@ export type LandingCohort = {
   bonusMasteryUsd: string;
   bonusN8nInr: string;
   bonusN8nUsd: string;
+  priceIncreaseAt: string;
+  priceIncreaseDateShort: string;
 };
 
 const OFFER_TAG = 'current-cohort-offer';
@@ -45,6 +47,8 @@ const FALLBACK: LandingCohort = {
   bonusMasteryUsd: '$70',
   bonusN8nInr: '₹3,000',
   bonusN8nUsd: '$99',
+  priceIncreaseAt: COHORT.priceIncreaseAt,
+  priceIncreaseDateShort: COHORT.priceIncreaseDateShort,
 };
 
 type OfferRow = {
@@ -62,6 +66,7 @@ type OfferRow = {
   bonus_n8n_inr_paise?: number | null;
   bonus_n8n_usd_cents?: number | null;
   cohort_label?: string | null;
+  price_increase_at?: string | null;
 };
 
 function formatInr(paise: number | null | undefined, fallback: string): string {
@@ -79,6 +84,19 @@ function amount(minor: number | null | undefined, fallback: string): string {
   return String(Math.round(minor / 100));
 }
 
+function priceIncreaseFromRow(value: string | null | undefined): { at: string; short: string } {
+  const parsed = value ? new Date(value) : null;
+  if (!parsed || Number.isNaN(parsed.getTime())) {
+    return { at: FALLBACK.priceIncreaseAt, short: FALLBACK.priceIncreaseDateShort };
+  }
+  const short = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'Asia/Kolkata',
+    month: 'short',
+    day: 'numeric',
+  }).format(parsed);
+  return { at: parsed.toISOString(), short };
+}
+
 function discountFromPrices(current: number | null | undefined, original: number | null | undefined): string {
   if (!current || !original || original <= current) return '';
   const percent = Math.round((1 - current / original) * 100);
@@ -87,6 +105,7 @@ function discountFromPrices(current: number | null | undefined, original: number
 
 function toLandingCohort(row: OfferRow): LandingCohort {
   const cohortName = row.cohort_name?.trim() || FALLBACK.cohortName;
+  const priceIncrease = priceIncreaseFromRow(row.price_increase_at);
   return {
     cohortName,
     waitlist: /waitlist/i.test(cohortName),
@@ -107,6 +126,8 @@ function toLandingCohort(row: OfferRow): LandingCohort {
     bonusMasteryUsd: formatUsd(row.bonus_mastery_usd_cents, ''),
     bonusN8nInr: formatInr(row.bonus_n8n_inr_paise, ''),
     bonusN8nUsd: formatUsd(row.bonus_n8n_usd_cents, ''),
+    priceIncreaseAt: priceIncrease.at,
+    priceIncreaseDateShort: priceIncrease.short,
   };
 }
 
@@ -134,6 +155,7 @@ async function loadOfferRow(): Promise<LandingCohort> {
       'bonus_n8n_inr_paise',
       'bonus_n8n_usd_cents',
       'cohort_label',
+      'price_increase_at',
     ].join(','),
   );
 

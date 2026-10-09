@@ -19,7 +19,7 @@ function getTimeLeft(target: number) {
 
 export default function PricingSection({ offer }: { offer: LandingCohort }) {
   const { currency } = usePricingCurrency();
-  const target = new Date(COHORT.priceIncreaseAt).getTime();
+  const target = new Date(offer.priceIncreaseAt).getTime();
   const [isLate, setIsLate] = useState(() => Date.now() >= target);
   const [timeLeft, setTimeLeft] = useState(() => (offer.soldOut ? null : getTimeLeft(target)));
   const intl = currency === 'USD';
@@ -63,7 +63,7 @@ export default function PricingSection({ offer }: { offer: LandingCohort }) {
 
           {!offer.soldOut && timeLeft ? (
             <div className="price-countdown">
-              Price goes up on {COHORT.priceIncreaseDateShort} in{' '}
+              Price goes up on {offer.priceIncreaseDateShort} in{' '}
               <strong>
                 {timeLeft.days}d {timeLeft.hours}h {timeLeft.mins}m {timeLeft.secs}s
               </strong>
