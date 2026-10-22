@@ -52,7 +52,7 @@ const COMPANIES = ['Adobe', 'Microsoft', 'GAP Inc', 'Deloitte', 'Nordstrom', 'Up
 const CURRICULUM = [
   {
     num: '1',
-    label: 'Week 1 · Sep 30',
+    week: 'Week 1',
     title: 'AI Foundations & Claude Chat',
     outcomes: [
       'A clear mental model of how LLMs work — enough to explain it to your team or boss',
@@ -72,7 +72,7 @@ const CURRICULUM = [
   },
   {
     num: '2',
-    label: 'Week 2 · Oct 7',
+    week: 'Week 2',
     title: 'Agentic AI with Claude Cowork',
     outcomes: [
       'Build your first AI agent that independently completes real knowledge-work tasks.',
@@ -91,7 +91,7 @@ const CURRICULUM = [
   },
   {
     num: '3',
-    label: 'Week 3 · Oct 14',
+    week: 'Week 3',
     title: 'Vibe Coding — Build with AI',
     outcomes: [
       'Build software faster by collaborating effectively with AI coding tools.',
@@ -108,7 +108,7 @@ const CURRICULUM = [
   },
   {
     num: '4',
-    label: 'Week 4 · Date TBD',
+    week: 'Week 4',
     title: 'BONUS Session: Build AI Apps & AI Agents with n8n',
     outcomes: [
       'Add intelligent automation to your workflows using n8n.',
@@ -122,7 +122,6 @@ const CURRICULUM = [
       { text: '🛠 Live project: ship AI Agents', highlight: false },
     ],
   },
-
 ];
 
 const CAPSTONE = {
@@ -149,7 +148,7 @@ type HomeFaqItem = {
 const FAQ: HomeFaqItem[] = [
   { q: 'Who is this cohort for?', a: 'Anyone who uses or wants to use AI & Claude seriously — developers, PMs, founders, consultants, and tech professionals who want to go beyond chat prompts and actually build with the Claude ecosystem. This is beginner to intermediate level cohort.' },
   { q: 'Do I need to know how to code?', a: "Not at all. This cohort is fully accessible to non-developers — AI Foundations, Claude Chat, and Cowork need no coding, and the Vibe Coding week uses AI to write the code for you. No prior experience required." },
-  { q: 'How long is the program?', a: '3 live sessions (90 mins each), one per week — Session 1: Sep 30, Session 2: Oct 7, Session 3: Oct 14 — followed by a 3 week capstone build period submitted for mentor review. Roughly 6 weeks start to finish.' },
+  { q: 'How long is the program?', a: '' },
   { q: 'Why is the fee non-refundable?', a: "We cap at 20 seats. When someone takes a seat and doesn't show, it costs another learner their spot. The commitment fee protects the group experience — it's the same reason the cohort model works." },
   {
     q: "What's the Approachable learning platform?",
@@ -165,9 +164,19 @@ const FAQ: HomeFaqItem[] = [
   { q: 'How do I contact you?', a: 'Contact us at BIGINT Solutions. www.bigintsolutions.com' },
 ];
 
+function programLength(session1Date: string, session2Date: string, session3Date: string): string {
+  return `3 live sessions (90 mins each), one per week — Session 1: ${session1Date}, Session 2: ${session2Date}, Session 3: ${session3Date} — followed by a 3 week capstone build period submitted for mentor review. Roughly 6 weeks start to finish.`;
+}
+
 export default async function HomePage() {
   const offer = await getLandingCohort();
-  const cohortSchema = buildCohortSchema(FAQ.map(({ q, a }) => ({ q, a })), offer);
+  const sessionDates = [offer.session1Date, offer.session2Date, offer.session3Date, offer.bonusSessionDate];
+  const faq = FAQ.map((item) =>
+    item.q === 'How long is the program?'
+      ? { ...item, a: programLength(offer.session1Date, offer.session2Date, offer.session3Date) }
+      : item,
+  );
+  const cohortSchema = buildCohortSchema(faq.map(({ q, a }) => ({ q, a })), offer);
 
   return (
     <>
@@ -205,7 +214,7 @@ export default async function HomePage() {
               <div className="cohort-meta">
                 <div className="cohort-meta-item">📅 <strong>Starts {offer.startLabel}</strong> &nbsp;·&nbsp; {COHORT.time}</div>
                 <div className="cohort-meta-item">👥 <strong>Max {offer.maxSeats} seats</strong> &nbsp;·&nbsp; Small group, discussion-driven</div>
-                <div className="cohort-meta-item">⏱ <strong>3 live sessions</strong> &nbsp;·&nbsp; Sep 30, Oct 7, Oct 14 &nbsp;·&nbsp; 60-90 min each + 3 weeks capstone build</div>
+                <div className="cohort-meta-item">⏱ <strong>3 live sessions</strong> &nbsp;·&nbsp; {offer.session1Date}, {offer.session2Date}, {offer.session3Date} &nbsp;·&nbsp; 60-90 min each + 3 weeks capstone build</div>
                 <div className="cohort-meta-item">⏱ <strong>1 BONUS live session</strong> &nbsp;·&nbsp; Build AI Apps & AI Agents with n8n &nbsp;·&nbsp; 60-90 min</div>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8, alignItems: 'flex-end' }}>
@@ -254,12 +263,12 @@ export default async function HomePage() {
             <p className="section-sub">Three live sessions + 1 BONUS session, each 60-90 minutes with hands-on activities. Then time to build a capstone project for mentor review.</p>
 
             <div className="curriculum-wrap" style={{ marginTop: 40 }}>
-              {CURRICULUM.map((session) => (
+              {CURRICULUM.map((session, index) => (
                 <div key={session.num} className="curriculum-block">
                   <div className="curriculum-header">
                     <div className="curriculum-num">{session.num}</div>
                     <div>
-                      <div className="curriculum-session-label">{session.label}</div>
+                      <div className="curriculum-session-label">{session.week} · {sessionDates[index]}</div>
                       <div className="curriculum-title">{session.title}</div>
                     </div>
                   </div>
@@ -447,7 +456,7 @@ export default async function HomePage() {
           <div className="container-max" style={{ maxWidth: 680 }}>
             <h2 className="section-title">FAQ</h2>
             <div className="faq-list" style={{ marginTop: 24 }}>
-              {FAQ.map((item, i) => (
+              {faq.map((item, i) => (
                 <div key={i} className="faq-item">
                   <h3 className="faq-q">{item.q}</h3>
                   <div className="faq-a">{item.renderA ?? item.a}</div>

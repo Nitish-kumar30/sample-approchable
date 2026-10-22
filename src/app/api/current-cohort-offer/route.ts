@@ -22,6 +22,10 @@ const OFFER_COLUMNS = [
   "bonus_n8n_usd_cents",
   "cohort_label",
   "price_increase_at",
+  "session_1_date",
+  "session_2_date",
+  "session_3_date",
+  "bonus_session_date",
 ] as const;
 
 function readSupabaseEnv() {

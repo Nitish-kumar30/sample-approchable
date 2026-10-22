@@ -23,6 +23,10 @@ export type LandingCohort = {
   bonusN8nUsd: string;
   priceIncreaseAt: string;
   priceIncreaseDateShort: string;
+  session1Date: string;
+  session2Date: string;
+  session3Date: string;
+  bonusSessionDate: string;
 };
 
 export const FALLBACK: LandingCohort = {
@@ -47,6 +51,10 @@ export const FALLBACK: LandingCohort = {
   bonusN8nUsd: "$99",
   priceIncreaseAt: COHORT.priceIncreaseAt,
   priceIncreaseDateShort: COHORT.priceIncreaseDateShort,
+  session1Date: "Sep 30",
+  session2Date: "Oct 7",
+  session3Date: "Oct 14",
+  bonusSessionDate: "Date TBD",
 };
 
 export type OfferRow = {
@@ -65,6 +73,10 @@ export type OfferRow = {
   bonus_n8n_usd_cents?: number | null;
   cohort_label?: string | null;
   price_increase_at?: string | null;
+  session_1_date?: string | null;
+  session_2_date?: string | null;
+  session_3_date?: string | null;
+  bonus_session_date?: string | null;
 };
 
 function formatInr(paise: number | null | undefined, fallback: string): string {
@@ -119,6 +131,11 @@ function discountFromPrices(
   return percent > 0 ? `save ${percent}%` : "";
 }
 
+function dateOr(value: string | null | undefined, fallback: string): string {
+  const trimmed = value?.trim();
+  return trimmed || fallback;
+}
+
 export function toLandingCohort(row: OfferRow): LandingCohort {
   const cohortName = row.cohort_name?.trim() || FALLBACK.cohortName;
   const priceIncrease = priceIncreaseFromRow(row.price_increase_at);
@@ -150,6 +167,10 @@ export function toLandingCohort(row: OfferRow): LandingCohort {
     bonusN8nUsd: formatUsd(row.bonus_n8n_usd_cents, ""),
     priceIncreaseAt: priceIncrease.at,
     priceIncreaseDateShort: priceIncrease.short,
+    session1Date: dateOr(row.session_1_date, FALLBACK.session1Date),
+    session2Date: dateOr(row.session_2_date, FALLBACK.session2Date),
+    session3Date: dateOr(row.session_3_date, FALLBACK.session3Date),
+    bonusSessionDate: dateOr(row.bonus_session_date, FALLBACK.bonusSessionDate),
   };
 }
 
